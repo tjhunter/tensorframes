@@ -28,12 +28,11 @@ TensorFrames is available as a
 
 ## Requirements
 
- - A working version of Apache Spark (1.6 or greater)
+ - A working version of Apache Spark (2.0 or greater)
 
  - java version >= 7
  
- - (Optional) python >= 2.7 if you want to use the python interface. Python 3+ should work but it 
- has not been tested.
+ - (Optional) python >= 2.7, or python >= 3.4 if you want to use the python interface.
  
  - (Optional) the python TensorFlow package if you want to use the python interface. See the 
  [official instructions](https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#download-and-setup)
