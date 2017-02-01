@@ -18,8 +18,7 @@ Supported platforms:
 
 See the file `project/Dependencies.scala` for adding your own platform.
 
-Officially supported Spark versions: 1.6 and Scala version 2.10. It is also known to work with 
-Spark 2.0 (pre-released) and Scala 2.11.
+Officially supported Spark versions: 2.1.0 and Scala version 2.10 / 2.11.
 
 See the [user guide](https://github.com/databricks/tensorframes/wiki/TensorFrames-user-guide) for
  extensive information about the API.
