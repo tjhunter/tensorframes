@@ -14,9 +14,9 @@ object Dependencies {
   // The spark version
   val targetSparkVersion = "2.0.0"
 
-  val targetJCPPVersion = "1.2"
+  val targetJCPPVersion = "1.3"
 
-  val targetTensorFlowVersion = "0.8.0"
+  val targetTensorFlowVersion = "0.11.0"
 
   def credentialPath: File = {
     Paths.get("sbtcredentials").toAbsolutePath().toFile
