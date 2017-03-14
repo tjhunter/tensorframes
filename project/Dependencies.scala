@@ -16,7 +16,7 @@ object Dependencies {
 
   val targetJCPPVersion = "1.2"
 
-  val targetTensorFlowVersion = "0.8.0"
+  val targetTensorFlowVersion = "0.11.0"
 
   def credentialPath: File = {
     Paths.get("sbtcredentials").toAbsolutePath().toFile
