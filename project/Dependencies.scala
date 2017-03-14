@@ -14,7 +14,7 @@ object Dependencies {
   // The spark version
   val targetSparkVersion = "2.0.0"
 
-  val targetJCPPVersion = "1.2"
+  val targetJCPPVersion = "1.3"
 
   val targetTensorFlowVersion = "0.11.0"
 

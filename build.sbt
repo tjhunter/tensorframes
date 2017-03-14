@@ -76,13 +76,13 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "
 
 // Could not get protobuf to work -> manually adding it
 
-libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.0.0"
+libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.2.0"
 
 libraryDependencies += "org.bytedeco" % "javacpp" % targetJCPPVersion
 
 customTF()
 
-version in protobufConfig := "3.0.0-beta-1"
+//version in protobufConfig := "3.0.0-beta-1"
 
 parallelExecution := false
 
@@ -92,8 +92,8 @@ assemblyExcludedJars in assembly := {
   val cp = (fullClasspath in assembly).value
   val excludes = Set(
     "tensorflow-sources.jar",
-    "tensorflow-javadoc.jar",
-    "tensorflow-0.8.0-1.2-macosx-x86_64.jar" // This is not the main target, excluding
+    "tensorflow-javadoc.jar"
+    //"tensorflow-0.11.0-1.3-macosx-x86_64.jar" // This is not the main target, excluding
   )
   cp filter { s => excludes.contains(s.data.getName) }
 }
