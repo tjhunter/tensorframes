@@ -12,9 +12,9 @@ import xml.transform.{RuleTransformer, RewriteRule}
 
 object Dependencies {
   // The spark version
-  val targetSparkVersion = "2.0.0"
+  val targetSparkVersion = "2.1.0"
 
-  val targetJCPPVersion = "1.2"
+  val targetJCPPVersion = "1.3"
 
   val targetTensorFlowVersion = "1.0.0"
 

@@ -27,7 +27,10 @@ object TensorFlowOps extends Logging {
   }
 
   def graphSerial(g: jtf.GraphDef): Array[Byte] = {
-    val arr = Array.fill[Byte](g.ByteSize())(0)
+    val n = g.ByteSizeLong()
+    assert(n < Int.MaxValue, s"Cannot serialize graphs of size more than ${Int.MaxValue} " +
+      s"(trying to serialize a graph of size $n bytes")
+    val arr = Array.fill[Byte](g.ByteSizeLong().toInt)(0)
     g.SerializeWithCachedSizesToArray(arr)
     arr
   }
