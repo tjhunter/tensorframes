@@ -9,7 +9,7 @@ scalaVersion := "2.11.8"
 //crossScalaVersions := Seq("2.11.7", "2.10.6")
 
 // Don't forget to set the version
-version := "0.2.3"
+version := "0.2.5"
 
 classpathTypes += "maven-plugin"
 
@@ -93,7 +93,7 @@ assemblyExcludedJars in assembly := {
   val excludes = Set(
     "tensorflow-sources.jar",
     "tensorflow-javadoc.jar",
-    "tensorflow-1.0.0-1.2-macosx-x86_64.jar" // This is not the main target, excluding
+    "tensorflow-1.0.0-1.3-macosx-x86_64.jar" // This is not the main target, excluding
   )
   cp filter { s => excludes.contains(s.data.getName) }
 }
