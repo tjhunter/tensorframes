@@ -4,6 +4,7 @@ import scala.collection.mutable
 import scala.reflect.ClassTag
 
 import org.bytedeco.javacpp.{tensorflow => jtf}
+import org.{tensorflow => tf}
 
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.catalyst.expressions.{GenericRow, GenericRowWithSchema}
@@ -195,6 +196,55 @@ object DataOps extends Logging {
     }
     new jtf.StringTensorPairVector(names, tensors)
   }
+
+  /**
+    * Performs size checks and resolutions, and converts the data from the row format to the C++
+    * buffers.
+    *
+    * @param it
+    * @param struct the structure of the block. It should contain all the extra meta-data required by
+    *               TensorFrames.
+    * @param requestedTFCols: the columns that will be fed into TF
+    * @return
+    */
+  def convert2(
+      it: Array[Row],
+      struct: StructType,
+      requestedTFCols: Array[Int],
+      fastPath: Boolean = true): Seq[(String, tf.Tensor)] = {
+    // This is a very simple and very inefficient implementation. It should be kept
+    // as is for correctness checks.
+    val fields = requestedTFCols.map(struct.fields(_))
+    logDebug(s"convert2: Calling convert on ${it.length} rows with struct: $struct " +
+      s"and indices: ${requestedTFCols.toSeq}")
+    val converters = fields.map { f =>
+      // Extract and check the shape
+      val ci = ColumnInformation(f).stf.getOrElse {
+        throw new Exception(s"Could not column information for column $f")
+      }
+      val leadDim = ci.shape.dims.headOption.getOrElse {
+        throw new Exception(s"Column $f found to be scalar, but its dimensions should be >= 1")
+      } .toInt
+      if (leadDim != Shape.Unknown && leadDim != it.length) {
+        throw new Exception(s"Lead dimension for column $f (found to be $leadDim)" +
+          s" is not compatible with a block of size ${it.length}. " +
+          s"Expected block structure: $struct, meta info = $ci")
+      }
+      SupportedOperations.opsFor(ci.dataType).tfConverter(ci.shape.tail, it.length)
+    }
+    for (c <- converters) { c.reserve() }
+
+    if (fastPath) {
+      convertFast0(it, converters, requestedTFCols)
+    } else {
+      convertSlow0(it, converters, requestedTFCols)
+    }
+
+    val tensors = converters.map(_.tensor2())
+    val names = requestedTFCols.map(struct(_).name)
+    names.zip(tensors)
+  }
+
 
   private[this] def convertSlow0(
       it: Array[Row],

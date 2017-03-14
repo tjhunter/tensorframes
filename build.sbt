@@ -110,6 +110,11 @@ unmanagedResourceDirectories in Compile += {
   baseDirectory.value / "src/main/python/"
 }
 
+unmanagedResourceDirectories in Compile += {
+  baseDirectory.value / "lib/jni/"
+}
+
+
 addCommandAlias("doit", ";clean;compile;assembly")
 
 // Spark packages messes this part

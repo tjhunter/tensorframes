@@ -4,6 +4,7 @@ import org.apache.spark.sql.types.NumericType
 import org.tensorflow.framework.TensorShapeProto
 import scala.collection.JavaConverters._
 import org.tensorframes.Shape.DimType
+import org.{tensorflow => tf}
 
 
 /**
@@ -16,6 +17,13 @@ class Shape private (private val ds: Array[DimType]) extends Serializable {
   final def numDims = ds.length
 
   def hasUnknown: Boolean = ds.contains(Shape.UNKNOWN)
+
+  /**
+    * The number of elements contained in this shape.
+    *
+    * If this shape has unknowns, returns None.
+    */
+  def numElements: Option[Long] = if (hasUnknown) None else Option(ds.product)
 
   override def toString: String =
     ds.map(x => if (x == Shape.UNKNOWN) { "?" } else {x.toString}).mkString("[",",","]")
@@ -61,6 +69,10 @@ class Shape private (private val ds: Array[DimType]) extends Serializable {
       b.addDimBuilder().setSize(d).build()
     }
     b.build()
+  }
+
+  private[tensorframes] def toTFShape: tf.Shape = {
+    tf.Shape.make(ds.head, ds.tail: _*)
   }
 }
 

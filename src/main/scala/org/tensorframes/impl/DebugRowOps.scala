@@ -1,18 +1,21 @@
 package org.tensorframes.impl
 
+import com.jd.util.NativeUtils
 import org.apache.commons.lang3.SerializationUtils
 import org.apache.spark.broadcast.Broadcast
-import org.apache.spark.sql.catalyst.expressions.{MutableRow, GenericRowWithSchema}
+import org.apache.spark.sql.catalyst.expressions.{GenericRowWithSchema, MutableRow}
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions.col
-import org.apache.spark.sql.{RelationalGroupedDataset, DataFrame, Row}
+import org.apache.spark.sql.{DataFrame, RelationalGroupedDataset, Row}
 import org.bytedeco.javacpp.{tensorflow => jtf}
 import org.tensorflow.framework.GraphDef
+import org.tensorflow.{Graph, Session}
 import org.tensorframes._
 import org.tensorframes.test.DslOperations
 
 import scala.collection.mutable
+import scala.collection.JavaConverters._
 import scala.util.{Failure, Success, Try}
 
 /**
@@ -277,6 +280,7 @@ object SchemaTransforms extends SchemaTransforms
 class DebugRowOps
   extends OperationsInterface
     with ExperimentalOperations with DslOperations with PythonInterface with Logging {
+
 
   import SchemaTransforms._
 
@@ -769,6 +773,26 @@ object DebugRowOpsImpl extends Logging {
     val stpv = DataOps.convert(input, inputSchema, inputTFCols)
     logDebug(s"performMap: converting the graphDef")
     val g = TensorFlowOps.readGraph(graphDef)
+
+    {
+      val inputTensors = DataOps.convert2(input, inputSchema, inputTFCols)
+      val graph2 = new Graph()
+      graph2.importGraphDef(graphDef)
+      println(s"GRAPH2: >>>>> $graph2")
+      val s = new Session(graph2)
+      val requested = tfOutputSchema.map(_.name)
+      var runner = s.runner()
+      for (req <- requested) {
+        runner = runner.fetch(req)
+      }
+      for ((inputName, inputTensor) <- inputTensors) {
+        runner = runner.feed(inputName, inputTensor)
+      }
+      val outs = runner.run().asScala
+      println("RUNNER: >>>> " + outs)
+      // TODO: close the input tensors
+    }
+
     logDebug(s"performMap: entering session")
     TensorFlowOps.withSession { session =>
       logDebug(s"performMap: entered session session")

@@ -1,5 +1,6 @@
 package org.tensorframes.impl
 
+import com.jd.util.NativeUtils
 import org.apache.spark.sql.types.NumericType
 import org.bytedeco.javacpp.{BytePointer, tensorflow => jtf}
 import org.tensorflow.framework.GraphDef
@@ -19,6 +20,11 @@ object TensorFlowOps extends Logging {
     logDebug("Starting TensorFlowOps...")
     jtf.InitMain("test", Array.empty[Int], null)
     logDebug("Starting TensorFlowOps... Done")
+    logger.debug("LOADING TENSORFLOW")
+    val name =  "/" + java.lang.System.mapLibraryName("tensorflow_jni")
+    logger.debug(s"LOADING TENSORFLOW: $name")
+    NativeUtils.loadLibraryFromJar(name)
+    logger.debug(s"LOADING TENSORFLOW: $name: DONE")
     true
   }
 

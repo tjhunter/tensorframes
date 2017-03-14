@@ -5,6 +5,7 @@ import java.nio._
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types.{LongType, DoubleType, IntegerType, NumericType}
 import org.bytedeco.javacpp.{tensorflow => jtf}
+import org.{tensorflow => tf}
 import org.tensorflow.framework.DataType
 import org.tensorframes.{Logging, Shape}
 
@@ -82,6 +83,8 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
   }
 
   def tensor(): jtf.Tensor
+
+  def tensor2(): tf.Tensor
 
   protected def byteBuffer(): ByteBuffer
 
@@ -244,6 +247,7 @@ private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Double](s, numCells) with Logging {
   private var _tensor: jtf.Tensor = null
   private var buffer: DoubleBuffer = null
+  private var buffer2: DoubleBuffer = null
 
   assert(! s.hasUnknown, s"Shape $s has unknown values.")
 
@@ -256,13 +260,21 @@ private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
     logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
     buffer = byteBuffer().asDoubleBuffer()
     buffer.rewind()
+    buffer2 = DoubleBuffer.allocate(s2.numElements.get.toInt)
   }
 
   override def appendRaw(d: Double): Unit = {
     buffer.put(d)
+    buffer2.put(d)
   }
 
   override def tensor(): jtf.Tensor = _tensor
+
+  override def tensor2(): tf.Tensor = {
+    buffer2.rewind()
+    val s2 = s.prepend(numCells)
+    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
+  }
 
   override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
 }
@@ -302,6 +314,7 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
 private[impl] class IntTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Int](s, numCells) with Logging {
   private var _tensor: jtf.Tensor = null
+  private var buffer2: IntBuffer = null
   private var buffer: IntBuffer = null
 
   assert(! s.hasUnknown, s"Shape $s has unknown values.")
@@ -311,17 +324,28 @@ private[impl] class IntTensorConverter(s: Shape, numCells: Int)
     val s2 = s.prepend(numCells)
     val physicalShape = TensorFlowOps.shape(s2)
     logTrace(s"s2=$s2 phys=${TensorFlowOps.jtfShape(physicalShape)}")
+    buffer2 = IntBuffer.allocate(s2.numElements.get.toInt)
     _tensor = new jtf.Tensor(jtf.TF_INT32, physicalShape)
     logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
-    buffer =byteBuffer().asIntBuffer()
+    buffer = byteBuffer().asIntBuffer()
     buffer.rewind()
   }
 
   override def appendRaw(d: Int): Unit = {
     buffer.put(d)
+    buffer2.put(d)
   }
 
   override def tensor(): jtf.Tensor = _tensor
+
+  /**
+   * WARNING: do not forget to release the tensor after.
+   */
+  override def tensor2(): tf.Tensor = {
+    buffer2.rewind()
+    val s2 = s.prepend(numCells)
+    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
+  }
 
   override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
 }
@@ -356,6 +380,7 @@ private[impl] class LongTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Long](s, numCells) with Logging {
   private var _tensor: jtf.Tensor = null
   private var buffer: LongBuffer = null
+  private var buffer2: LongBuffer = null
 
   assert(! s.hasUnknown, s"Shape $s has unknown values.")
 
@@ -368,10 +393,18 @@ private[impl] class LongTensorConverter(s: Shape, numCells: Int)
     logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
     buffer = byteBuffer().asLongBuffer()
     buffer.rewind()
+    buffer2 = LongBuffer.allocate(s2.numElements.get.toInt)
+  }
+
+  override def tensor2(): tf.Tensor = {
+    buffer2.rewind()
+    val s2 = s.prepend(numCells)
+    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
   }
 
   override def appendRaw(d: Long): Unit = {
     buffer.put(d)
+    buffer2.put(d)
   }
 
   override def tensor(): jtf.Tensor = _tensor
