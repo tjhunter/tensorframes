@@ -16,7 +16,7 @@ object Dependencies {
 
   val targetJCPPVersion = "1.3"
 
-  val targetTensorFlowVersion = "1.0.0"
+  val targetTensorFlowVersion = "1.0.1-SNAPSHOT"
 
   def credentialPath: File = {
     Paths.get("sbtcredentials").toAbsolutePath.toFile
@@ -32,12 +32,13 @@ object Dependencies {
       println(s"Using custom tensorflow version in $f2")
       unmanagedBase := f2
     } else {
-      val vstring = s"$targetTensorFlowVersion-$targetJCPPVersion"
+      //val vstring = s"$targetTensorFlowVersion-$targetJCPPVersion"
+      val vstring = "1.0.1-1.3.3-SNAPSHOT"
       // Add other versions here if necessary
       val packages = Seq(
         "org.bytedeco.javacpp-presets" % "tensorflow" % vstring,
-        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "linux-x86_64",
-        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "macosx-x86_64"
+        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "linux-x86_64"
+//        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "macosx-x86_64"
       )
       libraryDependencies ++= packages
     }

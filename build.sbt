@@ -2,6 +2,9 @@ import Dependencies._
 
 resolvers += "ASF repository" at "http://repository.apache.org/snapshots"
 
+resolvers +=
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
 name := "tensorframes"
 
 scalaVersion := "2.11.8"
