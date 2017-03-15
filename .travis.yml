@@ -36,6 +36,10 @@ install:
  - pip install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
 
 script:
+ - echo "********** STRINGS **********"
+ - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep CXXABI_1.3.8
+ - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep CXXABI
+ - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6
  - sbt -Dspark.version=$SPARK_VERSION "set scalaVersion := \"$SCALA_BINARY_VERSION\"" "set test in assembly := {}" assembly
  - sbt -Dspark.version=$SPARK_VERSION -Dpython.version=$PYSPARK_PYTHON "set scalaVersion := \"$SCALA_BINARY_VERSION\"" test
  - SPARK_HOME=$HOME/.cache/spark-versions/$SPARK_BUILD ./python/run-tests.sh
