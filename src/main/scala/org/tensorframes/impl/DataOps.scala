@@ -413,7 +413,6 @@ object DataOps extends Logging {
     }
   }
 
-
   private def getColumn(rows: Iterable[Row], position: Int): Iterable[Any] = {
     rows.map(_.get(position))
   }
