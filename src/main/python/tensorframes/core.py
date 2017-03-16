@@ -1,4 +1,5 @@
 import tensorflow as tf
+print(">>>>>>TF VERSION=%s" % tf.__version__)
 import numpy as np
 import logging
 
@@ -249,6 +250,7 @@ def reduce_blocks(fetches, dframe):
     """
     fetches = _check_fetches(fetches)
     graph = _get_graph(fetches)
+    print(">>>>>reduce_blocks: graph= %s" % graph.as_graph_def())
     builder = _java_api().reduce_blocks(dframe._jdf)
     _add_graph(graph, builder)
     _add_shapes(graph, builder, fetches)
