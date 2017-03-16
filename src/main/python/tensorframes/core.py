@@ -1,5 +1,4 @@
 import tensorflow as tf
-print(">>>>>>TF VERSION=%s" % tf.__version__)
 import numpy as np
 import logging
 

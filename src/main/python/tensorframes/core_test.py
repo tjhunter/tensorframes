@@ -78,6 +78,8 @@ class TestCore(object):
 
     # This test fails
     def test_reduce_blocks_1(self):
+        print(">>>>>>TF VERSION=%s" % tf.__version__)
+        print(">>>>>>TF VERSION=%s" % tf)
         data = [Row(x=float(x)) for x in range(5)]
         df = self.sql.createDataFrame(data)
         with tf.Graph().as_default() as g:
