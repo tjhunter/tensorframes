@@ -79,7 +79,7 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "
 
 // Could not get protobuf to work -> manually adding it
 
-libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.0.0"
+libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.2.0"
 
 libraryDependencies += "org.bytedeco" % "javacpp" % targetJCPPVersion
 

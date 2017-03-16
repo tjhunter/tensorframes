@@ -179,7 +179,9 @@ private[dsl] object DslImpl extends Logging with DefaultConversions {
     build(opName, name, Seq(parent, idxs),
       dtype = parent.scalarType,
       shape = reduce_shape(parent.shape, Option(reduction_indices).getOrElse(Nil)),
-      extraAttrs = Map("keep_dims" -> attr))
+      extraAttrs = Map(
+        "Tidx" -> AttrValue.newBuilder().setType(DataType.DT_INT32).build(),
+        "keep_dims" -> AttrValue.newBuilder().setB(false).build()))
   }
 
   private def reduce_shape(s: Shape, red_indices: Seq[Int]): Shape = {
