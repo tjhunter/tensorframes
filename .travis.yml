@@ -37,6 +37,8 @@ install:
 
 script:
  - rm -rf /home/travis/.javacpp
+ - ls -la /home/travis/.ivy2/cache/org.bytedeco.javacpp-presets/
+ - rm -rf /home/travis/.ivy2/cache/org.bytedeco.javacpp-presets/*
  - echo "********** STRINGS **********"
  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep CXXABI_1.3.8
  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep CXXABI
