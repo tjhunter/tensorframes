@@ -85,7 +85,7 @@ libraryDependencies += "org.bytedeco" % "javacpp" % targetJCPPVersion
 
 customTF()
 
-version in protobufConfig := "3.0.0-beta-1"
+version in protobufConfig := "3.2.0"
 
 parallelExecution := false
 
