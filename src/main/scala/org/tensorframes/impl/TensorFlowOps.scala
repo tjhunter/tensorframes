@@ -112,7 +112,7 @@ object TensorFlowOps extends Logging {
           res ::= it.access()
           it.increment()
         }
-        res.toSeq
+        res
       }
       logDebug(s"Extracted ${nodes.size} nodes")
       // TODO: move this within the iterator, the nodes it attempts to access may have been deallocated at that point.
