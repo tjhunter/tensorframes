@@ -37,8 +37,8 @@ object Dependencies {
       // Add other versions here if necessary
       val packages = Seq(
         "org.bytedeco.javacpp-presets" % "tensorflow" % vstring,
-        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "linux-x86_64"
-//        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "macosx-x86_64"
+        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "linux-x86_64",
+        "org.bytedeco.javacpp-presets" % "tensorflow" % vstring classifier "macosx-x86_64"
       )
       libraryDependencies ++= packages
     }
