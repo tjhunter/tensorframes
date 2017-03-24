@@ -9,6 +9,7 @@ name := "tensorframes"
 
 scalaVersion := "2.11.8"
 
+// We do it manually during the release process.
 //crossScalaVersions := Seq("2.11.7", "2.10.6")
 
 // Don't forget to set the version
