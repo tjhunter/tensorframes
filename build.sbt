@@ -2,6 +2,9 @@ import Dependencies._
 
 resolvers += "ASF repository" at "http://repository.apache.org/snapshots"
 
+resolvers +=
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
 name := "tensorframes"
 
 scalaVersion := "2.11.8"
@@ -9,7 +12,7 @@ scalaVersion := "2.11.8"
 //crossScalaVersions := Seq("2.11.7", "2.10.6")
 
 // Don't forget to set the version
-version := "0.2.4"
+version := "0.2.5"
 
 classpathTypes += "maven-plugin"
 
@@ -76,13 +79,13 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "
 
 // Could not get protobuf to work -> manually adding it
 
-libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.0.0"
+libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.2.0"
 
 libraryDependencies += "org.bytedeco" % "javacpp" % targetJCPPVersion
 
 customTF()
 
-version in protobufConfig := "3.0.0-beta-1"
+version in protobufConfig := "3.2.0"
 
 parallelExecution := false
 
@@ -93,11 +96,13 @@ assemblyExcludedJars in assembly := {
   val excludes = Set(
     "tensorflow-sources.jar",
     "tensorflow-javadoc.jar",
-    "tensorflow-0.8.0-1.2-macosx-x86_64.jar" // This is not the main target, excluding
+    "tensorflow-1.0.0-1.3-macosx-x86_64.jar" // This is not the main target, excluding
   )
   cp filter { s => excludes.contains(s.data.getName) }
 }
 
+// Spark has a dependency on protobuf2, which conflicts with protobuf3.
+// Our own dep needs to be shaded.
 assemblyShadeRules in assembly := Seq(
   ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
 )

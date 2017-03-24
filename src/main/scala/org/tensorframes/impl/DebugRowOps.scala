@@ -1,9 +1,8 @@
 package org.tensorframes.impl
 
-import com.jd.util.NativeUtils
 import org.apache.commons.lang3.SerializationUtils
 import org.apache.spark.broadcast.Broadcast
-import org.apache.spark.sql.catalyst.expressions.{GenericRowWithSchema, MutableRow}
+import org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions.col

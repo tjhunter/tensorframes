@@ -20,10 +20,10 @@ cache:
 
 env:
   matrix:
-    - PIP_BIN=pip PYSPARK_PYTHON=python2 TF_BUILD=tensorflow-0.10.0-cp27-none-linux_x86_64.whl SCALA_BINARY_VERSION="2.11.8" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
-    - PIP_BIN=pip PYSPARK_PYTHON=python2 TF_BUILD=tensorflow-0.10.0-cp27-none-linux_x86_64.whl SCALA_BINARY_VERSION="2.10.6" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
-    - PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_BUILD=tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl SCALA_BINARY_VERSION="2.11.8" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
-    - PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_BUILD=tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl SCALA_BINARY_VERSION="2.10.6" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
+    - PIP_BIN=pip PYSPARK_PYTHON=python2 TF_BUILD=tensorflow-1.0.1-cp27-none-linux_x86_64.whl SCALA_BINARY_VERSION="2.11.8" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
+    - PIP_BIN=pip PYSPARK_PYTHON=python2 TF_BUILD=tensorflow-1.0.1-cp27-none-linux_x86_64.whl SCALA_BINARY_VERSION="2.10.6" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
+    - PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_BUILD=tensorflow-1.0.1-cp35-cp35m-linux_x86_64.whl SCALA_BINARY_VERSION="2.11.8" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
+    - PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_BUILD=tensorflow-1.0.1-cp35-cp35m-linux_x86_64.whl SCALA_BINARY_VERSION="2.10.6" SPARK_VERSION="2.1.0" SPARK_BUILD="spark-2.1.0-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz"
 
 before_install:
  - ./bin/download_travis_dependencies.sh
@@ -33,9 +33,12 @@ install:
  - $PIP_BIN install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/$TF_BUILD
  # We also install a python 2 version of Tensorflow. It is used in the Scala tests to make sure that
  # the protos produced by scala and python are binary identical.
- - pip install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+ - pip install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.1-cp27-none-linux_x86_64.whl
 
 script:
+ - rm -rf /home/travis/.javacpp
+ # Manually remove previous versions, otherwise the snaphsot will not get updated.
+ - rm -rf /home/travis/.ivy2/cache/org.bytedeco.javacpp-presets/*
  - sbt -Dspark.version=$SPARK_VERSION "set scalaVersion := \"$SCALA_BINARY_VERSION\"" "set test in assembly := {}" assembly
  - sbt -Dspark.version=$SPARK_VERSION -Dpython.version=$PYSPARK_PYTHON "set scalaVersion := \"$SCALA_BINARY_VERSION\"" test
  - SPARK_HOME=$HOME/.cache/spark-versions/$SPARK_BUILD ./python/run-tests.sh
