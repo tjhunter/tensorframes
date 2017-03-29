@@ -89,6 +89,7 @@ object Shading extends Build {
     target := target.value / "distribution",
     spShade := true,
     assembly in spPackage := (assembly in shaded).value,
+    assemblyOption in spPackage := (assemblyOption in assembly).value.copy(includeScala = false),
     libraryDependencies := nonShadedDependencies,
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= testDependencies
