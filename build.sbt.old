@@ -1,3 +1,4 @@
+import Shading._
 import Dependencies._
 
 resolvers += "ASF repository" at "http://repository.apache.org/snapshots"
