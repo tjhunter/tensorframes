@@ -18,7 +18,7 @@ Supported platforms:
 
 See the file `project/Dependencies.scala` for adding your own platform.
 
-Officially supported Spark versions: 2.1.0 and Scala version 2.10 / 2.11.
+Officially supported Spark versions: 2.1.x and Scala version 2.10 / 2.11.
 
 See the [user guide](https://github.com/databricks/tensorframes/wiki/TensorFrames-user-guide) for
  extensive information about the API.
@@ -48,7 +48,7 @@ Additionally, if you want to run unit tests for python, you need the following d
 Assuming that `SPARK_HOME` is set, you can use PySpark like any other Spark package.
 
 ```bash
-$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.2.3-s_2.10
+$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.2.5-rc1-s_2.11
 ```
 
 Here is a small program that uses Tensorflow to add 3 to an existing column.
@@ -177,7 +177,7 @@ df2.collect()
  the scala code. The recommended procedure is to use the assembly:
 
 ```bash
-build/sbt assembly
+build/sbt tfs_testing/assembly
 # Builds the spack package:
 build/sbt tfPackage
 ```
@@ -185,14 +185,14 @@ build/sbt tfPackage
 Assuming that SPARK_HOME is set and that you are in the root directory of the project:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --jars $PWD/target/scala-2.11/tensorframes-assembly-0.2.4.jar
+$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5-rc1.jar
 ```
 
 If you want to run the python version:
  
 ```bash
-PYTHONPATH=$PWD/target/scala-2.11/tensorframes-assembly-0.2.4.jar \
-$SPARK_HOME/bin/pyspark --jars $PWD/target/scala-2.11/tensorframes-assembly-0.2.4.jar
+PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5.jar \
+$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5.jar
 ```
 
 
