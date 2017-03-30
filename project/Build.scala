@@ -35,6 +35,12 @@ object Shading extends Build {
     "org.apache.spark" %% "spark-sql" % targetSparkVersion
   )
 
+  // The dependencies that are platform-specific.
+  lazy val platformDependencies = Seq(
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "linux-x86_64",
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "macosx-x86_64"
+  )
+
   lazy val nonShadedDependencies = Seq(
     // Normal dependencies
     ModuleID("org.apache.commons", "commons-proxy", "1.0"),
@@ -44,9 +50,7 @@ object Shading extends Build {
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
     // TensorFlow dependencies
     "org.bytedeco" % "javacpp" % targetJCPPVersion,
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion,
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "linux-x86_64",
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "macosx-x86_64"
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion
   )
 
   lazy val testDependencies = Seq(
@@ -63,10 +67,12 @@ object Shading extends Build {
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
+    libraryDependencies ++= platformDependencies,
     target := target.value / "shaded",
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
-    )
+    ),
+    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
   ).settings(commonSettings: _*)
 
   lazy val distribute = Project("distribution", file(".")).settings(
@@ -89,8 +95,8 @@ object Shading extends Build {
     target := target.value / "distribution",
     spShade := true,
     assembly in spPackage := (assembly in shaded).value,
-    assemblyOption in spPackage := (assemblyOption in assembly).value.copy(includeScala = false),
     libraryDependencies := nonShadedDependencies,
+    libraryDependencies ++= platformDependencies,
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= testDependencies
   ).settings(commonSettings: _*)
