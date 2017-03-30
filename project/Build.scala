@@ -84,9 +84,9 @@ object Shading extends Build {
     libraryDependencies ++= platformDependencies,
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= testDependencies,
-      spName := "databricks/tensorframes",
-      spShortDescription := "TensorFlow wrapper for DataFrames on Apache Spark",
-      spDescription := {
+    spName := "databricks/tensorframes",
+    spShortDescription := "TensorFlow wrapper for DataFrames on Apache Spark",
+    spDescription := {
       """TensorFrames (TensorFlow on Spark DataFrames) lets you manipulate Spark's DataFrames with
         | TensorFlow programs.
           |
@@ -100,8 +100,10 @@ object Shading extends Build {
           |
       """.stripMargin
     },
-      spShade := true,
-      assembly in spPackage := (assembly in shaded).value
+    spHomepage := "https://github.com/databricks/tensorframes",
+    spShade := true,
+    assembly in spPackage := (assembly in shaded).value,
+    credentials += Credentials(Path.userHome / ".ivy2" / ".sbtcredentials")
   ).settings(commonSettings: _*)
 
   // The java testing artifact: do not shade or embed anything.
