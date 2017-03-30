@@ -103,7 +103,7 @@ object Shading extends Build {
     spHomepage := "https://github.com/databricks/tensorframes",
     spShade := true,
     assembly in spPackage := (assembly in shaded).value,
-    credentials += Credentials(Path.userHome / ".ivy2" / ".sbtcredentials")
+    credentials += Credentials(Path.userHome / ".ssh" / "credentials_tensorframes.sbt.txt")
   ).settings(commonSettings: _*)
 
   // The java testing artifact: do not shade or embed anything.
