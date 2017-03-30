@@ -13,7 +13,7 @@ object Shading extends Build {
   lazy val commonSettings = Seq(
     version := "0.2.5",
     name := "tensorframes",
-    scalaVersion := "2.11.8",
+    scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
     organization := "databricks",
     sparkVersion := targetSparkVersion,
     licenses := Seq("Apache-2.0" -> url("http://opensource.org/licenses/Apache-2.0")),

@@ -40,8 +40,8 @@ script:
  # Manually remove previous versions, otherwise the snaphsot will not get updated.
  - rm -rf /home/travis/.ivy2/cache/org.bytedeco.javacpp-presets/*
  # Run the scala unit tests first
- - sbt -Dspark.version=$SPARK_VERSION -Dpython.version=$PYSPARK_PYTHON "set scalaVersion := \"$SCALA_BINARY_VERSION\"" tfs_testing/test
+ - sbt -Dspark.version=$SPARK_VERSION -Dpython.version=$PYSPARK_PYTHON -Dscala.version=$SCALA_BINARY_VERSION tfs_testing/test
  # Run the python unit tests.
- - sbt -Dspark.version=$SPARK_VERSION "set scalaVersion := \"$SCALA_BINARY_VERSION\""  tfs_testing/assembly
+ - sbt -Dspark.version=$SPARK_VERSION -Dscala.version=$SCALA_BINARY_VERSION tfs_testing/assembly
  - SPARK_HOME=$HOME/.cache/spark-versions/$SPARK_BUILD ./python/run-tests.sh
 
