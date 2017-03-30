@@ -74,7 +74,7 @@ object Shading extends Build {
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
-    libraryDependencies ++= allPlatformDependencies,
+    libraryDependencies ++= linuxPlatformDependencies,
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
@@ -87,7 +87,6 @@ object Shading extends Build {
   lazy val distribute = Project("distribution", file(".")).settings(
     target := target.value / "distribution",
     libraryDependencies := nonShadedDependencies,
-    libraryDependencies ++= linuxPlatformDependencies,
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= testDependencies,
     spName := "databricks/tensorframes",
