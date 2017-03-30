@@ -68,7 +68,7 @@ echo "DIR=$DIR"
 echo "PROJECT_HOME=$PROJECT_HOME"
 
 echo "List of assembly jars found, the last one will be used:"
-assembly_path="$DIR/../target/scala-$SCALA_SHORT_VERSION"
+assembly_path="$DIR/../target/testing/scala-$SCALA_SHORT_VERSION"
 echo `ls $assembly_path/tensorframes-assembly*.jar`
 JAR_PATH=""
 for assembly in $assembly_path/tensorframes-assembly*.jar ; do

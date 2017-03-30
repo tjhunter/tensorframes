@@ -63,24 +63,32 @@ object Shading extends Build {
   )
 
   lazy val shaded = Project("shaded", file(".")).settings(
+    target := target.value / "shaded",
     libraryDependencies ++= nonShadedDependencies.map(_ % "provided"),
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
     libraryDependencies ++= platformDependencies,
-    target := target.value / "shaded",
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
   ).settings(commonSettings: _*)
 
+  // The artifact that is used for spark packages:
+  // - includes the binary libraries, shaded protobuf
+  // - does not include the other dependencies
   lazy val distribute = Project("distribution", file(".")).settings(
-    spName := "databricks/tensorframes",
-    spShortDescription := "TensorFlow wrapper for DataFrames on Apache Spark",
-    spDescription := {
-        """TensorFrames (TensorFlow on Spark DataFrames) lets you manipulate Spark's DataFrames with
-          | TensorFlow programs.
+    target := target.value / "distribution",
+    libraryDependencies := nonShadedDependencies,
+    libraryDependencies ++= platformDependencies,
+    libraryDependencies ++= sparkDependencies.map(_ % "provided"),
+    libraryDependencies ++= testDependencies,
+      spName := "databricks/tensorframes",
+      spShortDescription := "TensorFlow wrapper for DataFrames on Apache Spark",
+      spDescription := {
+      """TensorFrames (TensorFlow on Spark DataFrames) lets you manipulate Spark's DataFrames with
+        | TensorFlow programs.
           |
           |This package provides a small runtime to express and run TensorFlow computation graphs.
           |TensorFlow programs can be interpreted from:
@@ -90,33 +98,27 @@ object Shading extends Build {
           |
           |For more information, visit the TensorFrames user guide:
           |
-        """.stripMargin
-      },
-    target := target.value / "distribution",
-    spShade := true,
-    assembly in spPackage := (assembly in shaded).value,
-    libraryDependencies := nonShadedDependencies,
-    libraryDependencies ++= platformDependencies,
-    libraryDependencies ++= sparkDependencies.map(_ % "provided"),
-    libraryDependencies ++= testDependencies
+      """.stripMargin
+    },
+      spShade := true,
+      assembly in spPackage := (assembly in shaded).value
   ).settings(commonSettings: _*)
 
-  // TODO: move to the shaded assembly
-  lazy val customAssembly = Project("custom-assembly", file(".")).settings(
-    assemblyExcludedJars in assembly := {
-      val cp = (fullClasspath in assembly).value
-      val excludes = Set(
-        "tensorflow-sources.jar",
-        "tensorflow-javadoc.jar",
-        "tensorflow-1.0.0-1.3-macosx-x86_64.jar" // This is not the main target, excluding
-      )
-      cp filter { s => excludes.contains(s.data.getName) }
-    },
+  // The java testing artifact: do not shade or embed anything.
+  lazy val testing = Project("tfs_testing", file(".")).settings(
+    target := target.value / "testing",
+    libraryDependencies ++= sparkDependencies.map(_ % "provided"),
+    libraryDependencies ++= nonShadedDependencies,
+    libraryDependencies ++= shadedDependencies,
+    libraryDependencies ++= testDependencies,
+    libraryDependencies ++= platformDependencies,
+    // Do not attempt to run tests when building the assembly.
+    test in assembly := {},
     // Spark has a dependency on protobuf2, which conflicts with protobuf3.
     // Our own dep needs to be shaded.
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
-  )
+  ).settings(commonSettings: _*)
 }
