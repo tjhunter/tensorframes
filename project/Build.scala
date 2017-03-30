@@ -36,9 +36,15 @@ object Shading extends Build {
   )
 
   // The dependencies that are platform-specific.
-  lazy val platformDependencies = Seq(
+  lazy val allPlatformDependencies = Seq(
     "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "linux-x86_64",
     "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "macosx-x86_64"
+  )
+
+  // The dependencies for linux only.
+  // For cloud environments, it is easier to publish a smaller jar, due to limitations of spark-packages.
+  lazy val linuxPlatformDependencies = Seq(
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "linux-x86_64"
   )
 
   lazy val nonShadedDependencies = Seq(
@@ -68,7 +74,7 @@ object Shading extends Build {
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
-    libraryDependencies ++= platformDependencies,
+    libraryDependencies ++= allPlatformDependencies,
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
@@ -81,7 +87,7 @@ object Shading extends Build {
   lazy val distribute = Project("distribution", file(".")).settings(
     target := target.value / "distribution",
     libraryDependencies := nonShadedDependencies,
-    libraryDependencies ++= platformDependencies,
+    libraryDependencies ++= linuxPlatformDependencies,
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= testDependencies,
     spName := "databricks/tensorframes",
@@ -113,7 +119,7 @@ object Shading extends Build {
     libraryDependencies ++= nonShadedDependencies,
     libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
-    libraryDependencies ++= platformDependencies,
+    libraryDependencies ++= allPlatformDependencies,
     // Do not attempt to run tests when building the assembly.
     test in assembly := {},
     // Spark has a dependency on protobuf2, which conflicts with protobuf3.
