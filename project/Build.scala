@@ -74,7 +74,7 @@ object Shading extends Build {
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
-    libraryDependencies ++= linuxPlatformDependencies,
+    libraryDependencies ++= allPlatformDependencies,
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
