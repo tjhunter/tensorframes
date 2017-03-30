@@ -155,7 +155,7 @@ Here is the same program as before:
 import org.tensorframes.{dsl => tf}
 import org.tensorframes.dsl.Implicits._
 
-val df = sqlContext.createDataFrame(Seq(1.0->1.1, 2.0->2.2)).toDF("a", "b")
+val df = spark.createDataFrame(Seq(1.0->1.1, 2.0->2.2)).toDF("a", "b")
 
 // As in Python, scoping is recommended to prevent name collisions.
 val df2 = tf.withGraph {
@@ -194,18 +194,6 @@ If you want to run the python version:
 PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5.jar \
 $SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5.jar
 ```
-
-
-## How to change the version of TensorFlow
-
-By default, TensorFrames features a relatively stable version of TensorFlow that is optimized 
-for build sizes and for CPUs. If you want to change the internal version being used, you should
-check the [tensorframes-artifacts](https://github.com/tjhunter/tensorframes-artifacts) project. 
-That project contains scripts to build the proper jar files.
-
-It is also possible to drop in some precompiled versions of javacpp and tensorflow into the `lib`
- directory; they will be picked up in the compilation and the assembly. Ask the developers if you
- have more questions.
 
 ## Acknowledgements
 
