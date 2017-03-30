@@ -105,6 +105,7 @@ object Shading extends Build {
           |
       """.stripMargin
     },
+    spAppendScalaVersion := true,
     spHomepage := "https://github.com/databricks/tensorframes",
     spShade := true,
     assembly in spPackage := (assembly in shaded).value,
