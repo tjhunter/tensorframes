@@ -178,8 +178,8 @@ df2.collect()
 
 ```bash
 build/sbt tfs_testing/assembly
-# Builds the spack package:
-build/sbt tfPackage
+# Builds the spark package:
+build/sbt distribution/spDist
 ```
 
 Assuming that SPARK_HOME is set and that you are in the root directory of the project:
