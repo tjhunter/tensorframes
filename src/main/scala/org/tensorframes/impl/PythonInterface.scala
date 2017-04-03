@@ -98,12 +98,21 @@ class PythonOpBuilder(
   }
 
   def fetches(fetchNames: util.ArrayList[String]): this.type = {
-    _shapeHints = _shapeHints.copy(requestedFetches = fetchNames.asScala.toSeq)
+    _shapeHints = _shapeHints.copy(requestedFetches = fetchNames.asScala)
     this
   }
 
   def graph(bytes: Array[Byte]): this.type = {
     _graph = TensorFlowOps.readGraphSerial(bytes)
+    this
+  }
+
+  def inputs(
+      placeholderPaths: util.ArrayList[String],
+      fieldNames: util.ArrayList[String]): this.type = {
+    require(placeholderPaths.size() == fieldNames.size(), (placeholderPaths.asScala, fieldNames.asScala))
+    val map = placeholderPaths.asScala.zip(fieldNames.asScala).toMap
+    _shapeHints = _shapeHints.copy(inputs = map)
     this
   }
 

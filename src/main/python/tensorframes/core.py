@@ -129,7 +129,7 @@ def reduce_rows(fetches, dframe):
     df = builder.buildRow()
     return _unpack_row(df, fetches)
 
-def map_rows(fetches, dframe):
+def map_rows(fetches, dframe, feed_dict=None):
     """ Transforms a DataFrame into another DataFrame row by row, by adding new fields for each fetch.
 
     The `fetches` argument may be a list of graph elements or a single
@@ -154,6 +154,10 @@ def map_rows(fetches, dframe):
       fetches: A single graph element, or a list of graph elements
         (described above).
       dframe: A Spark DataFrame object. The columns of the tensor frame will be fed into the fetches at execution.
+      feed_dict: a dictionary of string -> string. The key is the name of a placeholder in the current TensorFlow graph
+                 of computation. The value is the name of a column in the dataframe. For now, only the top-level fields
+                 in a dataframe are supported. For any placeholder that is not specified in the feed dictionary, the
+                 name of the input column is assumed to be the same as that of the placeholder.
 
     Returns: a DataFrame. The columns and their names are inferred from the names of the fetches.
 

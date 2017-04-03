@@ -172,8 +172,8 @@ object TensorFlowOps extends Logging {
 
 /**
  * All the informations requested by TensorFrames to run on a graph node.
-  *
-  * @param isPlaceholder if the variable is a placeholder
+ *
+ * @param isPlaceholder if the variable is a placeholder
  * @param isInput if the node is an input (no inner dependencies)
  * @param isOutput if it is an outpu (no node depends on it)
  * @param scalarType the scalar type of the final tensor associated to this node
