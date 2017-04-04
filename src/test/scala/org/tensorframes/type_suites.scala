@@ -196,11 +196,18 @@ class IntDebugSuite extends CommonOperationsSuite[Int]
 class DoubleDebugSuite extends CommonOperationsSuite[Double]
   with BasicIdentityTests[Double] with BasicMonoidTests[Double] {
 
-  override def convert(x: Double) = x
+  override def convert(x: Double): Double = x
 }
+
+class FloatDebugSuite extends CommonOperationsSuite[Float]
+  with BasicIdentityTests[Float] with BasicMonoidTests[Float] {
+
+  override def convert(x: Double): Float = x.toFloat
+}
+
 
 class LongDebugSuite extends CommonOperationsSuite[Long]
   with BasicIdentityTests[Long] with BasicMonoidTests[Long] {
 
-  override def convert(x: Double) = x.toLong
+  override def convert(x: Double): Long = x.toLong
 }

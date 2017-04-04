@@ -3,7 +3,7 @@ package org.tensorframes.impl
 import java.nio._
 
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.types.{LongType, DoubleType, IntegerType, NumericType}
+import org.apache.spark.sql.types._
 import org.bytedeco.javacpp.{tensorflow => jtf}
 import org.tensorflow.framework.DataType
 import org.tensorframes.{Logging, Shape}
@@ -24,7 +24,7 @@ import scala.reflect.runtime.universe.TypeTag
  * @tparam T
  */
 // TODO PERF: investigate the use of @specialized
-private[tensorframes] sealed abstract class TensorConverter[@specialized(Double, Int, Long) T] (
+private[tensorframes] sealed abstract class TensorConverter[@specialized(Double, Float, Int, Long) T] (
     val shape: Shape,
     val numCells: Int)
   (implicit ev1: TypeTag[T], ev2: ClassTag[T]) extends Logging {
@@ -104,7 +104,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
  * It does not support TF's rich type collection (uint16, float128, etc.). These have to be handled
  * internally through casting.
  */
-private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double) T]
+private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double, Float) T]
   (implicit ev1: TypeTag[T], ev2: ClassTag[T]) {
   /**
    * The SQL type associated with the given type.
@@ -201,7 +201,7 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
 
 private[tensorframes] object SupportedOperations {
   private val ops: Seq[ScalarTypeOperation[_]] =
-    Seq(DoubleOperations, IntOperations, LongOperations)
+    Seq(DoubleOperations, FloatOperations, IntOperations, LongOperations)
 
   val sqlTypes = ops.map(_.sqlType)
 
@@ -234,6 +234,7 @@ private[tensorframes] object SupportedOperations {
     case _: Double => true
     case _: Int => true
     case _: Long => true
+    case _: Float => true
     case _ => false
   }
 }
@@ -291,6 +292,65 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
     dbuff.rewind()
     val numBufferElements = dbuff.limit() - dbuff.position()
     val res: Array[Double] = Array.fill(numBufferElements)(Double.NaN)
+    dbuff.get(res)
+    logTrace(s"Extracted from buffer: ${res.toSeq}")
+    res
+  }
+}
+
+// ********** FLOAT ************
+
+private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
+  extends TensorConverter[Float](s, numCells) with Logging {
+  private var _tensor: jtf.Tensor = null
+  private var buffer: FloatBuffer = null
+
+  assert(! s.hasUnknown, s"Shape $s has unknown values.")
+
+  override def reserve(): Unit = {
+    logTrace(s"Reserving for $numCells units of shape $shape")
+    val s2 = s.prepend(numCells)
+    val physicalShape = TensorFlowOps.shape(s2)
+    logTrace(s"s2=$s2 phys=${TensorFlowOps.jtfShape(physicalShape)}")
+    _tensor = new jtf.Tensor(jtf.TF_FLOAT, physicalShape)
+    logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
+    buffer = byteBuffer().asFloatBuffer()
+    buffer.rewind()
+  }
+
+  override def appendRaw(d: Float): Unit = {
+    buffer.put(d)
+  }
+
+  override def tensor(): jtf.Tensor = _tensor
+
+  override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
+}
+
+private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Logging {
+  override val sqlType = FloatType
+  override val tfType = DataType.DT_FLOAT
+  final override val zero = 0.0f
+  override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Float] =
+    new FloatTensorConverter(cellShape, numCells)
+  override def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any] = {
+    val dbuff = buff.asFloatBuffer()
+    dbuff.rewind()
+    val numBufferElements = dbuff.limit() - dbuff.position()
+    logTrace(s"convertBuffer: dbuff: pos:${dbuff.position()}, cap:${dbuff.capacity()} " +
+      s"limit:${dbuff.limit()} expected=$numElements")
+    val res: Array[Float] = Array.fill(numBufferElements)(Float.NaN)
+    dbuff.get(res)
+    logTrace(s"Extracted from buffer: ${res.toSeq}")
+    res
+
+  }
+
+  override def convertBuffer(buff: ByteBuffer): MWrappedArray[Float] = {
+    val dbuff = buff.asFloatBuffer()
+    dbuff.rewind()
+    val numBufferElements = dbuff.limit() - dbuff.position()
+    val res: Array[Float] = Array.fill(numBufferElements)(Float.NaN)
     dbuff.get(res)
     logTrace(s"Extracted from buffer: ${res.toSeq}")
     res
