@@ -11,7 +11,7 @@ object Shading extends Build {
 
 
   lazy val commonSettings = Seq(
-    version := "0.2.5-rc2",
+    version := "0.2.6-rc1",
     name := "tensorframes",
     scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
     organization := "databricks",
@@ -26,7 +26,6 @@ object Shading extends Build {
     },
     // Spark packages does not like this part
     test in assembly := {}
-
   )
 
   lazy val sparkDependencies = Seq(

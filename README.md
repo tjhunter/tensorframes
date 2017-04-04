@@ -48,7 +48,7 @@ Additionally, if you want to run unit tests for python, you need the following d
 Assuming that `SPARK_HOME` is set, you can use PySpark like any other Spark package.
 
 ```bash
-$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.2.5-rc2-s_2.11
+$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.2.6-rc1-s_2.11
 ```
 
 Here is a small program that uses Tensorflow to add 3 to an existing column.
@@ -146,7 +146,7 @@ The scala support is a bit more limited than python. In scala, operations can be
 You simply use the published package:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.2.5-rc2
+$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.2.6-rc1
 ```
 
 Here is the same program as before:
@@ -191,8 +191,8 @@ $SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-a
 If you want to run the python version:
  
 ```bash
-PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5-rc2.jar \
-$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5-rc2.jar
+PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.6-rc1.jar \
+$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.6-rc1.jar
 ```
 
 ## Acknowledgements
