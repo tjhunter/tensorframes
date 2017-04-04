@@ -39,6 +39,7 @@ def _add_graph(graph, builder):
     gbytes = bytearray(gser)
     builder.graph(gbytes)
 
+# Returns the names of the placeholders.
 def _add_shapes(graph, builder, fetches):
     names = [fetch.name for fetch in fetches]
     shapes = [_get_shape(fetch) for fetch in fetches]
@@ -58,6 +59,7 @@ def _add_shapes(graph, builder, fetches):
     logger.info("inputs: %s %s", str(ph_names), str(ph_shapes))
     builder.shape(names + ph_names, shapes + ph_shapes)
     builder.fetches(names)
+    return ph_names
 
 def _check_fetches(fetches):
     is_list_fetch = isinstance(fetches, (list, tuple))
@@ -90,6 +92,36 @@ def _unpack_row(jdf, fetches):
     if len(l) == 1:
         return l[0]
     return l
+
+
+def _add_inputs(builder, start_dct, ph_names):
+    """
+    Combines a dictionary (supplied by the user) with some extra placeholder names.
+    """
+    if start_dct is None:
+        start_dct = {}
+    dct = dict(**start_dct)
+    for ph_name in ph_names:
+        if ph_name not in dct:
+            dct[ph_name] = ph_name
+    input_names = [ph_name for (ph_name, field_name) in list(dct)]
+    field_names = [field_name for (ph_name, field_name) in list(dct)]
+    logger.info("inputs: %s %s", str(input_names), str(field_names))
+    builder.inputs(input_names, field_names)
+
+def _map(fetches, dframe, feed_dict, block, trim):
+    fetches = _check_fetches(fetches)
+    # We are not dealing for now with registered expansions, but this is something we should add later.
+    graph = _get_graph(fetches)
+    if block:
+        builder = _java_api().map_blocks(dframe._jdf, trim)
+    else:
+        builder = _java_api().map_rows(dframe._jdf)
+    _add_graph(graph, builder)
+    ph_names = _add_shapes(graph, builder, fetches)
+    _add_inputs(feed_dict, ph_names)
+    jdf = builder.buildDF()
+    return DataFrame(jdf, _sql)
 
 
 def reduce_rows(fetches, dframe):
@@ -165,13 +197,7 @@ def map_rows(fetches, dframe, feed_dict=None):
     :param dframe: a Spark DataFrame
     :return: a Spark DataFrame
     """
-    fetches = _check_fetches(fetches)
-    graph = _get_graph(fetches)
-    builder = _java_api().map_rows(dframe._jdf)
-    _add_graph(graph, builder)
-    _add_shapes(graph, builder, fetches)
-    jdf = builder.buildDF()
-    return DataFrame(jdf, _sql)
+    return _map(fetches, dframe, feed_dict, block=False, trim=None)
 
 def map_blocks(fetches, dframe, trim=False):
     """ Transforms a DataFrame into another DataFrame block by block.
@@ -212,14 +238,8 @@ def map_blocks(fetches, dframe, trim=False):
     :param dframe: a Spark DataFrame
     :return: a Spark DataFrame
     """
-    fetches = _check_fetches(fetches)
-    # We are not dealing for now with registered expansions, but this is something we should add later.
-    graph = _get_graph(fetches)
-    builder = _java_api().map_blocks(dframe._jdf, trim)
-    _add_graph(graph, builder)
-    _add_shapes(graph, builder, fetches)
-    jdf = builder.buildDF()
-    return DataFrame(jdf, _sql)
+    # TODO: add feed dictionary
+    return _map(fetches, dframe, None, block=True, trim=trim)
 
 def reduce_blocks(fetches, dframe):
     """ Applies the fetches on blocks of rows, so that only one row of data remains in the end. The order in which
