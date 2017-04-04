@@ -59,7 +59,8 @@ def _add_shapes(graph, builder, fetches):
     logger.info("inputs: %s %s", str(ph_names), str(ph_shapes))
     builder.shape(names + ph_names, shapes + ph_shapes)
     builder.fetches(names)
-    return ph_names
+    # return the path, not the tensor name.
+    return [t_name.replace(":0", "") for t_name in ph_names]
 
 def _check_fetches(fetches):
     is_list_fetch = isinstance(fetches, (list, tuple))
@@ -104,8 +105,9 @@ def _add_inputs(builder, start_dct, ph_names):
     for ph_name in ph_names:
         if ph_name not in dct:
             dct[ph_name] = ph_name
-    input_names = [ph_name for (ph_name, field_name) in list(dct)]
-    field_names = [field_name for (ph_name, field_name) in list(dct)]
+    dct_items = dct.items()
+    input_names = [ph_name for (ph_name, field_name) in dct_items]
+    field_names = [field_name for (ph_name, field_name) in dct_items]
     logger.info("inputs: %s %s", str(input_names), str(field_names))
     builder.inputs(input_names, field_names)
 
@@ -119,7 +121,7 @@ def _map(fetches, dframe, feed_dict, block, trim):
         builder = _java_api().map_rows(dframe._jdf)
     _add_graph(graph, builder)
     ph_names = _add_shapes(graph, builder, fetches)
-    _add_inputs(feed_dict, ph_names)
+    _add_inputs(builder, feed_dict, ph_names)
     jdf = builder.buildDF()
     return DataFrame(jdf, _sql)
 

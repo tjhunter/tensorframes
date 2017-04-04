@@ -62,6 +62,19 @@ class TestCore(object):
         data2 = df2.collect()
         assert data2[0].z == 3.0, data2
 
+    def test_map_rows_2(self):
+        data = [Row(y=float(y)) for y in range(5)]
+        df = self.sql.createDataFrame(data)
+        with tf.Graph().as_default() as g:
+            # The placeholder that corresponds to column 'x'
+            x = tf.placeholder(tf.double, shape=[], name="x")
+            # The output that adds 3 to x
+            z = tf.add(x, 3, name='z')
+            # The resulting dataframe
+            df2 = tfs.map_rows(z, df, feed_dict={'x':'y'})
+        data2 = df2.collect()
+        assert data2[0].z == 3.0, data2
+
 
     def test_reduce_rows_1(self):
         data = [Row(x=float(x)) for x in range(5)]

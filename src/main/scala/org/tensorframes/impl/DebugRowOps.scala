@@ -366,7 +366,7 @@ class DebugRowOps
       StructType(outputTFSchema)
     }
 
-    logDebug(s"mapBlocks: TF input schema = $inputSchema, complete output schema = $outputSchema")
+    logTrace(s"mapBlocks: TF input schema = $inputSchema, complete output schema = $outputSchema")
 
     val gProto = sc.broadcast(TensorFlowOps.graphSerial(graph))
     val transformRdd = dataframe.rdd.mapPartitions { it =>
@@ -441,12 +441,12 @@ class DebugRowOps
       StructType(fields.toArray)
     }
 
-    // The column indices requested by TF
-    val requestedTFInput: Array[Int] = {
+    // The column indices requested by TF, and the name of the placeholder that gets fed.
+    val requestedTFInput: Array[(NodePath, Int)] = {
       val colIdxs = dataframe.schema.fieldNames.zipWithIndex.toMap
-      inputs.keys.map { name =>
-        val fieldName = shapeHints.inputs(name)
-        colIdxs(fieldName)
+      inputs.keys.map { nodePath =>
+        val fieldName = shapeHints.inputs(nodePath)
+        nodePath -> colIdxs(fieldName)
       }   .toArray
     }
     // Full output schema, including data being passed through and validated for duplicates.
@@ -456,7 +456,7 @@ class DebugRowOps
     }
 
     val schema = dataframe.schema // Classic rookie mistake...
-    logDebug(s"mapRows: input schema = $schema, requested cols: ${requestedTFInput.toSeq}" +
+    logTrace(s"mapRows: input schema = $schema, requested cols: ${requestedTFInput.toSeq}" +
       s" complete output schema = $outputSchema")
     val gProto = sc.broadcast(TensorFlowOps.graphSerial(graph))
     val transformRdd = dataframe.rdd.mapPartitions { it =>
@@ -817,7 +817,7 @@ object DebugRowOpsImpl extends Logging {
   def performMapRows(
       input: Array[Row],
       inputSchema: StructType,
-      inputTFCols: Array[Int],
+      inputTFCols: Array[(NodePath, Int)],
       graphDef: Array[Byte],
       tfOutputSchema: StructType): Array[Row] = {
     // Some partitions may be empty

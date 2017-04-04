@@ -2,14 +2,11 @@ package org.tensorframes.impl
 
 import scala.collection.mutable
 import scala.reflect.ClassTag
-
 import org.bytedeco.javacpp.{tensorflow => jtf}
-
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.catalyst.expressions.{GenericRow, GenericRowWithSchema}
 import org.apache.spark.sql.types.{NumericType, StructType}
-
-import org.tensorframes.{ColumnInformation, Shape, Logging}
+import org.tensorframes.{ColumnInformation, Logging, NodePath, Shape}
 import org.tensorframes.Shape.DimType
 
 /**
@@ -46,7 +43,7 @@ object DataOps extends Logging {
       val info = ColumnInformation(t).stf.getOrElse {
         throw new Exception(s"Missing info in field $t")
       }
-      logDebug(s"convertBack: $t $info")
+      logTrace(s"convertBack: $t $info")
       // Drop the first cell, this is a block.
       val expLength = if (appendInput) { Some(input.length) } else { None }
       val (numRows, iter) = getColumn(tv, idx, info.dataType, info.shape.tail, expLength)
@@ -75,7 +72,7 @@ object DataOps extends Logging {
     } else {
       convertBackSlow0(input, tfIters, input_struct, outputSchema)
     }
-    logDebug(s"outputSchema=$outputSchema")
+    logTrace(s"outputSchema=$outputSchema")
     logTrace(s"res: $res")
     res
   }
@@ -191,7 +188,7 @@ object DataOps extends Logging {
     val tensors = converters.map(_.tensor())
     val names = requestedTFCols.map(struct(_).name)
     for ((name, t) <- names.zip(tensors)) {
-      logDebug(s"convert: $name : ${TensorFlowOps.jtfShape(t.shape())}")
+      logTrace(s"convert: $name : ${TensorFlowOps.jtfShape(t.shape())}")
     }
     new jtf.StringTensorPairVector(names, tensors)
   }
@@ -238,12 +235,12 @@ object DataOps extends Logging {
   def convert(
       r: Row,
       blockStruct: StructType,
-      requestedTFCols: Array[Int]): jtf.StringTensorPairVector = {
+      requestedTFCols: Array[(NodePath, Int)]): jtf.StringTensorPairVector = {
     // This is a very simple and very inefficient implementation. It should be kept
     // as is for correctness checks. The columnar implementation is meant to be more
     // efficient.
     logDebug(s"Calling convert on one with struct: $blockStruct")
-    val elts = requestedTFCols.map { idx =>
+    val elts = requestedTFCols.map { case (npath, idx) =>
       val f = blockStruct.fields(idx)
       // Extract and check the shape
       val ci = ColumnInformation(f).stf.getOrElse {
@@ -275,11 +272,11 @@ object DataOps extends Logging {
       val conv = SupportedOperations.opsFor(ci.dataType).tfConverter(cellShape, 1)
       conv.reserve()
       conv.append(r, idx)
-      f.name -> conv.tensor()
+      npath -> conv.tensor()
     }
-    val names = elts.map(_._1)
+    val nodePaths = elts.map(_._1)
     val tensors = elts.map(_._2)
-    new jtf.StringTensorPairVector(names, tensors)
+    new jtf.StringTensorPairVector(nodePaths, tensors)
   }
 
   // **** Conversions TF => Spark ***
@@ -367,9 +364,9 @@ object DataOps extends Logging {
       expectedNumRows: Option[Int],
       fastPath: Boolean = true): (Int, Iterable[Any]) = {
     val t = tv.get(position)
-    logDebug(s"getColumn: shape: ${TensorFlowOps.jtfShape(t.shape())}  " +
+    logTrace(s"getColumn: shape: ${TensorFlowOps.jtfShape(t.shape())}  " +
       s"cellShape:$cellShape numRows:$expectedNumRows")
-    logDebug(s"getColumn: got tensor: ${t.DebugString().toString}")
+    logTrace(s"getColumn: got tensor: ${t.DebugString().toString}")
     val rawBuff = t.tensor_data().asBuffer()
     val allDataBuffer: mutable.WrappedArray[_] =
       SupportedOperations.opsFor(scalaType).convertBuffer(rawBuff)
@@ -377,7 +374,7 @@ object DataOps extends Logging {
     // Infer if necessary the reshaping size.
     val (inferredNumRows, inferredShape) = inferPhysicalShape(numData, cellShape, expectedNumRows)
     logTrace(s"getColumn: databuffer = $allDataBuffer")
-    logDebug(s"getColumn: infered cell shape: $inferredShape, numData: $numData," +
+    logTrace(s"getColumn: infered cell shape: $inferredShape, numData: $numData," +
       s" inferredNumRows: $inferredNumRows")
     val reshapeShape = inferredShape.prepend(inferredNumRows)
     val res = if (fastPath) {
