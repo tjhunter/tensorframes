@@ -1,8 +1,10 @@
 package org.tensorframes.dsl
 
 import org.apache.spark.sql.types.NumericType
-import org.tensorflow.framework.{NodeDef, AttrValue}
-import org.tensorframes.{dsl => tf, Logging, ShapeDescription, Shape}
+import org.tensorflow.framework.{AttrValue, GraphDef, NodeDef}
+import org.tensorframes.test.DslOperations
+import org.tensorframes.{Logging, Shape, ShapeDescription, dsl => tf}
+
 import scala.collection.JavaConverters._
 
 /**
@@ -161,11 +163,15 @@ private[dsl] object Node {
   /**
    * Builds shape hints from the shape description.
    */
-  def hints(ns: Seq[Node]): ShapeDescription = {
+  def hints(ns: Seq[Node], g: GraphDef): ShapeDescription = {
     val m = ns.map { n =>
       n.name -> n.shape
     } .toMap
     val f = ns.map(_.name)
-    ShapeDescription(m, f)
+    // Use the inputs as names.
+    val inputs = DslOperations.graphInputs(g).map(x => x -> x).toMap
+
+    ShapeDescription(m, f, inputs)
   }
+
 }

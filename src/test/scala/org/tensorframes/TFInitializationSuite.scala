@@ -15,7 +15,7 @@ class TFInitializationSuite extends FunSuite with Logging {
     val a = p1 + p2 named "a"
     val g = buildGraph(a)
     logDebug(g.toString)
-    TensorFlowOps.analyzeGraph(g, ShapeDescription(Map("a"->Shape(1)), Seq("a")))
+    TensorFlowOps.analyzeGraph(g, ShapeDescription(Map("a"->Shape(1)), Seq("a"), Map("a"->"a")))
   }
 
   // Requires support for floats
@@ -30,6 +30,6 @@ class TFInitializationSuite extends FunSuite with Logging {
     val p2 = placeholder[Double](1) named "x"
     val out = identity(p2) named "y"
     val g = buildGraph(out)
-    TensorFlowOps.analyzeGraph(g, ShapeDescription(Map("y"->Shape(1)), Seq("y")))
+    TensorFlowOps.analyzeGraph(g, ShapeDescription(Map("y"->Shape(1)), Seq("y"), Map("a"->"a")))
   }
 }
