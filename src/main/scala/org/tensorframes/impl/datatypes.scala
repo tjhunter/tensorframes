@@ -143,7 +143,10 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
    * @param buff
    * @return
    */
+  @deprecated("to remove", "after jtf is dropped")
   def convertBuffer(buff: ByteBuffer): MWrappedArray[T]
+
+  def convertTensor(t: tf.Tensor): MWrappedArray[T]
 
   final def convertBuffer1(b0: Array[_], dim1: Int): Array[T] = {
     val b = b0.asInstanceOf[Array[T]]
@@ -286,6 +289,15 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
   final override val zero = 0.0
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Double] =
     new DoubleTensorConverter(cellShape, numCells)
+
+
+  override def convertTensor(t: tf.Tensor): MWrappedArray[Double] = {
+    val res: Array[Double] = Array.fill(t.numElements())(Double.NaN)
+    val b = DoubleBuffer.wrap(res)
+    t.writeTo(b)
+    res
+  }
+
   override def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any] = {
     val dbuff = buff.asDoubleBuffer()
     dbuff.rewind()
@@ -330,6 +342,7 @@ private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
     buffer = byteBuffer().asFloatBuffer()
     buffer.rewind()
     buffer2 = FloatBuffer.allocate(s2.numElements.get.toInt)
+    buffer2.rewind()
   }
 
   override def appendRaw(d: Float): Unit = {
@@ -364,7 +377,13 @@ private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Log
     dbuff.get(res)
     logTrace(s"Extracted from buffer: ${res.toSeq}")
     res
+  }
 
+  override def convertTensor(t: tf.Tensor): MWrappedArray[Float] = {
+    val res: Array[Float] = Array.fill(t.numElements())(Float.NaN)
+    val b = FloatBuffer.wrap(res)
+    t.writeTo(b)
+    res
   }
 
   override def convertBuffer(buff: ByteBuffer): MWrappedArray[Float] = {
@@ -425,6 +444,14 @@ private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging
   final override val zero = 0
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Int] =
     new IntTensorConverter(cellShape, numCells)
+
+  override def convertTensor(t: tf.Tensor): MWrappedArray[Int] = {
+    val res: Array[Int] = Array.fill(t.numElements())(0)
+    val b = IntBuffer.wrap(res)
+    t.writeTo(b)
+    res
+  }
+
   override def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any] = {
     val dbuff = buff.asIntBuffer()
     dbuff.rewind()
@@ -487,6 +514,14 @@ private[impl] object LongOperations extends ScalarTypeOperation[Long] with Loggi
   final override val zero = 0L
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Long] =
     new LongTensorConverter(cellShape, numCells)
+
+  override def convertTensor(t: tf.Tensor): MWrappedArray[Long] = {
+    val res: Array[Long] = Array.fill(t.numElements())(0L)
+    val b = LongBuffer.wrap(res)
+    t.writeTo(b)
+    res
+  }
+
   override def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any] = {
     val dbuff = buff.asLongBuffer()
     dbuff.rewind()

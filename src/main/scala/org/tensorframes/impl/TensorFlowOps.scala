@@ -4,9 +4,8 @@ import com.jd.util.NativeUtils
 import org.bytedeco.javacpp.{BytePointer, tensorflow => jtf}
 import org.tensorflow.framework.GraphDef
 import org.{tensorflow => tf}
-
 import org.apache.spark.sql.types.NumericType
-
+import org.tensorflow.{Graph, Session}
 import org.tensorframes.test.ProtoConversions
 import org.tensorframes.{Logging, Shape, ShapeDescription}
 
@@ -57,6 +56,20 @@ object TensorFlowOps extends Logging {
   def readGraphSerial(arr: SerializedGraph): GraphDef = {
     GraphDef.parseFrom(arr.content)
   }
+
+  def withSession[T](g: SerializedGraph)(f: tf.Session => T): T = {
+    initTensorFlow()
+    val graph2 = new Graph()
+    graph2.importGraphDef(g.content)
+    val session = new Session(graph2)
+    try {
+      f(session)
+    } finally {
+      session.close()
+      graph2.close()
+    }
+  }
+
 
   def readGraph(sg: SerializedGraph): jtf.GraphDef = {
     val res = new jtf.GraphDef()

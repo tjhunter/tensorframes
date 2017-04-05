@@ -1,12 +1,14 @@
 package org.tensorframes.impl
 
+import java.nio.ByteBuffer
+
 import scala.collection.mutable
 import scala.reflect.ClassTag
 import org.{tensorflow => tf}
-
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.catalyst.expressions.{GenericRow, GenericRowWithSchema}
 import org.apache.spark.sql.types.{NumericType, StructType}
+import org.bytedeco.javacpp.tensorflow
 import org.tensorframes.{ColumnInformation, Logging, NodePath, Shape}
 import org.tensorframes.Shape.DimType
 
@@ -56,7 +58,7 @@ object TFDataOps extends Logging {
 
     for (c <- converters) { c.reserve() }
 
-    convertFast0(it, converters, requestedTFCols)
+    DataOps.convertFast0(it, converters, requestedTFCols)
 
     val tensors = converters.map(_.tensor2())
     val names = requestedTFCols.map(struct(_).name)
@@ -117,24 +119,103 @@ object TFDataOps extends Logging {
     elts
   }
 
-  private[this] def convertFast0(
-      it: Array[Row],
-      converters: Array[TensorConverter[_]],
-      requestedTFCols: Array[Int]): Unit = {
-    // Unrolled for performance
-    val numRows = it.length
-    val numRequestedCols = requestedTFCols.length
-    var requestedColIdx = 0
-    while (requestedColIdx < numRequestedCols) {
-      val converter = converters(requestedColIdx)
-      val colIdx = requestedTFCols(requestedColIdx)
-      var rowIdx = 0
-      while(rowIdx < numRows) {
-        converter.append(it(rowIdx), colIdx)
-        rowIdx += 1
+
+  /**
+    * (Slow) implementation that takes data in C++ and puts it back into SQL rows, following
+    * the structure provided and merging back all the columns from the input.
+    *
+    * @param tv
+    * @param tf_struct the structure of the block represented in TF
+    * @return an iterator that lazily computes the rows back.
+    */
+  // Note that doing it this way is very inefficient, but columnar implementation should prevent all this
+  // data copying in most cases.
+  // TODO PERF: the current code allocates a new row for each of the rows returned.
+  // Instead of doing that, it could allocate once the memory and reuse the same rows and objects.
+  def convertBack(
+      tv: Seq[tf.Tensor],
+      tf_struct: StructType,
+      input: Array[Row],
+      input_struct: StructType,
+      appendInput: Boolean): Iterator[Row] = {
+    // The structures should already have been validated.
+    // Output has all the TF columns first, and then the other columns
+    logDebug(s"convertBack: ${input.length} input rows, tf_struct=$tf_struct")
+
+    val tfSizesAndIters = for ((field, t) <- tf_struct.fields.zip(tv).toSeq) yield {
+      val info = ColumnInformation(field).stf.getOrElse {
+        throw new Exception(s"Missing info in field $field")
       }
-      requestedColIdx += 1
+//      logTrace(s"convertBack: $field $info")
+      // Drop the first cell, this is a block.
+      val expLength = if (appendInput) { Some(input.length) } else { None }
+      val (numRows, iter) = getColumn(t, info.dataType, info.shape.tail, expLength)
+      numRows -> iter
     }
+    val tfSizes = tfSizesAndIters.map(_._1)
+    val tfNumRows: Int = tfSizes.distinct match {
+      case Seq(x) => x
+      case Seq() =>
+        throw new Exception(s"Output cannot be empty. tf_struct=$tf_struct")
+      case _ =>
+        throw new Exception(s"Multiple number of rows detected. tf_struct=$tf_struct," +
+          s" tfSizes = $tfSizes")
+    }
+    assert((!appendInput) || tfNumRows == input.length,
+      s"Incompatible sizes detected: appendInput=$appendInput, tf num rows = $tfNumRows, " +
+        s"input num rows = ${input.length}")
+    val tfIters = tfSizesAndIters.map(_._2.iterator).toArray
+    val outputSchema = if (appendInput) {
+      StructType(tf_struct.fields ++ input_struct.fields)
+    } else {
+      StructType(tf_struct.fields)
+    }
+    val res: Iterator[Row] = DataOps.convertBackFast0(input, tfIters, tfNumRows, input_struct, outputSchema)
+
+//    logTrace(s"outputSchema=$outputSchema")
+//    logTrace(s"res: $res")
+    res
+  }
+
+
+  /**
+    * Extracts the content of a column as objects amenable to SQL.
+    *
+    * @param t
+    * @param scalaType the scalar type of the tensor
+    * @param cellShape the shape of each cell of data
+    * @param expectedNumRows the expected number of rows in the output. Depending on the shape
+    *                        (which may have unknowns) and the expected number of rows (which may
+    *                        also be unknown), this function will try to compute both the physical
+    *                        shape and the actual number of rows based on the size of the
+    *                        flattened tensor.
+    * @return the number of rows and an iterable over the rows
+    */
+  private def getColumn(
+      t: tf.Tensor,
+      scalaType: NumericType,
+      cellShape: Shape,
+      expectedNumRows: Option[Int],
+      fastPath: Boolean = true): (Int, Iterable[Any]) = {
+    logTrace(s"getColumn: shape: " +
+      s"cellShape:$cellShape numRows:$expectedNumRows")
+    val allDataBuffer: mutable.WrappedArray[_] =
+      SupportedOperations.opsFor(scalaType).convertTensor(t)
+    val numData = allDataBuffer.size
+    // Infer if necessary the reshaping size.
+    val (inferredNumRows, inferredShape) = DataOps.inferPhysicalShape(numData, cellShape, expectedNumRows)
+//    logTrace(s"getColumn: databuffer = $allDataBuffer")
+//    logTrace(s"getColumn: infered cell shape: $inferredShape, numData: $numData," +
+//      s" inferredNumRows: $inferredNumRows")
+    val reshapeShape = inferredShape.prepend(inferredNumRows)
+    val res = if (fastPath) {
+      DataOps.getColumnFast0(reshapeShape, scalaType, allDataBuffer)
+    } else {
+      DataOps.reshapeIter(allDataBuffer.asInstanceOf[mutable.WrappedArray[Any]],
+        inferredShape.dims.toList)
+    }
+//    logTrace(s"getColumn: reshaped = $res")
+    inferredNumRows -> res
   }
 
 }

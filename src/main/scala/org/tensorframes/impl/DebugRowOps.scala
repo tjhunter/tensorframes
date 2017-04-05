@@ -777,14 +777,11 @@ object DebugRowOpsImpl extends Logging {
       return Iterator.empty
     }
 
-    if (true) {
+    TensorFlowOps.withSession(graphDef) { session =>
       val inputTensors = TFDataOps.convert(input, inputSchema, inputTFCols)
-      val graph2 = new Graph()
-      graph2.importGraphDef(graphDef.content)
-      println(s"GRAPH2: >>>>> $graph2")
-      val s = new Session(graph2)
+      logDebug(s"performMap:inputTensors=$inputTensors")
       val requested = tfOutputSchema.map(_.name)
-      var runner = s.runner()
+      var runner = session.runner()
       for (req <- requested) {
         runner = runner.fetch(req)
       }
@@ -792,37 +789,12 @@ object DebugRowOpsImpl extends Logging {
         runner = runner.feed(inputName, inputTensor)
       }
       val outs = runner.run().asScala
-
-
-      println("RUNNER: >>>> " + outs)
-      // TODO: close the input tensors
-
-    }
-
-    val stpv = DataOps.convert(input, inputSchema, inputTFCols)
-    logDebug(s"performMap: converting the graphDef")
-    val g = TensorFlowOps.readGraph(graphDef)
-
-    logDebug(s"performMap: entering session")
-    TensorFlowOps.withSession { session =>
-      logDebug(s"performMap: entered session session")
-      logDebug(s"performMap: extending the graph")
-      val s1 = session.Extend(g)
-      assert(s1.ok(), s1.error_message().getString)
-
-      val outputs = new jtf.TensorVector()
-      val requested = TensorFlowOps.stringVector(tfOutputSchema.map(_.name))
-      val skipped = new jtf.StringVector()
-      logDebug(s"performMap: waiting for TF lock")
-      val s3 = tfLock.synchronized {
-        logDebug(s"performMap: TF lock acquired, running...")
-        session.Run(stpv, requested, skipped, outputs)
-      }
-      logDebug(s"performMap: TF run finished")
-      assert(s3.ok(), s3.error_message().getString)
-      logDebug(s"performMap: converting back")
-      val res = DataOps.convertBack(outputs, tfOutputSchema, input, inputSchema, appendInput)
-      logDebug(s"performMap: done")
+      logDebug(s"performMap:outs=$outs")
+      // Close the inputs
+      inputTensors.map(_._2).foreach(_.close())
+      val res = TFDataOps.convertBack(outs, tfOutputSchema, input, inputSchema, appendInput)
+      // Close the outputs
+      outs.foreach(_.close())
       res
     }
   }
@@ -851,27 +823,54 @@ object DebugRowOpsImpl extends Logging {
     if (input.length == 0) {
       return Array.empty
     }
-    // We read the graph once, and within the same session we run each row after the other.
-    val g = TensorFlowOps.readGraph(graphDef)
-    TensorFlowOps.withSession { session =>
-      val s1 = session.Extend(g)
-      assert(s1.ok(), s1.error_message().getString)
-      val requested = TensorFlowOps.stringVector(tfOutputSchema.map(_.name))
 
+    TensorFlowOps.withSession(graphDef) { session =>
       input.map { row =>
-        val stpv = DataOps.convert(row, inputSchema, inputTFCols)
-        val outputs = new jtf.TensorVector()
-        val skipped = new jtf.StringVector()
-        val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
-        assert(s3.ok(), s3.error_message().getString)
-        val it = DataOps.convertBack(outputs, tfOutputSchema, Array(row), inputSchema,
-          appendInput = true)
-        assert(it.hasNext)
-        val r = it.next()
-        assert(!it.hasNext)
+        val inputTensors = TFDataOps.convert(row, inputSchema, inputTFCols)
+        logDebug(s"performMap:inputTensors=$inputTensors")
+        val requested = tfOutputSchema.map(_.name)
+        var runner = session.runner()
+        for (req <- requested) {
+          runner = runner.fetch(req)
+        }
+        for ((inputName, inputTensor) <- inputTensors) {
+          runner = runner.feed(inputName, inputTensor)
+        }
+        val outs = runner.run().asScala
+        logDebug(s"performMap:outs=$outs")
+        // Close the inputs
+        inputTensors.map(_._2).foreach(_.close())
+        val res = TFDataOps.convertBack(outs, tfOutputSchema, Array(row), inputSchema, appendInput = true)
+        // Close the outputs
+        outs.foreach(_.close())
+        assert(res.hasNext)
+        val r = res.next()
+        assert(!res.hasNext)
         r
       }
     }
+//    // We read the graph once, and within the same session we run each row after the other.
+//    val g = TensorFlowOps.readGraph(graphDef)
+//    TensorFlowOps.withSession { session =>
+//      val s1 = session.Extend(g)
+//      assert(s1.ok(), s1.error_message().getString)
+//      val requested = TensorFlowOps.stringVector(tfOutputSchema.map(_.name))
+//
+//      input.map { row =>
+//        val stpv = DataOps.convert(row, inputSchema, inputTFCols)
+//        val outputs = new jtf.TensorVector()
+//        val skipped = new jtf.StringVector()
+//        val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
+//        assert(s3.ok(), s3.error_message().getString)
+//        val it = DataOps.convertBack(outputs, tfOutputSchema, Array(row), inputSchema,
+//          appendInput = true)
+//        assert(it.hasNext)
+//        val r = it.next()
+//        assert(!it.hasNext)
+//        r
+//      }
+//    }
+
   }
 
   /**

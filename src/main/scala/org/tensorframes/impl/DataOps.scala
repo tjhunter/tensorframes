@@ -101,7 +101,7 @@ object DataOps extends Logging {
     res.iterator
   }
 
-  private[this] def convertBackFast0(
+  def convertBackFast0(
       input: Array[Row],
       tfIters: Array[Iterator[Any]],
       tfNumRows: Int,
@@ -207,7 +207,7 @@ object DataOps extends Logging {
     }
   }
 
-  private[this] def convertFast0(
+  def convertFast0(
       it: Array[Row],
       converters: Array[TensorConverter[_]],
       requestedTFCols: Array[Int]): Unit = {
@@ -284,7 +284,7 @@ object DataOps extends Logging {
 
   // **** Conversions TF => Spark ***
 
-  private[this] def reshapeIter[T : ClassTag](
+  def reshapeIter[T : ClassTag](
       it: mutable.WrappedArray[T],
       s: List[DimType]): Seq[Any] = {
     // The reshaping is extremely inefficient but the output is easy to read after that.
@@ -304,7 +304,7 @@ object DataOps extends Logging {
 
   @throws[IllegalArgumentException]("If the shape contains unknown and the expected number of " +
     "rows is not provided")
-  private def inferPhysicalShape(
+  def inferPhysicalShape(
       numScalars: Int,
       expectedCellShape: Shape,
       expectedNumRows: Option[Int]): (Int, Shape) = {
@@ -391,7 +391,7 @@ object DataOps extends Logging {
     inferredNumRows -> res
   }
 
-  private[this] def getColumnFast0(
+  def getColumnFast0(
       reshapeShape: Shape,
       scalaType: NumericType,
       allDataBuffer: mutable.WrappedArray[_]): Iterable[Any] = {
