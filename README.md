@@ -185,7 +185,7 @@ build/sbt distribution/spDist
 Assuming that SPARK_HOME is set and that you are in the root directory of the project:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.5-rc2.jar
+$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.6-rc1.jar
 ```
 
 If you want to run the python version:
