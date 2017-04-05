@@ -1,6 +1,9 @@
 package org.tensorframes.impl
 
 import java.util
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.Path
 
 import scala.collection.JavaConverters._
 
@@ -105,6 +108,12 @@ class PythonOpBuilder(
   def graph(bytes: Array[Byte]): this.type = {
     _graph = TensorFlowOps.readGraphSerial(bytes)
     this
+  }
+
+  def graphFromFile(filename: String): this.type = {
+    val path = Paths.get(filename)
+    val data = Files.readAllBytes(path)
+    graph(data)
   }
 
   def inputs(

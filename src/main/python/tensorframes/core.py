@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import logging
+import tempfile
 
 from pyspark import RDD, SparkContext
 from pyspark.sql import SQLContext, Row, DataFrame
@@ -34,10 +35,17 @@ def _get_shape(node):
     l = node.get_shape().as_list()
     return [-1 if x is None else x for x in l]
 
-def _add_graph(graph, builder):
-    gser = graph.as_graph_def().SerializeToString()
-    gbytes = bytearray(gser)
-    builder.graph(gbytes)
+def _add_graph(graph, builder, use_file=True):
+    if use_file:
+        # TODO: remove the dir and honor the existing one
+        d = tempfile.mkdtemp("tensorframes", dir="/tmp")
+        tf.train.write_graph(graph, d, "proto.pb", False)
+        fname = d + "/proto.pb"
+        builder.graphFromFile(fname)
+    else:
+        gser = graph.as_graph_def().SerializeToString()
+        gbytes = bytearray(gser)
+        builder.graph(gbytes)
 
 # Returns the names of the placeholders.
 def _add_shapes(graph, builder, fetches):

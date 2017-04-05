@@ -1,41 +1,14 @@
-import numpy as np
-import tensorframes as tfs
-import tensorflow as tf
-sc.setLogLevel('INFO')
 
-with tf.gfile.FastGFile('/tmp/inception/inception_v3.ckpt', 'rb') as f:
-    model_data = f.read()
+## TO RUN FROM THE TF-SLIM/MODELS/SLIM DIRECTORY
 
-g = tf.Graph()
-with g.as_default():
-    graph_def = tf.GraphDef()
-    graph_def.ParseFromString(model_data)
-    _ = tf.import_graph_def(graph_def, name='')
-
-raw_images_miscast = sc.binaryFiles("file:/tmp/101_ObjectCategories/BACKGROUND_Google") # file:
-raw_images = raw_images_miscast.map(lambda x: (x[0], bytearray(x[1])))
-
-df = spark.createDataFrame(raw_images).toDF('image_uri', 'image_data')
-df
-
-with g.as_default() as _:
-    pred_output = g.get_tensor_by_name('softmax:0')
-    pred_df = tfs.map_rows(pred_output, df, feed_dict={'DecodeJpeg/contents':'image_data'})
-
-
-## TO RUN FROM THE SLIM DIRECTORY
-
-import datasets as datasets
 import datasets.dataset_utils as dataset_utils
-
 import datasets.imagenet as imagenet
 from nets import vgg
 from preprocessing import vgg_preprocessing
 
 import tensorflow as tf
 from tensorflow.python.training import saver as tf_saver
-from tensorflow.python.tools.freeze_graph import freeze_graph
-import urllib3
+from tensorflow.python.framework import graph_util
 import os
 
 url = "http://download.tensorflow.org/models/vgg_16_2016_08_28.tar.gz"
@@ -55,21 +28,6 @@ slim = tf.contrib.slim
 # resize input image later in the code.
 image_size = vgg.vgg_16.default_image_size
 
-
-
-
-from google.protobuf import text_format
-
-from tensorflow.core.framework import graph_pb2
-from tensorflow.core.protobuf import saver_pb2
-from tensorflow.python import pywrap_tensorflow
-from tensorflow.python.client import session
-from tensorflow.python.framework import graph_util
-from tensorflow.python.framework import importer
-from tensorflow.python.platform import app
-from tensorflow.python.platform import gfile
-from tensorflow.python.training import saver as saver_lib
-
 def get_op_name(tensor):
     return tensor.name.split(":")[0]
 
@@ -77,7 +35,7 @@ def get_op_name(tensor):
 g = tf.Graph()
 with g.as_default():
     # Open specified url and load image as a string
-    image_string = open("/tmp/101_ObjectCategories/ant/image_0001.jpg", 'rb').read()
+    image_string = open("/tmp/image.jpg", 'rb').read()
 
     # Decode string into matrix with intensity values
     image = tf.image.decode_jpeg(image_string, channels=3)
@@ -111,20 +69,25 @@ with g.as_default():
     # Just focus on the top predictions
     top_pred = tf.nn.top_k(tf.squeeze(probabilities), 5, name="top_predictions")
 
-# Initialize the values
+    output_nodes = [probabilities, top_pred.indices, top_pred.values]
+
+
+# Create the saver
 with g.as_default():
 
     # Create a function that reads the network weights
     # from the checkpoint file that you downloaded.
     # We will run it in session later.
-    init_fn = slim.assign_from_checkpoint_fn(
-        os.path.join(checkpoints_dir, 'vgg_16.ckpt'),
-        slim.get_model_variables('vgg_16'))
+    # init_fn = slim.assign_from_checkpoint_fn(
+    #     os.path.join(checkpoints_dir, 'vgg_16.ckpt'),
+    #     slim.get_model_variables('vgg_16'))
 
     checkpoint_path = os.path.join(checkpoints_dir, 'vgg_16.ckpt')
     model_variables = slim.get_model_variables('vgg_16')
     saver = tf_saver.Saver(model_variables, reshape=False)
 
+# Test the initial network
+with g.as_default():
     with tf.Session() as sess:
         saver.restore(sess, checkpoint_path)
 
@@ -140,6 +103,7 @@ with g.as_default():
         sorted_inds = [i[0] for i in sorted(enumerate(-probabilities_),
                                             key=lambda x:x[1])]
 
+# Export the network
 with g.as_default():
     with tf.Session() as sess:
         saver.restore(sess, checkpoint_path)
@@ -156,8 +120,8 @@ g2 = tf.Graph()
 with g2.as_default():
     tf.import_graph_def(output_graph_def, name='')
 
-image_data = tf.gfile.FastGFile("/tmp/101_ObjectCategories/ant/image_0001.jpg", 'rb').read()
-
+# Test the exported network
+image_data = tf.gfile.FastGFile("/tmp/image.jpg", 'rb').read()
 with g2.as_default():
     input_node2 = g2.get_operation_by_name(get_op_name(image))
     output_nodes2 = [g2.get_tensor_by_name(n) for n in output_tensor_names]
@@ -166,12 +130,32 @@ with g2.as_default():
 
 
 
+
 names = imagenet.create_readable_names_for_imagenet_labels()
 for i in range(5):
-    index = sorted_inds[i]
+    index = indices_[i]
     # Now we print the top-5 predictions that the network gives us with
     # corresponding probabilities. Pay attention that the index with
     # class names is shifted by 1 -- this is because some networks
     # were trained on 1000 classes and others on 1001. VGG-16 was trained
     # on 1000 classes.
-    print('Probability %d %0.2f => [%s]' % (index, probabilities_[index], names[index+1]))
+    print('Probability %d %0.2f => [%s]' % (index, values_[i], names[index+1]))
+
+
+## Using Spark
+
+import tensorframes as tfs
+sc.setLogLevel('INFO')
+
+# curl https://upload.wikimedia.org/wikipedia/commons/d/d9/First_Student_IC_school_bus_202076.jpg > /tmp/image.jpg
+
+raw_images_miscast = sc.binaryFiles("file:/tmp/image.jpg") # file:
+raw_images = raw_images_miscast.map(lambda x: (x[0], bytearray(x[1])))
+
+df = spark.createDataFrame(raw_images).toDF('image_uri', 'image_data')
+df
+
+with g2.as_default():
+    index_output = tf.identity(g2.get_tensor_by_name('top_predictions:1'), name="index")
+    value_output = tf.identity(g2.get_tensor_by_name('top_predictions:0'), name="value")
+    pred_df = tfs.map_rows([index_output, value_output], df, feed_dict={'DecodeJpeg/contents':'image_data'})

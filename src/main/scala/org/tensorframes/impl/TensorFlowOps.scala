@@ -85,8 +85,8 @@ object TensorFlowOps extends Logging {
       graphDef: GraphDef,
       shapeHints: ShapeDescription = ShapeDescription.empty): Seq[GraphNodeSummary] = {
     initTensorFlow()
-    logTrace(s"analyzeGraph: shapeHints=$shapeHints")
-    logTrace(s"analyzeGraph: graph=$graphDef")
+//    logTrace(s"analyzeGraph: shapeHints=$shapeHints")
+//    logTrace(s"analyzeGraph: graph=$graphDef")
 
     val nodes = graphDef.getNodeList.asScala
     val inputs: Set[String] = nodes
