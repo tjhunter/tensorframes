@@ -70,9 +70,8 @@ object TensorFlowOps extends Logging {
   private[this] val lock = new Object
 
   lazy val _init = lock.synchronized {
-    val x = new Exception().getStackTraceString
     logDebug("Starting TensorFlowOps...")
-    logInfo("Starting TensorFlowOps... origin:"+x)
+    logInfo("Starting TensorFlowOps... origin:")
     jtf.InitMain("test", Array.empty[Int], null)
     logInfo("Starting TensorFlowOps... Done")
     true
