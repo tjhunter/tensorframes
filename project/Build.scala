@@ -11,7 +11,7 @@ object Shading extends Build {
 
 
   lazy val commonSettings = Seq(
-    version := "0.2.6-rc1",
+    version := "0.2.7",
     name := "tensorframes",
     scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
     organization := "databricks",
@@ -23,6 +23,10 @@ object Shading extends Build {
     // Add all the python files in the final binary
     unmanagedResourceDirectories in Compile += {
       baseDirectory.value / "src/main/python/"
+    },
+    // Add the tensorflow runtime binaries.
+    unmanagedResourceDirectories in Compile += {
+      baseDirectory.value / "lib/jni/"
     },
     // Spark packages does not like this part
     test in assembly := {}
@@ -36,14 +40,13 @@ object Shading extends Build {
 
   // The dependencies that are platform-specific.
   lazy val allPlatformDependencies = Seq(
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "linux-x86_64",
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "macosx-x86_64"
+    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion
   )
 
   // The dependencies for linux only.
   // For cloud environments, it is easier to publish a smaller jar, due to limitations of spark-packages.
   lazy val linuxPlatformDependencies = Seq(
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion classifier "linux-x86_64"
+    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion
   )
 
   lazy val nonShadedDependencies = Seq(
@@ -55,7 +58,7 @@ object Shading extends Build {
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
     // TensorFlow dependencies
     "org.bytedeco" % "javacpp" % targetJCPPVersion,
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetTensorFlowVersion
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion
   )
 
   lazy val testDependencies = Seq(

@@ -316,6 +316,7 @@ private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Float](s, numCells) with Logging {
   private var _tensor: jtf.Tensor = null
   private var buffer: FloatBuffer = null
+  private var buffer2: FloatBuffer = null
 
   assert(! s.hasUnknown, s"Shape $s has unknown values.")
 
@@ -328,13 +329,21 @@ private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
     logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
     buffer = byteBuffer().asFloatBuffer()
     buffer.rewind()
+    buffer2 = FloatBuffer.allocate(s2.numElements.get.toInt)
   }
 
   override def appendRaw(d: Float): Unit = {
     buffer.put(d)
+    buffer2.put(d)
   }
 
   override def tensor(): jtf.Tensor = _tensor
+
+  override def tensor2(): tf.Tensor = {
+    buffer2.rewind()
+    val s2 = s.prepend(numCells)
+    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
+  }
 
   override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
 }

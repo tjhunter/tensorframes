@@ -16,6 +16,10 @@ object Dependencies {
 
   val targetJCPPVersion = "1.3.2"
 
+  val targetJCPPTensorFlowVersion = "1.0.0-1.3"
+
+  val targetTensorFlowVersion = "1.1.0-rc1"
+
 //  <<<<<<< HEAD
 //  val targetTensorFlowVersion = "1.0.1-SNAPSHOT"
 //
