@@ -597,7 +597,7 @@ class DebugRowOps
 class TensorFlowUDAF(
     val rowSchema: StructType,
     val tfInputSchema: StructType,
-    val gProto: Broadcast[Array[Byte]],
+    val gProto: Broadcast[SerializedGraph],
     val bufferSize: Int) extends UserDefinedAggregateFunction with Logging {
 
   private val COUNT = 0
@@ -730,7 +730,7 @@ object DebugRowOpsImpl extends Logging {
 
   private[impl] def reducePair(
       schema: StructType,
-      gbc: Broadcast[Array[Byte]]): (Row, Row) => Row = {
+      gbc: Broadcast[SerializedGraph]): (Row, Row) => Row = {
     def f(row1: Row, row2: Row): Row = {
       performReducePairwise(Array(row1, row2), schema, gbc.value)
     }
@@ -740,7 +740,7 @@ object DebugRowOpsImpl extends Logging {
   def reducePairBlock(
       inputSchema: StructType,
       outputSchema: StructType,
-      gbc: Broadcast[Array[Byte]]): (Row, Row) => Row = {
+      gbc: Broadcast[SerializedGraph]): (Row, Row) => Row = {
     def f(row1: Row, row2: Row): Row = {
       performReduceBlock(Array(row1, row2), inputSchema, inputSchema.indices.toArray, outputSchema,
         gbc.value)
@@ -766,7 +766,7 @@ object DebugRowOpsImpl extends Logging {
       input: Array[Row],
       inputSchema: StructType,
       inputTFCols: Array[Int],
-      graphDef: Array[Byte],
+      graphDef: SerializedGraph,
       tfOutputSchema: StructType,
       appendInput: Boolean): Iterator[Row] = {
     logDebug(s"performMap: inputSchema=$inputSchema, tfschema=$tfOutputSchema," +
@@ -776,14 +776,11 @@ object DebugRowOpsImpl extends Logging {
     if (input.length == 0) {
       return Iterator.empty
     }
-    val stpv = DataOps.convert(input, inputSchema, inputTFCols)
-    logDebug(s"performMap: converting the graphDef")
-    val g = TensorFlowOps.readGraph(graphDef)
 
-    {
-      val inputTensors = DataOps.convert2(input, inputSchema, inputTFCols)
+    if (true) {
+      val inputTensors = TFDataOps.convert(input, inputSchema, inputTFCols)
       val graph2 = new Graph()
-      graph2.importGraphDef(graphDef)
+      graph2.importGraphDef(graphDef.content)
       println(s"GRAPH2: >>>>> $graph2")
       val s = new Session(graph2)
       val requested = tfOutputSchema.map(_.name)
@@ -795,9 +792,16 @@ object DebugRowOpsImpl extends Logging {
         runner = runner.feed(inputName, inputTensor)
       }
       val outs = runner.run().asScala
+
+
       println("RUNNER: >>>> " + outs)
       // TODO: close the input tensors
+
     }
+
+    val stpv = DataOps.convert(input, inputSchema, inputTFCols)
+    logDebug(s"performMap: converting the graphDef")
+    val g = TensorFlowOps.readGraph(graphDef)
 
     logDebug(s"performMap: entering session")
     TensorFlowOps.withSession { session =>
@@ -841,7 +845,7 @@ object DebugRowOpsImpl extends Logging {
       input: Array[Row],
       inputSchema: StructType,
       inputTFCols: Array[(NodePath, Int)],
-      graphDef: Array[Byte],
+      graphDef: SerializedGraph,
       tfOutputSchema: StructType): Array[Row] = {
     // Some partitions may be empty
     if (input.length == 0) {
@@ -888,7 +892,7 @@ object DebugRowOpsImpl extends Logging {
       inputSchema: StructType,
       inputTFCols: Seq[Int],
       schema: StructType,
-      graphDef: Array[Byte]): Row = {
+      graphDef: SerializedGraph): Row = {
     logDebug(s"performReduceBlock: schema=$schema inputSchema=$inputSchema with ${input.length} rows")
     // The input schema and the actual data representation depend on the block operation.
 
@@ -922,7 +926,7 @@ object DebugRowOpsImpl extends Logging {
    * @param graphDef
    * @return
    */
-  def performReducePairwise(input: Array[Row], schema: StructType, graphDef: Array[Byte]): Row = {
+  def performReducePairwise(input: Array[Row], schema: StructType, graphDef: SerializedGraph): Row = {
     require(input.length > 0, "Cannot provide empty input")
     // If there is a single row, no need to perform operations.
     if (input.length == 1) {

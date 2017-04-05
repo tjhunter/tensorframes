@@ -106,7 +106,7 @@ class PythonOpBuilder(
   }
 
   def graph(bytes: Array[Byte]): this.type = {
-    _graph = TensorFlowOps.readGraphSerial(bytes)
+    _graph = TensorFlowOps.readGraphSerial(SerializedGraph(bytes))
     this
   }
 

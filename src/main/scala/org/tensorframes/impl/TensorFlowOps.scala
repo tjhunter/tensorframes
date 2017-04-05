@@ -12,6 +12,8 @@ import org.tensorframes.{Logging, Shape, ShapeDescription}
 
 import scala.collection.JavaConverters._
 
+case class SerializedGraph(content: Array[Byte]) extends Serializable
+
 /**
  * Some low-level tensorflow operations.
  */
@@ -20,9 +22,13 @@ object TensorFlowOps extends Logging {
   private[this] val lock = new Object
 
   lazy val _init = lock.synchronized {
-//    logDebug("Starting TensorFlowOps...")
-//    jtf.InitMain("test", Array.empty[Int], null)
-//    logDebug("Starting TensorFlowOps... Done")
+    logDebug("Starting TensorFlowOps...")
+    jtf.InitMain("test", Array.empty[Int], null)
+    logDebug("Starting TensorFlowOps... Done")
+    true
+  }
+
+  lazy val _init2 = lock.synchronized {
     logger.debug("LOADING TENSORFLOW")
     val name =  "/" + java.lang.System.mapLibraryName("tensorflow_jni")
     logger.debug(s"LOADING TENSORFLOW: $name")
@@ -32,7 +38,7 @@ object TensorFlowOps extends Logging {
   }
 
   def initTensorFlow(): Unit = {
-    _init
+    _init && _init2
   }
 
   def graphSerial(g: jtf.GraphDef): Array[Byte] = {
@@ -44,16 +50,17 @@ object TensorFlowOps extends Logging {
     arr
   }
 
-  def graphSerial(g: GraphDef): Array[Byte] = {
-    g.toByteString.toByteArray
+  def graphSerial(g: GraphDef): SerializedGraph = {
+    SerializedGraph(g.toByteString.toByteArray)
   }
 
-  def readGraphSerial(arr: Array[Byte]): GraphDef = {
-    GraphDef.parseFrom(arr)
+  def readGraphSerial(arr: SerializedGraph): GraphDef = {
+    GraphDef.parseFrom(arr.content)
   }
 
-  def readGraph(arr: Array[Byte]): jtf.GraphDef = {
+  def readGraph(sg: SerializedGraph): jtf.GraphDef = {
     val res = new jtf.GraphDef()
+    val arr = sg.content
     val p = new BytePointer(arr.length)
     p.put(arr, 0, arr.length)
     jtf.ParseProtoUnlimited(res, p)
@@ -63,7 +70,6 @@ object TensorFlowOps extends Logging {
 
   def withSession[T](f: jtf.Session => T): T = {
     initTensorFlow()
-    val s = new tf.Session(???)
     val options = new jtf.SessionOptions()
     val session = new jtf.Session(options)
     try {
