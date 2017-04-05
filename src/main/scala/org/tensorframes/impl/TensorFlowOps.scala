@@ -27,17 +27,8 @@ object TensorFlowOps extends Logging {
     true
   }
 
-  lazy val _init2 = lock.synchronized {
-    logger.debug("LOADING TENSORFLOW")
-    val name =  "/" + java.lang.System.mapLibraryName("tensorflow_jni")
-    logger.debug(s"LOADING TENSORFLOW: $name")
-    NativeUtils.loadLibraryFromJar(name)
-    logger.debug(s"LOADING TENSORFLOW: $name: DONE")
-    true
-  }
-
   def initTensorFlow(): Unit = {
-    _init && _init2
+    _init
   }
 
   def graphSerial(g: jtf.GraphDef): Array[Byte] = {

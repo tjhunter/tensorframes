@@ -24,10 +24,10 @@ object Shading extends Build {
     unmanagedResourceDirectories in Compile += {
       baseDirectory.value / "src/main/python/"
     },
-    // Add the tensorflow runtime binaries.
-    unmanagedResourceDirectories in Compile += {
-      baseDirectory.value / "lib/jni/"
-    },
+//    // Add the tensorflow runtime binaries.
+//    unmanagedResourceDirectories in Compile += {
+//      baseDirectory.value / "lib/jni/"
+//    },
     // Spark packages does not like this part
     test in assembly := {}
   )

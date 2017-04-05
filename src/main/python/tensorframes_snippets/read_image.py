@@ -14,7 +14,8 @@ import os
 url = "http://download.tensorflow.org/models/vgg_16_2016_08_28.tar.gz"
 
 # Specify where you want to download the model to
-checkpoints_dir = '/tmp/checkpoints'
+checkpoints_dir = '/media/sf_tensorflow_mount/checkpoints'
+image_path = '/media/sf_tensorflow_mount/ant.jpg'
 
 if not tf.gfile.Exists(checkpoints_dir):
     tf.gfile.MakeDirs(checkpoints_dir)
@@ -35,7 +36,7 @@ def get_op_name(tensor):
 g = tf.Graph()
 with g.as_default():
     # Open specified url and load image as a string
-    image_string = open("/tmp/image.jpg", 'rb').read()
+    image_string = open(image_path, 'rb').read()
 
     # Decode string into matrix with intensity values
     image = tf.image.decode_jpeg(image_string, channels=3)
@@ -121,7 +122,7 @@ with g2.as_default():
     tf.import_graph_def(output_graph_def, name='')
 
 # Test the exported network
-image_data = tf.gfile.FastGFile("/tmp/image.jpg", 'rb').read()
+image_data = tf.gfile.FastGFile(image_path, 'rb').read()
 with g2.as_default():
     input_node2 = g2.get_operation_by_name(get_op_name(image))
     output_nodes2 = [g2.get_tensor_by_name(n) for n in output_tensor_names]
@@ -149,7 +150,7 @@ sc.setLogLevel('INFO')
 
 # curl https://upload.wikimedia.org/wikipedia/commons/d/d9/First_Student_IC_school_bus_202076.jpg > /tmp/image.jpg
 
-raw_images_miscast = sc.binaryFiles("file:/tmp/image.jpg") # file:
+raw_images_miscast = sc.binaryFiles("file:"+image_path) # file:
 raw_images = raw_images_miscast.map(lambda x: (x[0], bytearray(x[1])))
 
 df = spark.createDataFrame(raw_images).toDF('image_uri', 'image_data')
@@ -159,3 +160,5 @@ with g2.as_default():
     index_output = tf.identity(g2.get_tensor_by_name('top_predictions:1'), name="index")
     value_output = tf.identity(g2.get_tensor_by_name('top_predictions:0'), name="value")
     pred_df = tfs.map_rows([index_output, value_output], df, feed_dict={'DecodeJpeg/contents':'image_data'})
+
+pred_df.select('index', 'value').head()

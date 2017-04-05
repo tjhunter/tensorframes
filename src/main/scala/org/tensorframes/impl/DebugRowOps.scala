@@ -849,28 +849,6 @@ object DebugRowOpsImpl extends Logging {
         r
       }
     }
-//    // We read the graph once, and within the same session we run each row after the other.
-//    val g = TensorFlowOps.readGraph(graphDef)
-//    TensorFlowOps.withSession { session =>
-//      val s1 = session.Extend(g)
-//      assert(s1.ok(), s1.error_message().getString)
-//      val requested = TensorFlowOps.stringVector(tfOutputSchema.map(_.name))
-//
-//      input.map { row =>
-//        val stpv = DataOps.convert(row, inputSchema, inputTFCols)
-//        val outputs = new jtf.TensorVector()
-//        val skipped = new jtf.StringVector()
-//        val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
-//        assert(s3.ok(), s3.error_message().getString)
-//        val it = DataOps.convertBack(outputs, tfOutputSchema, Array(row), inputSchema,
-//          appendInput = true)
-//        assert(it.hasNext)
-//        val r = it.next()
-//        assert(!it.hasNext)
-//        r
-//      }
-//    }
-
   }
 
   /**
