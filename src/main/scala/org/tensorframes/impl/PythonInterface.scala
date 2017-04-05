@@ -90,7 +90,9 @@ class PythonOpBuilder(
     groupedData: RelationalGroupedDataset = null) {
   import PythonInterface._
   private var _shapeHints: ShapeDescription = ShapeDescription.empty
-  private var _graph: GraphDef = null
+  // TODO: this object may leak because of Py4J -> do not hold to large objects here.
+  private var _graph: SerializedGraph = null
+  private var _graphPath: Option[String] = None
 
   def shape(
       shapeHintsNames: util.ArrayList[String],
@@ -106,14 +108,13 @@ class PythonOpBuilder(
   }
 
   def graph(bytes: Array[Byte]): this.type = {
-    _graph = TensorFlowOps.readGraphSerial(SerializedGraph(bytes))
+    _graph = SerializedGraph.create(bytes)
     this
   }
 
   def graphFromFile(filename: String): this.type = {
-    val path = Paths.get(filename)
-    val data = Files.readAllBytes(path)
-    graph(data)
+    _graphPath = Option(filename)
+    this
   }
 
   def inputs(
@@ -128,25 +129,37 @@ class PythonOpBuilder(
   def buildRow(): DataFrame = op match {
     case ReduceBlock =>
       val allSchema = SchemaTransforms.reduceBlocksSchema(
-        df.schema, _graph, _shapeHints)
-      val r = interface.reduceBlocks(df, _graph, _shapeHints)
+        df.schema, buildGraphDef(), _shapeHints)
+      val r = interface.reduceBlocks(df, buildGraphDef(), _shapeHints)
       wrapDF(r, allSchema.output)
     case ReduceRow =>
       val outSchema: StructType = SchemaTransforms.reduceRowsSchema(
-        df.schema, _graph, _shapeHints)
-      val r = interface.reduceRows(df, _graph, _shapeHints)
+        df.schema, buildGraphDef(), _shapeHints)
+      val r = interface.reduceRows(df, buildGraphDef(), _shapeHints)
       wrapDF(r, outSchema)
     case x =>
       throw new Exception(s"Programming error: $x")
   }
 
   def buildDF(): DataFrame = op match {
-    case MapBlock => interface.mapBlocks(df, _graph, _shapeHints)
-    case MapBlockTrimmed => interface.mapBlocksTrimmed(df, _graph, _shapeHints)
-    case MapRow => interface.mapRows(df, _graph, _shapeHints)
-    case AggregateBlock => interface.aggregate(groupedData, _graph, _shapeHints)
+    case MapBlock => interface.mapBlocks(df, buildGraphDef(), _shapeHints)
+    case MapBlockTrimmed => interface.mapBlocksTrimmed(df, buildGraphDef(), _shapeHints)
+    case MapRow => interface.mapRows(df, buildGraphDef(), _shapeHints)
+    case AggregateBlock => interface.aggregate(groupedData, buildGraphDef(), _shapeHints)
     case x =>
       throw new Exception(s"Programming error: $x")
+  }
+
+  private def buildGraphDef(): GraphDef = {
+    _graphPath match {
+      case Some(p) =>
+        val path = Paths.get(p)
+        val bytes = Files.readAllBytes(path)
+        TensorFlowOps.readGraphSerial(SerializedGraph.create(bytes))
+      case None =>
+        assert(_graph != null)
+        TensorFlowOps.readGraphSerial(_graph)
+    }
   }
 
   private def wrapDF(r: Row, schema: StructType): DataFrame = {

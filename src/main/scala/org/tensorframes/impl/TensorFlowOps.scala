@@ -1,5 +1,8 @@
 package org.tensorframes.impl
 
+import java.io.File
+import java.nio.file.{Files, Paths}
+
 import com.jd.util.NativeUtils
 import org.bytedeco.javacpp.{BytePointer, tensorflow => jtf}
 import org.tensorflow.framework.GraphDef
@@ -11,7 +14,53 @@ import org.tensorframes.{Logging, Shape, ShapeDescription}
 
 import scala.collection.JavaConverters._
 
-case class SerializedGraph(content: Array[Byte]) extends Serializable
+/**
+  * Contains a TensorFlow graph that has been serialized using protocol buffers.
+  *
+  * In order to limit the amount of memory being used by this class, it has the ability to dump its content onto
+  * a disk file, and serve the data from this disk file.
+  */
+case class SerializedGraph private (
+  private var _content: Option[Array[Byte]],
+  private var file: Option[String]) extends Serializable with Logging {
+
+  def content: Array[Byte] = file match {
+    case Some(name) =>
+      val p = Paths.get(name)
+      Files.readAllBytes(p)
+    case None =>
+      _content.getOrElse {
+        throw new Exception(s"Missing content for serialized graph $this")
+      }
+  }
+
+  /**
+    * Moves the graph description to a file, and drops the in-memory representation once it is safe to do so.
+    */
+  def evictContent(): Unit = this.synchronized {
+    if (file.isDefined) {
+      return // Nothing to do here
+    }
+    val bytes = _content.getOrElse {
+      throw new Exception(s"Missing content for serialized graph $this")
+    }
+    val tempFile = File.createTempFile("tensorframes-graphs-", "-proto-bin")
+    tempFile.deleteOnExit()
+    SerializedGraph.logInfo(s"Evicting graph to temporary file $tempFile...")
+    Files.write(tempFile.toPath, bytes)
+    file = Some(tempFile.toString)
+    _content = None
+    SerializedGraph.logInfo(s"Done evicting graph graph: $this")
+  }
+}
+
+object SerializedGraph extends Logging {
+  // Stored in memory by default, so that the broadcast mechanism can send it around.
+  def create(content: Array[Byte]): SerializedGraph = {
+    require(content != null)
+    new SerializedGraph(Some(content), None)
+  }
+}
 
 /**
  * Some low-level tensorflow operations.
@@ -21,9 +70,11 @@ object TensorFlowOps extends Logging {
   private[this] val lock = new Object
 
   lazy val _init = lock.synchronized {
+    val x = new Exception().getStackTraceString
     logDebug("Starting TensorFlowOps...")
+    logInfo("Starting TensorFlowOps... origin:"+x)
     jtf.InitMain("test", Array.empty[Int], null)
-    logDebug("Starting TensorFlowOps... Done")
+    logInfo("Starting TensorFlowOps... Done")
     true
   }
 
@@ -41,7 +92,7 @@ object TensorFlowOps extends Logging {
   }
 
   def graphSerial(g: GraphDef): SerializedGraph = {
-    SerializedGraph(g.toByteString.toByteArray)
+    SerializedGraph.create(g.toByteString.toByteArray)
   }
 
   def readGraphSerial(arr: SerializedGraph): GraphDef = {
@@ -49,7 +100,6 @@ object TensorFlowOps extends Logging {
   }
 
   def withSession[T](g: SerializedGraph)(f: tf.Session => T): T = {
-    initTensorFlow()
     val graph2 = new Graph()
     graph2.importGraphDef(g.content)
     val session = new Session(graph2)
@@ -115,11 +165,11 @@ object TensorFlowOps extends Logging {
 
     // Test that the graph can be imported
     {
-      val g = new Graph()
+//      val g = new Graph()
       val ser = graphSerial(graphDef).content
-      logDebug(s"analyzeGraphTF: the graph has size ${ser.length/(2^16)} MB")
-      g.importGraphDef(ser)
-      g.close()
+      logInfo(s"analyzeGraphTF: the graph has size ${ser.length.toLong/1000000} MB")
+//      g.importGraphDef(ser)
+//      g.close()
     }
 
     nodes.flatMap { n =>

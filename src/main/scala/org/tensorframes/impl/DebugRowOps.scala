@@ -461,6 +461,7 @@ class DebugRowOps
     val schema = dataframe.schema // Classic rookie mistake...
     logTrace(s"mapRows: input schema = $schema, requested cols: ${requestedTFInput.toSeq}" +
       s" complete output schema = $outputSchema")
+    // TODO: this is leaking the file.
     val gProto = sc.broadcast(TensorFlowOps.graphSerial(graph))
     val transformRdd = dataframe.rdd.mapPartitions { it =>
       DebugRowOpsImpl.performMapRows(
@@ -776,6 +777,8 @@ object DebugRowOpsImpl extends Logging {
     if (input.length == 0) {
       return Iterator.empty
     }
+    // Force the content to be sent to disk. This happens in the workers, so it should be a safe operation.
+    graphDef.evictContent()
 
     TensorFlowOps.withSession(graphDef) { session =>
       val inputTensors = TFDataOps.convert(input, inputSchema, inputTFCols)
@@ -823,6 +826,8 @@ object DebugRowOpsImpl extends Logging {
     if (input.length == 0) {
       return Array.empty
     }
+    // Force the content to be sent to disk. This happens in the workers, so it should be a safe operation.
+    graphDef.evictContent()
 
     TensorFlowOps.withSession(graphDef) { session =>
       input.map { row =>

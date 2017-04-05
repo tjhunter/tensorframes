@@ -20,7 +20,7 @@ image_path = '/media/sf_tensorflow_mount/ant.jpg'
 if not tf.gfile.Exists(checkpoints_dir):
     tf.gfile.MakeDirs(checkpoints_dir)
 
-dataset_utils.download_and_uncompress_tarball(url, checkpoints_dir)
+#dataset_utils.download_and_uncompress_tarball(url, checkpoints_dir)
 
 slim = tf.contrib.slim
 
@@ -87,22 +87,22 @@ with g.as_default():
     model_variables = slim.get_model_variables('vgg_16')
     saver = tf_saver.Saver(model_variables, reshape=False)
 
-# Test the initial network
-with g.as_default():
-    with tf.Session() as sess:
-        saver.restore(sess, checkpoint_path)
-
-        # Load weights
-        #init_fn(sess)
-
-        # We want to get predictions, image as numpy matrix
-        # and resized and cropped piece that is actually
-        # being fed to the network.
-        output_nodes = [probabilities, top_pred.indices, top_pred.values]
-        probabilities_, indices_, values_ = sess.run(output_nodes)
-        probabilities_ = probabilities_[0, 0:]
-        sorted_inds = [i[0] for i in sorted(enumerate(-probabilities_),
-                                            key=lambda x:x[1])]
+# # Test the initial network
+# with g.as_default():
+#     with tf.Session() as sess:
+#         saver.restore(sess, checkpoint_path)
+#
+#         # Load weights
+#         #init_fn(sess)
+#
+#         # We want to get predictions, image as numpy matrix
+#         # and resized and cropped piece that is actually
+#         # being fed to the network.
+#         output_nodes = [probabilities, top_pred.indices, top_pred.values]
+#         probabilities_, indices_, values_ = sess.run(output_nodes)
+#         probabilities_ = probabilities_[0, 0:]
+#         sorted_inds = [i[0] for i in sorted(enumerate(-probabilities_),
+#                                             key=lambda x:x[1])]
 
 # Export the network
 with g.as_default():
@@ -117,30 +117,31 @@ with g.as_default():
             output_node_names,
             variable_names_blacklist=[])
 
+del g
+
 g2 = tf.Graph()
 with g2.as_default():
     tf.import_graph_def(output_graph_def, name='')
 
-# Test the exported network
-image_data = tf.gfile.FastGFile(image_path, 'rb').read()
-with g2.as_default():
-    input_node2 = g2.get_operation_by_name(get_op_name(image))
-    output_nodes2 = [g2.get_tensor_by_name(n) for n in output_tensor_names]
-    with tf.Session() as sess:
-        (probabilities_, indices_, values_) = sess.run(output_nodes2, {'DecodeJpeg/contents:0':image_data})
+del output_graph_def
 
-
-
-
-names = imagenet.create_readable_names_for_imagenet_labels()
-for i in range(5):
-    index = indices_[i]
-    # Now we print the top-5 predictions that the network gives us with
-    # corresponding probabilities. Pay attention that the index with
-    # class names is shifted by 1 -- this is because some networks
-    # were trained on 1000 classes and others on 1001. VGG-16 was trained
-    # on 1000 classes.
-    print('Probability %d %0.2f => [%s]' % (index, values_[i], names[index+1]))
+# # Test the exported network
+# image_data = tf.gfile.FastGFile(image_path, 'rb').read()
+# with g2.as_default():
+#     input_node2 = g2.get_operation_by_name(get_op_name(image))
+#     output_nodes2 = [g2.get_tensor_by_name(n) for n in output_tensor_names]
+#     with tf.Session() as sess:
+#         (probabilities_, indices_, values_) = sess.run(output_nodes2, {'DecodeJpeg/contents:0':image_data})
+#
+# names = imagenet.create_readable_names_for_imagenet_labels()
+# for i in range(5):
+#     index = indices_[i]
+#     # Now we print the top-5 predictions that the network gives us with
+#     # corresponding probabilities. Pay attention that the index with
+#     # class names is shifted by 1 -- this is because some networks
+#     # were trained on 1000 classes and others on 1001. VGG-16 was trained
+#     # on 1000 classes.
+#     print('Probability %d %0.2f => [%s]' % (index, values_[i], names[index+1]))
 
 
 ## Using Spark
@@ -148,7 +149,10 @@ for i in range(5):
 import tensorframes as tfs
 sc.setLogLevel('INFO')
 
-# curl https://upload.wikimedia.org/wikipedia/commons/d/d9/First_Student_IC_school_bus_202076.jpg > /tmp/image.jpg
+with g2.as_default():
+    index_output = tf.identity(g2.get_tensor_by_name('top_predictions:1'), name="index")
+    value_output = tf.identity(g2.get_tensor_by_name('top_predictions:0'), name="value")
+
 
 raw_images_miscast = sc.binaryFiles("file:"+image_path) # file:
 raw_images = raw_images_miscast.map(lambda x: (x[0], bytearray(x[1])))
@@ -156,9 +160,23 @@ raw_images = raw_images_miscast.map(lambda x: (x[0], bytearray(x[1])))
 df = spark.createDataFrame(raw_images).toDF('image_uri', 'image_data')
 df
 
+
 with g2.as_default():
-    index_output = tf.identity(g2.get_tensor_by_name('top_predictions:1'), name="index")
-    value_output = tf.identity(g2.get_tensor_by_name('top_predictions:0'), name="value")
     pred_df = tfs.map_rows([index_output, value_output], df, feed_dict={'DecodeJpeg/contents':'image_data'})
 
 pred_df.select('index', 'value').head()
+
+
+
+## Tim
+#
+# raw_images_miscast = sc.binaryFiles("file:/media/sf_tensorflow_mount/101_ObjectCategories/ant/")
+# raw_images = raw_images_miscast.map(lambda x: (x[0], bytearray(x[1])))
+#
+# df = spark.createDataFrame(raw_images).toDF('image_uri', 'image_data')
+# df
+# with g2.as_default():
+#     pred_df = tfs.map_rows([index_output, value_output], df, feed_dict={'DecodeJpeg/contents':'image_data'})
+#
+# pred_df.select('index', 'value').show()
+
