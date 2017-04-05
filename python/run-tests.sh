@@ -62,7 +62,8 @@ echo "LIBS=$LIBS"
 
 # The current directory of the script.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_HOME=`realpath "$DIR/../"`
+#PROJECT_HOME=`realpath "$DIR/../"`
+PROJECT_HOME="$DIR/../"
 
 echo "DIR=$DIR"
 echo "PROJECT_HOME=$PROJECT_HOME"
