@@ -40,13 +40,16 @@ object Shading extends Build {
 
   // The dependencies that are platform-specific.
   lazy val allPlatformDependencies = Seq(
-    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion
+    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion,
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "linux-x86_64",
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "macosx-x86_64"
   )
 
   // The dependencies for linux only.
   // For cloud environments, it is easier to publish a smaller jar, due to limitations of spark-packages.
   lazy val linuxPlatformDependencies = Seq(
-    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion
+    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion,
+    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "linux-x86_64"
   )
 
   lazy val nonShadedDependencies = Seq(
