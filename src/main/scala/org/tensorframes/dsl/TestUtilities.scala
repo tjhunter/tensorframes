@@ -33,7 +33,7 @@ private[tensorframes] object TestUtilities {
 
   def analyzeGraph(nodes: Operation*): (GraphDef, Seq[GraphNodeSummary]) = {
     val g = buildGraph(nodes.head, nodes.tail: _*)
-    g -> TensorFlowOps.analyzeGraph(g, extraInfo(nodes))
+    g -> TensorFlowOps.analyzeGraphTF(g, extraInfo(nodes))
   }
 
 }

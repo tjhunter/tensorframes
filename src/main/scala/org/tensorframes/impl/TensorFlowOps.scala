@@ -98,6 +98,61 @@ object TensorFlowOps extends Logging {
 
 
   /**
+    * Performs some analysis over the TF graph, by loading it into the TF runtime and extracting
+    * the shapes of the various components in it.
+    */
+  def analyzeGraphTF(
+      graphDef: GraphDef,
+      shapeHints: ShapeDescription = ShapeDescription.empty): Seq[GraphNodeSummary] = {
+
+    val nodes = graphDef.getNodeList.asScala
+    val inputs: Set[String] = nodes
+      .filter(n => n.getInputCount == 0 && n.getOp == "Placeholder")
+      .map(_.getName).toSet
+    // We identify a node with its output tensor.
+    val outputs = shapeHints.requestedFetches.map(_.stripSuffix(":0")).toSet
+    logDebug(s"Outputs: ${outputs}")
+
+    // Test that the graph can be imported
+    {
+      val g = new Graph()
+      val ser = graphSerial(graphDef).content
+      logDebug(s"analyzeGraphTF: the graph has size ${ser.length/(2^16)} MB")
+      g.importGraphDef(ser)
+      g.close()
+    }
+
+    nodes.flatMap { n =>
+      val name = n.getName
+      logTrace(s"Node $name")
+      val isInput = inputs.contains(name)
+      val isOutput = outputs.contains(name)
+      if (isInput || isOutput) {
+        // The shape stored in the graph seems buggy sometimes (when there are some unknowns)
+        // Trust the one from the shape hints.
+        val shapeOpt = shapeHints.out.get(name).orElse {
+          // The name may include the default output slot
+          // TODO(tjh) add a test for that
+          shapeHints.out.get(name + ":0")
+        } .orElse {
+          if (n.getAttr.containsKey("shape")) {
+            Some(Shape.from(n.getAttr.get("shape").getShape))
+          } else {
+            None
+          }
+        }
+        logTrace(s"shape = $shapeOpt")
+        val shape = shapeOpt.getOrElse {
+          throw new Exception(s"Could not get the shape of node $name from the graph definition or from the shape hints")
+        }
+        val scalarType = SupportedOperations.opsFor(ProtoConversions.getDType(n)).sqlType
+        Some(GraphNodeSummary(isInput, isInput, isOutput, scalarType, shape, name))
+      } else { None }
+    }
+  }
+
+
+  /**
    * Performs some analysis over the TF graph, by loading it into the TF runtime and extracting
    * the shapes of the various components in it.
    */

@@ -66,7 +66,7 @@ object DslOperations {
 
   def analyzeGraph(nodes: Node*): (GraphDef, Seq[GraphNodeSummary]) = {
     val g = dsl.buildGraph(nodes: _*)
-    g -> TensorFlowOps.analyzeGraph(g, extraInfo(nodes, g))
+    g -> TensorFlowOps.analyzeGraphTF(g, extraInfo(nodes, g))
   }
 
   def graphInputs(g: GraphDef): Seq[String] = {

@@ -306,7 +306,7 @@ class DebugRowOps
       shapeHints: ShapeDescription,
       appendInput: Boolean): DataFrame = {
     val sc = dataframe.sqlContext.sparkContext
-    val summary = TensorFlowOps.analyzeGraph(graph, shapeHints)
+    val summary = TensorFlowOps.analyzeGraphTF(graph, shapeHints)
       .map(x => x.name -> x).toMap
     val inputs = summary.filter(_._2.isInput)
     val outputs = summary.filter(_._2.isOutput)
@@ -396,7 +396,7 @@ class DebugRowOps
       graph: GraphDef,
       shapeHints: ShapeDescription): DataFrame = {
     val sc = dataframe.sqlContext.sparkContext
-    val summary = TensorFlowOps.analyzeGraph(graph, shapeHints)
+    val summary = TensorFlowOps.analyzeGraphTF(graph, shapeHints)
       .map(x => x.name -> x).toMap
     val inputs = summary.filter(_._2.isInput)
     val outputs = summary.filter(_._2.isOutput)
