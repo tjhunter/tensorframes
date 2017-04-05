@@ -95,8 +95,8 @@ object TensorFlowOps extends Logging {
       graphDef: GraphDef,
       shapeHints: ShapeDescription = ShapeDescription.empty): Seq[GraphNodeSummary] = {
     initTensorFlow()
-    logTrace(s"analyzeGraph: shapeHints=$shapeHints")
-    logTrace(s"analyzeGraph: graph=$graphDef")
+//    logTrace(s"analyzeGraph: shapeHints=$shapeHints")
+//    logTrace(s"analyzeGraph: graph=$graphDef")
 
     val nodes = graphDef.getNodeList.asScala
     val inputs: Set[String] = nodes
@@ -182,8 +182,8 @@ object TensorFlowOps extends Logging {
 
 /**
  * All the informations requested by TensorFrames to run on a graph node.
-  *
-  * @param isPlaceholder if the variable is a placeholder
+ *
+ * @param isPlaceholder if the variable is a placeholder
  * @param isInput if the node is an input (no inner dependencies)
  * @param isOutput if it is an outpu (no node depends on it)
  * @param scalarType the scalar type of the final tensor associated to this node

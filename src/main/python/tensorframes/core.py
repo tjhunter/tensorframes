@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import logging
+import tempfile
 
 from pyspark import RDD, SparkContext
 from pyspark.sql import SQLContext, Row, DataFrame
@@ -34,11 +35,19 @@ def _get_shape(node):
     l = node.get_shape().as_list()
     return [-1 if x is None else x for x in l]
 
-def _add_graph(graph, builder):
-    gser = graph.as_graph_def().SerializeToString()
-    gbytes = bytearray(gser)
-    builder.graph(gbytes)
+def _add_graph(graph, builder, use_file=True):
+    if use_file:
+        # TODO: remove the dir and honor the existing one
+        d = tempfile.mkdtemp("tensorframes", dir="/tmp")
+        tf.train.write_graph(graph, d, "proto.pb", False)
+        fname = d + "/proto.pb"
+        builder.graphFromFile(fname)
+    else:
+        gser = graph.as_graph_def().SerializeToString()
+        gbytes = bytearray(gser)
+        builder.graph(gbytes)
 
+# Returns the names of the placeholders.
 def _add_shapes(graph, builder, fetches):
     names = [fetch.name for fetch in fetches]
     shapes = [_get_shape(fetch) for fetch in fetches]
@@ -58,6 +67,8 @@ def _add_shapes(graph, builder, fetches):
     logger.info("inputs: %s %s", str(ph_names), str(ph_shapes))
     builder.shape(names + ph_names, shapes + ph_shapes)
     builder.fetches(names)
+    # return the path, not the tensor name.
+    return [t_name.replace(":0", "") for t_name in ph_names]
 
 def _check_fetches(fetches):
     is_list_fetch = isinstance(fetches, (list, tuple))
@@ -90,6 +101,37 @@ def _unpack_row(jdf, fetches):
     if len(l) == 1:
         return l[0]
     return l
+
+
+def _add_inputs(builder, start_dct, ph_names):
+    """
+    Combines a dictionary (supplied by the user) with some extra placeholder names.
+    """
+    if start_dct is None:
+        start_dct = {}
+    dct = dict(**start_dct)
+    for ph_name in ph_names:
+        if ph_name not in dct:
+            dct[ph_name] = ph_name
+    dct_items = dct.items()
+    input_names = [ph_name for (ph_name, field_name) in dct_items]
+    field_names = [field_name for (ph_name, field_name) in dct_items]
+    logger.info("inputs: %s %s", str(input_names), str(field_names))
+    builder.inputs(input_names, field_names)
+
+def _map(fetches, dframe, feed_dict, block, trim):
+    fetches = _check_fetches(fetches)
+    # We are not dealing for now with registered expansions, but this is something we should add later.
+    graph = _get_graph(fetches)
+    if block:
+        builder = _java_api().map_blocks(dframe._jdf, trim)
+    else:
+        builder = _java_api().map_rows(dframe._jdf)
+    _add_graph(graph, builder)
+    ph_names = _add_shapes(graph, builder, fetches)
+    _add_inputs(builder, feed_dict, ph_names)
+    jdf = builder.buildDF()
+    return DataFrame(jdf, _sql)
 
 
 def reduce_rows(fetches, dframe):
@@ -129,7 +171,7 @@ def reduce_rows(fetches, dframe):
     df = builder.buildRow()
     return _unpack_row(df, fetches)
 
-def map_rows(fetches, dframe):
+def map_rows(fetches, dframe, feed_dict=None):
     """ Transforms a DataFrame into another DataFrame row by row, by adding new fields for each fetch.
 
     The `fetches` argument may be a list of graph elements or a single
@@ -154,6 +196,10 @@ def map_rows(fetches, dframe):
       fetches: A single graph element, or a list of graph elements
         (described above).
       dframe: A Spark DataFrame object. The columns of the tensor frame will be fed into the fetches at execution.
+      feed_dict: a dictionary of string -> string. The key is the name of a placeholder in the current TensorFlow graph
+                 of computation. The value is the name of a column in the dataframe. For now, only the top-level fields
+                 in a dataframe are supported. For any placeholder that is not specified in the feed dictionary, the
+                 name of the input column is assumed to be the same as that of the placeholder.
 
     Returns: a DataFrame. The columns and their names are inferred from the names of the fetches.
 
@@ -161,13 +207,7 @@ def map_rows(fetches, dframe):
     :param dframe: a Spark DataFrame
     :return: a Spark DataFrame
     """
-    fetches = _check_fetches(fetches)
-    graph = _get_graph(fetches)
-    builder = _java_api().map_rows(dframe._jdf)
-    _add_graph(graph, builder)
-    _add_shapes(graph, builder, fetches)
-    jdf = builder.buildDF()
-    return DataFrame(jdf, _sql)
+    return _map(fetches, dframe, feed_dict, block=False, trim=None)
 
 def map_blocks(fetches, dframe, trim=False):
     """ Transforms a DataFrame into another DataFrame block by block.
@@ -208,14 +248,8 @@ def map_blocks(fetches, dframe, trim=False):
     :param dframe: a Spark DataFrame
     :return: a Spark DataFrame
     """
-    fetches = _check_fetches(fetches)
-    # We are not dealing for now with registered expansions, but this is something we should add later.
-    graph = _get_graph(fetches)
-    builder = _java_api().map_blocks(dframe._jdf, trim)
-    _add_graph(graph, builder)
-    _add_shapes(graph, builder, fetches)
-    jdf = builder.buildDF()
-    return DataFrame(jdf, _sql)
+    # TODO: add feed dictionary
+    return _map(fetches, dframe, None, block=True, trim=trim)
 
 def reduce_blocks(fetches, dframe):
     """ Applies the fetches on blocks of rows, so that only one row of data remains in the end. The order in which

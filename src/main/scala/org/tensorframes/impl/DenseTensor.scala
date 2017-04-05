@@ -1,14 +1,12 @@
 package org.tensorframes.impl
 
-import java.nio.{ByteOrder, ByteBuffer}
+import java.nio.{ByteBuffer, ByteOrder}
 
 import scala.collection.JavaConverters._
 import scala.reflect.runtime.universe._
-
 import org.tensorflow.framework.TensorProto
 import org.tensorframes.Shape
-
-import org.apache.spark.sql.types.{DoubleType, IntegerType, NumericType}
+import org.apache.spark.sql.types.{DoubleType, FloatType, IntegerType, NumericType}
 
 /**
  * Binary representation of tensorial data.
@@ -80,6 +78,10 @@ private[tensorframes] object DenseTensor {
         val buff = rawBuffer.asDoubleBuffer()
         buff.rewind()
         (0 until buff.limit()).foreach(i => b.addDoubleVal(buff.get(i)))
+      case FloatType =>
+        val buff = rawBuffer.asFloatBuffer()
+        buff.rewind()
+        (0 until buff.limit()).foreach(i => b.addFloatVal(buff.get(i)))
       case IntegerType =>
         val buff = rawBuffer.asIntBuffer()
         buff.rewind()

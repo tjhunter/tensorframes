@@ -23,9 +23,11 @@ private[tensorframes] object TestUtilities {
   }
 
   private def extraInfo(fetches: Seq[Node]): ShapeDescription = {
+    val m2 = fetches.map(n => n.name -> n.name).toMap
     ShapeDescription(
       fetches.map(n => n.name -> n.shape).toMap,
-      fetches.map(_.name))
+      fetches.map(_.name),
+      m2)
   }
 
 

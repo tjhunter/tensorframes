@@ -116,17 +116,17 @@ object ColumnInformation extends Logging {
    */
   private def extractFromRow(dt: DataType): Option[SparkTFColInfo] = dt match {
     case x: NumericType if MetadataConstants.supportedTypes.contains(dt) =>
-      logDebug("numerictype: " + x)
+      logTrace("numerictype: " + x)
       // It is a basic type that we understand
       Some(SparkTFColInfo(Shape(Unknown), x))
     case x: ArrayType =>
-      logDebug("arraytype: " + x)
+      logTrace("arraytype: " + x)
       // Look into the array to figure out the type.
       extractFromRow(x.elementType).map { info =>
         SparkTFColInfo(info.shape.prepend(Unknown), info.dataType)
       }
     case _ =>
-      logDebug("not understood: " + dt)
+      logTrace("not understood: " + dt)
       // Not understood.
       None
   }

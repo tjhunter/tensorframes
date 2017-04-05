@@ -62,13 +62,14 @@ echo "LIBS=$LIBS"
 
 # The current directory of the script.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#PROJECT_HOME=`realpath "$DIR/../"`
 PROJECT_HOME="$DIR/../"
 
 echo "DIR=$DIR"
 echo "PROJECT_HOME=$PROJECT_HOME"
 
 echo "List of assembly jars found, the last one will be used:"
-assembly_path="$DIR/../target/scala-$SCALA_SHORT_VERSION"
+assembly_path="$DIR/../target/testing/scala-$SCALA_SHORT_VERSION"
 echo `ls $assembly_path/tensorframes-assembly*.jar`
 JAR_PATH=""
 for assembly in $assembly_path/tensorframes-assembly*.jar ; do
@@ -79,8 +80,13 @@ export PYSPARK_SUBMIT_ARGS="--driver-memory 2g --executor-memory 2g --jars $JAR_
 
 export PYTHONPATH=$PYTHONPATH:$SPARK_HOME/python:$LIBS:.
 
-export PYTHONPATH=$PYTHONPATH:tensorframes
+export PYTHONPATH=$PYTHONPATH:$PROJECT_HOME/src/main/python:$PROJECT_HOME/src/main/python/tensorframes
 
+echo "python path: $PYTHONPATH"
+
+export TF_CPP_MIN_LOG_LEVEL=2  # Warning level
+
+#ipython
 
 # Run test suites
 
@@ -91,7 +97,8 @@ if [[ "$python_major" == "2" ]]; then
 
 else
 
-  $PYSPARK_DRIVER_PYTHON -m "nose" -v --all-modules -w "$PROJECT_HOME/src/main/python" 2>&1 | grep -vE "INFO (ParquetOutputFormat|SparkContext|ContextCleaner|ShuffleBlockFetcherIterator|MapOutputTrackerMaster|TaskSetManager|Executor|MemoryStore|CacheManager|BlockManager|DAGScheduler|PythonRDD|TaskSchedulerImpl|ZippedPartitionsRDD2)";
+  # Explicitly specify the modules to test, because nose has some issues in Nix.
+  $PYSPARK_DRIVER_PYTHON -m "nose" -v --all-modules "$PROJECT_HOME/src/main/python/tensorframes/core_test.py" 2>&1 | grep -vE "INFO (ParquetOutputFormat|SparkContext|ContextCleaner|ShuffleBlockFetcherIterator|MapOutputTrackerMaster|TaskSetManager|Executor|MemoryStore|CacheManager|BlockManager|DAGScheduler|PythonRDD|TaskSchedulerImpl|ZippedPartitionsRDD2)";
 
 fi
 

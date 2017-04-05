@@ -35,10 +35,10 @@ def tf_compute_distances(points, start_centers):
         # This code simply expresses two outer products: center_squares * ones(num_points)
         # and ones(num_centroids) * squares
         t1a = tf.expand_dims(center_squares, 0)
-        t1b = tf.pack([num_points, 1])
+        t1b = tf.stack([num_points, 1])
         t1 = tf.tile(t1a, t1b)
         t2a = tf.expand_dims(squares, 1)
-        t2b = tf.pack([1, num_centroids])
+        t2b = tf.stack([1, num_centroids])
         t2 = tf.tile(t2a, t2b)
         distances = t1 + t2 - 2 * prods
     return distances
@@ -70,7 +70,7 @@ def run_one_step(dataframe, start_centers):
         # The placeholder for the input: we use the block format
         points = tf.placeholder(tf.double, shape=[None, num_features], name='features')
         # The shape of the block is extracted as a TF variable.
-        num_points = tf.pack([tf.shape(points)[0]], name="num_points")
+        num_points = tf.stack([tf.shape(points)[0]], name="num_points")
         distances = tf_compute_distances(points, start_centers)
         # The outputs of the program.
         # The closest centroids are extracted.
@@ -131,7 +131,7 @@ def run_one_step2(dataframe, start_centers):
         # The closest centroids are extracted.
         indexes = tf.argmin(distances, 1, name='indexes')
         min_distances = tf.reduce_min(distances, 1, name='min_distances')
-        num_points = tf.pack([tf.shape(points)[0]], name="num_points")
+        num_points = tf.stack([tf.shape(points)[0]], name="num_points")
         counts = tf.tile(tf.constant([1]), num_points, name='count')
         # These compute the aggregate based on the indexes.
         block_points = tf.unsorted_segment_sum(points, indexes, num_centroids, name="block_points")

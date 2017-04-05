@@ -1,5 +1,7 @@
 package org.tensorframes.test
 
+import scala.collection.JavaConverters._
+
 import org.apache.spark.sql.{RelationalGroupedDataset, DataFrame, Row}
 import org.tensorflow.framework.GraphDef
 import org.tensorframes.{OperationsInterface, ShapeDescription}
@@ -20,7 +22,7 @@ trait DslOperations extends OperationsInterface {
       df: DataFrame,
       f: (DataFrame, GraphDef, ShapeDescription) => A): A = {
     val g = dsl.buildGraph(ns: _*)
-    val info = extraInfo(ns)
+    val info = extraInfo(ns, g)
     f(df, g, info)
   }
 
@@ -47,21 +49,29 @@ trait DslOperations extends OperationsInterface {
   def aggregate(gdf: RelationalGroupedDataset, node1: dsl.Node, nodes: dsl.Node*): DataFrame = {
     val ns = node1 +: nodes
     val g = dsl.buildGraph(ns: _*)
-    val info = extraInfo(ns)
+    val info = extraInfo(ns, g)
     aggregate(gdf, g, info)
   }
 }
 
 object DslOperations {
 
-  private def extraInfo(fetches: Seq[Node]): ShapeDescription = {
+  private def extraInfo(fetches: Seq[Node], g: GraphDef): ShapeDescription = {
+    val inputs = graphInputs(g).map(x => x -> x).toMap
     ShapeDescription(
       fetches.map(n => n.name -> n.shape).toMap,
-      fetches.map(_.name))
+      fetches.map(_.name),
+      inputs)
   }
 
   def analyzeGraph(nodes: Node*): (GraphDef, Seq[GraphNodeSummary]) = {
     val g = dsl.buildGraph(nodes: _*)
-    g -> TensorFlowOps.analyzeGraph(g, extraInfo(nodes))
+    g -> TensorFlowOps.analyzeGraph(g, extraInfo(nodes, g))
   }
+
+  def graphInputs(g: GraphDef): Seq[String] = {
+    g.getNodeList.asScala.filter(_.getInputCount == 0)
+      .map(_.getName)
+  }
+
 }
