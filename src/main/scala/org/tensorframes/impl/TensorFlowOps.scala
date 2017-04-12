@@ -3,7 +3,6 @@ package org.tensorframes.impl
 import java.io.File
 import java.nio.file.{Files, Paths}
 
-import org.bytedeco.javacpp.{BytePointer, tensorflow => jtf}
 import org.tensorflow.framework.GraphDef
 import org.{tensorflow => tf}
 import org.apache.spark.sql.types.NumericType
@@ -65,20 +64,6 @@ object SerializedGraph extends Logging {
  * Some low-level tensorflow operations.
  */
 object TensorFlowOps extends Logging {
-
-  private[this] val lock = new Object
-
-  lazy val _init = lock.synchronized {
-    logDebug("Starting TensorFlowOps...")
-    logInfo("Starting TensorFlowOps... origin:")
-    jtf.InitMain("test", Array.empty[Int], null)
-    logInfo("Starting TensorFlowOps... Done")
-    true
-  }
-
-  def initTensorFlow(): Unit = {
-    _init
-  }
 
   def graphSerial(g: GraphDef): SerializedGraph = {
     SerializedGraph.create(g.toByteString.toByteArray)

@@ -40,14 +40,14 @@ object Shading extends Build {
 
   // The dependencies that are platform-specific.
   lazy val allPlatformDependencies = Seq(
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "linux-x86_64",
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "macosx-x86_64"
+//    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "linux-x86_64",
+//    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "macosx-x86_64"
   )
 
   // The dependencies for linux only.
   // For cloud environments, it is easier to publish a smaller jar, due to limitations of spark-packages.
   lazy val linuxPlatformDependencies = Seq(
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "linux-x86_64"
+//    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion classifier "linux-x86_64"
   )
 
   lazy val nonShadedDependencies = Seq(
@@ -58,9 +58,9 @@ object Shading extends Build {
     "com.typesafe.scala-logging" %% "scala-logging-api" % "2.1.2",
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
     // TensorFlow dependencies
-    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion,
-    "org.bytedeco" % "javacpp" % targetJCPPVersion,
-    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion
+    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion
+//    "org.bytedeco" % "javacpp" % targetJCPPVersion,
+//    "org.bytedeco.javacpp-presets" % "tensorflow" % targetJCPPTensorFlowVersion
   )
 
   lazy val testDependencies = Seq(
