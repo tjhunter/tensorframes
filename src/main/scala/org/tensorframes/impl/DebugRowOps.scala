@@ -9,7 +9,7 @@ import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, RelationalGroupedDataset, Row}
 import org.bytedeco.javacpp.{tensorflow => jtf}
 import org.tensorflow.framework.GraphDef
-import org.tensorflow.{Graph, Session}
+import org.tensorflow.{Graph, Session, Tensor}
 import org.tensorframes._
 import org.tensorframes.test.DslOperations
 
@@ -878,23 +878,60 @@ object DebugRowOpsImpl extends Logging {
     logDebug(s"performReduceBlock: schema=$schema inputSchema=$inputSchema with ${input.length} rows")
     // The input schema and the actual data representation depend on the block operation.
 
-    val stpv = DataOps.convert(input, inputSchema, inputTFCols.toArray)
-    val g = TensorFlowOps.readGraph(graphDef)
-    TensorFlowOps.withSession { session =>
-      val s1 = session.Extend(g)
-      assert(s1.ok(), s1.error_message().getString)
-
-      val outputs = new jtf.TensorVector()
-      val requested = TensorFlowOps.stringVector(schema.map(_.name))
-      val skipped = new jtf.StringVector()
-      val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
-      assert(s3.ok(), s3.error_message().getString)
+    // Evict the graph to disk to free up some memory.
+    TensorFlowOps.withSession(graphDef) { session =>
+      val inputTensors = TFDataOps.convert(input, inputSchema, inputTFCols.toArray)
+      logDebug(s"performReduceBlocks: inputTensors=$inputTensors")
+      val requested = schema.map(_.name)
+      val outputs = performRunner(session, requested, inputTensors)
       val emptyRows = Array.fill(1)(emptyRow)
-      val it = DataOps.convertBack(outputs, schema, emptyRows, emptySchema, appendInput = false)
+      val it = TFDataOps.convertBack(outputs, schema, emptyRows, emptySchema, appendInput = false)
       assert(it.hasNext)
       val r = it.next()
+      assert(!it.hasNext, it.next())
+      outputs.foreach(_.close())
       r
     }
+
+//    val stpv = DataOps.convert(input, inputSchema, inputTFCols.toArray)
+//    val g = TensorFlowOps.readGraph(graphDef)
+//    TensorFlowOps.withSession { session =>
+//      val s1 = session.Extend(g)
+//      assert(s1.ok(), s1.error_message().getString)
+//
+//      val outputs = new jtf.TensorVector()
+//      val requested = TensorFlowOps.stringVector(schema.map(_.name))
+//      val skipped = new jtf.StringVector()
+//      val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
+//      assert(s3.ok(), s3.error_message().getString)
+//      val emptyRows = Array.fill(1)(emptyRow)
+//      val it = DataOps.convertBack(outputs, schema, emptyRows, emptySchema, appendInput = false)
+//      assert(it.hasNext)
+//      val r = it.next()
+//      r
+//    }
+  }
+
+  /**
+    * Performs a run, and deallocates the inputs, regardless of the success of the run.
+    */
+  private def performRunner(
+      session: Session,
+      requested: Seq[String],
+      inputs: Seq[(String, Tensor)]): Seq[Tensor] = {
+    var runner = session.runner()
+    for (req <- requested) {
+      runner = runner.fetch(req)
+    }
+    for ((inputName, inputTensor) <- inputs) {
+      runner = runner.feed(inputName, inputTensor)
+    }
+    try {
+      runner.run().asScala
+    } finally {
+      inputs.map(_._2).foreach(_.close())
+    }
+
   }
 
   private val emptySchema = StructType(Seq.empty)

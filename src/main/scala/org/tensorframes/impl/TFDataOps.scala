@@ -1,16 +1,10 @@
 package org.tensorframes.impl
 
-import java.nio.ByteBuffer
-
 import scala.collection.mutable
-import scala.reflect.ClassTag
 import org.{tensorflow => tf}
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.catalyst.expressions.{GenericRow, GenericRowWithSchema}
 import org.apache.spark.sql.types.{NumericType, StructType}
-import org.bytedeco.javacpp.tensorflow
 import org.tensorframes.{ColumnInformation, Logging, NodePath, Shape}
-import org.tensorframes.Shape.DimType
 
 /**
  * Converts data between the C++ runtime of TensorFlow and the Spark runtime.
@@ -19,7 +13,6 @@ import org.tensorframes.Shape.DimType
  * This implementation uses the official Java Tensorflow API (experimental).
  */
 object TFDataOps extends Logging {
-
 
   /**
     * Performs size checks and resolutions, and converts the data from the row format to the C++
