@@ -39,6 +39,13 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
 
   def appendRaw(t: T): Unit
 
+  protected lazy val numElements: Int = {
+    val s2 = shape.prepend(numCells)
+    val numElts = s2.numElements.get.toInt
+    assert(numElts < Int.MaxValue, s"Cannot reserve $numElts (max allowed=${Int.MaxValue}")
+    numElts.toInt
+  }
+
   private[impl] final def appendArray(arr: MWrappedArray[T]): Unit = {
     var idx = 0
     while (idx < arr.length) {
@@ -82,7 +89,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
     empty
   }
 
-  def tensor(): jtf.Tensor
+  def tensor(): jtf.Tensor = ???
 
   def tensor2(): tf.Tensor
 
@@ -249,38 +256,30 @@ private[tensorframes] object SupportedOperations {
 
 private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Double](s, numCells) with Logging {
-  private var _tensor: jtf.Tensor = null
+  private var _buffer: ByteBuffer = null
   private var buffer: DoubleBuffer = null
-  private var buffer2: DoubleBuffer = null
 
   assert(! s.hasUnknown, s"Shape $s has unknown values.")
 
   override def reserve(): Unit = {
     logTrace(s"Reserving for $numCells units of shape $shape")
-    val s2 = s.prepend(numCells)
-    val physicalShape = TensorFlowOps.shape(s2)
-    logTrace(s"s2=$s2 phys=${TensorFlowOps.jtfShape(physicalShape)}")
-    _tensor = new jtf.Tensor(jtf.TF_DOUBLE, physicalShape)
-    logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
-    buffer = byteBuffer().asDoubleBuffer()
+    _buffer = ByteBuffer.allocate(4 * numElements)
+    buffer = _buffer.asDoubleBuffer()
+    _buffer.rewind()
     buffer.rewind()
-    buffer2 = DoubleBuffer.allocate(s2.numElements.get.toInt)
   }
 
   override def appendRaw(d: Double): Unit = {
     buffer.put(d)
-    buffer2.put(d)
   }
-
-  override def tensor(): jtf.Tensor = _tensor
 
   override def tensor2(): tf.Tensor = {
-    buffer2.rewind()
+    buffer.rewind()
     val s2 = s.prepend(numCells)
-    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
+    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer)
   }
 
-  override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
+  override def byteBuffer(): ByteBuffer = _buffer
 }
 
 private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with Logging {
