@@ -1,37 +1,20 @@
 package org.tensorframes.perf
 
-import org.bytedeco.javacpp.{tensorflow => jtf}
 import org.scalatest.FunSuite
-
 import org.tensorframes.Logging
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
-
 import org.tensorframes.{ColumnInformation, Shape, TensorFramesTestSparkContext}
-import org.tensorframes.impl.{DataOps, SupportedOperations}
+import org.tensorframes.impl.{DataOps, SupportedOperations, TFDataOps}
 
 class ConvertPerformanceSuite
   extends FunSuite with TensorFramesTestSparkContext with Logging {
 
-  lazy val sql = sqlContext
+  import ConvertBackPerformanceSuite._
 
-  def println(s: String): Unit = java.lang.System.err.println(s)
+  private lazy val sql = sqlContext
 
-  def f[T](a: T, b: T): T = a
-
-  def getTensor(
-      sqlType: NumericType,
-      row: Row,
-      cellShape: Shape,
-      numCells: Int): jtf.TensorVector = {
-    val conv = SupportedOperations.opsFor(sqlType).tfConverter(cellShape, numCells)
-    conv.reserve()
-    (0 until numCells).foreach { _ => conv.append(row, 0) }
-    val t = conv.tensor()
-    val tv = new jtf.TensorVector(1)
-    tv.put(0L, t)
-    tv
-  }
+  private def println(s: String): Unit = java.lang.System.err.println(s)
 
   ignore("performance of convert - int1") {
     val numCells = 10000000
@@ -45,7 +28,9 @@ class ConvertPerformanceSuite
     val numIters = 100
     var x: Int = 0
     for (_ <- 1 to numIters) {
-      x += DataOps.convert(rows, schema, Array(0), fastPath = true).sizeof()
+      val l = TFDataOps.convert(rows, schema, Array(0))
+      x += l.size
+      l.foreach(_._2.close())
     }
     val end = System.nanoTime()
     val tIter = (end - start) / (1e9 * numIters)
@@ -67,7 +52,9 @@ class ConvertPerformanceSuite
     val numIters = 100
     var x: Int = 0
     for (_ <- 1 to numIters) {
-      x += DataOps.convert(rows, schema, Array(0), fastPath = true).sizeof()
+      val l = TFDataOps.convert(rows, schema, Array(0))
+      x += l.size
+      l.foreach(_._2.close())
     }
     val end = System.nanoTime()
     val tIter = (end - start) / (1e9 * numIters)

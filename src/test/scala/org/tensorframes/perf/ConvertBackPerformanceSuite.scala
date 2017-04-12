@@ -1,36 +1,23 @@
 package org.tensorframes.perf
 
-import org.bytedeco.javacpp.{tensorflow => jtf}
 import org.scalatest.FunSuite
 import org.tensorframes.{ColumnInformation, Shape, TensorFramesTestSparkContext}
-import org.tensorframes.impl.{DataOps, SupportedOperations}
-
+import org.tensorframes.impl.{SupportedOperations, TFDataOps}
 import org.tensorframes.Logging
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
+import org.tensorflow.Tensor
 
 class ConvertBackPerformanceSuite
   extends FunSuite with TensorFramesTestSparkContext with Logging {
 
-  lazy val sql = sqlContext
+  import ConvertBackPerformanceSuite._
 
-  def println(s: String): Unit = java.lang.System.err.println(s)
+  private lazy val sql = sqlContext
 
-  def getTensor(
-      sqlType: NumericType,
-      row: Row,
-      cellShape: Shape,
-      numCells: Int): jtf.TensorVector = {
-    val conv = SupportedOperations.opsFor(sqlType).tfConverter(cellShape, numCells)
-    conv.reserve()
-    (0 until numCells).foreach { _ => conv.append(row, 0) }
-    val t = conv.tensor()
-    val tv = new jtf.TensorVector(1)
-    tv.put(0L, t)
-    tv
-  }
+  private def println(s: String): Unit = java.lang.System.err.println(s)
 
-  def f(a: Row, b: Row) = a
+  private def f(a: Row, b: Row) = a
 
   ignore("performance of convertBack - int1") {
     val numCells = 10000000
@@ -39,15 +26,16 @@ class ConvertBackPerformanceSuite
     } .toArray
     val schema = StructType(Seq(StructField("f1", IntegerType, nullable = false)))
     val tfSchema = StructType(Seq(StructField("f2", IntegerType, nullable = false)))
-    val tensor = getTensor(IntegerType, Row(1), Shape(), numCells)
+    val tensor = getTFTensor(IntegerType, Row(1), Shape(), numCells)
     println("generated data")
     logInfo("generated data")
     val start = System.nanoTime()
     val numIters = 1000
     for (_ <- 1 to numIters) {
-      DataOps.convertBack(tensor, tfSchema, rows, schema, appendInput = true, fastPath = true)
+      TFDataOps.convertBack(Seq(tensor), tfSchema, rows, schema, appendInput = true)
         .reduce(f)
     }
+    tensor.close()
     val end = System.nanoTime()
     val tIter = (end - start) / (1e9 * numIters)
     println(s"perf: $tIter s / call")
@@ -64,18 +52,33 @@ class ConvertBackPerformanceSuite
       Shape(numCells, numVals))))
     val tfSchema = StructType(Seq(ColumnInformation.structField("f2", IntegerType,
       Shape(numCells, numVals))))
-    val tensor = getTensor(IntegerType, Row(Seq.fill(numVals)(1)), Shape(numVals), numCells)
+    val tensor = getTFTensor(IntegerType, Row(Seq.fill(numVals)(1)), Shape(numVals), numCells)
     println("generated data")
     logInfo("generated data")
     val start = System.nanoTime()
     val numIters = 100
     for (_ <- 1 to numIters) {
-      DataOps.convertBack(tensor, tfSchema, rows, schema, appendInput = true, fastPath = true)
+      TFDataOps.convertBack(Seq(tensor), tfSchema, rows, schema, appendInput = true)
     }
+    tensor.close()
     val end = System.nanoTime()
     val tIter = (end - start) / (1e9 * numIters)
     println(s"perf: $tIter s / call")
     logInfo(s"perf: $tIter s / call")
+  }
+}
+
+object ConvertBackPerformanceSuite {
+  def getTFTensor(
+      sqlType: NumericType,
+      row: Row,
+      cellShape: Shape,
+      numCells: Int): Tensor = {
+    val conv = SupportedOperations.opsFor(sqlType).tfConverter(cellShape, numCells)
+    conv.reserve()
+    (0 until numCells).foreach { _ => conv.append(row, 0) }
+    val t = conv.tensor2()
+    t
   }
 
 }
