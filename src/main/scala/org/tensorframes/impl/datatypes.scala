@@ -93,11 +93,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
     empty
   }
 
-  def tensor(): jtf.Tensor = ???
-
   def tensor2(): tf.Tensor
-
-  protected def byteBuffer(): ByteBuffer = ???
 
   /**
    * The physical size of a single element, in bytes.
@@ -108,9 +104,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
    * Fills a buffer (which has been previously allocated and reset) with the content of the
    * current tensor.
    */
-  protected def fillBuffer(buff: ByteBuffer): Unit = {
-     ???
-  }
+  protected def fillBuffer(buff: ByteBuffer): Unit
 
   def toByteArray(): Array[Byte] = {
     val array = Array.ofDim[Byte](numElements * elementSize)
@@ -122,16 +116,6 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
     fillBuffer(b)
     array
   }
-
-  //  def toByteArray(): Array[Byte] = {
-//    val buff = byteBuffer()
-//    val pos = buff.position()
-//    buff.rewind()
-//    val res = Array.fill[Byte](buff.limit())(0)
-//    buff.get(res, 0, buff.limit())
-//    buff.position(pos)
-//    res
-//  }
 }
 
 
