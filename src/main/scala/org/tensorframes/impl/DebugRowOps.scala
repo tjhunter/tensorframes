@@ -945,7 +945,14 @@ object DebugRowOpsImpl extends Logging {
    * @param graphDef
    * @return
    */
-  def performReducePairwise(input: Array[Row], schema: StructType, graphDef: SerializedGraph): Row = {
+  def performReducePairwise(
+      input: Array[Row],
+      schema: StructType,
+      graphDef: SerializedGraph): Row = {
+
+    // Dump the graph onto disk if necessary
+    graphDef.evictContent()
+
     require(input.length > 0, "Cannot provide empty input")
     // If there is a single row, no need to perform operations.
     if (input.length == 1) {
@@ -959,29 +966,48 @@ object DebugRowOpsImpl extends Logging {
     // For efficiency, this tries to reuse the session.
     val tfInput: Array[Row] = input.tail
     var result: Row = input.head
-    val g = TensorFlowOps.readGraph(graphDef)
-    TensorFlowOps.withSession { session =>
-      val s1 = session.Extend(g)
-      assert(s1.ok(), s1.error_message().getString)
+
+    TensorFlowOps.withSession(graphDef) { session =>
       for (row <- tfInput) {
         val values = (result.toSeq ++ row.toSeq).toArray
         val r: Row = new GenericRowWithSchema(values, inputSchema)
         val thisInput = Array(r)
-        val stpv = DataOps.convert(thisInput, inputSchema, inputSchema.fields.indices.toArray)
-        val outputs = new jtf.TensorVector()
-        val requested = TensorFlowOps.stringVector(schema.map(_.name))
-        val skipped = new jtf.StringVector()
-        val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
-        assert(s3.ok(), s3.error_message().getString)
-        // Fill in with an empty row, because we are not passing the rest of of the data.
+        val inputs = TFDataOps.convert(thisInput, inputSchema, inputSchema.fields.indices.toArray)
+        val requested = schema.map(_.name)
+        val outputs = performRunner(session, requested, inputs)
         val emptyRows = Array.fill(1)(emptyRow)
-        val it = DataOps.convertBack(outputs, schema, emptyRows, emptySchema, appendInput = false)
+        val it = TFDataOps.convertBack(outputs, schema, emptyRows, emptySchema, appendInput = false)
         assert(it.hasNext)
         result = it.next()
         assert(!it.hasNext)
+        outputs.foreach(_.close())
       }
     }
     result
+//
+//    val g = TensorFlowOps.readGraph(graphDef)
+//    TensorFlowOps.withSession { session =>
+//      val s1 = session.Extend(g)
+//      assert(s1.ok(), s1.error_message().getString)
+//      for (row <- tfInput) {
+//        val values = (result.toSeq ++ row.toSeq).toArray
+//        val r: Row = new GenericRowWithSchema(values, inputSchema)
+//        val thisInput = Array(r)
+//        val stpv = DataOps.convert(thisInput, inputSchema, inputSchema.fields.indices.toArray)
+//        val outputs = new jtf.TensorVector()
+//        val requested = TensorFlowOps.stringVector(schema.map(_.name))
+//        val skipped = new jtf.StringVector()
+//        val s3 = tfLock.synchronized { session.Run(stpv, requested, skipped, outputs) }
+//        assert(s3.ok(), s3.error_message().getString)
+//        // Fill in with an empty row, because we are not passing the rest of of the data.
+//        val emptyRows = Array.fill(1)(emptyRow)
+//        val it = DataOps.convertBack(outputs, schema, emptyRows, emptySchema, appendInput = false)
+//        assert(it.hasNext)
+//        result = it.next()
+//        assert(!it.hasNext)
+//      }
+//    }
+//    result
   }
 }
 
