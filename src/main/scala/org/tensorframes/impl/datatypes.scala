@@ -40,10 +40,14 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
   def appendRaw(t: T): Unit
 
   protected lazy val numElements: Int = {
-    val s2 = shape.prepend(numCells)
-    val numElts = s2.numElements.get.toInt
+    val numElts = fullShape.numElements.get.toInt
     assert(numElts < Int.MaxValue, s"Cannot reserve $numElts (max allowed=${Int.MaxValue}")
     numElts.toInt
+  }
+
+  protected lazy val fullShape: Shape = {
+    assert(! shape.hasUnknown, s"Shape $shape has unknown values.")
+    shape.prepend(numCells)
   }
 
   private[impl] final def appendArray(arr: MWrappedArray[T]): Unit = {
@@ -93,17 +97,37 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
 
   def tensor2(): tf.Tensor
 
-  protected def byteBuffer(): ByteBuffer
+  protected def byteBuffer(): ByteBuffer = ???
+
+  /**
+   * The physical size of a single element, in bytes.
+   */
+  protected val elementSize: Int = -1
+
+  /**
+   * Fills a buffer (which has been previously allocated and reset) with the content of the
+   * current tensor.
+   */
+  protected def fillBuffer(buff: ByteBuffer): Unit = {
+     ???
+  }
 
   def toByteArray(): Array[Byte] = {
-    val buff = byteBuffer()
-    val pos = buff.position()
-    buff.rewind()
-    val res = Array.fill[Byte](buff.limit())(0)
-    buff.get(res, 0, buff.limit())
-    buff.position(pos)
-    res
+    val array = Array.ofDim[Byte](numElements * elementSize)
+    val b = ByteBuffer.wrap(array)
+    fillBuffer(b)
+    array
   }
+
+  //  def toByteArray(): Array[Byte] = {
+//    val buff = byteBuffer()
+//    val pos = buff.position()
+//    buff.rewind()
+//    val res = Array.fill[Byte](buff.limit())(0)
+//    buff.get(res, 0, buff.limit())
+//    buff.position(pos)
+//    res
+//  }
 }
 
 
@@ -256,16 +280,13 @@ private[tensorframes] object SupportedOperations {
 
 private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Double](s, numCells) with Logging {
-  private var _buffer: ByteBuffer = null
   private var buffer: DoubleBuffer = null
 
-  assert(! s.hasUnknown, s"Shape $s has unknown values.")
+  override val elementSize: Int = 8
 
   override def reserve(): Unit = {
     logTrace(s"Reserving for $numCells units of shape $shape")
-    _buffer = ByteBuffer.allocate(4 * numElements)
-    buffer = _buffer.asDoubleBuffer()
-    _buffer.rewind()
+    buffer = DoubleBuffer.allocate(numElements)
     buffer.rewind()
   }
 
@@ -275,11 +296,12 @@ private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
 
   override def tensor2(): tf.Tensor = {
     buffer.rewind()
-    val s2 = s.prepend(numCells)
-    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer)
+    tf.Tensor.create(fullShape.dims.toArray, buffer)
   }
 
-  override def byteBuffer(): ByteBuffer = _buffer
+  override def fillBuffer(buff: ByteBuffer): Unit = {
+    buff.asDoubleBuffer().put(buffer)
+  }
 }
 
 private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with Logging {
@@ -325,39 +347,28 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
 
 private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Float](s, numCells) with Logging {
-  private var _tensor: jtf.Tensor = null
   private var buffer: FloatBuffer = null
-  private var buffer2: FloatBuffer = null
 
-  assert(! s.hasUnknown, s"Shape $s has unknown values.")
+  override val elementSize: Int = 4
 
   override def reserve(): Unit = {
     logTrace(s"Reserving for $numCells units of shape $shape")
-    val s2 = s.prepend(numCells)
-    val physicalShape = TensorFlowOps.shape(s2)
-    logTrace(s"s2=$s2 phys=${TensorFlowOps.jtfShape(physicalShape)}")
-    _tensor = new jtf.Tensor(jtf.TF_FLOAT, physicalShape)
-    logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
-    buffer = byteBuffer().asFloatBuffer()
+    buffer = FloatBuffer.allocate(numElements)
     buffer.rewind()
-    buffer2 = FloatBuffer.allocate(s2.numElements.get.toInt)
-    buffer2.rewind()
   }
 
   override def appendRaw(d: Float): Unit = {
     buffer.put(d)
-    buffer2.put(d)
   }
-
-  override def tensor(): jtf.Tensor = _tensor
 
   override def tensor2(): tf.Tensor = {
-    buffer2.rewind()
-    val s2 = s.prepend(numCells)
-    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
+    buffer.rewind()
+    tf.Tensor.create(fullShape.dims.toArray, buffer)
   }
 
-  override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
+  override def fillBuffer(buff: ByteBuffer): Unit = {
+    buff.asFloatBuffer().put(buffer)
+  }
 }
 
 private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Logging {
@@ -400,41 +411,28 @@ private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Log
 
 private[impl] class IntTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Int](s, numCells) with Logging {
-  private var _tensor: jtf.Tensor = null
-  private var buffer2: IntBuffer = null
   private var buffer: IntBuffer = null
 
-  assert(! s.hasUnknown, s"Shape $s has unknown values.")
+  override val elementSize: Int = 4
 
   override def reserve(): Unit = {
     logTrace(s"Reserving for $numCells units of shape $shape")
-    val s2 = s.prepend(numCells)
-    val physicalShape = TensorFlowOps.shape(s2)
-    logTrace(s"s2=$s2 phys=${TensorFlowOps.jtfShape(physicalShape)}")
-    buffer2 = IntBuffer.allocate(s2.numElements.get.toInt)
-    _tensor = new jtf.Tensor(jtf.TF_INT32, physicalShape)
-    logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
-    buffer = byteBuffer().asIntBuffer()
+    buffer = IntBuffer.allocate(numElements)
     buffer.rewind()
   }
 
   override def appendRaw(d: Int): Unit = {
     buffer.put(d)
-    buffer2.put(d)
   }
 
-  override def tensor(): jtf.Tensor = _tensor
-
-  /**
-   * WARNING: do not forget to release the tensor after.
-   */
   override def tensor2(): tf.Tensor = {
-    buffer2.rewind()
-    val s2 = s.prepend(numCells)
-    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
+    buffer.rewind()
+    tf.Tensor.create(fullShape.dims.toArray, buffer)
   }
 
-  override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
+  override def fillBuffer(buff: ByteBuffer): Unit = {
+    buff.asIntBuffer().put(buffer)
+  }
 }
 
 private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging {
@@ -473,38 +471,28 @@ private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging
 
 private[impl] class LongTensorConverter(s: Shape, numCells: Int)
   extends TensorConverter[Long](s, numCells) with Logging {
-  private var _tensor: jtf.Tensor = null
   private var buffer: LongBuffer = null
-  private var buffer2: LongBuffer = null
 
-  assert(! s.hasUnknown, s"Shape $s has unknown values.")
+  override val elementSize: Int = 8
 
   override def reserve(): Unit = {
     logTrace(s"Reserving for $numCells units of shape $shape")
-    val s2 = s.prepend(numCells)
-    val physicalShape = TensorFlowOps.shape(s2)
-    logTrace(s"s2=$s2 phys=${TensorFlowOps.jtfShape(physicalShape)}")
-    _tensor = new jtf.Tensor(jtf.TF_INT64, physicalShape)
-    logTrace(s"alloc=${TensorFlowOps.jtfShape(_tensor.shape())}")
-    buffer = byteBuffer().asLongBuffer()
+    buffer = LongBuffer.allocate(numElements)
     buffer.rewind()
-    buffer2 = LongBuffer.allocate(s2.numElements.get.toInt)
-  }
-
-  override def tensor2(): tf.Tensor = {
-    buffer2.rewind()
-    val s2 = s.prepend(numCells)
-    tf.Tensor.create(s2.dims.map(_.toLong).toArray, buffer2)
   }
 
   override def appendRaw(d: Long): Unit = {
     buffer.put(d)
-    buffer2.put(d)
   }
 
-  override def tensor(): jtf.Tensor = _tensor
+  override def tensor2(): tf.Tensor = {
+    buffer.rewind()
+    tf.Tensor.create(fullShape.dims.toArray, buffer)
+  }
 
-  override def byteBuffer(): ByteBuffer =  _tensor.tensor_data().asByteBuffer()
+  override def fillBuffer(buff: ByteBuffer): Unit = {
+    buff.asLongBuffer().put(buffer)
+  }
 }
 
 private[impl] object LongOperations extends ScalarTypeOperation[Long] with Logging {

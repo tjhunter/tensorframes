@@ -78,7 +78,7 @@ private[impl] trait SchemaTransforms extends Logging {
       schema: StructType,
       graph: GraphDef,
       shapeHints: ShapeDescription): ReduceBlockSchema = {
-    val summary = TensorFlowOps.analyzeGraph(graph, shapeHints)
+    val summary = TensorFlowOps.analyzeGraphTF(graph, shapeHints)
       .map(x => x.name -> x).toMap
     val fieldsByName = schema.fields.map(f => f.name -> f).toMap
     val fieldNameList = fieldsByName.keySet.toSeq.sorted.mkString(", ")
@@ -170,7 +170,7 @@ private[impl] trait SchemaTransforms extends Logging {
       schema: StructType,
       graph: GraphDef,
       shapeHints: ShapeDescription): StructType = {
-    val summary = TensorFlowOps.analyzeGraph(graph, shapeHints)
+    val summary = TensorFlowOps.analyzeGraphTF(graph, shapeHints)
       .map(x => x.name -> x).toMap
     val fieldsByName = schema.fields.map(f => f.name -> f).toMap
     val fieldNameList = fieldsByName.keySet.toSeq.sorted.mkString(", ")
