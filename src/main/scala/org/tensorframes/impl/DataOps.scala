@@ -4,9 +4,10 @@ import scala.collection.mutable
 import scala.reflect.ClassTag
 
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.catalyst.expressions.{GenericRow, GenericRowWithSchema}
+import org.apache.spark.sql.catalyst.expressions.GenericRow
 import org.apache.spark.sql.types.{NumericType, StructType}
-import org.tensorframes.{ColumnInformation, Logging, NodePath, Shape}
+
+import org.tensorframes.{Logging, Shape}
 import org.tensorframes.Shape.DimType
 
 /**
@@ -162,9 +163,5 @@ object DataOps extends Logging {
         throw new IllegalArgumentException(s"Operations for tensors of order ${x.size}" +
           s" are not supported")
     }
-  }
-
-  private def getColumn(rows: Iterable[Row], position: Int): Iterable[Any] = {
-    rows.map(_.get(position))
   }
 }

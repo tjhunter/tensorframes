@@ -4,7 +4,6 @@ import java.nio._
 
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
-import org.bytedeco.javacpp.{tensorflow => jtf}
 import org.{tensorflow => tf}
 import org.tensorflow.framework.DataType
 import org.tensorframes.{Logging, Shape}
@@ -155,15 +154,6 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
    */
   @deprecated("to remove", "now")
   def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any]
-
-  /**
-   * Defensive copy to an external array
-   *
-   * @param buff
-   * @return
-   */
-  @deprecated("to remove", "after jtf is dropped")
-  def convertBuffer(buff: ByteBuffer): MWrappedArray[T]
 
   def convertTensor(t: tf.Tensor): MWrappedArray[T]
 
@@ -318,18 +308,8 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
     dbuff.get(res)
     logTrace(s"Extracted from buffer: ${res.toSeq}")
     res
-
   }
 
-  override def convertBuffer(buff: ByteBuffer): MWrappedArray[Double] = {
-    val dbuff = buff.asDoubleBuffer()
-    dbuff.rewind()
-    val numBufferElements = dbuff.limit() - dbuff.position()
-    val res: Array[Double] = Array.fill(numBufferElements)(Double.NaN)
-    dbuff.get(res)
-    logTrace(s"Extracted from buffer: ${res.toSeq}")
-    res
-  }
 }
 
 // ********** FLOAT ************
@@ -385,16 +365,6 @@ private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Log
     t.writeTo(b)
     res
   }
-
-  override def convertBuffer(buff: ByteBuffer): MWrappedArray[Float] = {
-    val dbuff = buff.asFloatBuffer()
-    dbuff.rewind()
-    val numBufferElements = dbuff.limit() - dbuff.position()
-    val res: Array[Float] = Array.fill(numBufferElements)(Float.NaN)
-    dbuff.get(res)
-    logTrace(s"Extracted from buffer: ${res.toSeq}")
-    res
-  }
 }
 
 // ********** INT32 ************
@@ -447,15 +417,6 @@ private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging
     dbuff.get(res)
     res
   }
-
-  override def convertBuffer(buff: ByteBuffer): MWrappedArray[Int] = {
-    val dbuff = buff.asIntBuffer()
-    dbuff.rewind()
-    val numBufferElements = dbuff.limit() - dbuff.position()
-    val res: Array[Int] = new Array[Int](numBufferElements)
-    dbuff.get(res)
-    res
-  }
 }
 
 // ****** INT64 (LONG) ******
@@ -505,15 +466,6 @@ private[impl] object LongOperations extends ScalarTypeOperation[Long] with Loggi
     val dbuff = buff.asLongBuffer()
     dbuff.rewind()
     val res: Array[Long] = Array.fill(numElements)(Long.MinValue)
-    dbuff.get(res)
-    logTrace(s"Extracted from buffer: ${res.toSeq}")
-    res
-  }
-  override def convertBuffer(buff: ByteBuffer): MWrappedArray[Long] = {
-    val dbuff = buff.asLongBuffer()
-    dbuff.rewind()
-    val numBufferElements = dbuff.limit() - dbuff.position()
-    val res: Array[Long] = Array.fill(numBufferElements)(Long.MinValue)
     dbuff.get(res)
     logTrace(s"Extracted from buffer: ${res.toSeq}")
     res
