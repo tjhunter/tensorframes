@@ -114,7 +114,11 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
 
   def toByteArray(): Array[Byte] = {
     val array = Array.ofDim[Byte](numElements * elementSize)
-    val b = ByteBuffer.wrap(array)
+    // Watch out for the endianness. This is important in order to respect the order in
+    // the protos.
+    // Not sure if this causes some performance issues in the TensorFlow side or the Spark side.
+    val b = ByteBuffer.wrap(array).order(ByteOrder.LITTLE_ENDIAN)
+    b.rewind()
     fillBuffer(b)
     array
   }
@@ -300,6 +304,7 @@ private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
   }
 
   override def fillBuffer(buff: ByteBuffer): Unit = {
+    buffer.rewind()
     buff.asDoubleBuffer().put(buffer)
   }
 }
@@ -367,6 +372,7 @@ private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
   }
 
   override def fillBuffer(buff: ByteBuffer): Unit = {
+    buffer.rewind()
     buff.asFloatBuffer().put(buffer)
   }
 }
@@ -431,6 +437,7 @@ private[impl] class IntTensorConverter(s: Shape, numCells: Int)
   }
 
   override def fillBuffer(buff: ByteBuffer): Unit = {
+    buffer.rewind()
     buff.asIntBuffer().put(buffer)
   }
 }
@@ -491,6 +498,7 @@ private[impl] class LongTensorConverter(s: Shape, numCells: Int)
   }
 
   override def fillBuffer(buff: ByteBuffer): Unit = {
+    buffer.rewind()
     buff.asLongBuffer().put(buffer)
   }
 }
