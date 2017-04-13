@@ -327,7 +327,8 @@ def aggregate(fetches, grouped_data):
     """
     fetches = _check_fetches(fetches)
     graph = _get_graph(fetches)
-    builder = _java_api().aggregate_blocks(grouped_data._jdf)
+    jdfin = _get_jgroup(grouped_data)
+    builder = _java_api().aggregate_blocks(jdfin)
     _add_graph(graph, builder)
     _add_shapes(graph, builder, fetches)
     jdf = builder.buildDF()
@@ -393,6 +394,15 @@ _dtypes = {DoubleType() : tf.double,
           LongType() : tf.int64,
           FloatType() : tf.float32}
 
+def _get_jgroup(grouped_data):
+    """Get the JVM object that backs this grouped data, taking into account the different
+    spark versions."""
+    d = dir(grouped_data)
+    if '_jdf' in d:
+        return grouped_data._jdf
+    if '_jgd' in d:
+        return grouped_data._jgd
+    raise ValueError('Could not find a dataframe for {}. All methods: {}'.format(grouped_data, d))
 
 def _get_dtype(dtype):
     if isinstance(dtype, ArrayType):

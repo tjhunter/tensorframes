@@ -115,6 +115,17 @@ class TestCore(object):
         data2 = df2.collect()
         assert data2[0].z == 2, data2
 
+    def test_groupby_1(self):
+        data = [Row(x=float(x), key=str(x % 2)) for x in range(4)]
+        df = self.sql.createDataFrame(data)
+        gb = df.groupBy("key")
+        with tf.Graph().as_default() as g:
+            x_input = tfs.block(df, "x", tf_name="x_input")
+            x = tf.reduce_sum(x_input, [0], name='x')
+            df2 = tfs.aggregate(x, gb)
+        data2 = df2.collect()
+        assert data2 == [Row(key='0', x=2.0), Row(key='1', x=4.0)], data2
+
 
 if __name__ == "__main__":
     # Some testing stuff that should not be executed
