@@ -191,15 +191,11 @@ object TFDataOps extends Logging {
       cellShape: Shape,
       expectedNumRows: Option[Int],
       fastPath: Boolean = true): (Int, Iterable[Any]) = {
-    logInfo(s"getColumn: t=$t type=$scalaType cellShape=$cellShape exp=$expectedNumRows ")
     val allDataBuffer: mutable.WrappedArray[_] =
       SupportedOperations.opsFor(scalaType).convertTensor(t)
     val numData = allDataBuffer.size
     // Infer if necessary the reshaping size.
     val (inferredNumRows, inferredShape) = DataOps.inferPhysicalShape(numData, cellShape, expectedNumRows)
-//    logTrace(s"getColumn: databuffer = $allDataBuffer")
-//    logTrace(s"getColumn: infered cell shape: $inferredShape, numData: $numData," +
-//      s" inferredNumRows: $inferredNumRows")
     val reshapeShape = inferredShape.prepend(inferredNumRows)
     val res = if (fastPath) {
       DataOps.getColumnFast0(reshapeShape, scalaType, allDataBuffer)
@@ -207,7 +203,6 @@ object TFDataOps extends Logging {
       DataOps.reshapeIter(allDataBuffer.asInstanceOf[mutable.WrappedArray[Any]],
         inferredShape.dims.toList)
     }
-//    logTrace(s"getColumn: reshaped = $res")
     inferredNumRows -> res
   }
 

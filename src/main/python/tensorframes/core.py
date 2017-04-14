@@ -65,8 +65,6 @@ def _add_shapes(graph, builder, fetches):
             ph_shapes.append(_get_shape(t))
     logger.info("fetches: %s %s", str(names), str(shapes))
     logger.info("inputs: %s %s", str(ph_names), str(ph_shapes))
-    print("fetches: %s %s", str(names), str(shapes))
-    print("inputs: %s %s", str(ph_names), str(ph_shapes))
     builder.shape(names + ph_names, shapes + ph_shapes)
     builder.fetches(names)
     # return the path, not the tensor name.
