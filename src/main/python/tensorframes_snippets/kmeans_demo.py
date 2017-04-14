@@ -7,6 +7,8 @@ from a given set of centroids.
 
 %autoindent
 
+from __future__ import print_function
+
 import tensorflow as tf
 import tensorframes as tfs
 import numpy as np
@@ -79,7 +81,7 @@ def run_one_step(dataframe, start_centers):
         min_distances = tf.reduce_min(distances, 1, name='min_distances')
         counts = tf.tile(tf.constant([1]), num_points, name='count')
         df2 = tfs.map_blocks([indexes, counts, min_distances], dataframe)
-    # Perform the reduction: we regroup the point by their centroid indexes.
+    # Perform the reduction: we regroup the poin`t by their centroid indexes.
     gb = df2.groupBy("indexes")
     with tf.Graph().as_default() as g:
         # Look at the documentation of tfs.aggregate for the naming conventions of the placeholders.
@@ -187,7 +189,7 @@ def kmeanstf(dataframe, init_centers, num_iters = 5, tf_aggregate = True):
     ds = []
     for i in range(num_iters):
         (c1, d1) = step_fun(dataframe, c)
-        print "Step =", i, ", overall distance = ", d1
+        print("Step =", i, ", overall distance = ", d1)
         c = c1
         if d == d1:
             break
@@ -196,17 +198,21 @@ def kmeanstf(dataframe, init_centers, num_iters = 5, tf_aggregate = True):
     return c, ds
 
 # Here is a an example of usage:
+try:
+    sc.setLogLevel('DEBUG')
+except:
+    pass
 
 from pyspark.ml.clustering import KMeans, KMeansModel
-from pyspark.mllib.linalg import VectorUDT, _convert_to_vector
+from pyspark.ml.linalg import VectorUDT, _convert_to_vector
 from pyspark.sql.types import Row, StructField, StructType
 import time
 
 # Small vectors
-num_features = 100
+num_features = 3
 # The number of clusters
-k = 10
-num_points = 100000
+k = 2
+num_points = 5
 num_iters = 10
 FEATURES_COL = "features"
 
@@ -230,6 +236,30 @@ init_centers = np.random.randn(k, num_features)
 start_centers = init_centers
 dataframe = df0
 
+print("&&&&&&&&&&&&&&&&&&&&&&&&&&")
+(num_centroids, num_features) = np.shape(start_centers)
+# For each feature vector, compute the nearest centroid and the distance to that centroid.
+# The index of the nearest centroid is stored in the 'indexes' column.
+# We also add a column of 1's that will be reduced later to count the number of elements in
+# each cluster.
+with tf.Graph().as_default() as g:
+    # The placeholder for the input: we use the block format
+    points = tf.placeholder(tf.double, shape=[None, num_features], name='features')
+    # The shape of the block is extracted as a TF variable.
+    num_points = tf.stack([tf.shape(points)[0]], name="num_points")
+    distances = tf_compute_distances(points, start_centers)
+    # The outputs of the program.
+    # The closest centroids are extracted.
+    # The tensorflow code may be buggy here, setting the type explicitly.
+    indexes_ = tf.argmin(distances, 1, name='indexes_')
+    indexes = tf.to_int32(indexes_)
+    # This could be done based on the indexes as well.
+    min_distances = tf.reduce_min(distances, 1, name='min_distances')
+    counts = tf.tile(tf.constant([1]), num_points, name='count')
+    df2 = tfs.map_blocks([indexes, counts, min_distances], dataframe)
+tfs.print_schema(df2)
+print("&&&&&&&&&&&&&&&&&&&&&&&&&&")
+
 ta_0 = time.time()
 kmeans = KMeans().setK(k).setSeed(1).setFeaturesCol(FEATURES_COL).setInitMode(
         "random").setMaxIter(num_iters)
@@ -250,5 +280,4 @@ mllib_dt = ta_1 - ta_0
 tf_dt = tb_1 - tb_0
 tf2_dt = tc_1 - tc_0
 
-print "mllib:", mllib_dt, "tf+spark:",tf_dt, "tf:",tf2_dt
-
+print("mllib:", mllib_dt, "tf+spark:",tf_dt, "tf:",tf2_dt)
