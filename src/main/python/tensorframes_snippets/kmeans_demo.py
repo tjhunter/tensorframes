@@ -240,8 +240,6 @@ kmeans = KMeans().setK(k).setSeed(1).setFeaturesCol(FEATURES_COL).setInitMode(
 mod = kmeans.fit(mllib_df)
 ta_1 = time.time()
 
-#(c1, d1) = run_one_step(dataframe, start_centers)
-#(c2, d2) = run_one_step2(dataframe, start_centers)
 tb_0 = time.time()
 (centers, agg_distances) = kmeanstf(df0, init_centers, num_iters=num_iters, tf_aggregate=False)
 tb_1 = time.time()
