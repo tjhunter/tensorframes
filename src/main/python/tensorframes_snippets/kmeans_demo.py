@@ -209,7 +209,7 @@ import time
 num_features = 100
 # The number of clusters
 k = 10
-num_points = 10000
+num_points = 100000
 num_iters = 10
 FEATURES_COL = "features"
 

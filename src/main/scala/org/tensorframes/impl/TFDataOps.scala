@@ -133,7 +133,7 @@ object TFDataOps extends Logging {
       appendInput: Boolean): Iterator[Row] = {
     // The structures should already have been validated.
     // Output has all the TF columns first, and then the other columns
-    logInfo(s"convertBack: ${input.length} input rows, tv=$tv tf_struct=$tf_struct input_struct=$input_struct " +
+    logDebug(s"convertBack: ${input.length} input rows, tv=$tv tf_struct=$tf_struct input_struct=$input_struct " +
       s"append=$appendInput")
 
     val tfSizesAndIters = for ((field, t) <- tf_struct.fields.zip(tv).toSeq) yield {

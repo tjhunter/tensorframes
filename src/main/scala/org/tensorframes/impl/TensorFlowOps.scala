@@ -113,7 +113,7 @@ object TensorFlowOps extends Logging {
     // Test that the graph can be imported
     val sg = graphSerial(graphDef)
     withGraph(sg){ g =>
-      logInfo(s"analyzeGraphTF: the graph has size ${sg.content.length.toLong/1000000} MB")
+      logDebug(s"analyzeGraphTF: the graph has size ${sg.content.length.toLong/1000000} MB and ${nodes.size} nodes")
       nodes.flatMap { n =>
         val name = n.getName
         val op = g.operation(name)
@@ -132,7 +132,6 @@ object TensorFlowOps extends Logging {
             val s = hintedShape.getOrElse(shape)
             GraphNodeSummary(isInput, isInput, isOutput, scalarType, s, name)
           }
-          logInfo(s"analyzeGraphTF: n=$n summary=$res")
           res
         } else {
           Nil
@@ -152,7 +151,7 @@ object TensorFlowOps extends Logging {
 }
 
 /**
- * All the informations requested by TensorFrames to run on a graph node.
+ * All the information requested by TensorFrames to run on a graph node.
  *
  * @param isPlaceholder if the variable is a placeholder
  * @param isInput if the node is an input (no inner dependencies)
