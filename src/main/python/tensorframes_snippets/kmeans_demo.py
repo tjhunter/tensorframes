@@ -244,15 +244,14 @@ print("&&&&&&&&&&&&&&&&&&&&&&&&&&")
 # each cluster.
 with tf.Graph().as_default() as g:
     # The placeholder for the input: we use the block format
-    points = tf.placeholder(tf.double, shape=[None, num_features], name='features')
+    points = tf.placeholder(tf.double, shape=(None, num_features), name='features')
     # The shape of the block is extracted as a TF variable.
     num_points = tf.stack([tf.shape(points)[0]], name="num_points")
     distances = tf_compute_distances(points, start_centers)
     # The outputs of the program.
     # The closest centroids are extracted.
     # The tensorflow code may be buggy here, setting the type explicitly.
-    indexes_ = tf.argmin(distances, 1, name='indexes_')
-    indexes = tf.to_int32(indexes_)
+    indexes = tf.argmin(distances, 1, name='indexes_')
     # This could be done based on the indexes as well.
     min_distances = tf.reduce_min(distances, 1, name='min_distances')
     counts = tf.tile(tf.constant([1]), num_points, name='count')

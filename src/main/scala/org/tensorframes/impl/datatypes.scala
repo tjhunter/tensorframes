@@ -138,6 +138,12 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
   val tfType: DataType
 
   /**
+   * The TF type (new style).
+   *
+   */
+  val tfType2: tf.DataType
+
+  /**
    * A zero element for this type
    */
   val zero: T
@@ -236,6 +242,14 @@ private[tensorframes] object SupportedOperations {
     }
   }
 
+  def opsFor(dt: tf.DataType): ScalarTypeOperation[_] = {
+    ops.find(_.tfType2 == dt).getOrElse {
+      throw new IllegalArgumentException(s"Type $dt is not supported. Only the following types are" +
+        s"supported: ${tfTypes.mkString(", ")}")
+    }
+
+  }
+
   def getOps[T : TypeTag](): ScalarTypeOperation[T] = {
     val ev: TypeTag[_] = implicitly[TypeTag[T]]
     ops.find(_.tag.tpe =:= ev.tpe).getOrElse {
@@ -286,6 +300,7 @@ private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
 private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with Logging {
   override val sqlType = DoubleType
   override val tfType = DataType.DT_DOUBLE
+  override val tfType2 = tf.DataType.DOUBLE
   final override val zero = 0.0
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Double] =
     new DoubleTensorConverter(cellShape, numCells)
@@ -344,6 +359,7 @@ private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
 private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Logging {
   override val sqlType = FloatType
   override val tfType = DataType.DT_FLOAT
+  override val tfType2 = tf.DataType.FLOAT
   final override val zero = 0.0f
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Float] =
     new FloatTensorConverter(cellShape, numCells)
@@ -399,6 +415,7 @@ private[impl] class IntTensorConverter(s: Shape, numCells: Int)
 private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging {
   override val sqlType = IntegerType
   override val tfType = DataType.DT_INT32
+  override val tfType2 = tf.DataType.INT32
   final override val zero = 0
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Int] =
     new IntTensorConverter(cellShape, numCells)
@@ -451,6 +468,7 @@ private[impl] class LongTensorConverter(s: Shape, numCells: Int)
 private[impl] object LongOperations extends ScalarTypeOperation[Long] with Logging {
   override val sqlType = LongType
   override val tfType = DataType.DT_INT64
+  override val tfType2 = tf.DataType.INT64
   final override val zero = 0L
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Long] =
     new LongTensorConverter(cellShape, numCells)

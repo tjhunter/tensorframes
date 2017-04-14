@@ -95,6 +95,10 @@ object Shape {
   private[tensorframes] def from(shape: TensorShapeProto): Shape = {
     Shape(shape.getDimList.asScala.map(_.getSize).toArray)
   }
+
+  private[tensorframes] def from(shape: tf.Shape): Shape = {
+    apply((0 until shape.numDimensions()).map { shape.size }.toArray)
+  }
 }
 
 

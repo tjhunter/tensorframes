@@ -74,13 +74,22 @@ object TensorFlowOps extends Logging {
   }
 
   def withSession[T](g: SerializedGraph)(f: tf.Session => T): T = {
+    withGraph(g) { graph =>
+      val session = new Session(graph)
+      try {
+        f(session)
+      } finally {
+        session.close()
+      }
+    }
+  }
+
+  def withGraph[T](g: SerializedGraph)(f: tf.Graph => T): T = {
     val graph2 = new Graph()
     graph2.importGraphDef(g.content)
-    val session = new Session(graph2)
     try {
-      f(session)
+      f(graph2)
     } finally {
-      session.close()
       graph2.close()
     }
   }
@@ -102,40 +111,42 @@ object TensorFlowOps extends Logging {
     logDebug(s"Outputs: ${outputs}")
 
     // Test that the graph can be imported
-    {
-//      val g = new Graph()
-      val ser = graphSerial(graphDef).content
-      logInfo(s"analyzeGraphTF: the graph has size ${ser.length.toLong/1000000} MB")
-//      g.importGraphDef(ser)
-//      g.close()
-    }
-
-    nodes.flatMap { n =>
-      val name = n.getName
-      logTrace(s"Node $name")
-      val isInput = inputs.contains(name)
-      val isOutput = outputs.contains(name)
-      if (isInput || isOutput) {
-        // The shape stored in the graph seems buggy sometimes (when there are some unknowns)
-        // Trust the one from the shape hints.
-        val shapeOpt = shapeHints.out.get(name).orElse {
-          // The name may include the default output slot
-          // TODO(tjh) add a test for that
-          shapeHints.out.get(name + ":0")
-        } .orElse {
-          if (n.getAttr.containsKey("shape")) {
-            Some(Shape.from(n.getAttr.get("shape").getShape))
-          } else {
-            None
+    val sg = graphSerial(graphDef)
+    withGraph(sg){ g =>
+      logInfo(s"analyzeGraphTF: the graph has size ${sg.content.length.toLong/1000000} MB")
+      nodes.flatMap { n =>
+        val name = n.getName
+        val op = g.operation(name)
+        val isInput = inputs.contains(name)
+        val isOutput = outputs.contains(name)
+        if (isInput || isOutput) {
+          // Shape: this is tricky since dynamic shapes get completely pruned out of the compute graph (as of TF 1.0)
+          // Hints are still required to recover the shape.
+          // The syntax is not very clear here: it could either refer to the first tensor, or to the operator.
+          val hintedShape = shapeHints.out.get(name).orElse(shapeHints.out.get(name+":0"))
+          // NOTE: this only considers the first output of an operation
+          // The user cannot currently refer to other tensors.
+          val res = getSummaryDefault(op).headOption.map { case (scalarType, shape) =>
+            // The shape provided in the hints overrides the shape inferred from the graph, since that one may
+            // be missing the dynamic shapes.
+            val s = hintedShape.getOrElse(shape)
+            GraphNodeSummary(isInput, isInput, isOutput, scalarType, s, name)
           }
+          logInfo(s"analyzeGraphTF: n=$n summary=$res")
+          res
+        } else {
+          Nil
         }
-        logTrace(s"shape = $shapeOpt")
-        val shape = shapeOpt.getOrElse {
-          throw new Exception(s"Could not get the shape of node $name from the graph definition or from the shape hints")
-        }
-        val scalarType = SupportedOperations.opsFor(ProtoConversions.getDType(n)).sqlType
-        Some(GraphNodeSummary(isInput, isInput, isOutput, scalarType, shape, name))
-      } else { None }
+      }
+    }
+  }
+
+  private def getSummaryDefault(op: tf.Operation): Seq[(NumericType, Shape)] = {
+    (0 until op.numOutputs()).map { idx =>
+      val n = op.output(idx)
+      val dt = SupportedOperations.opsFor(n.dataType()).sqlType
+      val shape = Shape.from(n.shape())
+      dt -> shape
     }
   }
 }
