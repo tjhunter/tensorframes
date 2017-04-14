@@ -165,9 +165,6 @@ object TFDataOps extends Logging {
       StructType(tf_struct.fields)
     }
     val res: Iterator[Row] = DataOps.convertBackFast0(input, tfIters, tfNumRows, input_struct, outputSchema)
-
-//    logTrace(s"outputSchema=$outputSchema")
-//    logTrace(s"res: $res")
     res
   }
 
