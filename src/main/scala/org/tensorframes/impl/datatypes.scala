@@ -60,7 +60,7 @@ case object ScalarBinaryType extends ScalarType
 private[tensorframes] sealed abstract class TensorConverter[@specialized(Double, Float, Int, Long) T] (
     val shape: Shape,
     val numCells: Int)
-  (implicit ev1: TypeTag[T], ev2: ClassTag[T]) extends Logging {
+  (implicit ev2: ClassTag[T]) extends Logging {
   final val empty = Array.empty[T]
   /**
    * Creates memory space for a given number of units of the given shape.
