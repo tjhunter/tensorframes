@@ -43,7 +43,8 @@ def _add_graph(graph, builder, use_file=True):
         fname = d + "/proto.pb"
         builder.graphFromFile(fname)
     else:
-        gser = graph.as_graph_def().SerializeToString()
+        # Make sure that TF adds the shapes.
+        gser = graph.as_graph_def(add_shapes=True).SerializeToString()
         gbytes = bytearray(gser)
         builder.graph(gbytes)
 
@@ -55,7 +56,7 @@ def _add_shapes(graph, builder, fetches):
     # dimensions are unknown
     ph_names = []
     ph_shapes = []
-    for n in graph.as_graph_def().node:
+    for n in graph.as_graph_def(add_shapes=True).node:
         # Just the input nodes:
         if not n.input:
             op_name = n.name

@@ -5,7 +5,7 @@ import org.tensorframes.Logging
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
 import org.tensorframes.{ColumnInformation, Shape, TensorFramesTestSparkContext}
-import org.tensorframes.impl.{DataOps, SupportedOperations, TFDataOps}
+import org.tensorframes.impl.{DataOps, ScalarIntType, SupportedOperations, TFDataOps}
 
 class ConvertPerformanceSuite
   extends FunSuite with TensorFramesTestSparkContext with Logging {
@@ -44,7 +44,7 @@ class ConvertPerformanceSuite
     // Creating the rows this way, because we need to respect the collection used by Spark when
     // unpacking the rows.
     val rows = sqlContext.createDataFrame(Seq.fill(numCells)(Tuple1(Seq.fill(numVals)(1)))).collect()
-    val schema = StructType(Seq(ColumnInformation.structField("f1", IntegerType,
+    val schema = StructType(Seq(ColumnInformation.structField("f1", ScalarIntType,
       Shape(numCells, numVals))))
     println("generated data")
     logInfo("generated data")

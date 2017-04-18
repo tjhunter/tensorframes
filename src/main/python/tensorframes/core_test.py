@@ -14,7 +14,9 @@ class TestCore(object):
     @classmethod
     def setup_class(cls):
         print("setup ", cls)
-        cls.sc = SparkContext('local[1]', cls.__name__)
+        sc = SparkContext('local[1]', cls.__name__)
+        sc.setLogLevel('DEBUG')
+        cls.sc = sc
 
     @classmethod
     def teardown_class(cls):
@@ -25,6 +27,7 @@ class TestCore(object):
         self.sql = SQLContext(TestCore.sc)
         self.api = _java_api()
         self.api.initialize_logging()
+        TestCore.sc.setLogLevel('INFO')
         print("setup")
 
 
@@ -125,6 +128,16 @@ class TestCore(object):
             df2 = tfs.aggregate(x, gb)
         data2 = df2.collect()
         assert data2 == [Row(key='0', x=2.0), Row(key='1', x=4.0)], data2
+
+    def test_byte_array(self):
+        data = [Row(x=bytearray('123', 'utf-8'))]
+        df = self.sql.createDataFrame(data)
+        with tf.Graph().as_default():
+            x = tf.placeholder(tf.string, shape=[], name="x")
+            z = tf.string_to_number(x, tf.int32, name='z')
+            df2 = tfs.map_rows(z, df)
+        data2 = df2.collect()
+        assert data2[0].z == 123, data2
 
 
 if __name__ == "__main__":

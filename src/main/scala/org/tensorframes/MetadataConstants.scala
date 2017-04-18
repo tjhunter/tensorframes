@@ -1,7 +1,7 @@
 package org.tensorframes
 
-import org.apache.spark.sql.types.NumericType
-import org.tensorframes.impl.SupportedOperations
+import org.apache.spark.sql.types.{DataType, NumericType}
+import org.tensorframes.impl.{ScalarType, SupportedOperations}
 
 /**
  * Metadata annotations that get embedded in dataframes to express tensor information.
@@ -29,5 +29,5 @@ object MetadataConstants {
   /**
    * All the SQL types supported by SparkTF.
    */
-  val supportedTypes: Seq[NumericType] = SupportedOperations.sqlTypes
+  val supportedTypes: Seq[DataType] = SupportedOperations.sqlTypes
 }
