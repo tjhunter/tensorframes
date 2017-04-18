@@ -160,7 +160,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
  * internally through casting.
  */
 private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double, Float) T]
-  (implicit ev1: TypeTag[T], ev2: ClassTag[T]) {
+  (implicit ev: ClassTag[T]) {
   /**
    * The SQL type associated with the given type.
    */
@@ -256,7 +256,7 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
     res.map { arr => conv(arr.map(conv)) }
   }
 
-  def tag: TypeTag[_] = implicitly[TypeTag[T]]
+  def tag: Option[TypeTag[_]]
 }
 
 private[tensorframes] object SupportedOperations {
@@ -304,7 +304,7 @@ private[tensorframes] object SupportedOperations {
 
   def getOps[T : TypeTag](): ScalarTypeOperation[T] = {
     val ev: TypeTag[_] = implicitly[TypeTag[T]]
-    ops.find(_.tag.tpe =:= ev.tpe).getOrElse {
+    ops.find(_.tag.map(_.tpe =:= ev.tpe) == Some(true)).getOrElse {
       val tags = ops.map(_.tag.toString()).mkString(", ")
       throw new IllegalArgumentException(s"Type ${ev} is not supported. Only the following types " +
         s"are supported: ${tags}")
@@ -378,6 +378,8 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
     res
   }
 
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Double]])
+
 }
 
 // ********** FLOAT ************
@@ -435,6 +437,8 @@ private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Log
     t.writeTo(b)
     res
   }
+
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Float]])
 }
 
 // ********** INT32 ************
@@ -489,6 +493,8 @@ private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging
     dbuff.get(res)
     res
   }
+
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Int]])
 }
 
 // ****** INT64 (LONG) ******
@@ -544,6 +550,8 @@ private[impl] object LongOperations extends ScalarTypeOperation[Long] with Loggi
     logTrace(s"Extracted from buffer: ${res.toSeq}")
     res
   }
+
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Long]])
 }
 
 // ********** STRING *********
@@ -599,6 +607,8 @@ private[impl] object StringOperations extends ScalarTypeOperation[Array[Byte]] w
     // TODO(tjh) implement later
     ???
   }
+
+  override def tag: Option[TypeTag[_]] = None
 }
 
 
