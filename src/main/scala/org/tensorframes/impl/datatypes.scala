@@ -159,8 +159,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
  * It does not support TF's rich type collection (uint16, float128, etc.). These have to be handled
  * internally through casting.
  */
-private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double, Float) T]
-  (implicit ev: ClassTag[T]) {
+private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double, Float) T] {
   /**
    * The SQL type associated with the given type.
    */
@@ -256,7 +255,11 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
     res.map { arr => conv(arr.map(conv)) }
   }
 
+  implicit def classTag: ClassTag[T] = ev
+
   def tag: Option[TypeTag[_]]
+
+  def ev: ClassTag[T] = null
 }
 
 private[tensorframes] object SupportedOperations {
@@ -380,6 +383,7 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
 
   override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Double]])
 
+  override def ev = ClassTag.Double
 }
 
 // ********** FLOAT ************
@@ -439,6 +443,8 @@ private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Log
   }
 
   override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Float]])
+
+  override def ev = ClassTag.Float
 }
 
 // ********** INT32 ************
@@ -495,6 +501,8 @@ private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging
   }
 
   override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Int]])
+
+  override def ev = ClassTag.Int
 }
 
 // ****** INT64 (LONG) ******
@@ -552,6 +560,8 @@ private[impl] object LongOperations extends ScalarTypeOperation[Long] with Loggi
   }
 
   override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Long]])
+
+  override def ev = ClassTag.Long
 }
 
 // ********** STRING *********
@@ -609,6 +619,8 @@ private[impl] object StringOperations extends ScalarTypeOperation[Array[Byte]] w
   }
 
   override def tag: Option[TypeTag[_]] = None
+
+  override def ev = ???
 }
 
 
