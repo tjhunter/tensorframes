@@ -267,24 +267,6 @@ private[impl] trait SchemaTransforms extends Logging {
       case _ => f // Nothing to do
     }
   }
-
-  /**
-   * Checks that the data, coming with a certain shape from Spark, can be shaped into
-   * the given shape (taking unknown values and binary data into account)
-   */
-  def canBeReshapedTo(dt: ScalarType, from: Shape, to: Shape): Boolean = {
-//    if (dt == ScalarBinaryType) {
-//      // Binary has to be at least an array.
-//      if (from.numDims == 0) {
-//        return false
-//      }
-//      // In that case, the spark shape should be one larger, and we should drop the bottom one.
-//      from.dropInner.checkMorePreciseThan(to)
-//    } else {
-//      from.checkMorePreciseThan(to)
-//    }
-    from.checkMorePreciseThan(to)
-  }
 }
 
 object SchemaTransforms extends SchemaTransforms
@@ -346,7 +328,7 @@ class DebugRowOps
             s"The type of node '${in.name}' (${stf.dataType}) is not compatible with the data type " +
               s"of the column (${in.scalarType})")
         }
-        if (! canBeReshapedTo(stf.dataType, stf.shape, in.shape)) {
+        if (! stf.shape.checkMorePreciseThan(in.shape)) {
           throw new Exception(
             s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
               s" ${in.shape} requested by the TF graph")
@@ -438,7 +420,7 @@ class DebugRowOps
 
       val cellShape = stf.shape.tail
       // No check for unknowns: we allow unknowns in the first dimension of the cell shape.
-      check(canBeReshapedTo(stf.dataType, cellShape, in.shape),
+      check(cellShape.checkMorePreciseThan(in.shape),
         s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
           s" ${in.shape} requested by the TF graph")
 
@@ -743,9 +725,6 @@ object DebugRowOpsImpl extends Logging {
         }
       }
   }
-
-  // Trying to get around some frequent crashes within TF.
-  private[this] val tfLock = new Object
 
   private[impl] def reducePair(
       schema: StructType,
