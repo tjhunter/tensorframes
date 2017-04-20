@@ -3,7 +3,7 @@ package org.tensorframes
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types.{ArrayType, DataType, NumericType}
-import org.tensorframes.impl.{ScalarType, SupportedOperations}
+import org.tensorframes.impl.SupportedOperations
 
 /**
   * Some useful methods for operating on dataframes that are not part of the official API (and thus may change anytime).
@@ -109,8 +109,8 @@ private[tensorframes] object ExtraOperations extends ExperimentalOperations with
     DataFrameInfo(allInfo)
   }
 
-  private def extractBasicType(dt: DataType): Option[ScalarType] = dt match {
-    case x: NumericType => Some(SupportedOperations.opsFor(x).scalarType)
+  private def extractBasicType(dt: DataType): Option[NumericType] = dt match {
+    case x: NumericType => Some(x)
     case x: ArrayType => extractBasicType(x.elementType)
     case _ => None
   }

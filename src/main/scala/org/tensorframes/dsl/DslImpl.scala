@@ -1,12 +1,13 @@
 package org.tensorframes.dsl
 
 import javax.annotation.Nullable
-
 import org.tensorflow.framework.{AttrValue, DataType, GraphDef, TensorShapeProto}
+
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.types.NumericType
-import org.tensorframes.{ColumnInformation, Logging, Shape}
-import org.tensorframes.impl.{DenseTensor, SupportedOperations}
+
+import org.tensorframes.{Logging, ColumnInformation, Shape}
+import org.tensorframes.impl.DenseTensor
 
 
 /**
@@ -74,9 +75,8 @@ private[dsl] object DslImpl extends Logging with DefaultConversions {
 
   def build_constant(dt: DenseTensor): Node = {
     val a = AttrValue.newBuilder().setTensor(DenseTensor.toTensorProto(dt))
-    val dt2 = SupportedOperations.opsFor(dt.dtype).sqlType.asInstanceOf[NumericType]
     build("Const", isOp = false,
-      shape = dt.shape, dtype = dt2,
+      shape = dt.shape, dtype = dt.dtype,
       extraAttrs = Map("value" -> a.build()))
   }
 
@@ -100,8 +100,7 @@ private[dsl] object DslImpl extends Logging with DefaultConversions {
         s"tensorframes: $schema")
     }
     val shape = if (block) { stf.shape } else { stf.shape.tail }
-    val dt = SupportedOperations.opsFor(stf.dataType).sqlType.asInstanceOf[NumericType]
-    DslImpl.placeholder(dt, shape).named(tfName)
+    DslImpl.placeholder(stf.dataType, shape).named(tfName)
   }
 
   private def commonShape(shapes: Seq[Shape]): Shape = {
