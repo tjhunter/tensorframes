@@ -1,20 +1,23 @@
 package org.tensorframes.impl
 
+import scala.collection.mutable
+import scala.collection.JavaConverters._
+import scala.util.{Failure, Success, Try}
+
 import org.apache.commons.lang3.SerializationUtils
+import org.tensorflow.framework.GraphDef
+import org.tensorflow.{Session, Tensor}
+
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, RelationalGroupedDataset, Row}
-import org.tensorflow.framework.GraphDef
-import org.tensorflow.{Session, Tensor}
+
 import org.tensorframes._
 import org.tensorframes.test.DslOperations
 
-import scala.collection.mutable
-import scala.collection.JavaConverters._
-import scala.util.{Failure, Success, Try}
 
 /**
  * The different schemas required for the block reduction.
