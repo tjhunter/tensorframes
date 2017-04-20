@@ -111,7 +111,7 @@ object Shape {
 
 /**
  * SparkTF information. This is the information generally required to work on a tensor.
- * @param shape
+ * @param shape the shape of the column (including the number of rows). May contain some unknowns.
  * @param dataType the datatype of the scalar. Note that it is either NumericType or BinaryType.
  */
 // TODO(tjh) the types supported by TF are much richer (uint8, etc.) but it is not clear
@@ -120,13 +120,6 @@ object Shape {
 case class SparkTFColInfo(
     shape: Shape,
     dataType: ScalarType) extends Serializable {
-
-//  // Forces a cast to a numeric type, which may fail.
-//  // TODO: try to use an atomic type instead?
-//  def numericType: NumericType = dataType match {
-//    case x: NumericType => x
-//    case _ => throw new Exception(s"$dataType cannot be cast to a numeric type")
-//  }
 }
 
 /**
