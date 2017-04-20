@@ -17,31 +17,27 @@ import org.apache.spark.sql.types.{DoubleType, FloatType, IntegerType, NumericTy
  */
 private[tensorframes] class DenseTensor private(
     val shape: Shape,
-    val dtype: ScalarType,
+    val dtype: NumericType,
     private val data: Array[Byte]) {
 
   override def toString(): String = s"DenseTensor($shape, $dtype, " +
-    s"${data.length} bytes)"
+    s"${data.length / dtype.defaultSize} elements)"
 }
 
 private[tensorframes] object DenseTensor {
   def apply[T](x: T)(implicit ev2: TypeTag[T]): DenseTensor = {
     val ops = SupportedOperations.getOps[T]()
-    apply(Shape.empty, ops.sqlType.asInstanceOf[NumericType], convert(x))
+    new DenseTensor(Shape.empty, ops.sqlType, convert(x))
   }
 
   def apply[T](xs: Seq[T])(implicit ev1: Numeric[T], ev2: TypeTag[T]): DenseTensor = {
     val ops = SupportedOperations.getOps[T]()
-    apply(Shape(xs.size), ops.sqlType.asInstanceOf[NumericType], convert1(xs))
-  }
-
-  def apply(shape: Shape, dtype: NumericType, data: Array[Byte]): DenseTensor = {
-    new DenseTensor(shape, SupportedOperations.opsFor(dtype).scalarType, data)
+    new DenseTensor(Shape(xs.size), ops.sqlType, convert1(xs))
   }
 
   def matrix[T](xs: Seq[Seq[T]])(implicit ev1: Numeric[T], ev2: TypeTag[T]): DenseTensor = {
     val ops = SupportedOperations.getOps[T]()
-    apply(Shape(xs.size, xs.head.size), ops.sqlType.asInstanceOf[NumericType], convert2(xs))
+    new DenseTensor(Shape(xs.size, xs.head.size), ops.sqlType, convert2(xs))
   }
 
   private def convert[T](x: T)(implicit ev2: TypeTag[T]): Array[Byte] = {
@@ -102,15 +98,15 @@ private[tensorframes] object DenseTensor {
     val shape = Shape.from(proto.getTensorShape)
     val data = ops.sqlType match {
       case DoubleType =>
-        val coll = proto.getDoubleValList.asScala.map(_.doubleValue())
+        val coll = proto.getDoubleValList.asScala.toSeq.map(_.doubleValue())
         convert(coll)
       case IntegerType =>
-        val coll = proto.getIntValList.asScala.map(_.intValue())
+        val coll = proto.getIntValList.asScala.toSeq.map(_.intValue())
         convert(coll)
       case _ =>
         throw new IllegalArgumentException(
           s"Cannot convert type ${ops.sqlType}")
     }
-    new DenseTensor(shape, ops.scalarType, data)
+    new DenseTensor(shape, ops.sqlType, data)
   }
 }

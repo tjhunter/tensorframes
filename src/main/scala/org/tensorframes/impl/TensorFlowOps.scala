@@ -140,10 +140,10 @@ object TensorFlowOps extends Logging {
     }
   }
 
-  private def getSummaryDefault(op: tf.Operation): Seq[(ScalarType, Shape)] = {
+  private def getSummaryDefault(op: tf.Operation): Seq[(NumericType, Shape)] = {
     (0 until op.numOutputs()).map { idx =>
       val n = op.output(idx)
-      val dt = SupportedOperations.opsFor(n.dataType()).scalarType
+      val dt = SupportedOperations.opsFor(n.dataType()).sqlType
       val shape = Shape.from(n.shape())
       dt -> shape
     }
@@ -164,6 +164,6 @@ case class GraphNodeSummary(
     isPlaceholder: Boolean,
     isInput: Boolean,
     isOutput: Boolean,
-    scalarType: ScalarType,
+    scalarType: NumericType,
     shape: Shape,
     name: String) extends Serializable

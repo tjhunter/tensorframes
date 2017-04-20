@@ -2,10 +2,10 @@ package org.tensorframes.test
 
 import java.nio.file.{Files, Paths}
 
-import org.apache.spark.sql.types.{DataType, NumericType}
-import org.tensorflow.framework.{AttrValue, GraphDef, NodeDef, TensorShapeProto, DataType => ProtoDataType}
+import org.apache.spark.sql.types.{DoubleType, NumericType}
+import org.tensorflow.framework._
 import org.tensorframes.{Logging, Shape}
-import org.tensorframes.impl.{DenseTensor, ScalarType, SupportedOperations}
+import org.tensorframes.impl.{DenseTensor, SupportedOperations}
 
 import scala.collection.JavaConverters._
 import scala.reflect.runtime.universe._
@@ -25,7 +25,7 @@ object dsl extends Logging {
     def toAttr: AttrValue = buildType(s)
   }
 
-  private implicit class DataTypeToAttr(dt: ProtoDataType) {
+  private implicit class DataTypeToAttr(dt: DataType) {
     def toAttr: AttrValue = dataTypeToAttrValue(dt)
   }
 
@@ -66,8 +66,8 @@ object dsl extends Logging {
     def +(other: Node): Node = op_add(this, other)
   }
 
-  private[tensorframes] def placeholder(dtype: DataType, shape: Shape): Node = {
-    build("Placeholder", shape=shape, dtype=dtype.asInstanceOf[NumericType], isOp = false,
+  private[tensorframes] def placeholder(dtype: NumericType, shape: Shape): Node = {
+    build("Placeholder", shape=shape, dtype=dtype, isOp = false,
       extraAttrs = Map("shape" -> shape.toAttr))
   }
 
@@ -165,9 +165,8 @@ object dsl extends Logging {
 
   private def build_constant(dt: DenseTensor): Node = {
     val a = AttrValue.newBuilder().setTensor(DenseTensor.toTensorProto(dt))
-    val dt2 = SupportedOperations.opsFor(dt.dtype).sqlType.asInstanceOf[NumericType]
     build("Const", isOp = false,
-      shape = dt.shape, dtype = dt2,
+      shape = dt.shape, dtype = dt.dtype,
       extraAttrs = Map("value" -> a.build()))
   }
 
@@ -197,7 +196,7 @@ object dsl extends Logging {
       dtype = parent.scalarType,
       shape = reduce_shape(parent.shape, Option(reduction_indices).getOrElse(Nil)),
       extraAttrs = Map(
-        "Tidx" -> AttrValue.newBuilder().setType(ProtoDataType.DT_INT32).build(),
+        "Tidx" -> AttrValue.newBuilder().setType(DataType.DT_INT32).build(),
         "keep_dims" -> AttrValue.newBuilder().setB(false).build()))
   }
 
@@ -219,16 +218,13 @@ object dsl extends Logging {
  * Utilities to convert data back and forth between the proto descriptions and the dataframe descriptions.
  */
 object ProtoConversions {
-  def getDType(nodeDef: NodeDef): ProtoDataType = {
+  def getDType(nodeDef: NodeDef): DataType = {
     val opt = Option(nodeDef.getAttr.get("T")).orElse(Option(nodeDef.getAttr.get("dtype")))
     val v = opt.getOrElse(throw new Exception(s"Neither 'T' no 'dtype' was found in $nodeDef"))
     v.getType
   }
 
-  def getDType(sqlType: NumericType): ProtoDataType = {
-    SupportedOperations.opsFor(sqlType).tfType
-  }
-  def getDType(sqlType: ScalarType): ProtoDataType = {
+  def getDType(sqlType: NumericType): DataType = {
     SupportedOperations.opsFor(sqlType).tfType
   }
 
@@ -236,7 +232,7 @@ object ProtoConversions {
     AttrValue.newBuilder().setType(getDType(sqlType)).build()
   }
 
-  def dataTypeToAttrValue(dataType: ProtoDataType): AttrValue = {
+  def dataTypeToAttrValue(dataType: DataType): AttrValue = {
     AttrValue.newBuilder().setType(dataType).build()
   }
 

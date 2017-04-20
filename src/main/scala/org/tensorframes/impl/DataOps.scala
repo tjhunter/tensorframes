@@ -2,11 +2,10 @@ package org.tensorframes.impl
 
 import scala.collection.mutable
 import scala.reflect.ClassTag
-import org.{tensorflow => tf}
 
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.catalyst.expressions.GenericRow
-import org.apache.spark.sql.types.{StructType}
+import org.apache.spark.sql.types.{NumericType, StructType}
 
 import org.tensorframes.{Logging, Shape}
 import org.tensorframes.Shape.DimType
@@ -146,7 +145,7 @@ object DataOps extends Logging {
 
   def getColumnFast0(
       reshapeShape: Shape,
-      scalaType: ScalarType,
+      scalaType: NumericType,
       allDataBuffer: mutable.WrappedArray[_]): Iterable[Any] = {
     reshapeShape.dims match {
       case Seq() =>

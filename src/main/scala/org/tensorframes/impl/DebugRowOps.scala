@@ -267,24 +267,6 @@ private[impl] trait SchemaTransforms extends Logging {
       case _ => f // Nothing to do
     }
   }
-
-  /**
-   * Checks that the data, coming with a certain shape from Spark, can be shaped into
-   * the given shape (taking unknown values and binary data into account)
-   */
-  def canBeReshapedTo(dt: ScalarType, from: Shape, to: Shape): Boolean = {
-//    if (dt == ScalarBinaryType) {
-//      // Binary has to be at least an array.
-//      if (from.numDims == 0) {
-//        return false
-//      }
-//      // In that case, the spark shape should be one larger, and we should drop the bottom one.
-//      from.dropInner.checkMorePreciseThan(to)
-//    } else {
-//      from.checkMorePreciseThan(to)
-//    }
-    from.checkMorePreciseThan(to)
-  }
 }
 
 object SchemaTransforms extends SchemaTransforms
@@ -340,16 +322,16 @@ class DebugRowOps
           throw new Exception(
             s"Data column ${f.name} has not been analyzed yet, cannot run TF on this dataframe")
         }
+        if (! stf.shape.checkMorePreciseThan(in.shape)) {
+          throw new Exception(
+            s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
+              s" ${in.shape} requested by the TF graph")
+        }
         // We do not support autocasting for now.
         if (stf.dataType != in.scalarType) {
           throw new Exception(
             s"The type of node '${in.name}' (${stf.dataType}) is not compatible with the data type " +
               s"of the column (${in.scalarType})")
-        }
-        if (! canBeReshapedTo(stf.dataType, stf.shape, in.shape)) {
-          throw new Exception(
-            s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
-              s" ${in.shape} requested by the TF graph")
         }
         // The input has to be either a constant or a placeholder
         if (! in.isPlaceholder) {
@@ -432,15 +414,15 @@ class DebugRowOps
       val stf = get(ColumnInformation(f).stf,
         s"Data column ${f.name} has not been analyzed yet, cannot run TF on this dataframe")
 
+      val cellShape = stf.shape.tail
+      // No check for unknowns: we allow unknowns in the first dimension of the cell shape.
+      check(cellShape.checkMorePreciseThan(in.shape),
+        s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
+          s" ${in.shape} requested by the TF graph")
+
       check(stf.dataType == in.scalarType,
         s"The type of node '${in.name}' (${stf.dataType}) is not compatible with the data type " +
           s"of the column (${in.scalarType})")
-
-      val cellShape = stf.shape.tail
-      // No check for unknowns: we allow unknowns in the first dimension of the cell shape.
-      check(canBeReshapedTo(stf.dataType, cellShape, in.shape),
-        s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
-          s" ${in.shape} requested by the TF graph")
 
       check(in.isPlaceholder,
         s"Invalid type for input node ${in.name}. It has to be a placeholder")
@@ -550,8 +532,7 @@ class DebugRowOps
       val f = col.field
       builder.append(s"$prefix-- ${f.name}: ${f.dataType.typeName} (nullable = ${f.nullable})")
       val stf = col.stf.map { s =>
-        val dt = SupportedOperations.opsFor(s.dataType).sqlType
-        s" ${dt.typeName}${s.shape}"
+        s" ${s.dataType.typeName}${s.shape}"
       }   .getOrElse(" <no tensor info>")
       builder.append(stf)
       builder.append("\n")
