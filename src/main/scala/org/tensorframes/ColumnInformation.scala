@@ -1,6 +1,7 @@
 package org.tensorframes
 
 import org.apache.spark.sql.types._
+
 import org.tensorframes.impl.{ScalarType, SupportedOperations}
 
 

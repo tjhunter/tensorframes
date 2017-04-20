@@ -3,6 +3,7 @@ package org.tensorframes
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types.{ArrayType, DataType, NumericType}
+
 import org.tensorframes.impl.{ScalarType, SupportedOperations}
 
 /**
