@@ -609,18 +609,16 @@ private[impl] object StringOperations extends ScalarTypeOperation[Array[Byte]] w
     new StringTensorConverter(cellShape, numCells)
 
   override def convertTensor(t: tf.Tensor): MWrappedArray[Array[Byte]] = {
-    // TODO(tjh) implement later
-    ???
+    throw new Exception(s"convertTensor is not implemented for strings")
   }
 
   override def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any] = {
-    // TODO(tjh) implement later
-    ???
+    throw new Exception(s"convertBuffer is not implemented for strings")
   }
 
   override def tag: Option[TypeTag[_]] = None
 
-  override def ev = ???
+  override def ev = throw new Exception(s"ev is not implemented for strings")
 }
 
 
