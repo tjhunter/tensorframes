@@ -185,5 +185,5 @@ with g2.as_default():
     value_output = tf.identity(g2.get_tensor_by_name('top_predictions:0'), name="value")
     pred_df = tfs.map_rows([index_output, value_output], df, feed_dict={'image_input':'image_data'})
 
-pred_df.select('index', 'value').head()
+pred_df.select('index', 'value').show()
 
