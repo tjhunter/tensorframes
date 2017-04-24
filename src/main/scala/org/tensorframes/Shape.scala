@@ -1,9 +1,11 @@
 package org.tensorframes
 
-import org.apache.spark.sql.types.NumericType
+import org.apache.spark.sql.types.{BinaryType, DataType, NumericType}
 import org.tensorflow.framework.TensorShapeProto
+
 import scala.collection.JavaConverters._
 import org.tensorframes.Shape.DimType
+import org.tensorframes.impl.ScalarType
 import org.{tensorflow => tf}
 
 
@@ -35,6 +37,11 @@ class Shape private (private val ds: Array[DimType]) extends Serializable {
   def prepend(x: DimType): Shape = Shape(x +: ds)
 
   def prepend(x: Int): Shape = Shape(x.toLong +: ds)
+
+  /**
+   * Drops the most inner dimension of the shape.
+   */
+  def dropInner: Shape = Shape(ds.dropRight(1))
 
   /**
    * A shape with the first dimension dropped.
@@ -104,15 +111,16 @@ object Shape {
 
 /**
  * SparkTF information. This is the information generally required to work on a tensor.
- * @param shape
- * @param dataType
+ * @param shape the shape of the column (including the number of rows). May contain some unknowns.
+ * @param dataType the datatype of the scalar. Note that it is either NumericType or BinaryType.
  */
 // TODO(tjh) the types supported by TF are much richer (uint8, etc.) but it is not clear
 // if they all map to a Catalyst memory representation
 // TODO(tjh) support later basic structures for sparse types?
 case class SparkTFColInfo(
     shape: Shape,
-    dataType: NumericType) extends Serializable
+    dataType: ScalarType) extends Serializable {
+}
 
 /**
  * Exception thrown when the user requests tensors of high order.

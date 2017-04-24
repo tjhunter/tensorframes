@@ -2,6 +2,8 @@ package org.tensorframes
 
 import org.apache.spark.sql.types._
 
+import org.tensorframes.impl.{ScalarType, SupportedOperations}
+
 
 class ColumnInformation private (
       val field: StructField,
@@ -15,7 +17,9 @@ class ColumnInformation private (
     val b = new MetadataBuilder().withMetadata(field.metadata)
     for (info <- stf) {
       b.putLongArray(shapeKey, info.shape.dims.toArray)
-      b.putString(tensorStructType, info.dataType.toString)
+      // Keep the SQL name, so that we do not leak internal details.
+      val dt = SupportedOperations.opsFor(info.dataType).sqlType
+      b.putString(tensorStructType, dt.toString)
     }
     val meta = b.build()
     field.copy(metadata = meta)
@@ -73,15 +77,15 @@ object ColumnInformation extends Logging {
    * @param scalarType the data type
    * @param blockShape the shape of the block
    */
-  def structField(name: String, scalarType: NumericType, blockShape: Shape): StructField = {
+  def structField(name: String, scalarType: ScalarType, blockShape: Shape): StructField = {
     val i = SparkTFColInfo(blockShape, scalarType)
     val f = StructField(name, sqlType(scalarType, blockShape.tail), nullable = false)
     ColumnInformation(f, i).merged
   }
   
-  private def sqlType(scalarType: NumericType, shape: Shape): DataType = {
+  private def sqlType(scalarType: ScalarType, shape: Shape): DataType = {
     if (shape.dims.isEmpty) {
-      scalarType
+      SupportedOperations.opsFor(scalarType).sqlType
     } else {
       ArrayType(sqlType(scalarType, shape.tail), containsNull = false)
     }
@@ -102,11 +106,14 @@ object ColumnInformation extends Logging {
     for {
       s <- shape
       t <- tpe
-    } yield SparkTFColInfo(s, t)
+      ops <- SupportedOperations.getOps(t)
+    } yield SparkTFColInfo(s, ops.scalarType)
   }
 
-  private def getType(s: String): Option[NumericType] = {
-    supportedTypes.find(_.toString == s)
+  private def getType(s: String): Option[DataType] = {
+    val res = supportedTypes.find(_.toString == s)
+    logInfo(s"getType: $s -> $res")
+    res
   }
 
   /**
@@ -115,19 +122,18 @@ object ColumnInformation extends Logging {
     * @return
    */
   private def extractFromRow(dt: DataType): Option[SparkTFColInfo] = dt match {
-    case x: NumericType if MetadataConstants.supportedTypes.contains(dt) =>
-      logTrace("numerictype: " + x)
-      // It is a basic type that we understand
-      Some(SparkTFColInfo(Shape(Unknown), x))
     case x: ArrayType =>
       logTrace("arraytype: " + x)
       // Look into the array to figure out the type.
       extractFromRow(x.elementType).map { info =>
         SparkTFColInfo(info.shape.prepend(Unknown), info.dataType)
       }
-    case _ =>
-      logTrace("not understood: " + dt)
-      // Not understood.
-      None
+    case _ => SupportedOperations.getOps(dt) match {
+      case Some(ops) =>
+        logTrace("numerictype: " + ops.scalarType)
+        // It is a basic type that we understand
+        Some(SparkTFColInfo(Shape(Unknown), ops.scalarType))
+      case None => None
+    }
   }
 }

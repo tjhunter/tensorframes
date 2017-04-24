@@ -1,20 +1,23 @@
 package org.tensorframes.impl
 
+import scala.collection.mutable
+import scala.collection.JavaConverters._
+import scala.util.{Failure, Success, Try}
+
 import org.apache.commons.lang3.SerializationUtils
+import org.tensorflow.framework.GraphDef
+import org.tensorflow.{Session, Tensor}
+
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{DataFrame, RelationalGroupedDataset, Row}
-import org.tensorflow.framework.GraphDef
-import org.tensorflow.{Session, Tensor}
+
 import org.tensorframes._
 import org.tensorframes.test.DslOperations
 
-import scala.collection.mutable
-import scala.collection.JavaConverters._
-import scala.util.{Failure, Success, Try}
 
 /**
  * The different schemas required for the block reduction.
@@ -322,16 +325,16 @@ class DebugRowOps
           throw new Exception(
             s"Data column ${f.name} has not been analyzed yet, cannot run TF on this dataframe")
         }
-        if (! stf.shape.checkMorePreciseThan(in.shape)) {
-          throw new Exception(
-            s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
-              s" ${in.shape} requested by the TF graph")
-        }
         // We do not support autocasting for now.
         if (stf.dataType != in.scalarType) {
           throw new Exception(
             s"The type of node '${in.name}' (${stf.dataType}) is not compatible with the data type " +
               s"of the column (${in.scalarType})")
+        }
+        if (! stf.shape.checkMorePreciseThan(in.shape)) {
+          throw new Exception(
+            s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
+              s" ${in.shape} requested by the TF graph")
         }
         // The input has to be either a constant or a placeholder
         if (! in.isPlaceholder) {
@@ -414,15 +417,15 @@ class DebugRowOps
       val stf = get(ColumnInformation(f).stf,
         s"Data column ${f.name} has not been analyzed yet, cannot run TF on this dataframe")
 
+      check(stf.dataType == in.scalarType,
+        s"The type of node '${in.name}' (${stf.dataType}) is not compatible with the data type " +
+          s"of the column (${in.scalarType})")
+
       val cellShape = stf.shape.tail
       // No check for unknowns: we allow unknowns in the first dimension of the cell shape.
       check(cellShape.checkMorePreciseThan(in.shape),
         s"The data column '${f.name}' has shape ${stf.shape} (not compatible) with shape" +
           s" ${in.shape} requested by the TF graph")
-
-      check(stf.dataType == in.scalarType,
-        s"The type of node '${in.name}' (${stf.dataType}) is not compatible with the data type " +
-          s"of the column (${in.scalarType})")
 
       check(in.isPlaceholder,
         s"Invalid type for input node ${in.name}. It has to be a placeholder")
@@ -532,7 +535,8 @@ class DebugRowOps
       val f = col.field
       builder.append(s"$prefix-- ${f.name}: ${f.dataType.typeName} (nullable = ${f.nullable})")
       val stf = col.stf.map { s =>
-        s" ${s.dataType.typeName}${s.shape}"
+        val dt = SupportedOperations.opsFor(s.dataType).sqlType
+        s" ${dt.typeName}${s.shape}"
       }   .getOrElse(" <no tensor info>")
       builder.append(stf)
       builder.append("\n")
@@ -724,9 +728,6 @@ object DebugRowOpsImpl extends Logging {
         }
       }
   }
-
-  // Trying to get around some frequent crashes within TF.
-  private[this] val tfLock = new Object
 
   private[impl] def reducePair(
       schema: StructType,

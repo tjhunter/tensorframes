@@ -1,10 +1,8 @@
 package org.tensorframes
 
 import scala.reflect.runtime.universe.TypeTag
-
 import org.apache.spark.sql.DataFrame
-import org.apache.spark.sql.types.IntegerType
-
+import org.apache.spark.sql.types.{IntegerType, NumericType}
 import org.tensorframes.impl.SupportedOperations
 
 /**
@@ -45,7 +43,7 @@ package object dsl {
 
   def placeholder[T : Numeric : TypeTag](shape: Int*): Operation = {
     val ops = SupportedOperations.getOps[T]()
-    DslImpl.placeholder(ops.sqlType, Shape(shape: _*))
+    DslImpl.placeholder(ops.sqlType.asInstanceOf[NumericType], Shape(shape: _*))
   }
 
   def constant[T : ConvertibleToDenseTensor](x: T): Operation = {

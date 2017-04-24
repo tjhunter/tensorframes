@@ -184,7 +184,7 @@ object TFDataOps extends Logging {
     */
   private def getColumn(
       t: tf.Tensor,
-      scalaType: NumericType,
+      scalaType: ScalarType,
       cellShape: Shape,
       expectedNumRows: Option[Int],
       fastPath: Boolean = true): (Int, Iterable[Any]) = {

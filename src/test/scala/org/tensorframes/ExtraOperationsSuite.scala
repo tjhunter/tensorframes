@@ -2,6 +2,7 @@ package org.tensorframes
 
 import org.apache.spark.sql.types.{DoubleType, IntegerType}
 import org.scalatest.FunSuite
+import org.tensorframes.impl.{ScalarDoubleType, ScalarIntType}
 
 
 class ExtraOperationsSuite
@@ -16,7 +17,7 @@ class ExtraOperationsSuite
     val di = ExtraOperations.explainDetailed(df)
     val Seq(c1) = di.cols
     val Some(s) = c1.stf
-    assert(s.dataType === DoubleType)
+    assert(s.dataType === ScalarDoubleType)
     assert(s.shape === Shape(Unknown))
     logDebug(df.toString() + "->" + di.toString)
   }
@@ -26,7 +27,7 @@ class ExtraOperationsSuite
     val di = explainDetailed(df)
     val Seq(c1) = di.cols
     val Some(s) = c1.stf
-    assert(s.dataType === IntegerType)
+    assert(s.dataType === ScalarIntType)
     assert(s.shape === Shape(Unknown))
     logDebug(df.toString() + "->" + di.toString)
   }
@@ -37,13 +38,13 @@ class ExtraOperationsSuite
     logDebug(df.toString() + "->" + di.toString)
     val Seq(c1, c2, c3) = di.cols
     val Some(s1) = c1.stf
-    assert(s1.dataType === DoubleType)
+    assert(s1.dataType === ScalarDoubleType)
     assert(s1.shape === Shape(Unknown))
     val Some(s2) = c2.stf
-    assert(s2.dataType === DoubleType)
+    assert(s2.dataType === ScalarDoubleType)
     assert(s2.shape === Shape(Unknown, Unknown))
     val Some(s3) = c3.stf
-    assert(s3.dataType === DoubleType)
+    assert(s3.dataType === ScalarDoubleType)
     assert(s3.shape === Shape(Unknown, Unknown, Unknown))
   }
 
@@ -54,7 +55,7 @@ class ExtraOperationsSuite
     logDebug(df.toString() + "->" + di.toString)
     val Seq(c1) = di.cols
     val Some(s) = c1.stf
-    assert(s.dataType === DoubleType)
+    assert(s.dataType === ScalarDoubleType)
     assert(s.shape === Shape(1)) // There is only one partition
   }
 
@@ -65,7 +66,7 @@ class ExtraOperationsSuite
     logDebug(df.toString() + "->" + di.toString)
     val Seq(c1) = di.cols
     val Some(s) = c1.stf
-    assert(s.dataType === DoubleType)
+    assert(s.dataType === ScalarDoubleType)
     assert(s.shape === Shape(Unknown)) // There is only one partition
   }
 
@@ -78,7 +79,7 @@ class ExtraOperationsSuite
     logDebug(df.toString() + "->" + di.toString)
     val Seq(c1, c2) = di.cols
     val Some(s2) = c2.stf
-    assert(s2.dataType === DoubleType)
+    assert(s2.dataType === ScalarDoubleType)
     assert(s2.shape === Shape(2, Unknown)) // There is only one partition
   }
 
@@ -92,7 +93,7 @@ class ExtraOperationsSuite
     logDebug(df.toString() + "->" + di.toString)
     val Seq(c1, c2) = di.cols
     val Some(s2) = c2.stf
-    assert(s2.dataType === DoubleType)
+    assert(s2.dataType === ScalarDoubleType)
     assert(s2.shape === Shape(3, 2)) // There is only one partition
   }
 }

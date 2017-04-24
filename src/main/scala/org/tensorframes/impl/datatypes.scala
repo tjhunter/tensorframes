@@ -5,7 +5,7 @@ import java.nio._
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
 import org.{tensorflow => tf}
-import org.tensorflow.framework.DataType
+import org.tensorflow.framework.{DataType => ProtoDataType}
 import org.tensorframes.{Logging, Shape}
 
 import scala.collection.mutable.{WrappedArray => MWrappedArray}
@@ -19,6 +19,39 @@ import scala.reflect.runtime.universe.TypeTag
 //  - protobuf: ???
 
 /**
+ * All the types of scalars supported by TensorFrames.
+ *
+ * It can be argued that the Binary type is not really a scalar,
+ * but it is considered as such by both Spark and TensorFlow.
+ */
+trait ScalarType
+
+/**
+ * Int32
+ */
+case object ScalarIntType extends ScalarType
+
+/**
+ * INT64
+ */
+case object ScalarLongType extends ScalarType
+
+/**
+ * FLOAT64
+ */
+case object ScalarDoubleType extends ScalarType
+
+/**
+ * FLOAT32
+ */
+case object ScalarFloatType extends ScalarType
+
+/**
+ * STRING / BINARY
+ */
+case object ScalarBinaryType extends ScalarType
+
+/**
  * @param shape the shape of the element in the row (not the overall shape of the block)
  * @param numCells the number of cells that are going to be allocated with the given shape.
  * @tparam T
@@ -27,7 +60,7 @@ import scala.reflect.runtime.universe.TypeTag
 private[tensorframes] sealed abstract class TensorConverter[@specialized(Double, Float, Int, Long) T] (
     val shape: Shape,
     val numCells: Int)
-  (implicit ev1: TypeTag[T], ev2: ClassTag[T]) extends Logging {
+  (implicit ev2: ClassTag[T]) extends Logging {
   final val empty = Array.empty[T]
   /**
    * Creates memory space for a given number of units of the given shape.
@@ -79,6 +112,7 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
 
   // The return element is just here so that the method gets specialized (otherwise it would not).
   final def append(row: Row, position: Int): Array[T] = {
+    logger.debug(s"append: position=$position row=$row")
     val d = shape.numDims
     if (d == 0) {
       appendRaw(row.getAs[T](position))
@@ -125,23 +159,27 @@ private[tensorframes] sealed abstract class TensorConverter[@specialized(Double,
  * It does not support TF's rich type collection (uint16, float128, etc.). These have to be handled
  * internally through casting.
  */
-private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double, Float) T]
-  (implicit ev1: TypeTag[T], ev2: ClassTag[T]) {
+private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int, Long, Double, Float) T] {
   /**
    * The SQL type associated with the given type.
    */
-  val sqlType: NumericType
+  val sqlType: DataType
 
   /**
    * The TF type
    */
-  val tfType: DataType
+  val tfType: ProtoDataType
 
   /**
    * The TF type (new style).
    *
    */
   val tfType2: tf.DataType
+
+  /**
+   * The type of the scalar value.
+   */
+  val scalarType: ScalarType
 
   /**
    * A zero element for this type
@@ -217,25 +255,42 @@ private[tensorframes] sealed abstract class ScalarTypeOperation[@specialized(Int
     res.map { arr => conv(arr.map(conv)) }
   }
 
-  def tag: TypeTag[_] = implicitly[TypeTag[T]]
+  implicit def classTag: ClassTag[T] = ev
+
+  def tag: Option[TypeTag[_]]
+
+  def ev: ClassTag[T] = null
 }
 
 private[tensorframes] object SupportedOperations {
   private val ops: Seq[ScalarTypeOperation[_]] =
-    Seq(DoubleOperations, FloatOperations, IntOperations, LongOperations)
+    Seq(DoubleOperations, FloatOperations, IntOperations, LongOperations, StringOperations)
 
   val sqlTypes = ops.map(_.sqlType)
 
+  val scalarTypes = ops.map(_.scalarType)
+
   private val tfTypes = ops.map(_.tfType)
 
-  def opsFor(t: NumericType): ScalarTypeOperation[_] = {
+  def getOps(t: DataType): Option[ScalarTypeOperation[_]] = {
+    ops.find(_.sqlType == t)
+  }
+
+  def opsFor(t: DataType): ScalarTypeOperation[_] = {
     ops.find(_.sqlType == t).getOrElse {
       throw new IllegalArgumentException(s"Type $t is not supported. Only the following types are" +
         s"supported: ${sqlTypes.mkString(", ")}")
     }
   }
 
-  def opsFor(t: DataType): ScalarTypeOperation[_] = {
+  def opsFor(t: ScalarType): ScalarTypeOperation[_] = {
+    ops.find(_.scalarType == t).getOrElse {
+      throw new IllegalArgumentException(s"Type $t is not supported. Only the following types are" +
+        s"supported: ${sqlTypes.mkString(", ")}")
+    }
+  }
+
+  def opsFor(t: ProtoDataType): ScalarTypeOperation[_] = {
     ops.find(_.tfType == t).getOrElse {
       throw new IllegalArgumentException(s"Type $t is not supported. Only the following types are" +
         s"supported: ${tfTypes.mkString(", ")}")
@@ -252,7 +307,7 @@ private[tensorframes] object SupportedOperations {
 
   def getOps[T : TypeTag](): ScalarTypeOperation[T] = {
     val ev: TypeTag[_] = implicitly[TypeTag[T]]
-    ops.find(_.tag.tpe =:= ev.tpe).getOrElse {
+    ops.find(_.tag.map(_.tpe =:= ev.tpe) == Some(true)).getOrElse {
       val tags = ops.map(_.tag.toString()).mkString(", ")
       throw new IllegalArgumentException(s"Type ${ev} is not supported. Only the following types " +
         s"are supported: ${tags}")
@@ -299,8 +354,9 @@ private[impl] class DoubleTensorConverter(s: Shape, numCells: Int)
 
 private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with Logging {
   override val sqlType = DoubleType
-  override val tfType = DataType.DT_DOUBLE
+  override val tfType = ProtoDataType.DT_DOUBLE
   override val tfType2 = tf.DataType.DOUBLE
+  override val scalarType = ScalarDoubleType
   final override val zero = 0.0
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Double] =
     new DoubleTensorConverter(cellShape, numCells)
@@ -325,6 +381,9 @@ private[impl] object DoubleOperations extends ScalarTypeOperation[Double] with L
     res
   }
 
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Double]])
+
+  override def ev = ClassTag.Double
 }
 
 // ********** FLOAT ************
@@ -358,8 +417,9 @@ private[impl] class FloatTensorConverter(s: Shape, numCells: Int)
 
 private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Logging {
   override val sqlType = FloatType
-  override val tfType = DataType.DT_FLOAT
+  override val tfType = ProtoDataType.DT_FLOAT
   override val tfType2 = tf.DataType.FLOAT
+  override val scalarType = ScalarFloatType
   final override val zero = 0.0f
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Float] =
     new FloatTensorConverter(cellShape, numCells)
@@ -381,6 +441,10 @@ private[impl] object FloatOperations extends ScalarTypeOperation[Float] with Log
     t.writeTo(b)
     res
   }
+
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Float]])
+
+  override def ev = ClassTag.Float
 }
 
 // ********** INT32 ************
@@ -414,8 +478,9 @@ private[impl] class IntTensorConverter(s: Shape, numCells: Int)
 
 private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging {
   override val sqlType = IntegerType
-  override val tfType = DataType.DT_INT32
+  override val tfType = ProtoDataType.DT_INT32
   override val tfType2 = tf.DataType.INT32
+  override val scalarType = ScalarIntType
   final override val zero = 0
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Int] =
     new IntTensorConverter(cellShape, numCells)
@@ -434,6 +499,10 @@ private[impl] object IntOperations extends ScalarTypeOperation[Int] with Logging
     dbuff.get(res)
     res
   }
+
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Int]])
+
+  override def ev = ClassTag.Int
 }
 
 // ****** INT64 (LONG) ******
@@ -467,8 +536,9 @@ private[impl] class LongTensorConverter(s: Shape, numCells: Int)
 
 private[impl] object LongOperations extends ScalarTypeOperation[Long] with Logging {
   override val sqlType = LongType
-  override val tfType = DataType.DT_INT64
+  override val tfType = ProtoDataType.DT_INT64
   override val tfType2 = tf.DataType.INT64
+  override val scalarType = ScalarLongType
   final override val zero = 0L
   override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Long] =
     new LongTensorConverter(cellShape, numCells)
@@ -488,4 +558,67 @@ private[impl] object LongOperations extends ScalarTypeOperation[Long] with Loggi
     logTrace(s"Extracted from buffer: ${res.toSeq}")
     res
   }
+
+  override def tag: Option[TypeTag[_]] = Option(implicitly[TypeTag[Long]])
+
+  override def ev = ClassTag.Long
 }
+
+// ********** STRING *********
+// This is actually byte arrays, which corresponds to the 'binary' type in Spark.
+
+// The string converter can only deal with one row at a time (the most common case).
+private[impl] class StringTensorConverter(s: Shape, numCells: Int)
+  extends TensorConverter[Array[Byte]](s, numCells) with Logging {
+  private var buffer: Array[Byte] = null
+
+  override val elementSize: Int = 1
+
+  {
+    logger.debug(s"Creating string buffer for shape $s and $numCells cells")
+    assert(s == Shape() && numCells == 1, s"The string buffer does not accept more than one" +
+      s" scalar of type binary. shape=$s numCells=$numCells")
+  }
+
+
+  override def reserve(): Unit = {}
+
+  override def appendRaw(d: Array[Byte]): Unit = {
+    assert(buffer == null, s"The buffer has only been set with ${buffer.length} values," +
+      s" but ${d.length} are trying to get inserted")
+    buffer = d.clone()
+  }
+
+  override def tensor2(): tf.Tensor = {
+    tf.Tensor.create(buffer)
+  }
+
+  override def fillBuffer(buff: ByteBuffer): Unit = {
+    buff.put(buffer)
+  }
+}
+
+private[impl] object StringOperations extends ScalarTypeOperation[Array[Byte]] with Logging {
+  override val sqlType = BinaryType
+  override val tfType = ProtoDataType.DT_STRING
+  override val tfType2 = tf.DataType.STRING
+  override val scalarType = ScalarBinaryType
+  final override val zero = Array.empty[Byte]
+
+  override def tfConverter(cellShape: Shape, numCells: Int): TensorConverter[Array[Byte]] =
+    new StringTensorConverter(cellShape, numCells)
+
+  override def convertTensor(t: tf.Tensor): MWrappedArray[Array[Byte]] = {
+    throw new Exception(s"convertTensor is not implemented for strings")
+  }
+
+  override def convertBuffer(buff: ByteBuffer, numElements: Int): Iterable[Any] = {
+    throw new Exception(s"convertBuffer is not implemented for strings")
+  }
+
+  override def tag: Option[TypeTag[_]] = None
+
+  override def ev = throw new Exception(s"ev is not implemented for strings")
+}
+
+

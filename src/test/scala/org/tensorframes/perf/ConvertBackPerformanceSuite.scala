@@ -2,7 +2,7 @@ package org.tensorframes.perf
 
 import org.scalatest.FunSuite
 import org.tensorframes.{ColumnInformation, Shape, TensorFramesTestSparkContext}
-import org.tensorframes.impl.{SupportedOperations, TFDataOps}
+import org.tensorframes.impl.{ScalarIntType, SupportedOperations, TFDataOps}
 import org.tensorframes.Logging
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
@@ -48,9 +48,9 @@ class ConvertBackPerformanceSuite
     // Creating the rows this way, because we need to respect the collection used by Spark when
     // unpacking the rows.
     val rows = sqlContext.createDataFrame(Seq.fill(numCells)(Tuple1(Seq.fill(numVals)(1)))).collect()
-    val schema = StructType(Seq(ColumnInformation.structField("f1", IntegerType,
+    val schema = StructType(Seq(ColumnInformation.structField("f1", ScalarIntType,
       Shape(numCells, numVals))))
-    val tfSchema = StructType(Seq(ColumnInformation.structField("f2", IntegerType,
+    val tfSchema = StructType(Seq(ColumnInformation.structField("f2", ScalarIntType,
       Shape(numCells, numVals))))
     val tensor = getTFTensor(IntegerType, Row(Seq.fill(numVals)(1)), Shape(numVals), numCells)
     println("generated data")
