@@ -22,7 +22,9 @@ Officially supported Spark versions: 2.1.x and Scala version 2.10 / 2.11.
 
 See the [user guide](https://github.com/databricks/tensorframes/wiki/TensorFrames-user-guide) for
  extensive information about the API.
- 
+
+For questions, see the [TensorFrames mailing list](https://groups.google.com/forum/#!forum/tensorframes).
+
 TensorFrames is available as a
  [Spark package](http://spark-packages.org/package/databricks/tensorframes).
 
