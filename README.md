@@ -38,6 +38,8 @@ TensorFrames is available as a
  [official instructions](https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#download-and-setup)
   on how to get the latest release of TensorFlow.
 
+ - (Optional) the [Nix package manager](http://nixos.org/nix/) if you want to guarantee a fully reproducible build environment. This is the environment that will be used for reproducing bugs.
+
 Additionally, if you want to run unit tests for python, you need the following dependencies:
 
  - nose >= 1.3 
@@ -172,6 +174,17 @@ df2.collect()
 ```
 
 ## How to compile and install for developers
+
+It is recommended you use [Nix](http://nixos.org/nix/) to guarantee that the build environment
+can be reproduced. Once you have installed Nix, you can set the environment from
+the root of project:
+
+```bash
+nix-shell --pure default.nix
+```
+
+This will create a python 2.7 environment with all the dependencies. If you
+want to work with Python 3.5, use `default-3.5.nix` instead.
 
  The C++ bindings are already compiled though, so you should only have to deal with compiling
  the scala code. The recommended procedure is to use the assembly:
