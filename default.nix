@@ -11,5 +11,7 @@ stdenv.mkDerivation rec {
     python27Packages.pillow
     python27Packages.Keras
     python27Packages.h5py
+    jdk
+    which
   ];
 }
