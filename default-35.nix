@@ -12,5 +12,8 @@ stdenv.mkDerivation rec {
     python35Packages.pillow
     python35Packages.Keras
     python35Packages.h5py
+    python35Packages.pandas
+    jdk
+    which
   ];
 }
