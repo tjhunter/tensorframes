@@ -20,7 +20,7 @@ class DebugRowOpsSuite
     val outputSchema = StructType(Array(structField("y", ScalarDoubleType, Shape(Unknown))))
     val (g, _) = TestUtilities.analyzeGraph(out)
     logDebug(g.toString)
-    val res = DebugRowOpsImpl.performMap(rows, input, Array(0), g, outputSchema)
+    val res = DebugRowOpsImpl.performMap(rows, input, Array("x" -> 0), g, outputSchema)
     assert(res === Array(Row(1.0, 1.0)))
   }
 
@@ -32,7 +32,7 @@ class DebugRowOpsSuite
     val outputSchema = StructType(Array(structField("y", ScalarDoubleType, Shape(Unknown))))
     val (g, _) = TestUtilities.analyzeGraph(out)
     logDebug(g.toString)
-    val res = DebugRowOpsImpl.performMap(rows, input, Array(0), g, outputSchema)
+    val res = DebugRowOpsImpl.performMap(rows, input, Array("x" -> 0), g, outputSchema)
     assert(res === Array(Row(2.0, 1.0)))
   }
 

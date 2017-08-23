@@ -28,7 +28,7 @@ class ConvertPerformanceSuite
     val numIters = 100
     var x: Int = 0
     for (_ <- 1 to numIters) {
-      val l = TFDataOps.convert(rows, schema, Array(0))
+      val l = TFDataOps.convert(rows, schema, Array("f1" -> 0))
       x += l.size
       l.foreach(_._2.close())
     }
@@ -52,7 +52,7 @@ class ConvertPerformanceSuite
     val numIters = 100
     var x: Int = 0
     for (_ <- 1 to numIters) {
-      val l = TFDataOps.convert(rows, schema, Array(0))
+      val l = TFDataOps.convert(rows, schema, Array("f1" -> 0))
       x += l.size
       l.foreach(_._2.close())
     }
