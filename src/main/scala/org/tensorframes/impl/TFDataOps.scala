@@ -55,33 +55,6 @@ object TFDataOps extends Logging {
     DataOps.convertFast0(it, converters, requestedTFColIdxs)
 
     convertersWithPaths.map { case (npath, conv) => npath -> conv.tensor2() }
-
-//    val fields = requestedTFCols.map(struct.fields(_))
-//    logDebug(s"convert2: Calling convert on ${it.length} rows with struct: $struct " +
-//      s"and indices: ${requestedTFCols.toSeq}")
-//    val converters = fields.map { f =>
-//      // Extract and check the shape
-//      val ci = ColumnInformation(f).stf.getOrElse {
-//        throw new Exception(s"Could not column information for column $f")
-//      }
-//      val leadDim = ci.shape.dims.headOption.getOrElse {
-//        throw new Exception(s"Column $f found to be scalar, but its dimensions should be >= 1")
-//      } .toInt
-//      if (leadDim != Shape.Unknown && leadDim != it.length) {
-//        throw new Exception(s"Lead dimension for column $f (found to be $leadDim)" +
-//          s" is not compatible with a block of size ${it.length}. " +
-//          s"Expected block structure: $struct, meta info = $ci")
-//      }
-//      SupportedOperations.opsFor(ci.dataType).tfConverter(ci.shape.tail, it.length)
-//    }
-//
-//    for (c <- converters) { c.reserve() }
-//
-//    DataOps.convertFast0(it, converters, requestedTFCols)
-//
-//    val tensors = converters.map(_.tensor2())
-//    val names = requestedTFCols.map(struct(_).name)
-//    names.zip(tensors)
   }
 
 
