@@ -318,7 +318,11 @@ class DebugRowOps
     val inputSchema: StructType = {
 
       inputs.values.foreach { in =>
-        val f = get(fieldsByName.get(in.name),
+        val fname = get(shapeHints.inputs.get(in.name),
+          s"The graph placeholder ${in.name} was not given a corresponding dataframe field name as input:" +
+            s"hints: ${shapeHints.inputs}")
+
+        val f = get(fieldsByName.get(fname),
           s"Graph input ${in.name} found, but no column to match it. Dataframe columns: $cols")
 
         val stf = ColumnInformation(f).stf.getOrElse {
@@ -359,9 +363,12 @@ class DebugRowOps
       StructType(fields.toArray)
     }
     // The column indices requested by TF
-    val requestedTFInput: Array[Int] = {
+    val requestedTFInput: Array[(NodePath, Int)] = {
       val colIdxs = dataframe.schema.fieldNames.zipWithIndex.toMap
-      inputs.keys.toArray.map { name => colIdxs(name) }
+      inputs.keys.map { nodePath =>
+        val fieldName = shapeHints.inputs(nodePath)
+        nodePath -> colIdxs(fieldName)
+      }   .toArray
     }
     // Full output schema, including data being passed through and validated for duplicates.
     // The first columns are the TF columns, followed by all the other columns.
@@ -766,7 +773,7 @@ object DebugRowOpsImpl extends Logging {
   def performMap(
       input: Array[Row],
       inputSchema: StructType,
-      inputTFCols: Array[Int],
+      inputTFCols: Array[(NodePath, Int)],
       graphDef: SerializedGraph,
       tfOutputSchema: StructType,
       appendInput: Boolean): Iterator[Row] = {
@@ -806,7 +813,7 @@ object DebugRowOpsImpl extends Logging {
   def performMap(
       input: Array[Row],
       inputSchema: StructType,
-      inputTFCols: Array[Int],
+      inputTFCols: Array[(NodePath, Int)],
       graphDef: GraphDef,
       outputSchema: StructType): Array[Row] = {
     // Do a defensive copy of the content of the iterator, as the object may be reused.
@@ -876,11 +883,13 @@ object DebugRowOpsImpl extends Logging {
       schema: StructType,
       graphDef: SerializedGraph): Row = {
     logDebug(s"performReduceBlock: schema=$schema inputSchema=$inputSchema with ${input.length} rows")
+    // The input name match the name of the input column in he case of reductions.
+    val inputTFCols2 = inputTFCols.toArray.map { idx => inputSchema.fields(idx).name -> idx }
     // The input schema and the actual data representation depend on the block operation.
 
     // Evict the graph to disk to free up some memory.
     TensorFlowOps.withSession(graphDef) { session =>
-      val inputTensors = TFDataOps.convert(input, inputSchema, inputTFCols.toArray)
+      val inputTensors = TFDataOps.convert(input, inputSchema, inputTFCols2)
       logDebug(s"performReduceBlocks: inputTensors=$inputTensors")
       val requested = schema.map(_.name)
       val outputs = performRunner(session, requested, inputTensors)
@@ -954,7 +963,8 @@ object DebugRowOpsImpl extends Logging {
         val values = (result.toSeq ++ row.toSeq).toArray
         val r: Row = new GenericRowWithSchema(values, inputSchema)
         val thisInput = Array(r)
-        val inputs = TFDataOps.convert(thisInput, inputSchema, inputSchema.fields.indices.toArray)
+        val inputTFCols = inputSchema.fieldNames.zipWithIndex
+        val inputs = TFDataOps.convert(thisInput, inputSchema, inputTFCols)
         val requested = schema.map(_.name)
         val outputs = performRunner(session, requested, inputs)
         val emptyRows = Array.fill(1)(emptyRow)

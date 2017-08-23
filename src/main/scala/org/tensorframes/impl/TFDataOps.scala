@@ -27,13 +27,12 @@ object TFDataOps extends Logging {
   def convert(
       it: Array[Row],
       struct: StructType,
-      requestedTFCols: Array[Int]): Seq[(String, tf.Tensor)] = {
+      requestedTFCols: Array[(NodePath, Int)]): Seq[(String, tf.Tensor)] = {
     // This is a very simple and very inefficient implementation. It should be kept
     // as is for correctness checks.
-    val fields = requestedTFCols.map(struct.fields(_))
-    logDebug(s"convert2: Calling convert on ${it.length} rows with struct: $struct " +
-      s"and indices: ${requestedTFCols.toSeq}")
-    val converters = fields.map { f =>
+
+    val convertersWithPaths = requestedTFCols.map { case (npath, idx) =>
+      val f = struct.fields(idx)
       // Extract and check the shape
       val ci = ColumnInformation(f).stf.getOrElse {
         throw new Exception(s"Could not column information for column $f")
@@ -46,16 +45,43 @@ object TFDataOps extends Logging {
           s" is not compatible with a block of size ${it.length}. " +
           s"Expected block structure: $struct, meta info = $ci")
       }
-      SupportedOperations.opsFor(ci.dataType).tfConverter(ci.shape.tail, it.length)
+      val conv = SupportedOperations.opsFor(ci.dataType).tfConverter(ci.shape.tail, it.length)
+      conv.reserve()
+      npath -> conv
     }
+    val converters = convertersWithPaths.map(_._2)
+    // The indexes requested by tensorflow
+    val requestedTFColIdxs = requestedTFCols.map(_._2)
+    DataOps.convertFast0(it, converters, requestedTFColIdxs)
 
-    for (c <- converters) { c.reserve() }
+    convertersWithPaths.map { case (npath, conv) => npath -> conv.tensor2() }
 
-    DataOps.convertFast0(it, converters, requestedTFCols)
-
-    val tensors = converters.map(_.tensor2())
-    val names = requestedTFCols.map(struct(_).name)
-    names.zip(tensors)
+//    val fields = requestedTFCols.map(struct.fields(_))
+//    logDebug(s"convert2: Calling convert on ${it.length} rows with struct: $struct " +
+//      s"and indices: ${requestedTFCols.toSeq}")
+//    val converters = fields.map { f =>
+//      // Extract and check the shape
+//      val ci = ColumnInformation(f).stf.getOrElse {
+//        throw new Exception(s"Could not column information for column $f")
+//      }
+//      val leadDim = ci.shape.dims.headOption.getOrElse {
+//        throw new Exception(s"Column $f found to be scalar, but its dimensions should be >= 1")
+//      } .toInt
+//      if (leadDim != Shape.Unknown && leadDim != it.length) {
+//        throw new Exception(s"Lead dimension for column $f (found to be $leadDim)" +
+//          s" is not compatible with a block of size ${it.length}. " +
+//          s"Expected block structure: $struct, meta info = $ci")
+//      }
+//      SupportedOperations.opsFor(ci.dataType).tfConverter(ci.shape.tail, it.length)
+//    }
+//
+//    for (c <- converters) { c.reserve() }
+//
+//    DataOps.convertFast0(it, converters, requestedTFCols)
+//
+//    val tensors = converters.map(_.tensor2())
+//    val names = requestedTFCols.map(struct(_).name)
+//    names.zip(tensors)
   }
 
 

@@ -307,7 +307,6 @@ def map_blocks(fetches, dframe, feed_dict=None, trim=False, initial_variables=_i
     :param dframe: a Spark DataFrame or a pandas DataFrame
     :return: a Spark DataFrame or a pandas DataFrame
     """
-    # TODO: add feed dictionary
     if isinstance(dframe, pd.DataFrame):
         return _map_pd(fetches, dframe, feed_dict=feed_dict, block=False, trim=None, initial_variables=initial_variables)
     return _map(fetches, dframe, feed_dict=feed_dict, block=True, trim=trim, initial_variables=initial_variables)
