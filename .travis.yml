@@ -1,39 +1,67 @@
-language: scala
+dist: trusty
 
-scala:
-  - 2.10.6
-
-jdk:
-  - oraclejdk8
+jdk: oraclejdk8
 
 sudo: required
 
-dist: trusty
-
 cache:
   directories:
-    - $HOME/.ivy2/
-    - $HOME/.sbt/launchers/
-    - $HOME/.cache/spark-versions/
-    - $HOME/.sbt/boot/scala-2.10.6/
-    - $HOME/.sbt/boot/scala-2.11.8/
+  - $HOME/.ivy2/
+  - $HOME/.sbt/launchers/
+  - $HOME/.cache/spark-versions/
+  - $HOME/.sbt/boot/scala-2.10.6/
+  - $HOME/.sbt/boot/scala-2.11.8/
 
 env:
-  global:
-  - TF_VER=1.3.0
-  - TF_PY2_BUILD=tensorflow-${TF_VER}-cp27-none-linux_x86_64.whl
-  - TF_PY3_BUILD=tensorflow-${TF_VER}-cp35-cp35m-linux_x86_64.whl
   matrix:
-    python:
-      - PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_BUILD="${TF_PY2_BUILD}"
-      - PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_BUILD="${TF_PY3_BUILD}"
-    scala:
-      - SCALA_BINARY_VERSION="2.11.8"
-      - SCALA_BINARY_VERSION="2.10.6"
-    spark:
-      - SPARK_VERSION="2.0.2" SPARK_BUILD="spark-${SPARK_VERSION}-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz"
-      - SPARK_VERSION="2.1.1" SPARK_BUILD="spark-${SPARK_VERSION}-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz"
-      - SPARK_VERSION="2.2.0" SPARK_BUILD="spark-${SPARK_VERSION}-bin-hadoop2.7" SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz"
+  - SCALA_BINARY_VERSION=2.10.6 SPARK_VERSION=2.0.2 SPARK_BUILD="spark-2.0.2-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz"
+    PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.10.6 SPARK_VERSION=2.0.2 SPARK_BUILD="spark-2.0.2-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz"
+    PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.10.6 SPARK_VERSION=2.1.1 SPARK_BUILD="spark-2.1.1-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz"
+    PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.10.6 SPARK_VERSION=2.1.1 SPARK_BUILD="spark-2.1.1-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz"
+    PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.10.6 SPARK_VERSION=2.2.0 SPARK_BUILD="spark-2.2.0-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz"
+    PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.10.6 SPARK_VERSION=2.2.0 SPARK_BUILD="spark-2.2.0-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz"
+    PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.0.2 SPARK_BUILD="spark-2.0.2-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz"
+    PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.0.2 SPARK_BUILD="spark-2.0.2-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz"
+    PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.1.1 SPARK_BUILD="spark-2.1.1-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz"
+    PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.1.1 SPARK_BUILD="spark-2.1.1-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz"
+    PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.2.0 SPARK_BUILD="spark-2.2.0-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz"
+    PIP_BIN=pip2 PYSPARK_PYTHON=python2 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.2.0 SPARK_BUILD="spark-2.2.0-bin-hadoop2.7"
+    SPARK_BUILD_URL="http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz"
+    PIP_BIN=pip3 PYSPARK_PYTHON=python3 TF_PY2_BUILD=tensorflow-1.3.0-cp27-none-linux_x86_64.whl
+    TF_PY3_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl TF_BUILD=tensorflow-1.3.0-cp35-cp35m-linux_x86_64.whl
 
 before_install:
  - ./bin/download_travis_dependencies.sh
