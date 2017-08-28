@@ -40,6 +40,8 @@ TensorFrames is available as a
  [official instructions](https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#download-and-setup)
   on how to get the latest release of TensorFlow.
 
+ - (Optional) pandas >= 0.19.1 if you want to use the python interface
+
  - (Optional) the [Nix package manager](http://nixos.org/nix/) if you want to guarantee a fully reproducible build environment. This is the environment that will be used for reproducing bugs.
 
 Additionally, if you want to run unit tests for python, you need the following dependencies:
