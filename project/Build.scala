@@ -73,7 +73,8 @@ object Shading extends Build {
     libraryDependencies ++= testDependencies,
     libraryDependencies ++= allPlatformDependencies,
     assemblyShadeRules in assembly := Seq(
-      ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
+      ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll,
+      ShadeRule.rename("google.protobuf.**" -> "org.tensorframes.google.protobuf3shade.@1").inAll
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
   ).settings(commonSettings: _*)
