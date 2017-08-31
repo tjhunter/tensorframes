@@ -11,7 +11,7 @@ object Shading extends Build {
 
 
   lazy val commonSettings = Seq(
-    version := "0.2.9-rc2",
+    version := "0.2.9-rc3",
     name := "tensorframes",
     scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
     organization := "databricks",
@@ -51,9 +51,7 @@ object Shading extends Build {
     "com.typesafe.scala-logging" %% "scala-logging-api" % "2.1.2",
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
     // TensorFlow dependencies
-    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion,
-    "org.tensorflow" % "proto" % targetTensorFlowVersion,
-    "org.tensorflow" % "libtensorflow" % targetTensorFlowVersion
+    "org.tensorflow" % "tensorflow" % targetTensorFlowVersion
   )
 
   lazy val testDependencies = Seq(
