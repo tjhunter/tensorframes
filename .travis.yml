@@ -67,6 +67,9 @@ before_install:
  - ./bin/download_travis_dependencies.sh
 
 install:
+ - which $PIP_BIN
+ - which pip
+ - python --version
  - $PIP_BIN install --user -r ./python/requirements.txt
  - $PIP_BIN install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/$TF_BUILD
  # We also install a python 2 version of Tensorflow. It is used in the Scala tests to make sure that
