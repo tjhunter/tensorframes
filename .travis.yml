@@ -66,12 +66,12 @@ install:
   # version is the same.
   - if [[ "$PYTHON_VERSION" == 2.* ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-      export PYSPARK_PYTHON=python2
-      export PIP_BIN=pip
+      export PYSPARK_PYTHON=python2;
+      export PIP_BIN=pip;
     else
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-      export PYSPARK_PYTHON=python3
-      export PIP_BIN=pip3
+      export PYSPARK_PYTHON=python3;
+      export PIP_BIN=pip3;
     fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
