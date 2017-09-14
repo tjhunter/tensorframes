@@ -24,7 +24,7 @@ object ExtractNodes extends Matchers with Logging {
     logTrace(s"Created temp file ${f.getAbsolutePath}")
     Files.write(f.toPath, content.getBytes(StandardCharsets.UTF_8))
     // Using the standard python installation in the PATH. It needs to have TensorFlow installed.
-    val p = new ProcessBuilder("python", f.getAbsolutePath).start()
+    val p = new ProcessBuilder("python", f.getAbsolutePath).redirectErrorStream(true).start()
     val s = p.getInputStream
     val isr = new InputStreamReader(s)
     val br = new BufferedReader(isr)
