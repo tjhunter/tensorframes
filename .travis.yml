@@ -86,9 +86,9 @@ install:
   - pip install --user -r ./python/requirements.txt
   # Install tensorflow
   - pip install --user tensorflow==1.3
-  # We also install a python 2 version of Tensorflow. It is used in the Scala tests to make sure that
-  # the protos produced by scala and python are binary identical.
-  - pip install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/${TF_PY2_BUILD}
+#  # We also install a python 2 version of Tensorflow. It is used in the Scala tests to make sure that
+#  # the protos produced by scala and python are binary identical.
+#  - pip install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/${TF_PY2_BUILD}
 
 script:
  - rm -rf /home/travis/.javacpp
