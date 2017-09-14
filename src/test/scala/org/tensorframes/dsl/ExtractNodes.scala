@@ -14,6 +14,7 @@ object ExtractNodes extends Matchers with Logging {
     val content =
       s"""
          |import tensorflow as tf
+         |from __future__ import print_function
          |$py
          |g = tf.get_default_graph().as_graph_def()
          |for n in g.node:
