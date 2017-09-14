@@ -13,8 +13,8 @@ object ExtractNodes extends Matchers with Logging {
   def executeCommand(py: String): Map[String, String] = {
     val content =
       s"""
-         |import tensorflow as tf
          |from __future__ import print_function
+         |import tensorflow as tf
          |
          |$py
          |g = tf.get_default_graph().as_graph_def()
@@ -26,7 +26,7 @@ object ExtractNodes extends Matchers with Logging {
     logTrace(s"Created temp file ${f.getAbsolutePath}")
     Files.write(f.toPath, content.getBytes(StandardCharsets.UTF_8))
     // Using the standard python installation in the PATH. It needs to have TensorFlow installed.
-    val p = new ProcessBuilder("python", f.getAbsolutePath).redirectErrorStream(true).start()
+    val p = new ProcessBuilder("python", f.getAbsolutePath).start()
     val s = p.getInputStream
     val isr = new InputStreamReader(s)
     val br = new BufferedReader(isr)
@@ -39,7 +39,6 @@ object ExtractNodes extends Matchers with Logging {
       }
     }
 
-    println(s"Process result: $res")
     p.waitFor()
     assert(p.exitValue() === 0, (p.exitValue(),
       {
