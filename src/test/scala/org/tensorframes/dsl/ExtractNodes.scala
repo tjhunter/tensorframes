@@ -63,8 +63,6 @@ object ExtractNodes extends Matchers with Logging {
     logTrace(s"pym = '$pym'")
     assert((m1.keySet -- pym.keySet).isEmpty, {
       val diff = (m1.keySet -- pym.keySet).toSeq.sorted
-      println(s"Scala nodes: ${m1.keySet.mkString(", ")},\n" +
-        s"python nodes: ${pym.keySet.mkString(", ")}")
       s"Found extra nodes in scala: $diff"
     })
     assert((pym.keySet -- m1.keySet).isEmpty, {
