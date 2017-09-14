@@ -37,6 +37,7 @@ object ExtractNodes extends Matchers with Logging {
       }
     }
 
+    println(s"Process result: ${res}")
     p.waitFor()
     assert(p.exitValue() === 0, (p.exitValue(),
       {
