@@ -59,19 +59,14 @@ before_install:
 # See this page: http://conda.pydata.org/docs/travis.html
 install:
   - sudo apt-get update
-  # Log python & pip versions
-  - python --version
-  - pip --version
   # We do this conditionally because it saves us some downloading if the
   # version is the same.
   - if [[ "$PYTHON_VERSION" == 2.* ]]; then
       wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
       export PYSPARK_PYTHON=python2;
-      export PIP_BIN=pip;
     else
       wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
       export PYSPARK_PYTHON=python3;
-      export PIP_BIN=pip3;
     fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
@@ -84,10 +79,13 @@ install:
   # Create and activate conda environment
   - conda create -q -n test-environment python=$PYTHON_VERSION
   - source activate test-environment
+  # Log python & pip versions
+  - python --version
+  - pip --version
   # Install dependencies from requirements.txt
-  - $PIP_BIN install --user -r ./python/requirements.txt
+  - pip install --user -r ./python/requirements.txt
   # Install tensorflow
-  - $PIP_BIN install --user tensorflow==1.3
+  - pip install --user tensorflow==1.3
   # We also install a python 2 version of Tensorflow. It is used in the Scala tests to make sure that
   # the protos produced by scala and python are binary identical.
   - pip install --user --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/${TF_PY2_BUILD}
