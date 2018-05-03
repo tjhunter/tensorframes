@@ -147,12 +147,12 @@ Look at the python documentation of the TensorFrames package to see what methods
 The scala support is a bit more limited than python. In scala, operations can be loaded from 
  an existing graph defined in the ProtocolBuffers format, or using a simple scala DSL. The
  Scala DSL only features a subset of TensorFlow transforms. It is very easy to extend
- though, so other transforms will be added without much effort in the future.
+ though, so other transforms will be added without much effort in the future. Look for the most up to date version [here](https://mvnrepository.com/artifact/databricks/tensorframes)
 
 You simply use the published package:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.2.9
+$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.2.9-s_2.11
 ```
 
 Here is the same program as before:
