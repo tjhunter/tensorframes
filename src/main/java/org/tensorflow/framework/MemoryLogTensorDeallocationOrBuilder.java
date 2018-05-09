@@ -8,29 +8,29 @@ public interface MemoryLogTensorDeallocationOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int64 allocation_id = 1;</code>
+   *
    * <pre>
    * Id of the tensor buffer being deallocated, used to match to a
    * corresponding allocation.
    * </pre>
-   *
-   * <code>int64 allocation_id = 1;</code>
    */
   long getAllocationId();
 
   /**
+   * <code>optional string allocator_name = 2;</code>
+   *
    * <pre>
    * Name of the allocator used.
    * </pre>
-   *
-   * <code>string allocator_name = 2;</code>
    */
   java.lang.String getAllocatorName();
   /**
+   * <code>optional string allocator_name = 2;</code>
+   *
    * <pre>
    * Name of the allocator used.
    * </pre>
-   *
-   * <code>string allocator_name = 2;</code>
    */
   com.google.protobuf.ByteString
       getAllocatorNameBytes();

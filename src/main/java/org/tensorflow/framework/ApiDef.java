@@ -4,6 +4,8 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.ApiDef}
+ *
  * <pre>
  * Used to specify and override the default API &amp; behavior in the
  * generated code for client languages, from what you would get from
@@ -20,16 +22,13 @@ package org.tensorflow.framework;
  * need to wait until a major release of TensorFlow to avoid breaking
  * our compatibility promises.
  * </pre>
- *
- * Protobuf type {@code tensorflow.ApiDef}
  */
 public  final class ApiDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.ApiDef)
     ApiDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use ApiDef.newBuilder() to construct.
-  private ApiDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private ApiDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private ApiDef() {
@@ -49,19 +48,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private ApiDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -71,14 +64,13 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             graphOpName_ = s;
             break;
@@ -94,8 +86,7 @@ private static final long serialVersionUID = 0L;
               endpoint_ = new java.util.ArrayList<org.tensorflow.framework.ApiDef.Endpoint>();
               mutable_bitField0_ |= 0x00000004;
             }
-            endpoint_.add(
-                input.readMessage(org.tensorflow.framework.ApiDef.Endpoint.parser(), extensionRegistry));
+            endpoint_.add(input.readMessage(org.tensorflow.framework.ApiDef.Endpoint.parser(), extensionRegistry));
             break;
           }
           case 34: {
@@ -103,8 +94,7 @@ private static final long serialVersionUID = 0L;
               inArg_ = new java.util.ArrayList<org.tensorflow.framework.ApiDef.Arg>();
               mutable_bitField0_ |= 0x00000008;
             }
-            inArg_.add(
-                input.readMessage(org.tensorflow.framework.ApiDef.Arg.parser(), extensionRegistry));
+            inArg_.add(input.readMessage(org.tensorflow.framework.ApiDef.Arg.parser(), extensionRegistry));
             break;
           }
           case 42: {
@@ -112,8 +102,7 @@ private static final long serialVersionUID = 0L;
               outArg_ = new java.util.ArrayList<org.tensorflow.framework.ApiDef.Arg>();
               mutable_bitField0_ |= 0x00000010;
             }
-            outArg_.add(
-                input.readMessage(org.tensorflow.framework.ApiDef.Arg.parser(), extensionRegistry));
+            outArg_.add(input.readMessage(org.tensorflow.framework.ApiDef.Arg.parser(), extensionRegistry));
             break;
           }
           case 50: {
@@ -121,36 +110,35 @@ private static final long serialVersionUID = 0L;
               attr_ = new java.util.ArrayList<org.tensorflow.framework.ApiDef.Attr>();
               mutable_bitField0_ |= 0x00000040;
             }
-            attr_.add(
-                input.readMessage(org.tensorflow.framework.ApiDef.Attr.parser(), extensionRegistry));
+            attr_.add(input.readMessage(org.tensorflow.framework.ApiDef.Attr.parser(), extensionRegistry));
             break;
           }
           case 58: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             summary_ = s;
             break;
           }
           case 66: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             description_ = s;
             break;
           }
           case 74: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             descriptionPrefix_ = s;
             break;
           }
           case 82: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             descriptionSuffix_ = s;
             break;
           }
           case 90: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
               argOrder_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000020;
@@ -161,10 +149,11 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
         endpoint_ = java.util.Collections.unmodifiableList(endpoint_);
@@ -181,7 +170,6 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
         argOrder_ = argOrder_.getUnmodifiableView();
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -190,7 +178,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -203,97 +191,89 @@ private static final long serialVersionUID = 0L;
   public enum Visibility
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <code>DEFAULT_VISIBILITY = 0;</code>
+     *
      * <pre>
      * Normally this is "VISIBLE" unless you are inheriting a
      * different value from another ApiDef.
      * </pre>
-     *
-     * <code>DEFAULT_VISIBILITY = 0;</code>
      */
-    DEFAULT_VISIBILITY(0),
+    DEFAULT_VISIBILITY(0, 0),
     /**
+     * <code>VISIBLE = 1;</code>
+     *
      * <pre>
      * Publicly visible in the API.
      * </pre>
-     *
-     * <code>VISIBLE = 1;</code>
      */
-    VISIBLE(1),
+    VISIBLE(1, 1),
     /**
+     * <code>SKIP = 2;</code>
+     *
      * <pre>
      * Do not include this op in the generated API. If visibility is
      * set to 'SKIP', other fields are ignored for this op.
      * </pre>
-     *
-     * <code>SKIP = 2;</code>
      */
-    SKIP(2),
+    SKIP(2, 2),
     /**
+     * <code>HIDDEN = 3;</code>
+     *
      * <pre>
      * Hide this op by putting it into an internal namespace (or whatever
      * is appropriate in the target language).
      * </pre>
-     *
-     * <code>HIDDEN = 3;</code>
      */
-    HIDDEN(3),
-    UNRECOGNIZED(-1),
+    HIDDEN(3, 3),
+    UNRECOGNIZED(-1, -1),
     ;
 
     /**
+     * <code>DEFAULT_VISIBILITY = 0;</code>
+     *
      * <pre>
      * Normally this is "VISIBLE" unless you are inheriting a
      * different value from another ApiDef.
      * </pre>
-     *
-     * <code>DEFAULT_VISIBILITY = 0;</code>
      */
     public static final int DEFAULT_VISIBILITY_VALUE = 0;
     /**
+     * <code>VISIBLE = 1;</code>
+     *
      * <pre>
      * Publicly visible in the API.
      * </pre>
-     *
-     * <code>VISIBLE = 1;</code>
      */
     public static final int VISIBLE_VALUE = 1;
     /**
+     * <code>SKIP = 2;</code>
+     *
      * <pre>
      * Do not include this op in the generated API. If visibility is
      * set to 'SKIP', other fields are ignored for this op.
      * </pre>
-     *
-     * <code>SKIP = 2;</code>
      */
     public static final int SKIP_VALUE = 2;
     /**
+     * <code>HIDDEN = 3;</code>
+     *
      * <pre>
      * Hide this op by putting it into an internal namespace (or whatever
      * is appropriate in the target language).
      * </pre>
-     *
-     * <code>HIDDEN = 3;</code>
      */
     public static final int HIDDEN_VALUE = 3;
 
 
     public final int getNumber() {
-      if (this == UNRECOGNIZED) {
+      if (index == -1) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
     public static Visibility valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static Visibility forNumber(int value) {
       switch (value) {
         case 0: return DEFAULT_VISIBILITY;
         case 1: return VISIBLE;
@@ -311,13 +291,13 @@ private static final long serialVersionUID = 0L;
         Visibility> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<Visibility>() {
             public Visibility findValueByNumber(int number) {
-              return Visibility.forNumber(number);
+              return Visibility.valueOf(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
+      return getDescriptor().getValues().get(index);
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -342,9 +322,11 @@ private static final long serialVersionUID = 0L;
       return VALUES[desc.getIndex()];
     }
 
+    private final int index;
     private final int value;
 
-    private Visibility(int value) {
+    private Visibility(int index, int value) {
+      this.index = index;
       this.value = value;
     }
 
@@ -356,53 +338,52 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name should be either like "CamelCaseName" or
      * "Package.CamelCaseName". Client-language-specific ApiDefs may
      * use a snake_case convention instead of CamelCase.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name should be either like "CamelCaseName" or
      * "Package.CamelCaseName". Client-language-specific ApiDefs may
      * use a snake_case convention instead of CamelCase.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
+     * <code>optional int32 deprecation_version = 2;</code>
+     *
      * <pre>
      * First GraphDef version at which the op is disallowed.
      * </pre>
-     *
-     * <code>int32 deprecation_version = 2;</code>
      */
     int getDeprecationVersion();
   }
   /**
+   * Protobuf type {@code tensorflow.ApiDef.Endpoint}
+   *
    * <pre>
    * If you specify any endpoint, this will replace all of the
    * inherited endpoints.  The first endpoint should be the
    * "canonical" endpoint, and should not be deprecated (unless all
    * endpoints are deprecated).
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.ApiDef.Endpoint}
    */
   public  static final class Endpoint extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.ApiDef.Endpoint)
       EndpointOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Endpoint.newBuilder() to construct.
-    private Endpoint(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Endpoint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Endpoint() {
@@ -413,19 +394,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Endpoint(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -435,14 +410,13 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
@@ -455,12 +429,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -469,7 +443,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Endpoint_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Endpoint_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -479,13 +453,13 @@ private static final long serialVersionUID = 0L;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name should be either like "CamelCaseName" or
      * "Package.CamelCaseName". Client-language-specific ApiDefs may
      * use a snake_case convention instead of CamelCase.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -500,13 +474,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name should be either like "CamelCaseName" or
      * "Package.CamelCaseName". Client-language-specific ApiDefs may
      * use a snake_case convention instead of CamelCase.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -525,11 +499,11 @@ private static final long serialVersionUID = 0L;
     public static final int DEPRECATION_VERSION_FIELD_NUMBER = 2;
     private int deprecationVersion_;
     /**
+     * <code>optional int32 deprecation_version = 2;</code>
+     *
      * <pre>
      * First GraphDef version at which the op is disallowed.
      * </pre>
-     *
-     * <code>int32 deprecation_version = 2;</code>
      */
     public int getDeprecationVersion() {
       return deprecationVersion_;
@@ -548,12 +522,11 @@ private static final long serialVersionUID = 0L;
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
       if (deprecationVersion_ != 0) {
         output.writeInt32(2, deprecationVersion_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -562,63 +535,17 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
       }
       if (deprecationVersion_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, deprecationVersion_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.ApiDef.Endpoint)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.ApiDef.Endpoint other = (org.tensorflow.framework.ApiDef.Endpoint) obj;
-
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && (getDeprecationVersion()
-          == other.getDeprecationVersion());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + DEPRECATION_VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getDeprecationVersion();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -642,40 +569,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.ApiDef.Endpoint parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Endpoint parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Endpoint parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -692,22 +613,22 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     /**
+     * Protobuf type {@code tensorflow.ApiDef.Endpoint}
+     *
      * <pre>
      * If you specify any endpoint, this will replace all of the
      * inherited endpoints.  The first endpoint should be the
      * "canonical" endpoint, and should not be deprecated (unless all
      * endpoints are deprecated).
      * </pre>
-     *
-     * Protobuf type {@code tensorflow.ApiDef.Endpoint}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.ApiDef.Endpoint)
         org.tensorflow.framework.ApiDef.EndpointOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -715,7 +636,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Endpoint_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Endpoint_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -728,13 +649,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -771,32 +691,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.ApiDef.Endpoint) {
           return mergeFrom((org.tensorflow.framework.ApiDef.Endpoint)other);
@@ -815,7 +709,6 @@ private static final long serialVersionUID = 0L;
         if (other.getDeprecationVersion() != 0) {
           setDeprecationVersion(other.getDeprecationVersion());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -833,7 +726,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.ApiDef.Endpoint) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -844,13 +737,13 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object name_ = "";
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name should be either like "CamelCaseName" or
        * "Package.CamelCaseName". Client-language-specific ApiDefs may
        * use a snake_case convention instead of CamelCase.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -865,13 +758,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name should be either like "CamelCaseName" or
        * "Package.CamelCaseName". Client-language-specific ApiDefs may
        * use a snake_case convention instead of CamelCase.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -887,13 +780,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name should be either like "CamelCaseName" or
        * "Package.CamelCaseName". Client-language-specific ApiDefs may
        * use a snake_case convention instead of CamelCase.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -906,13 +799,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name should be either like "CamelCaseName" or
        * "Package.CamelCaseName". Client-language-specific ApiDefs may
        * use a snake_case convention instead of CamelCase.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -921,13 +814,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name should be either like "CamelCaseName" or
        * "Package.CamelCaseName". Client-language-specific ApiDefs may
        * use a snake_case convention instead of CamelCase.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -943,21 +836,21 @@ private static final long serialVersionUID = 0L;
 
       private int deprecationVersion_ ;
       /**
+       * <code>optional int32 deprecation_version = 2;</code>
+       *
        * <pre>
        * First GraphDef version at which the op is disallowed.
        * </pre>
-       *
-       * <code>int32 deprecation_version = 2;</code>
        */
       public int getDeprecationVersion() {
         return deprecationVersion_;
       }
       /**
+       * <code>optional int32 deprecation_version = 2;</code>
+       *
        * <pre>
        * First GraphDef version at which the op is disallowed.
        * </pre>
-       *
-       * <code>int32 deprecation_version = 2;</code>
        */
       public Builder setDeprecationVersion(int value) {
         
@@ -966,11 +859,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int32 deprecation_version = 2;</code>
+       *
        * <pre>
        * First GraphDef version at which the op is disallowed.
        * </pre>
-       *
-       * <code>int32 deprecation_version = 2;</code>
        */
       public Builder clearDeprecationVersion() {
         
@@ -980,12 +873,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -1008,7 +901,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Endpoint(input, extensionRegistry);
+        try {
+          return new Endpoint(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -1032,55 +934,55 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this arg in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     java.lang.String getRenameTo();
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this arg in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     com.google.protobuf.ByteString
         getRenameToBytes();
 
     /**
+     * <code>optional string description = 3;</code>
+     *
      * <pre>
      * Note: this will replace any inherited arg doc. There is no
      * current way of modifying arg descriptions (other than replacing
      * them entirely) as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 3;</code>
      */
     java.lang.String getDescription();
     /**
+     * <code>optional string description = 3;</code>
+     *
      * <pre>
      * Note: this will replace any inherited arg doc. There is no
      * current way of modifying arg descriptions (other than replacing
      * them entirely) as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -1089,12 +991,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.ApiDef.Arg}
    */
   public  static final class Arg extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.ApiDef.Arg)
       ArgOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Arg.newBuilder() to construct.
-    private Arg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Arg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Arg() {
@@ -1106,19 +1007,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Arg(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1128,26 +1023,25 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               renameTo_ = s;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               description_ = s;
               break;
@@ -1155,12 +1049,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1169,7 +1063,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Arg_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Arg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1179,7 +1073,7 @@ private static final long serialVersionUID = 0L;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1194,7 +1088,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -1213,13 +1107,13 @@ private static final long serialVersionUID = 0L;
     public static final int RENAME_TO_FIELD_NUMBER = 2;
     private volatile java.lang.Object renameTo_;
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this arg in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     public java.lang.String getRenameTo() {
       java.lang.Object ref = renameTo_;
@@ -1234,13 +1128,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this arg in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     public com.google.protobuf.ByteString
         getRenameToBytes() {
@@ -1259,13 +1153,13 @@ private static final long serialVersionUID = 0L;
     public static final int DESCRIPTION_FIELD_NUMBER = 3;
     private volatile java.lang.Object description_;
     /**
+     * <code>optional string description = 3;</code>
+     *
      * <pre>
      * Note: this will replace any inherited arg doc. There is no
      * current way of modifying arg descriptions (other than replacing
      * them entirely) as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 3;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -1280,13 +1174,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string description = 3;</code>
+     *
      * <pre>
      * Note: this will replace any inherited arg doc. There is no
      * current way of modifying arg descriptions (other than replacing
      * them entirely) as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -1315,15 +1209,14 @@ private static final long serialVersionUID = 0L;
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
       if (!getRenameToBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, renameTo_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, renameTo_);
       }
       if (!getDescriptionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, description_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1332,69 +1225,19 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
       }
       if (!getRenameToBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, renameTo_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, renameTo_);
       }
       if (!getDescriptionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, description_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.ApiDef.Arg)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.ApiDef.Arg other = (org.tensorflow.framework.ApiDef.Arg) obj;
-
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getRenameTo()
-          .equals(other.getRenameTo());
-      result = result && getDescription()
-          .equals(other.getDescription());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + RENAME_TO_FIELD_NUMBER;
-      hash = (53 * hash) + getRenameTo().hashCode();
-      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-      hash = (53 * hash) + getDescription().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.ApiDef.Arg parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.ApiDef.Arg parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.ApiDef.Arg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1418,40 +1261,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.ApiDef.Arg parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Arg parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.ApiDef.Arg parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Arg parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.ApiDef.Arg parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Arg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -1468,7 +1305,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1476,7 +1313,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.ApiDef.Arg}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.ApiDef.Arg)
         org.tensorflow.framework.ApiDef.ArgOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1484,7 +1321,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Arg_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Arg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1497,13 +1334,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -1543,32 +1379,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.ApiDef.Arg) {
           return mergeFrom((org.tensorflow.framework.ApiDef.Arg)other);
@@ -1592,7 +1402,6 @@ private static final long serialVersionUID = 0L;
           description_ = other.description_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1610,7 +1419,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.ApiDef.Arg) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1621,7 +1430,7 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -1636,7 +1445,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -1652,7 +1461,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -1665,7 +1474,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -1674,7 +1483,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -1690,13 +1499,13 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object renameTo_ = "";
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this arg in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public java.lang.String getRenameTo() {
         java.lang.Object ref = renameTo_;
@@ -1711,13 +1520,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this arg in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public com.google.protobuf.ByteString
           getRenameToBytes() {
@@ -1733,13 +1542,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this arg in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public Builder setRenameTo(
           java.lang.String value) {
@@ -1752,13 +1561,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this arg in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public Builder clearRenameTo() {
         
@@ -1767,13 +1576,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this arg in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public Builder setRenameToBytes(
           com.google.protobuf.ByteString value) {
@@ -1789,13 +1598,13 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object description_ = "";
       /**
+       * <code>optional string description = 3;</code>
+       *
        * <pre>
        * Note: this will replace any inherited arg doc. There is no
        * current way of modifying arg descriptions (other than replacing
        * them entirely) as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 3;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -1810,13 +1619,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string description = 3;</code>
+       *
        * <pre>
        * Note: this will replace any inherited arg doc. There is no
        * current way of modifying arg descriptions (other than replacing
        * them entirely) as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -1832,13 +1641,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string description = 3;</code>
+       *
        * <pre>
        * Note: this will replace any inherited arg doc. There is no
        * current way of modifying arg descriptions (other than replacing
        * them entirely) as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 3;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -1851,13 +1660,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string description = 3;</code>
+       *
        * <pre>
        * Note: this will replace any inherited arg doc. There is no
        * current way of modifying arg descriptions (other than replacing
        * them entirely) as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 3;</code>
        */
       public Builder clearDescription() {
         
@@ -1866,13 +1675,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string description = 3;</code>
+       *
        * <pre>
        * Note: this will replace any inherited arg doc. There is no
        * current way of modifying arg descriptions (other than replacing
        * them entirely) as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 3;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -1887,12 +1696,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -1915,7 +1724,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Arg(input, extensionRegistry);
+        try {
+          return new Arg(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -1939,107 +1757,106 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this attr in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     java.lang.String getRenameTo();
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this attr in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     com.google.protobuf.ByteString
         getRenameToBytes();
 
     /**
+     * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+     *
      * <pre>
      * Specify a new default value to use for this attr.  This default
      * will be used when creating new graphs, as opposed to the
      * default in the OpDef, which will be used when interpreting old
      * GraphDefs.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue default_value = 3;</code>
      */
     boolean hasDefaultValue();
     /**
+     * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+     *
      * <pre>
      * Specify a new default value to use for this attr.  This default
      * will be used when creating new graphs, as opposed to the
      * default in the OpDef, which will be used when interpreting old
      * GraphDefs.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue default_value = 3;</code>
      */
     org.tensorflow.framework.AttrValue getDefaultValue();
     /**
+     * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+     *
      * <pre>
      * Specify a new default value to use for this attr.  This default
      * will be used when creating new graphs, as opposed to the
      * default in the OpDef, which will be used when interpreting old
      * GraphDefs.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue default_value = 3;</code>
      */
     org.tensorflow.framework.AttrValueOrBuilder getDefaultValueOrBuilder();
 
     /**
+     * <code>optional string description = 4;</code>
+     *
      * <pre>
      * Note: this will replace any inherited attr doc, there is no current
      * way of modifying attr descriptions as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 4;</code>
      */
     java.lang.String getDescription();
     /**
+     * <code>optional string description = 4;</code>
+     *
      * <pre>
      * Note: this will replace any inherited attr doc, there is no current
      * way of modifying attr descriptions as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 4;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
   }
   /**
+   * Protobuf type {@code tensorflow.ApiDef.Attr}
+   *
    * <pre>
    * Description of the graph-construction-time configuration of this
    * Op.  That is to say, this describes the attr fields that will
    * be specified in the NodeDef.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.ApiDef.Attr}
    */
   public  static final class Attr extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.ApiDef.Attr)
       AttrOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Attr.newBuilder() to construct.
-    private Attr(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Attr(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Attr() {
@@ -2051,19 +1868,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Attr(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2073,20 +1884,19 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               renameTo_ = s;
               break;
@@ -2105,7 +1915,7 @@ private static final long serialVersionUID = 0L;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               description_ = s;
               break;
@@ -2113,12 +1923,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2127,7 +1937,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Attr_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Attr_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -2137,7 +1947,7 @@ private static final long serialVersionUID = 0L;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -2152,7 +1962,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>optional string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -2171,13 +1981,13 @@ private static final long serialVersionUID = 0L;
     public static final int RENAME_TO_FIELD_NUMBER = 2;
     private volatile java.lang.Object renameTo_;
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this attr in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     public java.lang.String getRenameTo() {
       java.lang.Object ref = renameTo_;
@@ -2192,13 +2002,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string rename_to = 2;</code>
+     *
      * <pre>
      * Change the name used to access this attr in the API from what
      * is used in the GraphDef.  Note that these names in `backticks`
      * will also be replaced in the summary &amp; description fields.
      * </pre>
-     *
-     * <code>string rename_to = 2;</code>
      */
     public com.google.protobuf.ByteString
         getRenameToBytes() {
@@ -2217,40 +2027,40 @@ private static final long serialVersionUID = 0L;
     public static final int DEFAULT_VALUE_FIELD_NUMBER = 3;
     private org.tensorflow.framework.AttrValue defaultValue_;
     /**
+     * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+     *
      * <pre>
      * Specify a new default value to use for this attr.  This default
      * will be used when creating new graphs, as opposed to the
      * default in the OpDef, which will be used when interpreting old
      * GraphDefs.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue default_value = 3;</code>
      */
     public boolean hasDefaultValue() {
       return defaultValue_ != null;
     }
     /**
+     * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+     *
      * <pre>
      * Specify a new default value to use for this attr.  This default
      * will be used when creating new graphs, as opposed to the
      * default in the OpDef, which will be used when interpreting old
      * GraphDefs.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue default_value = 3;</code>
      */
     public org.tensorflow.framework.AttrValue getDefaultValue() {
       return defaultValue_ == null ? org.tensorflow.framework.AttrValue.getDefaultInstance() : defaultValue_;
     }
     /**
+     * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+     *
      * <pre>
      * Specify a new default value to use for this attr.  This default
      * will be used when creating new graphs, as opposed to the
      * default in the OpDef, which will be used when interpreting old
      * GraphDefs.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue default_value = 3;</code>
      */
     public org.tensorflow.framework.AttrValueOrBuilder getDefaultValueOrBuilder() {
       return getDefaultValue();
@@ -2259,12 +2069,12 @@ private static final long serialVersionUID = 0L;
     public static final int DESCRIPTION_FIELD_NUMBER = 4;
     private volatile java.lang.Object description_;
     /**
+     * <code>optional string description = 4;</code>
+     *
      * <pre>
      * Note: this will replace any inherited attr doc, there is no current
      * way of modifying attr descriptions as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 4;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -2279,12 +2089,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string description = 4;</code>
+     *
      * <pre>
      * Note: this will replace any inherited attr doc, there is no current
      * way of modifying attr descriptions as can be done with op descriptions.
      * </pre>
-     *
-     * <code>string description = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -2313,18 +2123,17 @@ private static final long serialVersionUID = 0L;
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
       if (!getRenameToBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, renameTo_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, renameTo_);
       }
       if (defaultValue_ != null) {
         output.writeMessage(3, getDefaultValue());
       }
       if (!getDescriptionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, description_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, description_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -2333,82 +2142,23 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
       }
       if (!getRenameToBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, renameTo_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, renameTo_);
       }
       if (defaultValue_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getDefaultValue());
       }
       if (!getDescriptionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, description_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, description_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.ApiDef.Attr)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.ApiDef.Attr other = (org.tensorflow.framework.ApiDef.Attr) obj;
-
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getRenameTo()
-          .equals(other.getRenameTo());
-      result = result && (hasDefaultValue() == other.hasDefaultValue());
-      if (hasDefaultValue()) {
-        result = result && getDefaultValue()
-            .equals(other.getDefaultValue());
-      }
-      result = result && getDescription()
-          .equals(other.getDescription());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + RENAME_TO_FIELD_NUMBER;
-      hash = (53 * hash) + getRenameTo().hashCode();
-      if (hasDefaultValue()) {
-        hash = (37 * hash) + DEFAULT_VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getDefaultValue().hashCode();
-      }
-      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-      hash = (53 * hash) + getDescription().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.ApiDef.Attr parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.ApiDef.Attr parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.ApiDef.Attr parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2432,40 +2182,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.ApiDef.Attr parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Attr parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.ApiDef.Attr parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Attr parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.ApiDef.Attr parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.ApiDef.Attr parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -2482,21 +2226,21 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     /**
+     * Protobuf type {@code tensorflow.ApiDef.Attr}
+     *
      * <pre>
      * Description of the graph-construction-time configuration of this
      * Op.  That is to say, this describes the attr fields that will
      * be specified in the NodeDef.
      * </pre>
-     *
-     * Protobuf type {@code tensorflow.ApiDef.Attr}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.ApiDef.Attr)
         org.tensorflow.framework.ApiDef.AttrOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2504,7 +2248,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Attr_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_Attr_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2517,13 +2261,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -2574,32 +2317,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.ApiDef.Attr) {
           return mergeFrom((org.tensorflow.framework.ApiDef.Attr)other);
@@ -2626,7 +2343,6 @@ private static final long serialVersionUID = 0L;
           description_ = other.description_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -2644,7 +2360,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.ApiDef.Attr) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2655,7 +2371,7 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2670,7 +2386,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2686,7 +2402,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2699,7 +2415,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -2708,7 +2424,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>string name = 1;</code>
+       * <code>optional string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2724,13 +2440,13 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object renameTo_ = "";
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this attr in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public java.lang.String getRenameTo() {
         java.lang.Object ref = renameTo_;
@@ -2745,13 +2461,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this attr in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public com.google.protobuf.ByteString
           getRenameToBytes() {
@@ -2767,13 +2483,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this attr in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public Builder setRenameTo(
           java.lang.String value) {
@@ -2786,13 +2502,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this attr in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public Builder clearRenameTo() {
         
@@ -2801,13 +2517,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string rename_to = 2;</code>
+       *
        * <pre>
        * Change the name used to access this attr in the API from what
        * is used in the GraphDef.  Note that these names in `backticks`
        * will also be replaced in the summary &amp; description fields.
        * </pre>
-       *
-       * <code>string rename_to = 2;</code>
        */
       public Builder setRenameToBytes(
           com.google.protobuf.ByteString value) {
@@ -2822,30 +2538,30 @@ private static final long serialVersionUID = 0L;
       }
 
       private org.tensorflow.framework.AttrValue defaultValue_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.AttrValue, org.tensorflow.framework.AttrValue.Builder, org.tensorflow.framework.AttrValueOrBuilder> defaultValueBuilder_;
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public boolean hasDefaultValue() {
         return defaultValueBuilder_ != null || defaultValue_ != null;
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public org.tensorflow.framework.AttrValue getDefaultValue() {
         if (defaultValueBuilder_ == null) {
@@ -2855,14 +2571,14 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public Builder setDefaultValue(org.tensorflow.framework.AttrValue value) {
         if (defaultValueBuilder_ == null) {
@@ -2878,14 +2594,14 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public Builder setDefaultValue(
           org.tensorflow.framework.AttrValue.Builder builderForValue) {
@@ -2899,14 +2615,14 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public Builder mergeDefaultValue(org.tensorflow.framework.AttrValue value) {
         if (defaultValueBuilder_ == null) {
@@ -2924,14 +2640,14 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public Builder clearDefaultValue() {
         if (defaultValueBuilder_ == null) {
@@ -2945,14 +2661,14 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public org.tensorflow.framework.AttrValue.Builder getDefaultValueBuilder() {
         
@@ -2960,14 +2676,14 @@ private static final long serialVersionUID = 0L;
         return getDefaultValueFieldBuilder().getBuilder();
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
       public org.tensorflow.framework.AttrValueOrBuilder getDefaultValueOrBuilder() {
         if (defaultValueBuilder_ != null) {
@@ -2978,20 +2694,20 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional .tensorflow.AttrValue default_value = 3;</code>
+       *
        * <pre>
        * Specify a new default value to use for this attr.  This default
        * will be used when creating new graphs, as opposed to the
        * default in the OpDef, which will be used when interpreting old
        * GraphDefs.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue default_value = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.AttrValue, org.tensorflow.framework.AttrValue.Builder, org.tensorflow.framework.AttrValueOrBuilder> 
           getDefaultValueFieldBuilder() {
         if (defaultValueBuilder_ == null) {
-          defaultValueBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          defaultValueBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.AttrValue, org.tensorflow.framework.AttrValue.Builder, org.tensorflow.framework.AttrValueOrBuilder>(
                   getDefaultValue(),
                   getParentForChildren(),
@@ -3003,12 +2719,12 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object description_ = "";
       /**
+       * <code>optional string description = 4;</code>
+       *
        * <pre>
        * Note: this will replace any inherited attr doc, there is no current
        * way of modifying attr descriptions as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 4;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -3023,12 +2739,12 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string description = 4;</code>
+       *
        * <pre>
        * Note: this will replace any inherited attr doc, there is no current
        * way of modifying attr descriptions as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -3044,12 +2760,12 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string description = 4;</code>
+       *
        * <pre>
        * Note: this will replace any inherited attr doc, there is no current
        * way of modifying attr descriptions as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 4;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -3062,12 +2778,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string description = 4;</code>
+       *
        * <pre>
        * Note: this will replace any inherited attr doc, there is no current
        * way of modifying attr descriptions as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 4;</code>
        */
       public Builder clearDescription() {
         
@@ -3076,12 +2792,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string description = 4;</code>
+       *
        * <pre>
        * Note: this will replace any inherited attr doc, there is no current
        * way of modifying attr descriptions as can be done with op descriptions.
        * </pre>
-       *
-       * <code>string description = 4;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -3096,12 +2812,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -3124,7 +2840,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Attr(input, extensionRegistry);
+        try {
+          return new Attr(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -3147,11 +2872,11 @@ private static final long serialVersionUID = 0L;
   public static final int GRAPH_OP_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object graphOpName_;
   /**
+   * <code>optional string graph_op_name = 1;</code>
+   *
    * <pre>
    * Name of the op (in the OpDef) to specify the API for.
    * </pre>
-   *
-   * <code>string graph_op_name = 1;</code>
    */
   public java.lang.String getGraphOpName() {
     java.lang.Object ref = graphOpName_;
@@ -3166,11 +2891,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string graph_op_name = 1;</code>
+   *
    * <pre>
    * Name of the op (in the OpDef) to specify the API for.
    * </pre>
-   *
-   * <code>string graph_op_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getGraphOpNameBytes() {
@@ -3189,13 +2914,13 @@ private static final long serialVersionUID = 0L;
   public static final int VISIBILITY_FIELD_NUMBER = 2;
   private int visibility_;
   /**
-   * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+   * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
    */
   public int getVisibilityValue() {
     return visibility_;
   }
   /**
-   * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+   * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
    */
   public org.tensorflow.framework.ApiDef.Visibility getVisibility() {
     org.tensorflow.framework.ApiDef.Visibility result = org.tensorflow.framework.ApiDef.Visibility.valueOf(visibility_);
@@ -3310,50 +3035,50 @@ private static final long serialVersionUID = 0L;
   public static final int ARG_ORDER_FIELD_NUMBER = 11;
   private com.google.protobuf.LazyStringList argOrder_;
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   public com.google.protobuf.ProtocolStringList
       getArgOrderList() {
     return argOrder_;
   }
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   public int getArgOrderCount() {
     return argOrder_.size();
   }
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   public java.lang.String getArgOrder(int index) {
     return argOrder_.get(index);
   }
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   public com.google.protobuf.ByteString
       getArgOrderBytes(int index) {
@@ -3398,11 +3123,11 @@ private static final long serialVersionUID = 0L;
   public static final int SUMMARY_FIELD_NUMBER = 7;
   private volatile java.lang.Object summary_;
   /**
+   * <code>optional string summary = 7;</code>
+   *
    * <pre>
    * One-line human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string summary = 7;</code>
    */
   public java.lang.String getSummary() {
     java.lang.Object ref = summary_;
@@ -3417,11 +3142,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string summary = 7;</code>
+   *
    * <pre>
    * One-line human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string summary = 7;</code>
    */
   public com.google.protobuf.ByteString
       getSummaryBytes() {
@@ -3440,11 +3165,11 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_FIELD_NUMBER = 8;
   private volatile java.lang.Object description_;
   /**
+   * <code>optional string description = 8;</code>
+   *
    * <pre>
    * Additional, longer human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string description = 8;</code>
    */
   public java.lang.String getDescription() {
     java.lang.Object ref = description_;
@@ -3459,11 +3184,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string description = 8;</code>
+   *
    * <pre>
    * Additional, longer human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string description = 8;</code>
    */
   public com.google.protobuf.ByteString
       getDescriptionBytes() {
@@ -3482,12 +3207,12 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_PREFIX_FIELD_NUMBER = 9;
   private volatile java.lang.Object descriptionPrefix_;
   /**
+   * <code>optional string description_prefix = 9;</code>
+   *
    * <pre>
    * Modify an existing/inherited description by adding text to the beginning
    * or end.
    * </pre>
-   *
-   * <code>string description_prefix = 9;</code>
    */
   public java.lang.String getDescriptionPrefix() {
     java.lang.Object ref = descriptionPrefix_;
@@ -3502,12 +3227,12 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string description_prefix = 9;</code>
+   *
    * <pre>
    * Modify an existing/inherited description by adding text to the beginning
    * or end.
    * </pre>
-   *
-   * <code>string description_prefix = 9;</code>
    */
   public com.google.protobuf.ByteString
       getDescriptionPrefixBytes() {
@@ -3526,7 +3251,7 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_SUFFIX_FIELD_NUMBER = 10;
   private volatile java.lang.Object descriptionSuffix_;
   /**
-   * <code>string description_suffix = 10;</code>
+   * <code>optional string description_suffix = 10;</code>
    */
   public java.lang.String getDescriptionSuffix() {
     java.lang.Object ref = descriptionSuffix_;
@@ -3541,7 +3266,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string description_suffix = 10;</code>
+   * <code>optional string description_suffix = 10;</code>
    */
   public com.google.protobuf.ByteString
       getDescriptionSuffixBytes() {
@@ -3570,7 +3295,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getGraphOpNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, graphOpName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, graphOpName_);
     }
     if (visibility_ != org.tensorflow.framework.ApiDef.Visibility.DEFAULT_VISIBILITY.getNumber()) {
       output.writeEnum(2, visibility_);
@@ -3588,21 +3313,20 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(6, attr_.get(i));
     }
     if (!getSummaryBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, summary_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 7, summary_);
     }
     if (!getDescriptionBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, description_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 8, description_);
     }
     if (!getDescriptionPrefixBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, descriptionPrefix_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 9, descriptionPrefix_);
     }
     if (!getDescriptionSuffixBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, descriptionSuffix_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 10, descriptionSuffix_);
     }
     for (int i = 0; i < argOrder_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, argOrder_.getRaw(i));
+      com.google.protobuf.GeneratedMessage.writeString(output, 11, argOrder_.getRaw(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -3611,7 +3335,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getGraphOpNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, graphOpName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, graphOpName_);
     }
     if (visibility_ != org.tensorflow.framework.ApiDef.Visibility.DEFAULT_VISIBILITY.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
@@ -3634,16 +3358,16 @@ private static final long serialVersionUID = 0L;
         .computeMessageSize(6, attr_.get(i));
     }
     if (!getSummaryBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, summary_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(7, summary_);
     }
     if (!getDescriptionBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, description_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(8, description_);
     }
     if (!getDescriptionPrefixBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, descriptionPrefix_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(9, descriptionPrefix_);
     }
     if (!getDescriptionSuffixBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, descriptionSuffix_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(10, descriptionSuffix_);
     }
     {
       int dataSize = 0;
@@ -3653,102 +3377,11 @@ private static final long serialVersionUID = 0L;
       size += dataSize;
       size += 1 * getArgOrderList().size();
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.ApiDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.ApiDef other = (org.tensorflow.framework.ApiDef) obj;
-
-    boolean result = true;
-    result = result && getGraphOpName()
-        .equals(other.getGraphOpName());
-    result = result && visibility_ == other.visibility_;
-    result = result && getEndpointList()
-        .equals(other.getEndpointList());
-    result = result && getInArgList()
-        .equals(other.getInArgList());
-    result = result && getOutArgList()
-        .equals(other.getOutArgList());
-    result = result && getArgOrderList()
-        .equals(other.getArgOrderList());
-    result = result && getAttrList()
-        .equals(other.getAttrList());
-    result = result && getSummary()
-        .equals(other.getSummary());
-    result = result && getDescription()
-        .equals(other.getDescription());
-    result = result && getDescriptionPrefix()
-        .equals(other.getDescriptionPrefix());
-    result = result && getDescriptionSuffix()
-        .equals(other.getDescriptionSuffix());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + GRAPH_OP_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getGraphOpName().hashCode();
-    hash = (37 * hash) + VISIBILITY_FIELD_NUMBER;
-    hash = (53 * hash) + visibility_;
-    if (getEndpointCount() > 0) {
-      hash = (37 * hash) + ENDPOINT_FIELD_NUMBER;
-      hash = (53 * hash) + getEndpointList().hashCode();
-    }
-    if (getInArgCount() > 0) {
-      hash = (37 * hash) + IN_ARG_FIELD_NUMBER;
-      hash = (53 * hash) + getInArgList().hashCode();
-    }
-    if (getOutArgCount() > 0) {
-      hash = (37 * hash) + OUT_ARG_FIELD_NUMBER;
-      hash = (53 * hash) + getOutArgList().hashCode();
-    }
-    if (getArgOrderCount() > 0) {
-      hash = (37 * hash) + ARG_ORDER_FIELD_NUMBER;
-      hash = (53 * hash) + getArgOrderList().hashCode();
-    }
-    if (getAttrCount() > 0) {
-      hash = (37 * hash) + ATTR_FIELD_NUMBER;
-      hash = (53 * hash) + getAttrList().hashCode();
-    }
-    hash = (37 * hash) + SUMMARY_FIELD_NUMBER;
-    hash = (53 * hash) + getSummary().hashCode();
-    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-    hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + DESCRIPTION_PREFIX_FIELD_NUMBER;
-    hash = (53 * hash) + getDescriptionPrefix().hashCode();
-    hash = (37 * hash) + DESCRIPTION_SUFFIX_FIELD_NUMBER;
-    hash = (53 * hash) + getDescriptionSuffix().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.ApiDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.ApiDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.ApiDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3772,40 +3405,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.ApiDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.ApiDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.ApiDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.ApiDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.ApiDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.ApiDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -3822,11 +3449,13 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.ApiDef}
+   *
    * <pre>
    * Used to specify and override the default API &amp; behavior in the
    * generated code for client languages, from what you would get from
@@ -3843,11 +3472,9 @@ private static final long serialVersionUID = 0L;
    * need to wait until a major release of TensorFlow to avoid breaking
    * our compatibility promises.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.ApiDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.ApiDef)
       org.tensorflow.framework.ApiDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -3855,7 +3482,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.ApiDefProtos.internal_static_tensorflow_ApiDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -3868,13 +3495,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getEndpointFieldBuilder();
         getInArgFieldBuilder();
         getOutArgFieldBuilder();
@@ -3997,32 +3623,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.ApiDef) {
         return mergeFrom((org.tensorflow.framework.ApiDef)other);
@@ -4060,7 +3660,7 @@ private static final long serialVersionUID = 0L;
             endpoint_ = other.endpoint_;
             bitField0_ = (bitField0_ & ~0x00000004);
             endpointBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getEndpointFieldBuilder() : null;
           } else {
             endpointBuilder_.addAllMessages(other.endpoint_);
@@ -4086,7 +3686,7 @@ private static final long serialVersionUID = 0L;
             inArg_ = other.inArg_;
             bitField0_ = (bitField0_ & ~0x00000008);
             inArgBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getInArgFieldBuilder() : null;
           } else {
             inArgBuilder_.addAllMessages(other.inArg_);
@@ -4112,7 +3712,7 @@ private static final long serialVersionUID = 0L;
             outArg_ = other.outArg_;
             bitField0_ = (bitField0_ & ~0x00000010);
             outArgBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getOutArgFieldBuilder() : null;
           } else {
             outArgBuilder_.addAllMessages(other.outArg_);
@@ -4148,7 +3748,7 @@ private static final long serialVersionUID = 0L;
             attr_ = other.attr_;
             bitField0_ = (bitField0_ & ~0x00000040);
             attrBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getAttrFieldBuilder() : null;
           } else {
             attrBuilder_.addAllMessages(other.attr_);
@@ -4171,7 +3771,6 @@ private static final long serialVersionUID = 0L;
         descriptionSuffix_ = other.descriptionSuffix_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -4189,7 +3788,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.ApiDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -4201,11 +3800,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object graphOpName_ = "";
     /**
+     * <code>optional string graph_op_name = 1;</code>
+     *
      * <pre>
      * Name of the op (in the OpDef) to specify the API for.
      * </pre>
-     *
-     * <code>string graph_op_name = 1;</code>
      */
     public java.lang.String getGraphOpName() {
       java.lang.Object ref = graphOpName_;
@@ -4220,11 +3819,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string graph_op_name = 1;</code>
+     *
      * <pre>
      * Name of the op (in the OpDef) to specify the API for.
      * </pre>
-     *
-     * <code>string graph_op_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getGraphOpNameBytes() {
@@ -4240,11 +3839,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string graph_op_name = 1;</code>
+     *
      * <pre>
      * Name of the op (in the OpDef) to specify the API for.
      * </pre>
-     *
-     * <code>string graph_op_name = 1;</code>
      */
     public Builder setGraphOpName(
         java.lang.String value) {
@@ -4257,11 +3856,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string graph_op_name = 1;</code>
+     *
      * <pre>
      * Name of the op (in the OpDef) to specify the API for.
      * </pre>
-     *
-     * <code>string graph_op_name = 1;</code>
      */
     public Builder clearGraphOpName() {
       
@@ -4270,11 +3869,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string graph_op_name = 1;</code>
+     *
      * <pre>
      * Name of the op (in the OpDef) to specify the API for.
      * </pre>
-     *
-     * <code>string graph_op_name = 1;</code>
      */
     public Builder setGraphOpNameBytes(
         com.google.protobuf.ByteString value) {
@@ -4290,13 +3889,13 @@ private static final long serialVersionUID = 0L;
 
     private int visibility_ = 0;
     /**
-     * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+     * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
      */
     public int getVisibilityValue() {
       return visibility_;
     }
     /**
-     * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+     * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
      */
     public Builder setVisibilityValue(int value) {
       visibility_ = value;
@@ -4304,14 +3903,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+     * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
      */
     public org.tensorflow.framework.ApiDef.Visibility getVisibility() {
       org.tensorflow.framework.ApiDef.Visibility result = org.tensorflow.framework.ApiDef.Visibility.valueOf(visibility_);
       return result == null ? org.tensorflow.framework.ApiDef.Visibility.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+     * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
      */
     public Builder setVisibility(org.tensorflow.framework.ApiDef.Visibility value) {
       if (value == null) {
@@ -4323,7 +3922,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+     * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
      */
     public Builder clearVisibility() {
       
@@ -4341,7 +3940,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Endpoint, org.tensorflow.framework.ApiDef.Endpoint.Builder, org.tensorflow.framework.ApiDef.EndpointOrBuilder> endpointBuilder_;
 
     /**
@@ -4557,11 +4156,11 @@ private static final long serialVersionUID = 0L;
          getEndpointBuilderList() {
       return getEndpointFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Endpoint, org.tensorflow.framework.ApiDef.Endpoint.Builder, org.tensorflow.framework.ApiDef.EndpointOrBuilder> 
         getEndpointFieldBuilder() {
       if (endpointBuilder_ == null) {
-        endpointBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        endpointBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.ApiDef.Endpoint, org.tensorflow.framework.ApiDef.Endpoint.Builder, org.tensorflow.framework.ApiDef.EndpointOrBuilder>(
                 endpoint_,
                 ((bitField0_ & 0x00000004) == 0x00000004),
@@ -4581,7 +4180,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Arg, org.tensorflow.framework.ApiDef.Arg.Builder, org.tensorflow.framework.ApiDef.ArgOrBuilder> inArgBuilder_;
 
     /**
@@ -4797,11 +4396,11 @@ private static final long serialVersionUID = 0L;
          getInArgBuilderList() {
       return getInArgFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Arg, org.tensorflow.framework.ApiDef.Arg.Builder, org.tensorflow.framework.ApiDef.ArgOrBuilder> 
         getInArgFieldBuilder() {
       if (inArgBuilder_ == null) {
-        inArgBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        inArgBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.ApiDef.Arg, org.tensorflow.framework.ApiDef.Arg.Builder, org.tensorflow.framework.ApiDef.ArgOrBuilder>(
                 inArg_,
                 ((bitField0_ & 0x00000008) == 0x00000008),
@@ -4821,7 +4420,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Arg, org.tensorflow.framework.ApiDef.Arg.Builder, org.tensorflow.framework.ApiDef.ArgOrBuilder> outArgBuilder_;
 
     /**
@@ -5037,11 +4636,11 @@ private static final long serialVersionUID = 0L;
          getOutArgBuilderList() {
       return getOutArgFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Arg, org.tensorflow.framework.ApiDef.Arg.Builder, org.tensorflow.framework.ApiDef.ArgOrBuilder> 
         getOutArgFieldBuilder() {
       if (outArgBuilder_ == null) {
-        outArgBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        outArgBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.ApiDef.Arg, org.tensorflow.framework.ApiDef.Arg.Builder, org.tensorflow.framework.ApiDef.ArgOrBuilder>(
                 outArg_,
                 ((bitField0_ & 0x00000010) == 0x00000010),
@@ -5060,63 +4659,63 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getArgOrderList() {
       return argOrder_.getUnmodifiableView();
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public int getArgOrderCount() {
       return argOrder_.size();
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public java.lang.String getArgOrder(int index) {
       return argOrder_.get(index);
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public com.google.protobuf.ByteString
         getArgOrderBytes(int index) {
       return argOrder_.getByteString(index);
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public Builder setArgOrder(
         int index, java.lang.String value) {
@@ -5129,13 +4728,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public Builder addArgOrder(
         java.lang.String value) {
@@ -5148,13 +4747,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public Builder addAllArgOrder(
         java.lang.Iterable<java.lang.String> values) {
@@ -5165,13 +4764,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public Builder clearArgOrder() {
       argOrder_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -5180,13 +4779,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string arg_order = 11;</code>
+     *
      * <pre>
      * List of original in_arg names to specify new argument order.
      * Length of arg_order should be either empty to keep current order
      * or match size of in_arg.
      * </pre>
-     *
-     * <code>repeated string arg_order = 11;</code>
      */
     public Builder addArgOrderBytes(
         com.google.protobuf.ByteString value) {
@@ -5209,7 +4808,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Attr, org.tensorflow.framework.ApiDef.Attr.Builder, org.tensorflow.framework.ApiDef.AttrOrBuilder> attrBuilder_;
 
     /**
@@ -5425,11 +5024,11 @@ private static final long serialVersionUID = 0L;
          getAttrBuilderList() {
       return getAttrFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ApiDef.Attr, org.tensorflow.framework.ApiDef.Attr.Builder, org.tensorflow.framework.ApiDef.AttrOrBuilder> 
         getAttrFieldBuilder() {
       if (attrBuilder_ == null) {
-        attrBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        attrBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.ApiDef.Attr, org.tensorflow.framework.ApiDef.Attr.Builder, org.tensorflow.framework.ApiDef.AttrOrBuilder>(
                 attr_,
                 ((bitField0_ & 0x00000040) == 0x00000040),
@@ -5442,11 +5041,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object summary_ = "";
     /**
+     * <code>optional string summary = 7;</code>
+     *
      * <pre>
      * One-line human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string summary = 7;</code>
      */
     public java.lang.String getSummary() {
       java.lang.Object ref = summary_;
@@ -5461,11 +5060,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string summary = 7;</code>
+     *
      * <pre>
      * One-line human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string summary = 7;</code>
      */
     public com.google.protobuf.ByteString
         getSummaryBytes() {
@@ -5481,11 +5080,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string summary = 7;</code>
+     *
      * <pre>
      * One-line human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string summary = 7;</code>
      */
     public Builder setSummary(
         java.lang.String value) {
@@ -5498,11 +5097,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string summary = 7;</code>
+     *
      * <pre>
      * One-line human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string summary = 7;</code>
      */
     public Builder clearSummary() {
       
@@ -5511,11 +5110,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string summary = 7;</code>
+     *
      * <pre>
      * One-line human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string summary = 7;</code>
      */
     public Builder setSummaryBytes(
         com.google.protobuf.ByteString value) {
@@ -5531,11 +5130,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object description_ = "";
     /**
+     * <code>optional string description = 8;</code>
+     *
      * <pre>
      * Additional, longer human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string description = 8;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -5550,11 +5149,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string description = 8;</code>
+     *
      * <pre>
      * Additional, longer human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string description = 8;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -5570,11 +5169,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string description = 8;</code>
+     *
      * <pre>
      * Additional, longer human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string description = 8;</code>
      */
     public Builder setDescription(
         java.lang.String value) {
@@ -5587,11 +5186,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string description = 8;</code>
+     *
      * <pre>
      * Additional, longer human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string description = 8;</code>
      */
     public Builder clearDescription() {
       
@@ -5600,11 +5199,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string description = 8;</code>
+     *
      * <pre>
      * Additional, longer human-readable description of what the Op does.
      * </pre>
-     *
-     * <code>string description = 8;</code>
      */
     public Builder setDescriptionBytes(
         com.google.protobuf.ByteString value) {
@@ -5620,12 +5219,12 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object descriptionPrefix_ = "";
     /**
+     * <code>optional string description_prefix = 9;</code>
+     *
      * <pre>
      * Modify an existing/inherited description by adding text to the beginning
      * or end.
      * </pre>
-     *
-     * <code>string description_prefix = 9;</code>
      */
     public java.lang.String getDescriptionPrefix() {
       java.lang.Object ref = descriptionPrefix_;
@@ -5640,12 +5239,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string description_prefix = 9;</code>
+     *
      * <pre>
      * Modify an existing/inherited description by adding text to the beginning
      * or end.
      * </pre>
-     *
-     * <code>string description_prefix = 9;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionPrefixBytes() {
@@ -5661,12 +5260,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string description_prefix = 9;</code>
+     *
      * <pre>
      * Modify an existing/inherited description by adding text to the beginning
      * or end.
      * </pre>
-     *
-     * <code>string description_prefix = 9;</code>
      */
     public Builder setDescriptionPrefix(
         java.lang.String value) {
@@ -5679,12 +5278,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string description_prefix = 9;</code>
+     *
      * <pre>
      * Modify an existing/inherited description by adding text to the beginning
      * or end.
      * </pre>
-     *
-     * <code>string description_prefix = 9;</code>
      */
     public Builder clearDescriptionPrefix() {
       
@@ -5693,12 +5292,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string description_prefix = 9;</code>
+     *
      * <pre>
      * Modify an existing/inherited description by adding text to the beginning
      * or end.
      * </pre>
-     *
-     * <code>string description_prefix = 9;</code>
      */
     public Builder setDescriptionPrefixBytes(
         com.google.protobuf.ByteString value) {
@@ -5714,7 +5313,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object descriptionSuffix_ = "";
     /**
-     * <code>string description_suffix = 10;</code>
+     * <code>optional string description_suffix = 10;</code>
      */
     public java.lang.String getDescriptionSuffix() {
       java.lang.Object ref = descriptionSuffix_;
@@ -5729,7 +5328,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description_suffix = 10;</code>
+     * <code>optional string description_suffix = 10;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionSuffixBytes() {
@@ -5745,7 +5344,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description_suffix = 10;</code>
+     * <code>optional string description_suffix = 10;</code>
      */
     public Builder setDescriptionSuffix(
         java.lang.String value) {
@@ -5758,7 +5357,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string description_suffix = 10;</code>
+     * <code>optional string description_suffix = 10;</code>
      */
     public Builder clearDescriptionSuffix() {
       
@@ -5767,7 +5366,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string description_suffix = 10;</code>
+     * <code>optional string description_suffix = 10;</code>
      */
     public Builder setDescriptionSuffixBytes(
         com.google.protobuf.ByteString value) {
@@ -5782,12 +5381,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -5810,7 +5409,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ApiDef(input, extensionRegistry);
+      try {
+        return new ApiDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

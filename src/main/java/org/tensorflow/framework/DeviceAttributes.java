@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.DeviceAttributes}
  */
 public  final class DeviceAttributes extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.DeviceAttributes)
     DeviceAttributesOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use DeviceAttributes.newBuilder() to construct.
-  private DeviceAttributes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private DeviceAttributes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private DeviceAttributes() {
@@ -26,19 +25,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private DeviceAttributes(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -48,20 +41,19 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             name_ = s;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             deviceType_ = s;
             break;
@@ -90,7 +82,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 58: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             physicalDeviceDesc_ = s;
             break;
@@ -98,12 +90,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -112,7 +104,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceAttributes_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceAttributes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -122,11 +114,11 @@ private static final long serialVersionUID = 0L;
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * Fully specified name of the device within a cluster.
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -141,11 +133,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * Fully specified name of the device within a cluster.
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getNameBytes() {
@@ -164,11 +156,11 @@ private static final long serialVersionUID = 0L;
   public static final int DEVICE_TYPE_FIELD_NUMBER = 2;
   private volatile java.lang.Object deviceType_;
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * String representation of device_type.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   public java.lang.String getDeviceType() {
     java.lang.Object ref = deviceType_;
@@ -183,11 +175,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * String representation of device_type.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   public com.google.protobuf.ByteString
       getDeviceTypeBytes() {
@@ -206,11 +198,11 @@ private static final long serialVersionUID = 0L;
   public static final int MEMORY_LIMIT_FIELD_NUMBER = 4;
   private long memoryLimit_;
   /**
+   * <code>optional int64 memory_limit = 4;</code>
+   *
    * <pre>
    * Memory capacity of device in bytes.
    * </pre>
-   *
-   * <code>int64 memory_limit = 4;</code>
    */
   public long getMemoryLimit() {
     return memoryLimit_;
@@ -219,34 +211,34 @@ private static final long serialVersionUID = 0L;
   public static final int LOCALITY_FIELD_NUMBER = 5;
   private org.tensorflow.framework.DeviceLocality locality_;
   /**
+   * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+   *
    * <pre>
    * Platform-specific data about device that may be useful
    * for supporting efficient data transfers.
    * </pre>
-   *
-   * <code>.tensorflow.DeviceLocality locality = 5;</code>
    */
   public boolean hasLocality() {
     return locality_ != null;
   }
   /**
+   * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+   *
    * <pre>
    * Platform-specific data about device that may be useful
    * for supporting efficient data transfers.
    * </pre>
-   *
-   * <code>.tensorflow.DeviceLocality locality = 5;</code>
    */
   public org.tensorflow.framework.DeviceLocality getLocality() {
     return locality_ == null ? org.tensorflow.framework.DeviceLocality.getDefaultInstance() : locality_;
   }
   /**
+   * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+   *
    * <pre>
    * Platform-specific data about device that may be useful
    * for supporting efficient data transfers.
    * </pre>
-   *
-   * <code>.tensorflow.DeviceLocality locality = 5;</code>
    */
   public org.tensorflow.framework.DeviceLocalityOrBuilder getLocalityOrBuilder() {
     return getLocality();
@@ -255,12 +247,12 @@ private static final long serialVersionUID = 0L;
   public static final int INCARNATION_FIELD_NUMBER = 6;
   private long incarnation_;
   /**
+   * <code>optional fixed64 incarnation = 6;</code>
+   *
    * <pre>
    * A device is assigned a global unique number each time it is
    * initialized. "incarnation" should never be 0.
    * </pre>
-   *
-   * <code>fixed64 incarnation = 6;</code>
    */
   public long getIncarnation() {
     return incarnation_;
@@ -269,11 +261,11 @@ private static final long serialVersionUID = 0L;
   public static final int PHYSICAL_DEVICE_DESC_FIELD_NUMBER = 7;
   private volatile java.lang.Object physicalDeviceDesc_;
   /**
+   * <code>optional string physical_device_desc = 7;</code>
+   *
    * <pre>
    * String representation of the physical device that this device maps to.
    * </pre>
-   *
-   * <code>string physical_device_desc = 7;</code>
    */
   public java.lang.String getPhysicalDeviceDesc() {
     java.lang.Object ref = physicalDeviceDesc_;
@@ -288,11 +280,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string physical_device_desc = 7;</code>
+   *
    * <pre>
    * String representation of the physical device that this device maps to.
    * </pre>
-   *
-   * <code>string physical_device_desc = 7;</code>
    */
   public com.google.protobuf.ByteString
       getPhysicalDeviceDescBytes() {
@@ -321,10 +313,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
     }
     if (!getDeviceTypeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceType_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, deviceType_);
     }
     if (memoryLimit_ != 0L) {
       output.writeInt64(4, memoryLimit_);
@@ -336,9 +328,8 @@ private static final long serialVersionUID = 0L;
       output.writeFixed64(6, incarnation_);
     }
     if (!getPhysicalDeviceDescBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, physicalDeviceDesc_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 7, physicalDeviceDesc_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -347,10 +338,10 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
     }
     if (!getDeviceTypeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deviceType_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, deviceType_);
     }
     if (memoryLimit_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -365,82 +356,13 @@ private static final long serialVersionUID = 0L;
         .computeFixed64Size(6, incarnation_);
     }
     if (!getPhysicalDeviceDescBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, physicalDeviceDesc_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(7, physicalDeviceDesc_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.DeviceAttributes)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.DeviceAttributes other = (org.tensorflow.framework.DeviceAttributes) obj;
-
-    boolean result = true;
-    result = result && getName()
-        .equals(other.getName());
-    result = result && getDeviceType()
-        .equals(other.getDeviceType());
-    result = result && (getMemoryLimit()
-        == other.getMemoryLimit());
-    result = result && (hasLocality() == other.hasLocality());
-    if (hasLocality()) {
-      result = result && getLocality()
-          .equals(other.getLocality());
-    }
-    result = result && (getIncarnation()
-        == other.getIncarnation());
-    result = result && getPhysicalDeviceDesc()
-        .equals(other.getPhysicalDeviceDesc());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + DEVICE_TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getDeviceType().hashCode();
-    hash = (37 * hash) + MEMORY_LIMIT_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getMemoryLimit());
-    if (hasLocality()) {
-      hash = (37 * hash) + LOCALITY_FIELD_NUMBER;
-      hash = (53 * hash) + getLocality().hashCode();
-    }
-    hash = (37 * hash) + INCARNATION_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getIncarnation());
-    hash = (37 * hash) + PHYSICAL_DEVICE_DESC_FIELD_NUMBER;
-    hash = (53 * hash) + getPhysicalDeviceDesc().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.DeviceAttributes parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.DeviceAttributes parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.DeviceAttributes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -464,40 +386,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.DeviceAttributes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.DeviceAttributes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.DeviceAttributes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.DeviceAttributes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.DeviceAttributes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.DeviceAttributes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -514,7 +430,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -522,7 +438,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.DeviceAttributes}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.DeviceAttributes)
       org.tensorflow.framework.DeviceAttributesOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -530,7 +446,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceAttributes_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceAttributes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -543,13 +459,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -606,32 +521,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.DeviceAttributes) {
         return mergeFrom((org.tensorflow.framework.DeviceAttributes)other);
@@ -664,7 +553,6 @@ private static final long serialVersionUID = 0L;
         physicalDeviceDesc_ = other.physicalDeviceDesc_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -682,7 +570,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.DeviceAttributes) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -693,11 +581,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Fully specified name of the device within a cluster.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -712,11 +600,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Fully specified name of the device within a cluster.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -732,11 +620,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Fully specified name of the device within a cluster.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public Builder setName(
         java.lang.String value) {
@@ -749,11 +637,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Fully specified name of the device within a cluster.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public Builder clearName() {
       
@@ -762,11 +650,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Fully specified name of the device within a cluster.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -782,11 +670,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object deviceType_ = "";
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * String representation of device_type.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public java.lang.String getDeviceType() {
       java.lang.Object ref = deviceType_;
@@ -801,11 +689,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * String representation of device_type.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDeviceTypeBytes() {
@@ -821,11 +709,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * String representation of device_type.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public Builder setDeviceType(
         java.lang.String value) {
@@ -838,11 +726,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * String representation of device_type.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public Builder clearDeviceType() {
       
@@ -851,11 +739,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * String representation of device_type.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public Builder setDeviceTypeBytes(
         com.google.protobuf.ByteString value) {
@@ -871,21 +759,21 @@ private static final long serialVersionUID = 0L;
 
     private long memoryLimit_ ;
     /**
+     * <code>optional int64 memory_limit = 4;</code>
+     *
      * <pre>
      * Memory capacity of device in bytes.
      * </pre>
-     *
-     * <code>int64 memory_limit = 4;</code>
      */
     public long getMemoryLimit() {
       return memoryLimit_;
     }
     /**
+     * <code>optional int64 memory_limit = 4;</code>
+     *
      * <pre>
      * Memory capacity of device in bytes.
      * </pre>
-     *
-     * <code>int64 memory_limit = 4;</code>
      */
     public Builder setMemoryLimit(long value) {
       
@@ -894,11 +782,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 memory_limit = 4;</code>
+     *
      * <pre>
      * Memory capacity of device in bytes.
      * </pre>
-     *
-     * <code>int64 memory_limit = 4;</code>
      */
     public Builder clearMemoryLimit() {
       
@@ -908,26 +796,26 @@ private static final long serialVersionUID = 0L;
     }
 
     private org.tensorflow.framework.DeviceLocality locality_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.DeviceLocality, org.tensorflow.framework.DeviceLocality.Builder, org.tensorflow.framework.DeviceLocalityOrBuilder> localityBuilder_;
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public boolean hasLocality() {
       return localityBuilder_ != null || locality_ != null;
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public org.tensorflow.framework.DeviceLocality getLocality() {
       if (localityBuilder_ == null) {
@@ -937,12 +825,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public Builder setLocality(org.tensorflow.framework.DeviceLocality value) {
       if (localityBuilder_ == null) {
@@ -958,12 +846,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public Builder setLocality(
         org.tensorflow.framework.DeviceLocality.Builder builderForValue) {
@@ -977,12 +865,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public Builder mergeLocality(org.tensorflow.framework.DeviceLocality value) {
       if (localityBuilder_ == null) {
@@ -1000,12 +888,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public Builder clearLocality() {
       if (localityBuilder_ == null) {
@@ -1019,12 +907,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public org.tensorflow.framework.DeviceLocality.Builder getLocalityBuilder() {
       
@@ -1032,12 +920,12 @@ private static final long serialVersionUID = 0L;
       return getLocalityFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
     public org.tensorflow.framework.DeviceLocalityOrBuilder getLocalityOrBuilder() {
       if (localityBuilder_ != null) {
@@ -1048,18 +936,18 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+     *
      * <pre>
      * Platform-specific data about device that may be useful
      * for supporting efficient data transfers.
      * </pre>
-     *
-     * <code>.tensorflow.DeviceLocality locality = 5;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.DeviceLocality, org.tensorflow.framework.DeviceLocality.Builder, org.tensorflow.framework.DeviceLocalityOrBuilder> 
         getLocalityFieldBuilder() {
       if (localityBuilder_ == null) {
-        localityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        localityBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.DeviceLocality, org.tensorflow.framework.DeviceLocality.Builder, org.tensorflow.framework.DeviceLocalityOrBuilder>(
                 getLocality(),
                 getParentForChildren(),
@@ -1071,23 +959,23 @@ private static final long serialVersionUID = 0L;
 
     private long incarnation_ ;
     /**
+     * <code>optional fixed64 incarnation = 6;</code>
+     *
      * <pre>
      * A device is assigned a global unique number each time it is
      * initialized. "incarnation" should never be 0.
      * </pre>
-     *
-     * <code>fixed64 incarnation = 6;</code>
      */
     public long getIncarnation() {
       return incarnation_;
     }
     /**
+     * <code>optional fixed64 incarnation = 6;</code>
+     *
      * <pre>
      * A device is assigned a global unique number each time it is
      * initialized. "incarnation" should never be 0.
      * </pre>
-     *
-     * <code>fixed64 incarnation = 6;</code>
      */
     public Builder setIncarnation(long value) {
       
@@ -1096,12 +984,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional fixed64 incarnation = 6;</code>
+     *
      * <pre>
      * A device is assigned a global unique number each time it is
      * initialized. "incarnation" should never be 0.
      * </pre>
-     *
-     * <code>fixed64 incarnation = 6;</code>
      */
     public Builder clearIncarnation() {
       
@@ -1112,11 +1000,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object physicalDeviceDesc_ = "";
     /**
+     * <code>optional string physical_device_desc = 7;</code>
+     *
      * <pre>
      * String representation of the physical device that this device maps to.
      * </pre>
-     *
-     * <code>string physical_device_desc = 7;</code>
      */
     public java.lang.String getPhysicalDeviceDesc() {
       java.lang.Object ref = physicalDeviceDesc_;
@@ -1131,11 +1019,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string physical_device_desc = 7;</code>
+     *
      * <pre>
      * String representation of the physical device that this device maps to.
      * </pre>
-     *
-     * <code>string physical_device_desc = 7;</code>
      */
     public com.google.protobuf.ByteString
         getPhysicalDeviceDescBytes() {
@@ -1151,11 +1039,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string physical_device_desc = 7;</code>
+     *
      * <pre>
      * String representation of the physical device that this device maps to.
      * </pre>
-     *
-     * <code>string physical_device_desc = 7;</code>
      */
     public Builder setPhysicalDeviceDesc(
         java.lang.String value) {
@@ -1168,11 +1056,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string physical_device_desc = 7;</code>
+     *
      * <pre>
      * String representation of the physical device that this device maps to.
      * </pre>
-     *
-     * <code>string physical_device_desc = 7;</code>
      */
     public Builder clearPhysicalDeviceDesc() {
       
@@ -1181,11 +1069,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string physical_device_desc = 7;</code>
+     *
      * <pre>
      * String representation of the physical device that this device maps to.
      * </pre>
-     *
-     * <code>string physical_device_desc = 7;</code>
      */
     public Builder setPhysicalDeviceDescBytes(
         com.google.protobuf.ByteString value) {
@@ -1200,12 +1088,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1228,7 +1116,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new DeviceAttributes(input, extensionRegistry);
+      try {
+        return new DeviceAttributes(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

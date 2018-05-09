@@ -4,19 +4,18 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.VariableDef}
+ *
  * <pre>
  * Protocol buffer representing a Variable.
  * </pre>
- *
- * Protobuf type {@code tensorflow.VariableDef}
  */
 public  final class VariableDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.VariableDef)
     VariableDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use VariableDef.newBuilder() to construct.
-  private VariableDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private VariableDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private VariableDef() {
@@ -30,19 +29,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private VariableDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -52,26 +45,25 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             variableName_ = s;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             initializerName_ = s;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             snapshotName_ = s;
             break;
@@ -95,7 +87,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 50: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             initialValueName_ = s;
             break;
@@ -103,12 +95,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -117,7 +109,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_VariableDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_VariableDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -127,11 +119,11 @@ private static final long serialVersionUID = 0L;
   public static final int VARIABLE_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object variableName_;
   /**
+   * <code>optional string variable_name = 1;</code>
+   *
    * <pre>
    * Name of the variable tensor.
    * </pre>
-   *
-   * <code>string variable_name = 1;</code>
    */
   public java.lang.String getVariableName() {
     java.lang.Object ref = variableName_;
@@ -146,11 +138,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string variable_name = 1;</code>
+   *
    * <pre>
    * Name of the variable tensor.
    * </pre>
-   *
-   * <code>string variable_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getVariableNameBytes() {
@@ -169,11 +161,11 @@ private static final long serialVersionUID = 0L;
   public static final int INITIAL_VALUE_NAME_FIELD_NUMBER = 6;
   private volatile java.lang.Object initialValueName_;
   /**
+   * <code>optional string initial_value_name = 6;</code>
+   *
    * <pre>
    * Name of the tensor holding the variable's initial value.
    * </pre>
-   *
-   * <code>string initial_value_name = 6;</code>
    */
   public java.lang.String getInitialValueName() {
     java.lang.Object ref = initialValueName_;
@@ -188,11 +180,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string initial_value_name = 6;</code>
+   *
    * <pre>
    * Name of the tensor holding the variable's initial value.
    * </pre>
-   *
-   * <code>string initial_value_name = 6;</code>
    */
   public com.google.protobuf.ByteString
       getInitialValueNameBytes() {
@@ -211,11 +203,11 @@ private static final long serialVersionUID = 0L;
   public static final int INITIALIZER_NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object initializerName_;
   /**
+   * <code>optional string initializer_name = 2;</code>
+   *
    * <pre>
    * Name of the initializer op.
    * </pre>
-   *
-   * <code>string initializer_name = 2;</code>
    */
   public java.lang.String getInitializerName() {
     java.lang.Object ref = initializerName_;
@@ -230,11 +222,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string initializer_name = 2;</code>
+   *
    * <pre>
    * Name of the initializer op.
    * </pre>
-   *
-   * <code>string initializer_name = 2;</code>
    */
   public com.google.protobuf.ByteString
       getInitializerNameBytes() {
@@ -253,11 +245,11 @@ private static final long serialVersionUID = 0L;
   public static final int SNAPSHOT_NAME_FIELD_NUMBER = 3;
   private volatile java.lang.Object snapshotName_;
   /**
+   * <code>optional string snapshot_name = 3;</code>
+   *
    * <pre>
    * Name of the snapshot tensor.
    * </pre>
-   *
-   * <code>string snapshot_name = 3;</code>
    */
   public java.lang.String getSnapshotName() {
     java.lang.Object ref = snapshotName_;
@@ -272,11 +264,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string snapshot_name = 3;</code>
+   *
    * <pre>
    * Name of the snapshot tensor.
    * </pre>
-   *
-   * <code>string snapshot_name = 3;</code>
    */
   public com.google.protobuf.ByteString
       getSnapshotNameBytes() {
@@ -295,31 +287,31 @@ private static final long serialVersionUID = 0L;
   public static final int SAVE_SLICE_INFO_DEF_FIELD_NUMBER = 4;
   private org.tensorflow.framework.SaveSliceInfoDef saveSliceInfoDef_;
   /**
+   * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+   *
    * <pre>
    * Support for saving variables as slices of a larger variable.
    * </pre>
-   *
-   * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
    */
   public boolean hasSaveSliceInfoDef() {
     return saveSliceInfoDef_ != null;
   }
   /**
+   * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+   *
    * <pre>
    * Support for saving variables as slices of a larger variable.
    * </pre>
-   *
-   * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
    */
   public org.tensorflow.framework.SaveSliceInfoDef getSaveSliceInfoDef() {
     return saveSliceInfoDef_ == null ? org.tensorflow.framework.SaveSliceInfoDef.getDefaultInstance() : saveSliceInfoDef_;
   }
   /**
+   * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+   *
    * <pre>
    * Support for saving variables as slices of a larger variable.
    * </pre>
-   *
-   * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
    */
   public org.tensorflow.framework.SaveSliceInfoDefOrBuilder getSaveSliceInfoDefOrBuilder() {
     return getSaveSliceInfoDef();
@@ -328,11 +320,11 @@ private static final long serialVersionUID = 0L;
   public static final int IS_RESOURCE_FIELD_NUMBER = 5;
   private boolean isResource_;
   /**
+   * <code>optional bool is_resource = 5;</code>
+   *
    * <pre>
    * Whether to represent this as a ResourceVariable.
    * </pre>
-   *
-   * <code>bool is_resource = 5;</code>
    */
   public boolean getIsResource() {
     return isResource_;
@@ -351,13 +343,13 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getVariableNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, variableName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, variableName_);
     }
     if (!getInitializerNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, initializerName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, initializerName_);
     }
     if (!getSnapshotNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, snapshotName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, snapshotName_);
     }
     if (saveSliceInfoDef_ != null) {
       output.writeMessage(4, getSaveSliceInfoDef());
@@ -366,9 +358,8 @@ private static final long serialVersionUID = 0L;
       output.writeBool(5, isResource_);
     }
     if (!getInitialValueNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, initialValueName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 6, initialValueName_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -377,13 +368,13 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getVariableNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, variableName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, variableName_);
     }
     if (!getInitializerNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, initializerName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, initializerName_);
     }
     if (!getSnapshotNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, snapshotName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, snapshotName_);
     }
     if (saveSliceInfoDef_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -394,81 +385,13 @@ private static final long serialVersionUID = 0L;
         .computeBoolSize(5, isResource_);
     }
     if (!getInitialValueNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, initialValueName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(6, initialValueName_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.VariableDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.VariableDef other = (org.tensorflow.framework.VariableDef) obj;
-
-    boolean result = true;
-    result = result && getVariableName()
-        .equals(other.getVariableName());
-    result = result && getInitialValueName()
-        .equals(other.getInitialValueName());
-    result = result && getInitializerName()
-        .equals(other.getInitializerName());
-    result = result && getSnapshotName()
-        .equals(other.getSnapshotName());
-    result = result && (hasSaveSliceInfoDef() == other.hasSaveSliceInfoDef());
-    if (hasSaveSliceInfoDef()) {
-      result = result && getSaveSliceInfoDef()
-          .equals(other.getSaveSliceInfoDef());
-    }
-    result = result && (getIsResource()
-        == other.getIsResource());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VARIABLE_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getVariableName().hashCode();
-    hash = (37 * hash) + INITIAL_VALUE_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getInitialValueName().hashCode();
-    hash = (37 * hash) + INITIALIZER_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getInitializerName().hashCode();
-    hash = (37 * hash) + SNAPSHOT_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getSnapshotName().hashCode();
-    if (hasSaveSliceInfoDef()) {
-      hash = (37 * hash) + SAVE_SLICE_INFO_DEF_FIELD_NUMBER;
-      hash = (53 * hash) + getSaveSliceInfoDef().hashCode();
-    }
-    hash = (37 * hash) + IS_RESOURCE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getIsResource());
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.VariableDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.VariableDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.VariableDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -492,40 +415,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.VariableDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.VariableDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.VariableDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.VariableDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.VariableDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.VariableDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -542,19 +459,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.VariableDef}
+   *
    * <pre>
    * Protocol buffer representing a Variable.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.VariableDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.VariableDef)
       org.tensorflow.framework.VariableDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -562,7 +479,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_VariableDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_VariableDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -575,13 +492,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -638,32 +554,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.VariableDef) {
         return mergeFrom((org.tensorflow.framework.VariableDef)other);
@@ -697,7 +587,6 @@ private static final long serialVersionUID = 0L;
       if (other.getIsResource() != false) {
         setIsResource(other.getIsResource());
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -715,7 +604,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.VariableDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -726,11 +615,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object variableName_ = "";
     /**
+     * <code>optional string variable_name = 1;</code>
+     *
      * <pre>
      * Name of the variable tensor.
      * </pre>
-     *
-     * <code>string variable_name = 1;</code>
      */
     public java.lang.String getVariableName() {
       java.lang.Object ref = variableName_;
@@ -745,11 +634,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string variable_name = 1;</code>
+     *
      * <pre>
      * Name of the variable tensor.
      * </pre>
-     *
-     * <code>string variable_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getVariableNameBytes() {
@@ -765,11 +654,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string variable_name = 1;</code>
+     *
      * <pre>
      * Name of the variable tensor.
      * </pre>
-     *
-     * <code>string variable_name = 1;</code>
      */
     public Builder setVariableName(
         java.lang.String value) {
@@ -782,11 +671,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string variable_name = 1;</code>
+     *
      * <pre>
      * Name of the variable tensor.
      * </pre>
-     *
-     * <code>string variable_name = 1;</code>
      */
     public Builder clearVariableName() {
       
@@ -795,11 +684,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string variable_name = 1;</code>
+     *
      * <pre>
      * Name of the variable tensor.
      * </pre>
-     *
-     * <code>string variable_name = 1;</code>
      */
     public Builder setVariableNameBytes(
         com.google.protobuf.ByteString value) {
@@ -815,11 +704,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object initialValueName_ = "";
     /**
+     * <code>optional string initial_value_name = 6;</code>
+     *
      * <pre>
      * Name of the tensor holding the variable's initial value.
      * </pre>
-     *
-     * <code>string initial_value_name = 6;</code>
      */
     public java.lang.String getInitialValueName() {
       java.lang.Object ref = initialValueName_;
@@ -834,11 +723,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string initial_value_name = 6;</code>
+     *
      * <pre>
      * Name of the tensor holding the variable's initial value.
      * </pre>
-     *
-     * <code>string initial_value_name = 6;</code>
      */
     public com.google.protobuf.ByteString
         getInitialValueNameBytes() {
@@ -854,11 +743,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string initial_value_name = 6;</code>
+     *
      * <pre>
      * Name of the tensor holding the variable's initial value.
      * </pre>
-     *
-     * <code>string initial_value_name = 6;</code>
      */
     public Builder setInitialValueName(
         java.lang.String value) {
@@ -871,11 +760,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string initial_value_name = 6;</code>
+     *
      * <pre>
      * Name of the tensor holding the variable's initial value.
      * </pre>
-     *
-     * <code>string initial_value_name = 6;</code>
      */
     public Builder clearInitialValueName() {
       
@@ -884,11 +773,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string initial_value_name = 6;</code>
+     *
      * <pre>
      * Name of the tensor holding the variable's initial value.
      * </pre>
-     *
-     * <code>string initial_value_name = 6;</code>
      */
     public Builder setInitialValueNameBytes(
         com.google.protobuf.ByteString value) {
@@ -904,11 +793,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object initializerName_ = "";
     /**
+     * <code>optional string initializer_name = 2;</code>
+     *
      * <pre>
      * Name of the initializer op.
      * </pre>
-     *
-     * <code>string initializer_name = 2;</code>
      */
     public java.lang.String getInitializerName() {
       java.lang.Object ref = initializerName_;
@@ -923,11 +812,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string initializer_name = 2;</code>
+     *
      * <pre>
      * Name of the initializer op.
      * </pre>
-     *
-     * <code>string initializer_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getInitializerNameBytes() {
@@ -943,11 +832,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string initializer_name = 2;</code>
+     *
      * <pre>
      * Name of the initializer op.
      * </pre>
-     *
-     * <code>string initializer_name = 2;</code>
      */
     public Builder setInitializerName(
         java.lang.String value) {
@@ -960,11 +849,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string initializer_name = 2;</code>
+     *
      * <pre>
      * Name of the initializer op.
      * </pre>
-     *
-     * <code>string initializer_name = 2;</code>
      */
     public Builder clearInitializerName() {
       
@@ -973,11 +862,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string initializer_name = 2;</code>
+     *
      * <pre>
      * Name of the initializer op.
      * </pre>
-     *
-     * <code>string initializer_name = 2;</code>
      */
     public Builder setInitializerNameBytes(
         com.google.protobuf.ByteString value) {
@@ -993,11 +882,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object snapshotName_ = "";
     /**
+     * <code>optional string snapshot_name = 3;</code>
+     *
      * <pre>
      * Name of the snapshot tensor.
      * </pre>
-     *
-     * <code>string snapshot_name = 3;</code>
      */
     public java.lang.String getSnapshotName() {
       java.lang.Object ref = snapshotName_;
@@ -1012,11 +901,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string snapshot_name = 3;</code>
+     *
      * <pre>
      * Name of the snapshot tensor.
      * </pre>
-     *
-     * <code>string snapshot_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getSnapshotNameBytes() {
@@ -1032,11 +921,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string snapshot_name = 3;</code>
+     *
      * <pre>
      * Name of the snapshot tensor.
      * </pre>
-     *
-     * <code>string snapshot_name = 3;</code>
      */
     public Builder setSnapshotName(
         java.lang.String value) {
@@ -1049,11 +938,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string snapshot_name = 3;</code>
+     *
      * <pre>
      * Name of the snapshot tensor.
      * </pre>
-     *
-     * <code>string snapshot_name = 3;</code>
      */
     public Builder clearSnapshotName() {
       
@@ -1062,11 +951,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string snapshot_name = 3;</code>
+     *
      * <pre>
      * Name of the snapshot tensor.
      * </pre>
-     *
-     * <code>string snapshot_name = 3;</code>
      */
     public Builder setSnapshotNameBytes(
         com.google.protobuf.ByteString value) {
@@ -1081,24 +970,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private org.tensorflow.framework.SaveSliceInfoDef saveSliceInfoDef_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.SaveSliceInfoDef, org.tensorflow.framework.SaveSliceInfoDef.Builder, org.tensorflow.framework.SaveSliceInfoDefOrBuilder> saveSliceInfoDefBuilder_;
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public boolean hasSaveSliceInfoDef() {
       return saveSliceInfoDefBuilder_ != null || saveSliceInfoDef_ != null;
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public org.tensorflow.framework.SaveSliceInfoDef getSaveSliceInfoDef() {
       if (saveSliceInfoDefBuilder_ == null) {
@@ -1108,11 +997,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public Builder setSaveSliceInfoDef(org.tensorflow.framework.SaveSliceInfoDef value) {
       if (saveSliceInfoDefBuilder_ == null) {
@@ -1128,11 +1017,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public Builder setSaveSliceInfoDef(
         org.tensorflow.framework.SaveSliceInfoDef.Builder builderForValue) {
@@ -1146,11 +1035,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public Builder mergeSaveSliceInfoDef(org.tensorflow.framework.SaveSliceInfoDef value) {
       if (saveSliceInfoDefBuilder_ == null) {
@@ -1168,11 +1057,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public Builder clearSaveSliceInfoDef() {
       if (saveSliceInfoDefBuilder_ == null) {
@@ -1186,11 +1075,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public org.tensorflow.framework.SaveSliceInfoDef.Builder getSaveSliceInfoDefBuilder() {
       
@@ -1198,11 +1087,11 @@ private static final long serialVersionUID = 0L;
       return getSaveSliceInfoDefFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
     public org.tensorflow.framework.SaveSliceInfoDefOrBuilder getSaveSliceInfoDefOrBuilder() {
       if (saveSliceInfoDefBuilder_ != null) {
@@ -1213,17 +1102,17 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+     *
      * <pre>
      * Support for saving variables as slices of a larger variable.
      * </pre>
-     *
-     * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.SaveSliceInfoDef, org.tensorflow.framework.SaveSliceInfoDef.Builder, org.tensorflow.framework.SaveSliceInfoDefOrBuilder> 
         getSaveSliceInfoDefFieldBuilder() {
       if (saveSliceInfoDefBuilder_ == null) {
-        saveSliceInfoDefBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        saveSliceInfoDefBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.SaveSliceInfoDef, org.tensorflow.framework.SaveSliceInfoDef.Builder, org.tensorflow.framework.SaveSliceInfoDefOrBuilder>(
                 getSaveSliceInfoDef(),
                 getParentForChildren(),
@@ -1235,21 +1124,21 @@ private static final long serialVersionUID = 0L;
 
     private boolean isResource_ ;
     /**
+     * <code>optional bool is_resource = 5;</code>
+     *
      * <pre>
      * Whether to represent this as a ResourceVariable.
      * </pre>
-     *
-     * <code>bool is_resource = 5;</code>
      */
     public boolean getIsResource() {
       return isResource_;
     }
     /**
+     * <code>optional bool is_resource = 5;</code>
+     *
      * <pre>
      * Whether to represent this as a ResourceVariable.
      * </pre>
-     *
-     * <code>bool is_resource = 5;</code>
      */
     public Builder setIsResource(boolean value) {
       
@@ -1258,11 +1147,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bool is_resource = 5;</code>
+     *
      * <pre>
      * Whether to represent this as a ResourceVariable.
      * </pre>
-     *
-     * <code>bool is_resource = 5;</code>
      */
     public Builder clearIsResource() {
       
@@ -1272,12 +1161,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1300,7 +1189,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new VariableDef(input, extensionRegistry);
+      try {
+        return new VariableDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

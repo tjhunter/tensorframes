@@ -8,74 +8,74 @@ public interface MemoryLogRawAllocationOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int64 step_id = 1;</code>
+   *
    * <pre>
    * Process-unique step id.
    * </pre>
-   *
-   * <code>int64 step_id = 1;</code>
    */
   long getStepId();
 
   /**
+   * <code>optional string operation = 2;</code>
+   *
    * <pre>
    * Name of the operation making the allocation.
    * </pre>
-   *
-   * <code>string operation = 2;</code>
    */
   java.lang.String getOperation();
   /**
+   * <code>optional string operation = 2;</code>
+   *
    * <pre>
    * Name of the operation making the allocation.
    * </pre>
-   *
-   * <code>string operation = 2;</code>
    */
   com.google.protobuf.ByteString
       getOperationBytes();
 
   /**
+   * <code>optional int64 num_bytes = 3;</code>
+   *
    * <pre>
    * Number of bytes in the allocation.
    * </pre>
-   *
-   * <code>int64 num_bytes = 3;</code>
    */
   long getNumBytes();
 
   /**
+   * <code>optional uint64 ptr = 4;</code>
+   *
    * <pre>
    * Address of the allocation.
    * </pre>
-   *
-   * <code>uint64 ptr = 4;</code>
    */
   long getPtr();
 
   /**
+   * <code>optional int64 allocation_id = 5;</code>
+   *
    * <pre>
    * Id of the tensor buffer being allocated, used to match to a
    * corresponding deallocation.
    * </pre>
-   *
-   * <code>int64 allocation_id = 5;</code>
    */
   long getAllocationId();
 
   /**
+   * <code>optional string allocator_name = 6;</code>
+   *
    * <pre>
    * Name of the allocator used.
    * </pre>
-   *
-   * <code>string allocator_name = 6;</code>
    */
   java.lang.String getAllocatorName();
   /**
+   * <code>optional string allocator_name = 6;</code>
+   *
    * <pre>
    * Name of the allocator used.
    * </pre>
-   *
-   * <code>string allocator_name = 6;</code>
    */
   com.google.protobuf.ByteString
       getAllocatorNameBytes();

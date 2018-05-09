@@ -6,45 +6,39 @@ package org.tensorflow.framework;
 public final class FunctionProtos {
   private FunctionProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_FunctionDefLibrary_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_FunctionDefLibrary_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_FunctionDef_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_FunctionDef_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_FunctionDef_AttrEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_FunctionDef_AttrEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_FunctionDef_RetEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_FunctionDef_RetEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_GradientDef_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_GradientDef_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -57,7 +51,7 @@ public final class FunctionProtos {
       "onDef\022)\n\010gradient\030\002 \003(\0132\027.tensorflow.Gra" +
       "dientDef\"\252\002\n\013FunctionDef\022$\n\tsignature\030\001 " +
       "\001(\0132\021.tensorflow.OpDef\022/\n\004attr\030\005 \003(\0132!.t" +
-      "ensorflow.FunctionDef.AttrEntry\022%\n\010node_" +
+      "ensorflow.FunctionDef.AttrEntry\022%\n\010node_",
       "def\030\003 \003(\0132\023.tensorflow.NodeDef\022-\n\003ret\030\004 " +
       "\003(\0132 .tensorflow.FunctionDef.RetEntry\032B\n" +
       "\tAttrEntry\022\013\n\003key\030\001 \001(\t\022$\n\005value\030\002 \001(\0132\025" +
@@ -85,31 +79,31 @@ public final class FunctionProtos {
     internal_static_tensorflow_FunctionDefLibrary_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_FunctionDefLibrary_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_FunctionDefLibrary_descriptor,
         new java.lang.String[] { "Function", "Gradient", });
     internal_static_tensorflow_FunctionDef_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_tensorflow_FunctionDef_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_FunctionDef_descriptor,
         new java.lang.String[] { "Signature", "Attr", "NodeDef", "Ret", });
     internal_static_tensorflow_FunctionDef_AttrEntry_descriptor =
       internal_static_tensorflow_FunctionDef_descriptor.getNestedTypes().get(0);
     internal_static_tensorflow_FunctionDef_AttrEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_FunctionDef_AttrEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_tensorflow_FunctionDef_RetEntry_descriptor =
       internal_static_tensorflow_FunctionDef_descriptor.getNestedTypes().get(1);
     internal_static_tensorflow_FunctionDef_RetEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_FunctionDef_RetEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_tensorflow_GradientDef_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_tensorflow_GradientDef_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_GradientDef_descriptor,
         new java.lang.String[] { "FunctionName", "GradientFunc", });
     org.tensorflow.framework.AttrValueProtos.getDescriptor();

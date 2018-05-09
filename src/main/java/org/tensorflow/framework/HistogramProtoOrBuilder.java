@@ -8,31 +8,33 @@ public interface HistogramProtoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>double min = 1;</code>
+   * <code>optional double min = 1;</code>
    */
   double getMin();
 
   /**
-   * <code>double max = 2;</code>
+   * <code>optional double max = 2;</code>
    */
   double getMax();
 
   /**
-   * <code>double num = 3;</code>
+   * <code>optional double num = 3;</code>
    */
   double getNum();
 
   /**
-   * <code>double sum = 4;</code>
+   * <code>optional double sum = 4;</code>
    */
   double getSum();
 
   /**
-   * <code>double sum_squares = 5;</code>
+   * <code>optional double sum_squares = 5;</code>
    */
   double getSumSquares();
 
   /**
+   * <code>repeated double bucket_limit = 6 [packed = true];</code>
+   *
    * <pre>
    * Parallel arrays encoding the bucket boundaries and the bucket values.
    * bucket(i) is the count for the bucket i.  The range for
@@ -40,11 +42,11 @@ public interface HistogramProtoOrBuilder extends
    *   i == 0:  -DBL_MAX .. bucket_limit(0)
    *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
    * </pre>
-   *
-   * <code>repeated double bucket_limit = 6 [packed = true];</code>
    */
   java.util.List<java.lang.Double> getBucketLimitList();
   /**
+   * <code>repeated double bucket_limit = 6 [packed = true];</code>
+   *
    * <pre>
    * Parallel arrays encoding the bucket boundaries and the bucket values.
    * bucket(i) is the count for the bucket i.  The range for
@@ -52,11 +54,11 @@ public interface HistogramProtoOrBuilder extends
    *   i == 0:  -DBL_MAX .. bucket_limit(0)
    *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
    * </pre>
-   *
-   * <code>repeated double bucket_limit = 6 [packed = true];</code>
    */
   int getBucketLimitCount();
   /**
+   * <code>repeated double bucket_limit = 6 [packed = true];</code>
+   *
    * <pre>
    * Parallel arrays encoding the bucket boundaries and the bucket values.
    * bucket(i) is the count for the bucket i.  The range for
@@ -64,8 +66,6 @@ public interface HistogramProtoOrBuilder extends
    *   i == 0:  -DBL_MAX .. bucket_limit(0)
    *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
    * </pre>
-   *
-   * <code>repeated double bucket_limit = 6 [packed = true];</code>
    */
   double getBucketLimit(int index);
 

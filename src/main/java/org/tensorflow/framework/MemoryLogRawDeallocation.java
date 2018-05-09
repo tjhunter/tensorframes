@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.MemoryLogRawDeallocation}
  */
 public  final class MemoryLogRawDeallocation extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.MemoryLogRawDeallocation)
     MemoryLogRawDeallocationOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use MemoryLogRawDeallocation.newBuilder() to construct.
-  private MemoryLogRawDeallocation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private MemoryLogRawDeallocation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private MemoryLogRawDeallocation() {
@@ -26,19 +25,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private MemoryLogRawDeallocation(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -48,8 +41,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -60,7 +52,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             operation_ = s;
             break;
@@ -71,7 +63,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             allocatorName_ = s;
             break;
@@ -84,12 +76,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -98,7 +90,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.LogMemoryProtos.internal_static_tensorflow_MemoryLogRawDeallocation_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.LogMemoryProtos.internal_static_tensorflow_MemoryLogRawDeallocation_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -108,11 +100,11 @@ private static final long serialVersionUID = 0L;
   public static final int STEP_ID_FIELD_NUMBER = 1;
   private long stepId_;
   /**
+   * <code>optional int64 step_id = 1;</code>
+   *
    * <pre>
    * Process-unique step id.
    * </pre>
-   *
-   * <code>int64 step_id = 1;</code>
    */
   public long getStepId() {
     return stepId_;
@@ -121,11 +113,11 @@ private static final long serialVersionUID = 0L;
   public static final int OPERATION_FIELD_NUMBER = 2;
   private volatile java.lang.Object operation_;
   /**
+   * <code>optional string operation = 2;</code>
+   *
    * <pre>
    * Name of the operation making the deallocation.
    * </pre>
-   *
-   * <code>string operation = 2;</code>
    */
   public java.lang.String getOperation() {
     java.lang.Object ref = operation_;
@@ -140,11 +132,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string operation = 2;</code>
+   *
    * <pre>
    * Name of the operation making the deallocation.
    * </pre>
-   *
-   * <code>string operation = 2;</code>
    */
   public com.google.protobuf.ByteString
       getOperationBytes() {
@@ -163,12 +155,12 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOCATION_ID_FIELD_NUMBER = 3;
   private long allocationId_;
   /**
+   * <code>optional int64 allocation_id = 3;</code>
+   *
    * <pre>
    * Id of the tensor buffer being deallocated, used to match to a
    * corresponding allocation.
    * </pre>
-   *
-   * <code>int64 allocation_id = 3;</code>
    */
   public long getAllocationId() {
     return allocationId_;
@@ -177,11 +169,11 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOCATOR_NAME_FIELD_NUMBER = 4;
   private volatile java.lang.Object allocatorName_;
   /**
+   * <code>optional string allocator_name = 4;</code>
+   *
    * <pre>
    * Name of the allocator used.
    * </pre>
-   *
-   * <code>string allocator_name = 4;</code>
    */
   public java.lang.String getAllocatorName() {
     java.lang.Object ref = allocatorName_;
@@ -196,11 +188,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string allocator_name = 4;</code>
+   *
    * <pre>
    * Name of the allocator used.
    * </pre>
-   *
-   * <code>string allocator_name = 4;</code>
    */
   public com.google.protobuf.ByteString
       getAllocatorNameBytes() {
@@ -219,12 +211,12 @@ private static final long serialVersionUID = 0L;
   public static final int DEFERRED_FIELD_NUMBER = 5;
   private boolean deferred_;
   /**
+   * <code>optional bool deferred = 5;</code>
+   *
    * <pre>
    * True if the deallocation is queued and will be performed later,
    * e.g. for GPU lazy freeing of buffers.
    * </pre>
-   *
-   * <code>bool deferred = 5;</code>
    */
   public boolean getDeferred() {
     return deferred_;
@@ -246,18 +238,17 @@ private static final long serialVersionUID = 0L;
       output.writeInt64(1, stepId_);
     }
     if (!getOperationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, operation_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, operation_);
     }
     if (allocationId_ != 0L) {
       output.writeInt64(3, allocationId_);
     }
     if (!getAllocatorNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, allocatorName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 4, allocatorName_);
     }
     if (deferred_ != false) {
       output.writeBool(5, deferred_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -270,85 +261,24 @@ private static final long serialVersionUID = 0L;
         .computeInt64Size(1, stepId_);
     }
     if (!getOperationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, operation_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, operation_);
     }
     if (allocationId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(3, allocationId_);
     }
     if (!getAllocatorNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, allocatorName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(4, allocatorName_);
     }
     if (deferred_ != false) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(5, deferred_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.MemoryLogRawDeallocation)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.MemoryLogRawDeallocation other = (org.tensorflow.framework.MemoryLogRawDeallocation) obj;
-
-    boolean result = true;
-    result = result && (getStepId()
-        == other.getStepId());
-    result = result && getOperation()
-        .equals(other.getOperation());
-    result = result && (getAllocationId()
-        == other.getAllocationId());
-    result = result && getAllocatorName()
-        .equals(other.getAllocatorName());
-    result = result && (getDeferred()
-        == other.getDeferred());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + STEP_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getStepId());
-    hash = (37 * hash) + OPERATION_FIELD_NUMBER;
-    hash = (53 * hash) + getOperation().hashCode();
-    hash = (37 * hash) + ALLOCATION_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getAllocationId());
-    hash = (37 * hash) + ALLOCATOR_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getAllocatorName().hashCode();
-    hash = (37 * hash) + DEFERRED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getDeferred());
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -372,40 +302,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.MemoryLogRawDeallocation parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -422,7 +346,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -430,7 +354,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.MemoryLogRawDeallocation}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.MemoryLogRawDeallocation)
       org.tensorflow.framework.MemoryLogRawDeallocationOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -438,7 +362,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.LogMemoryProtos.internal_static_tensorflow_MemoryLogRawDeallocation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.LogMemoryProtos.internal_static_tensorflow_MemoryLogRawDeallocation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -451,13 +375,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -503,32 +426,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.MemoryLogRawDeallocation) {
         return mergeFrom((org.tensorflow.framework.MemoryLogRawDeallocation)other);
@@ -557,7 +454,6 @@ private static final long serialVersionUID = 0L;
       if (other.getDeferred() != false) {
         setDeferred(other.getDeferred());
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -575,7 +471,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.MemoryLogRawDeallocation) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -586,21 +482,21 @@ private static final long serialVersionUID = 0L;
 
     private long stepId_ ;
     /**
+     * <code>optional int64 step_id = 1;</code>
+     *
      * <pre>
      * Process-unique step id.
      * </pre>
-     *
-     * <code>int64 step_id = 1;</code>
      */
     public long getStepId() {
       return stepId_;
     }
     /**
+     * <code>optional int64 step_id = 1;</code>
+     *
      * <pre>
      * Process-unique step id.
      * </pre>
-     *
-     * <code>int64 step_id = 1;</code>
      */
     public Builder setStepId(long value) {
       
@@ -609,11 +505,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 step_id = 1;</code>
+     *
      * <pre>
      * Process-unique step id.
      * </pre>
-     *
-     * <code>int64 step_id = 1;</code>
      */
     public Builder clearStepId() {
       
@@ -624,11 +520,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object operation_ = "";
     /**
+     * <code>optional string operation = 2;</code>
+     *
      * <pre>
      * Name of the operation making the deallocation.
      * </pre>
-     *
-     * <code>string operation = 2;</code>
      */
     public java.lang.String getOperation() {
       java.lang.Object ref = operation_;
@@ -643,11 +539,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string operation = 2;</code>
+     *
      * <pre>
      * Name of the operation making the deallocation.
      * </pre>
-     *
-     * <code>string operation = 2;</code>
      */
     public com.google.protobuf.ByteString
         getOperationBytes() {
@@ -663,11 +559,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string operation = 2;</code>
+     *
      * <pre>
      * Name of the operation making the deallocation.
      * </pre>
-     *
-     * <code>string operation = 2;</code>
      */
     public Builder setOperation(
         java.lang.String value) {
@@ -680,11 +576,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string operation = 2;</code>
+     *
      * <pre>
      * Name of the operation making the deallocation.
      * </pre>
-     *
-     * <code>string operation = 2;</code>
      */
     public Builder clearOperation() {
       
@@ -693,11 +589,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string operation = 2;</code>
+     *
      * <pre>
      * Name of the operation making the deallocation.
      * </pre>
-     *
-     * <code>string operation = 2;</code>
      */
     public Builder setOperationBytes(
         com.google.protobuf.ByteString value) {
@@ -713,23 +609,23 @@ private static final long serialVersionUID = 0L;
 
     private long allocationId_ ;
     /**
+     * <code>optional int64 allocation_id = 3;</code>
+     *
      * <pre>
      * Id of the tensor buffer being deallocated, used to match to a
      * corresponding allocation.
      * </pre>
-     *
-     * <code>int64 allocation_id = 3;</code>
      */
     public long getAllocationId() {
       return allocationId_;
     }
     /**
+     * <code>optional int64 allocation_id = 3;</code>
+     *
      * <pre>
      * Id of the tensor buffer being deallocated, used to match to a
      * corresponding allocation.
      * </pre>
-     *
-     * <code>int64 allocation_id = 3;</code>
      */
     public Builder setAllocationId(long value) {
       
@@ -738,12 +634,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 allocation_id = 3;</code>
+     *
      * <pre>
      * Id of the tensor buffer being deallocated, used to match to a
      * corresponding allocation.
      * </pre>
-     *
-     * <code>int64 allocation_id = 3;</code>
      */
     public Builder clearAllocationId() {
       
@@ -754,11 +650,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object allocatorName_ = "";
     /**
+     * <code>optional string allocator_name = 4;</code>
+     *
      * <pre>
      * Name of the allocator used.
      * </pre>
-     *
-     * <code>string allocator_name = 4;</code>
      */
     public java.lang.String getAllocatorName() {
       java.lang.Object ref = allocatorName_;
@@ -773,11 +669,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string allocator_name = 4;</code>
+     *
      * <pre>
      * Name of the allocator used.
      * </pre>
-     *
-     * <code>string allocator_name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getAllocatorNameBytes() {
@@ -793,11 +689,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string allocator_name = 4;</code>
+     *
      * <pre>
      * Name of the allocator used.
      * </pre>
-     *
-     * <code>string allocator_name = 4;</code>
      */
     public Builder setAllocatorName(
         java.lang.String value) {
@@ -810,11 +706,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string allocator_name = 4;</code>
+     *
      * <pre>
      * Name of the allocator used.
      * </pre>
-     *
-     * <code>string allocator_name = 4;</code>
      */
     public Builder clearAllocatorName() {
       
@@ -823,11 +719,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string allocator_name = 4;</code>
+     *
      * <pre>
      * Name of the allocator used.
      * </pre>
-     *
-     * <code>string allocator_name = 4;</code>
      */
     public Builder setAllocatorNameBytes(
         com.google.protobuf.ByteString value) {
@@ -843,23 +739,23 @@ private static final long serialVersionUID = 0L;
 
     private boolean deferred_ ;
     /**
+     * <code>optional bool deferred = 5;</code>
+     *
      * <pre>
      * True if the deallocation is queued and will be performed later,
      * e.g. for GPU lazy freeing of buffers.
      * </pre>
-     *
-     * <code>bool deferred = 5;</code>
      */
     public boolean getDeferred() {
       return deferred_;
     }
     /**
+     * <code>optional bool deferred = 5;</code>
+     *
      * <pre>
      * True if the deallocation is queued and will be performed later,
      * e.g. for GPU lazy freeing of buffers.
      * </pre>
-     *
-     * <code>bool deferred = 5;</code>
      */
     public Builder setDeferred(boolean value) {
       
@@ -868,12 +764,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bool deferred = 5;</code>
+     *
      * <pre>
      * True if the deallocation is queued and will be performed later,
      * e.g. for GPU lazy freeing of buffers.
      * </pre>
-     *
-     * <code>bool deferred = 5;</code>
      */
     public Builder clearDeferred() {
       
@@ -883,12 +779,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -911,7 +807,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new MemoryLogRawDeallocation(input, extensionRegistry);
+      try {
+        return new MemoryLogRawDeallocation(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

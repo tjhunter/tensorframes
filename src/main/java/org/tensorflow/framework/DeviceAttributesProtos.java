@@ -6,30 +6,24 @@ package org.tensorflow.framework;
 public final class DeviceAttributesProtos {
   private DeviceAttributesProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_DeviceLocality_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_DeviceLocality_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_DeviceAttributes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_DeviceAttributes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -58,13 +52,13 @@ public final class DeviceAttributesProtos {
     internal_static_tensorflow_DeviceLocality_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_DeviceLocality_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_DeviceLocality_descriptor,
         new java.lang.String[] { "BusId", });
     internal_static_tensorflow_DeviceAttributes_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_tensorflow_DeviceAttributes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_DeviceAttributes_descriptor,
         new java.lang.String[] { "Name", "DeviceType", "MemoryLimit", "Locality", "Incarnation", "PhysicalDeviceDesc", });
   }

@@ -8,85 +8,85 @@ public interface ResourceHandleProtoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string device = 1;</code>
+   *
    * <pre>
    * Unique name for the device containing the resource.
    * </pre>
-   *
-   * <code>string device = 1;</code>
    */
   java.lang.String getDevice();
   /**
+   * <code>optional string device = 1;</code>
+   *
    * <pre>
    * Unique name for the device containing the resource.
    * </pre>
-   *
-   * <code>string device = 1;</code>
    */
   com.google.protobuf.ByteString
       getDeviceBytes();
 
   /**
+   * <code>optional string container = 2;</code>
+   *
    * <pre>
    * Container in which this resource is placed.
    * </pre>
-   *
-   * <code>string container = 2;</code>
    */
   java.lang.String getContainer();
   /**
+   * <code>optional string container = 2;</code>
+   *
    * <pre>
    * Container in which this resource is placed.
    * </pre>
-   *
-   * <code>string container = 2;</code>
    */
   com.google.protobuf.ByteString
       getContainerBytes();
 
   /**
+   * <code>optional string name = 3;</code>
+   *
    * <pre>
    * Unique name of this resource.
    * </pre>
-   *
-   * <code>string name = 3;</code>
    */
   java.lang.String getName();
   /**
+   * <code>optional string name = 3;</code>
+   *
    * <pre>
    * Unique name of this resource.
    * </pre>
-   *
-   * <code>string name = 3;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
+   * <code>optional uint64 hash_code = 4;</code>
+   *
    * <pre>
    * Hash code for the type of the resource. Is only valid in the same device
    * and in the same execution.
    * </pre>
-   *
-   * <code>uint64 hash_code = 4;</code>
    */
   long getHashCode();
 
   /**
+   * <code>optional string maybe_type_name = 5;</code>
+   *
    * <pre>
    * For debug-only, the name of the type pointed to by this handle, if
    * available.
    * </pre>
-   *
-   * <code>string maybe_type_name = 5;</code>
    */
   java.lang.String getMaybeTypeName();
   /**
+   * <code>optional string maybe_type_name = 5;</code>
+   *
    * <pre>
    * For debug-only, the name of the type pointed to by this handle, if
    * available.
    * </pre>
-   *
-   * <code>string maybe_type_name = 5;</code>
    */
   com.google.protobuf.ByteString
       getMaybeTypeNameBytes();

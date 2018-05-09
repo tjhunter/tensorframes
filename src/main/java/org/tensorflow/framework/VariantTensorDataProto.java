@@ -4,19 +4,18 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.VariantTensorDataProto}
+ *
  * <pre>
  * Protocol buffer representing the serialization format of DT_VARIANT tensors.
  * </pre>
- *
- * Protobuf type {@code tensorflow.VariantTensorDataProto}
  */
 public  final class VariantTensorDataProto extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.VariantTensorDataProto)
     VariantTensorDataProtoOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use VariantTensorDataProto.newBuilder() to construct.
-  private VariantTensorDataProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private VariantTensorDataProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private VariantTensorDataProto() {
@@ -28,19 +27,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private VariantTensorDataProto(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -50,14 +43,13 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             typeName_ = s;
             break;
@@ -72,22 +64,21 @@ private static final long serialVersionUID = 0L;
               tensors_ = new java.util.ArrayList<org.tensorflow.framework.TensorProto>();
               mutable_bitField0_ |= 0x00000004;
             }
-            tensors_.add(
-                input.readMessage(org.tensorflow.framework.TensorProto.parser(), extensionRegistry));
+            tensors_.add(input.readMessage(org.tensorflow.framework.TensorProto.parser(), extensionRegistry));
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
         tensors_ = java.util.Collections.unmodifiableList(tensors_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -96,7 +87,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_VariantTensorDataProto_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_VariantTensorDataProto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -107,11 +98,11 @@ private static final long serialVersionUID = 0L;
   public static final int TYPE_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object typeName_;
   /**
+   * <code>optional string type_name = 1;</code>
+   *
    * <pre>
    * Name of the type of objects being serialized.
    * </pre>
-   *
-   * <code>string type_name = 1;</code>
    */
   public java.lang.String getTypeName() {
     java.lang.Object ref = typeName_;
@@ -126,11 +117,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string type_name = 1;</code>
+   *
    * <pre>
    * Name of the type of objects being serialized.
    * </pre>
-   *
-   * <code>string type_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getTypeNameBytes() {
@@ -149,11 +140,11 @@ private static final long serialVersionUID = 0L;
   public static final int METADATA_FIELD_NUMBER = 2;
   private com.google.protobuf.ByteString metadata_;
   /**
+   * <code>optional bytes metadata = 2;</code>
+   *
    * <pre>
    * Portions of the object that are not Tensors.
    * </pre>
-   *
-   * <code>bytes metadata = 2;</code>
    */
   public com.google.protobuf.ByteString getMetadata() {
     return metadata_;
@@ -162,52 +153,52 @@ private static final long serialVersionUID = 0L;
   public static final int TENSORS_FIELD_NUMBER = 3;
   private java.util.List<org.tensorflow.framework.TensorProto> tensors_;
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   public java.util.List<org.tensorflow.framework.TensorProto> getTensorsList() {
     return tensors_;
   }
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.TensorProtoOrBuilder> 
       getTensorsOrBuilderList() {
     return tensors_;
   }
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   public int getTensorsCount() {
     return tensors_.size();
   }
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   public org.tensorflow.framework.TensorProto getTensors(int index) {
     return tensors_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   public org.tensorflow.framework.TensorProtoOrBuilder getTensorsOrBuilder(
       int index) {
@@ -227,7 +218,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getTypeNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, typeName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, typeName_);
     }
     if (!metadata_.isEmpty()) {
       output.writeBytes(2, metadata_);
@@ -235,7 +226,6 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < tensors_.size(); i++) {
       output.writeMessage(3, tensors_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -244,7 +234,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getTypeNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, typeName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, typeName_);
     }
     if (!metadata_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
@@ -254,63 +244,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, tensors_.get(i));
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.VariantTensorDataProto)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.VariantTensorDataProto other = (org.tensorflow.framework.VariantTensorDataProto) obj;
-
-    boolean result = true;
-    result = result && getTypeName()
-        .equals(other.getTypeName());
-    result = result && getMetadata()
-        .equals(other.getMetadata());
-    result = result && getTensorsList()
-        .equals(other.getTensorsList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TYPE_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getTypeName().hashCode();
-    hash = (37 * hash) + METADATA_FIELD_NUMBER;
-    hash = (53 * hash) + getMetadata().hashCode();
-    if (getTensorsCount() > 0) {
-      hash = (37 * hash) + TENSORS_FIELD_NUMBER;
-      hash = (53 * hash) + getTensorsList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.VariantTensorDataProto parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.VariantTensorDataProto parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.VariantTensorDataProto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -334,40 +272,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.VariantTensorDataProto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.VariantTensorDataProto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.VariantTensorDataProto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.VariantTensorDataProto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.VariantTensorDataProto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.VariantTensorDataProto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -384,19 +316,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.VariantTensorDataProto}
+   *
    * <pre>
    * Protocol buffer representing the serialization format of DT_VARIANT tensors.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.VariantTensorDataProto}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.VariantTensorDataProto)
       org.tensorflow.framework.VariantTensorDataProtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -404,7 +336,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_VariantTensorDataProto_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_VariantTensorDataProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -417,13 +349,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getTensorsFieldBuilder();
       }
     }
@@ -479,32 +410,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.VariantTensorDataProto) {
         return mergeFrom((org.tensorflow.framework.VariantTensorDataProto)other);
@@ -542,14 +447,13 @@ private static final long serialVersionUID = 0L;
             tensors_ = other.tensors_;
             bitField0_ = (bitField0_ & ~0x00000004);
             tensorsBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getTensorsFieldBuilder() : null;
           } else {
             tensorsBuilder_.addAllMessages(other.tensors_);
           }
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -567,7 +471,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.VariantTensorDataProto) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -579,11 +483,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object typeName_ = "";
     /**
+     * <code>optional string type_name = 1;</code>
+     *
      * <pre>
      * Name of the type of objects being serialized.
      * </pre>
-     *
-     * <code>string type_name = 1;</code>
      */
     public java.lang.String getTypeName() {
       java.lang.Object ref = typeName_;
@@ -598,11 +502,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string type_name = 1;</code>
+     *
      * <pre>
      * Name of the type of objects being serialized.
      * </pre>
-     *
-     * <code>string type_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTypeNameBytes() {
@@ -618,11 +522,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string type_name = 1;</code>
+     *
      * <pre>
      * Name of the type of objects being serialized.
      * </pre>
-     *
-     * <code>string type_name = 1;</code>
      */
     public Builder setTypeName(
         java.lang.String value) {
@@ -635,11 +539,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string type_name = 1;</code>
+     *
      * <pre>
      * Name of the type of objects being serialized.
      * </pre>
-     *
-     * <code>string type_name = 1;</code>
      */
     public Builder clearTypeName() {
       
@@ -648,11 +552,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string type_name = 1;</code>
+     *
      * <pre>
      * Name of the type of objects being serialized.
      * </pre>
-     *
-     * <code>string type_name = 1;</code>
      */
     public Builder setTypeNameBytes(
         com.google.protobuf.ByteString value) {
@@ -668,21 +572,21 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.ByteString metadata_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <code>optional bytes metadata = 2;</code>
+     *
      * <pre>
      * Portions of the object that are not Tensors.
      * </pre>
-     *
-     * <code>bytes metadata = 2;</code>
      */
     public com.google.protobuf.ByteString getMetadata() {
       return metadata_;
     }
     /**
+     * <code>optional bytes metadata = 2;</code>
+     *
      * <pre>
      * Portions of the object that are not Tensors.
      * </pre>
-     *
-     * <code>bytes metadata = 2;</code>
      */
     public Builder setMetadata(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -694,11 +598,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bytes metadata = 2;</code>
+     *
      * <pre>
      * Portions of the object that are not Tensors.
      * </pre>
-     *
-     * <code>bytes metadata = 2;</code>
      */
     public Builder clearMetadata() {
       
@@ -716,15 +620,15 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> tensorsBuilder_;
 
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public java.util.List<org.tensorflow.framework.TensorProto> getTensorsList() {
       if (tensorsBuilder_ == null) {
@@ -734,11 +638,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public int getTensorsCount() {
       if (tensorsBuilder_ == null) {
@@ -748,11 +652,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public org.tensorflow.framework.TensorProto getTensors(int index) {
       if (tensorsBuilder_ == null) {
@@ -762,11 +666,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder setTensors(
         int index, org.tensorflow.framework.TensorProto value) {
@@ -783,11 +687,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder setTensors(
         int index, org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -801,11 +705,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder addTensors(org.tensorflow.framework.TensorProto value) {
       if (tensorsBuilder_ == null) {
@@ -821,11 +725,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder addTensors(
         int index, org.tensorflow.framework.TensorProto value) {
@@ -842,11 +746,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder addTensors(
         org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -860,11 +764,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder addTensors(
         int index, org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -878,11 +782,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder addAllTensors(
         java.lang.Iterable<? extends org.tensorflow.framework.TensorProto> values) {
@@ -897,11 +801,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder clearTensors() {
       if (tensorsBuilder_ == null) {
@@ -914,11 +818,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public Builder removeTensors(int index) {
       if (tensorsBuilder_ == null) {
@@ -931,22 +835,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public org.tensorflow.framework.TensorProto.Builder getTensorsBuilder(
         int index) {
       return getTensorsFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public org.tensorflow.framework.TensorProtoOrBuilder getTensorsOrBuilder(
         int index) {
@@ -956,11 +860,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.TensorProtoOrBuilder> 
          getTensorsOrBuilderList() {
@@ -971,22 +875,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public org.tensorflow.framework.TensorProto.Builder addTensorsBuilder() {
       return getTensorsFieldBuilder().addBuilder(
           org.tensorflow.framework.TensorProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public org.tensorflow.framework.TensorProto.Builder addTensorsBuilder(
         int index) {
@@ -994,21 +898,21 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.TensorProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+     *
      * <pre>
      * Tensors contained within objects being serialized.
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
      */
     public java.util.List<org.tensorflow.framework.TensorProto.Builder> 
          getTensorsBuilderList() {
       return getTensorsFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> 
         getTensorsFieldBuilder() {
       if (tensorsBuilder_ == null) {
-        tensorsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        tensorsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder>(
                 tensors_,
                 ((bitField0_ & 0x00000004) == 0x00000004),
@@ -1020,12 +924,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1048,7 +952,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new VariantTensorDataProto(input, extensionRegistry);
+      try {
+        return new VariantTensorDataProto(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

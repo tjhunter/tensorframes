@@ -4,19 +4,18 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.OpDeprecation}
+ *
  * <pre>
  * Information about version-dependent deprecation of an op
  * </pre>
- *
- * Protobuf type {@code tensorflow.OpDeprecation}
  */
 public  final class OpDeprecation extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.OpDeprecation)
     OpDeprecationOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use OpDeprecation.newBuilder() to construct.
-  private OpDeprecation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private OpDeprecation(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private OpDeprecation() {
@@ -27,19 +26,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private OpDeprecation(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -49,8 +42,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -61,7 +53,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             explanation_ = s;
             break;
@@ -69,12 +61,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -83,7 +75,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.OpDefProtos.internal_static_tensorflow_OpDeprecation_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.OpDefProtos.internal_static_tensorflow_OpDeprecation_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -93,11 +85,11 @@ private static final long serialVersionUID = 0L;
   public static final int VERSION_FIELD_NUMBER = 1;
   private int version_;
   /**
+   * <code>optional int32 version = 1;</code>
+   *
    * <pre>
    * First GraphDef version at which the op is disallowed.
    * </pre>
-   *
-   * <code>int32 version = 1;</code>
    */
   public int getVersion() {
     return version_;
@@ -106,11 +98,11 @@ private static final long serialVersionUID = 0L;
   public static final int EXPLANATION_FIELD_NUMBER = 2;
   private volatile java.lang.Object explanation_;
   /**
+   * <code>optional string explanation = 2;</code>
+   *
    * <pre>
    * Explanation of why it was deprecated and what to use instead.
    * </pre>
-   *
-   * <code>string explanation = 2;</code>
    */
   public java.lang.String getExplanation() {
     java.lang.Object ref = explanation_;
@@ -125,11 +117,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string explanation = 2;</code>
+   *
    * <pre>
    * Explanation of why it was deprecated and what to use instead.
    * </pre>
-   *
-   * <code>string explanation = 2;</code>
    */
   public com.google.protobuf.ByteString
       getExplanationBytes() {
@@ -161,9 +153,8 @@ private static final long serialVersionUID = 0L;
       output.writeInt32(1, version_);
     }
     if (!getExplanationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, explanation_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, explanation_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -176,59 +167,13 @@ private static final long serialVersionUID = 0L;
         .computeInt32Size(1, version_);
     }
     if (!getExplanationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, explanation_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, explanation_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.OpDeprecation)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.OpDeprecation other = (org.tensorflow.framework.OpDeprecation) obj;
-
-    boolean result = true;
-    result = result && (getVersion()
-        == other.getVersion());
-    result = result && getExplanation()
-        .equals(other.getExplanation());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VERSION_FIELD_NUMBER;
-    hash = (53 * hash) + getVersion();
-    hash = (37 * hash) + EXPLANATION_FIELD_NUMBER;
-    hash = (53 * hash) + getExplanation().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.OpDeprecation parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.OpDeprecation parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.OpDeprecation parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -252,40 +197,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.OpDeprecation parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.OpDeprecation parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.OpDeprecation parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.OpDeprecation parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.OpDeprecation parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.OpDeprecation parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -302,19 +241,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.OpDeprecation}
+   *
    * <pre>
    * Information about version-dependent deprecation of an op
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.OpDeprecation}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.OpDeprecation)
       org.tensorflow.framework.OpDeprecationOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -322,7 +261,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.OpDefProtos.internal_static_tensorflow_OpDeprecation_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.OpDefProtos.internal_static_tensorflow_OpDeprecation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -335,13 +274,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -378,32 +316,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.OpDeprecation) {
         return mergeFrom((org.tensorflow.framework.OpDeprecation)other);
@@ -422,7 +334,6 @@ private static final long serialVersionUID = 0L;
         explanation_ = other.explanation_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -440,7 +351,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.OpDeprecation) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -451,21 +362,21 @@ private static final long serialVersionUID = 0L;
 
     private int version_ ;
     /**
+     * <code>optional int32 version = 1;</code>
+     *
      * <pre>
      * First GraphDef version at which the op is disallowed.
      * </pre>
-     *
-     * <code>int32 version = 1;</code>
      */
     public int getVersion() {
       return version_;
     }
     /**
+     * <code>optional int32 version = 1;</code>
+     *
      * <pre>
      * First GraphDef version at which the op is disallowed.
      * </pre>
-     *
-     * <code>int32 version = 1;</code>
      */
     public Builder setVersion(int value) {
       
@@ -474,11 +385,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int32 version = 1;</code>
+     *
      * <pre>
      * First GraphDef version at which the op is disallowed.
      * </pre>
-     *
-     * <code>int32 version = 1;</code>
      */
     public Builder clearVersion() {
       
@@ -489,11 +400,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object explanation_ = "";
     /**
+     * <code>optional string explanation = 2;</code>
+     *
      * <pre>
      * Explanation of why it was deprecated and what to use instead.
      * </pre>
-     *
-     * <code>string explanation = 2;</code>
      */
     public java.lang.String getExplanation() {
       java.lang.Object ref = explanation_;
@@ -508,11 +419,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string explanation = 2;</code>
+     *
      * <pre>
      * Explanation of why it was deprecated and what to use instead.
      * </pre>
-     *
-     * <code>string explanation = 2;</code>
      */
     public com.google.protobuf.ByteString
         getExplanationBytes() {
@@ -528,11 +439,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string explanation = 2;</code>
+     *
      * <pre>
      * Explanation of why it was deprecated and what to use instead.
      * </pre>
-     *
-     * <code>string explanation = 2;</code>
      */
     public Builder setExplanation(
         java.lang.String value) {
@@ -545,11 +456,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string explanation = 2;</code>
+     *
      * <pre>
      * Explanation of why it was deprecated and what to use instead.
      * </pre>
-     *
-     * <code>string explanation = 2;</code>
      */
     public Builder clearExplanation() {
       
@@ -558,11 +469,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string explanation = 2;</code>
+     *
      * <pre>
      * Explanation of why it was deprecated and what to use instead.
      * </pre>
-     *
-     * <code>string explanation = 2;</code>
      */
     public Builder setExplanationBytes(
         com.google.protobuf.ByteString value) {
@@ -577,12 +488,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -605,7 +516,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new OpDeprecation(input, extensionRegistry);
+      try {
+        return new OpDeprecation(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.NodeDef}
  */
 public  final class NodeDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.NodeDef)
     NodeDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use NodeDef.newBuilder() to construct.
-  private NodeDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private NodeDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private NodeDef() {
@@ -25,19 +24,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private NodeDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -47,26 +40,25 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             name_ = s;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             op_ = s;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
               input_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000004;
@@ -75,7 +67,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             device_ = s;
             break;
@@ -87,24 +79,23 @@ private static final long serialVersionUID = 0L;
               mutable_bitField0_ |= 0x00000010;
             }
             com.google.protobuf.MapEntry<java.lang.String, org.tensorflow.framework.AttrValue>
-            attr__ = input.readMessage(
+            attr = input.readMessage(
                 AttrDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-            attr_.getMutableMap().put(
-                attr__.getKey(), attr__.getValue());
+            attr_.getMutableMap().put(attr.getKey(), attr.getValue());
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
         input_ = input_.getUnmodifiableView();
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -124,7 +115,7 @@ private static final long serialVersionUID = 0L;
             "Invalid map field number: " + number);
     }
   }
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.NodeProto.internal_static_tensorflow_NodeDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -135,13 +126,13 @@ private static final long serialVersionUID = 0L;
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * The name given to this operator. Used for naming inputs,
    * logging, visualization, etc.  Unique within a single GraphDef.
    * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -156,13 +147,13 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * The name given to this operator. Used for naming inputs,
    * logging, visualization, etc.  Unique within a single GraphDef.
    * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getNameBytes() {
@@ -181,12 +172,12 @@ private static final long serialVersionUID = 0L;
   public static final int OP_FIELD_NUMBER = 2;
   private volatile java.lang.Object op_;
   /**
+   * <code>optional string op = 2;</code>
+   *
    * <pre>
    * The operation name.  There may be custom parameters in attrs.
    * Op names starting with an underscore are reserved for internal use.
    * </pre>
-   *
-   * <code>string op = 2;</code>
    */
   public java.lang.String getOp() {
     java.lang.Object ref = op_;
@@ -201,12 +192,12 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string op = 2;</code>
+   *
    * <pre>
    * The operation name.  There may be custom parameters in attrs.
    * Op names starting with an underscore are reserved for internal use.
    * </pre>
-   *
-   * <code>string op = 2;</code>
    */
   public com.google.protobuf.ByteString
       getOpBytes() {
@@ -225,6 +216,8 @@ private static final long serialVersionUID = 0L;
   public static final int INPUT_FIELD_NUMBER = 3;
   private com.google.protobuf.LazyStringList input_;
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -232,14 +225,14 @@ private static final long serialVersionUID = 0L;
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   public com.google.protobuf.ProtocolStringList
       getInputList() {
     return input_;
   }
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -247,13 +240,13 @@ private static final long serialVersionUID = 0L;
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   public int getInputCount() {
     return input_.size();
   }
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -261,13 +254,13 @@ private static final long serialVersionUID = 0L;
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   public java.lang.String getInput(int index) {
     return input_.get(index);
   }
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -275,8 +268,6 @@ private static final long serialVersionUID = 0L;
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   public com.google.protobuf.ByteString
       getInputBytes(int index) {
@@ -286,6 +277,8 @@ private static final long serialVersionUID = 0L;
   public static final int DEVICE_FIELD_NUMBER = 4;
   private volatile java.lang.Object device_;
   /**
+   * <code>optional string device = 4;</code>
+   *
    * <pre>
    * A (possibly partial) specification for the device on which this
    * node should be placed.
@@ -304,8 +297,6 @@ private static final long serialVersionUID = 0L;
    * field is empty or not present), the runtime will attempt to
    * choose a device automatically.
    * </pre>
-   *
-   * <code>string device = 4;</code>
    */
   public java.lang.String getDevice() {
     java.lang.Object ref = device_;
@@ -320,6 +311,8 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string device = 4;</code>
+   *
    * <pre>
    * A (possibly partial) specification for the device on which this
    * node should be placed.
@@ -338,8 +331,6 @@ private static final long serialVersionUID = 0L;
    * field is empty or not present), the runtime will attempt to
    * choose a device automatically.
    * </pre>
-   *
-   * <code>string device = 4;</code>
    */
   public com.google.protobuf.ByteString
       getDeviceBytes() {
@@ -374,14 +365,12 @@ private static final long serialVersionUID = 0L;
     if (attr_ == null) {
       return com.google.protobuf.MapField.emptyMapField(
           AttrDefaultEntryHolder.defaultEntry);
-    }
+   }
     return attr_;
   }
-
-  public int getAttrCount() {
-    return internalGetAttr().getMap().size();
-  }
   /**
+   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+   *
    * <pre>
    * Operation-specific graph-construction-time configuration.
    * Note that this should include all attrs defined in the
@@ -396,99 +385,10 @@ private static final long serialVersionUID = 0L;
    * attr's type field.
    * TODO(josh11b): Add some examples here showing best practices.
    * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
    */
 
-  public boolean containsAttr(
-      java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    return internalGetAttr().getMap().containsKey(key);
-  }
-  /**
-   * Use {@link #getAttrMap()} instead.
-   */
-  @java.lang.Deprecated
   public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttr() {
-    return getAttrMap();
-  }
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttrMap() {
     return internalGetAttr().getMap();
-  }
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  public org.tensorflow.framework.AttrValue getAttrOrDefault(
-      java.lang.String key,
-      org.tensorflow.framework.AttrValue defaultValue) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-        internalGetAttr().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  public org.tensorflow.framework.AttrValue getAttrOrThrow(
-      java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-        internalGetAttr().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -504,24 +404,26 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
     }
     if (!getOpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, op_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, op_);
     }
     for (int i = 0; i < input_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, input_.getRaw(i));
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, input_.getRaw(i));
     }
     if (!getDeviceBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, device_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 4, device_);
     }
-    com.google.protobuf.GeneratedMessageV3
-      .serializeStringMapTo(
-        output,
-        internalGetAttr(),
-        AttrDefaultEntryHolder.defaultEntry,
-        5);
-    unknownFields.writeTo(output);
+    for (java.util.Map.Entry<java.lang.String, org.tensorflow.framework.AttrValue> entry
+         : internalGetAttr().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, org.tensorflow.framework.AttrValue>
+      attr = AttrDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      output.writeMessage(5, attr);
+    }
   }
 
   public int getSerializedSize() {
@@ -530,10 +432,10 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
     }
     if (!getOpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, op_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, op_);
     }
     {
       int dataSize = 0;
@@ -544,85 +446,23 @@ private static final long serialVersionUID = 0L;
       size += 1 * getInputList().size();
     }
     if (!getDeviceBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, device_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(4, device_);
     }
     for (java.util.Map.Entry<java.lang.String, org.tensorflow.framework.AttrValue> entry
          : internalGetAttr().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.String, org.tensorflow.framework.AttrValue>
-      attr__ = AttrDefaultEntryHolder.defaultEntry.newBuilderForType()
+      attr = AttrDefaultEntryHolder.defaultEntry.newBuilderForType()
           .setKey(entry.getKey())
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, attr__);
+          .computeMessageSize(5, attr);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.NodeDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.NodeDef other = (org.tensorflow.framework.NodeDef) obj;
-
-    boolean result = true;
-    result = result && getName()
-        .equals(other.getName());
-    result = result && getOp()
-        .equals(other.getOp());
-    result = result && getInputList()
-        .equals(other.getInputList());
-    result = result && getDevice()
-        .equals(other.getDevice());
-    result = result && internalGetAttr().equals(
-        other.internalGetAttr());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + OP_FIELD_NUMBER;
-    hash = (53 * hash) + getOp().hashCode();
-    if (getInputCount() > 0) {
-      hash = (37 * hash) + INPUT_FIELD_NUMBER;
-      hash = (53 * hash) + getInputList().hashCode();
-    }
-    hash = (37 * hash) + DEVICE_FIELD_NUMBER;
-    hash = (53 * hash) + getDevice().hashCode();
-    if (!internalGetAttr().getMap().isEmpty()) {
-      hash = (37 * hash) + ATTR_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetAttr().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.NodeDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.NodeDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.NodeDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -646,40 +486,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.NodeDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.NodeDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.NodeDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.NodeDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.NodeDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.NodeDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -696,7 +530,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -704,7 +538,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.NodeDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.NodeDef)
       org.tensorflow.framework.NodeDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -734,7 +568,7 @@ private static final long serialVersionUID = 0L;
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.NodeProto.internal_static_tensorflow_NodeDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -747,13 +581,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -806,32 +639,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.NodeDef) {
         return mergeFrom((org.tensorflow.framework.NodeDef)other);
@@ -867,7 +674,6 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableAttr().mergeFrom(
           other.internalGetAttr());
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -885,7 +691,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.NodeDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -897,13 +703,13 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name given to this operator. Used for naming inputs,
      * logging, visualization, etc.  Unique within a single GraphDef.
      * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -918,13 +724,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name given to this operator. Used for naming inputs,
      * logging, visualization, etc.  Unique within a single GraphDef.
      * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -940,13 +746,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name given to this operator. Used for naming inputs,
      * logging, visualization, etc.  Unique within a single GraphDef.
      * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public Builder setName(
         java.lang.String value) {
@@ -959,13 +765,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name given to this operator. Used for naming inputs,
      * logging, visualization, etc.  Unique within a single GraphDef.
      * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public Builder clearName() {
       
@@ -974,13 +780,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name given to this operator. Used for naming inputs,
      * logging, visualization, etc.  Unique within a single GraphDef.
      * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -996,12 +802,12 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object op_ = "";
     /**
+     * <code>optional string op = 2;</code>
+     *
      * <pre>
      * The operation name.  There may be custom parameters in attrs.
      * Op names starting with an underscore are reserved for internal use.
      * </pre>
-     *
-     * <code>string op = 2;</code>
      */
     public java.lang.String getOp() {
       java.lang.Object ref = op_;
@@ -1016,12 +822,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string op = 2;</code>
+     *
      * <pre>
      * The operation name.  There may be custom parameters in attrs.
      * Op names starting with an underscore are reserved for internal use.
      * </pre>
-     *
-     * <code>string op = 2;</code>
      */
     public com.google.protobuf.ByteString
         getOpBytes() {
@@ -1037,12 +843,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string op = 2;</code>
+     *
      * <pre>
      * The operation name.  There may be custom parameters in attrs.
      * Op names starting with an underscore are reserved for internal use.
      * </pre>
-     *
-     * <code>string op = 2;</code>
      */
     public Builder setOp(
         java.lang.String value) {
@@ -1055,12 +861,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string op = 2;</code>
+     *
      * <pre>
      * The operation name.  There may be custom parameters in attrs.
      * Op names starting with an underscore are reserved for internal use.
      * </pre>
-     *
-     * <code>string op = 2;</code>
      */
     public Builder clearOp() {
       
@@ -1069,12 +875,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string op = 2;</code>
+     *
      * <pre>
      * The operation name.  There may be custom parameters in attrs.
      * Op names starting with an underscore are reserved for internal use.
      * </pre>
-     *
-     * <code>string op = 2;</code>
      */
     public Builder setOpBytes(
         com.google.protobuf.ByteString value) {
@@ -1096,6 +902,8 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1103,14 +911,14 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getInputList() {
       return input_.getUnmodifiableView();
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1118,13 +926,13 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public int getInputCount() {
       return input_.size();
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1132,13 +940,13 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public java.lang.String getInput(int index) {
       return input_.get(index);
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1146,14 +954,14 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public com.google.protobuf.ByteString
         getInputBytes(int index) {
       return input_.getByteString(index);
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1161,8 +969,6 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public Builder setInput(
         int index, java.lang.String value) {
@@ -1175,6 +981,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1182,8 +990,6 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public Builder addInput(
         java.lang.String value) {
@@ -1196,6 +1002,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1203,8 +1011,6 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public Builder addAllInput(
         java.lang.Iterable<java.lang.String> values) {
@@ -1215,6 +1021,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1222,8 +1030,6 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public Builder clearInput() {
       input_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -1232,6 +1038,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string input = 3;</code>
+     *
      * <pre>
      * Each input is "node:src_output" with "node" being a string name and
      * "src_output" indicating which output tensor to use from "node". If
@@ -1239,8 +1047,6 @@ private static final long serialVersionUID = 0L;
      * may optionally be followed by control inputs that have the format
      * "^node".
      * </pre>
-     *
-     * <code>repeated string input = 3;</code>
      */
     public Builder addInputBytes(
         com.google.protobuf.ByteString value) {
@@ -1256,6 +1062,8 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object device_ = "";
     /**
+     * <code>optional string device = 4;</code>
+     *
      * <pre>
      * A (possibly partial) specification for the device on which this
      * node should be placed.
@@ -1274,8 +1082,6 @@ private static final long serialVersionUID = 0L;
      * field is empty or not present), the runtime will attempt to
      * choose a device automatically.
      * </pre>
-     *
-     * <code>string device = 4;</code>
      */
     public java.lang.String getDevice() {
       java.lang.Object ref = device_;
@@ -1290,6 +1096,8 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device = 4;</code>
+     *
      * <pre>
      * A (possibly partial) specification for the device on which this
      * node should be placed.
@@ -1308,8 +1116,6 @@ private static final long serialVersionUID = 0L;
      * field is empty or not present), the runtime will attempt to
      * choose a device automatically.
      * </pre>
-     *
-     * <code>string device = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDeviceBytes() {
@@ -1325,6 +1131,8 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device = 4;</code>
+     *
      * <pre>
      * A (possibly partial) specification for the device on which this
      * node should be placed.
@@ -1343,8 +1151,6 @@ private static final long serialVersionUID = 0L;
      * field is empty or not present), the runtime will attempt to
      * choose a device automatically.
      * </pre>
-     *
-     * <code>string device = 4;</code>
      */
     public Builder setDevice(
         java.lang.String value) {
@@ -1357,6 +1163,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device = 4;</code>
+     *
      * <pre>
      * A (possibly partial) specification for the device on which this
      * node should be placed.
@@ -1375,8 +1183,6 @@ private static final long serialVersionUID = 0L;
      * field is empty or not present), the runtime will attempt to
      * choose a device automatically.
      * </pre>
-     *
-     * <code>string device = 4;</code>
      */
     public Builder clearDevice() {
       
@@ -1385,6 +1191,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device = 4;</code>
+     *
      * <pre>
      * A (possibly partial) specification for the device on which this
      * node should be placed.
@@ -1403,8 +1211,6 @@ private static final long serialVersionUID = 0L;
      * field is empty or not present), the runtime will attempt to
      * choose a device automatically.
      * </pre>
-     *
-     * <code>string device = 4;</code>
      */
     public Builder setDeviceBytes(
         com.google.protobuf.ByteString value) {
@@ -1425,7 +1231,7 @@ private static final long serialVersionUID = 0L;
       if (attr_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             AttrDefaultEntryHolder.defaultEntry);
-      }
+     }
       return attr_;
     }
     private com.google.protobuf.MapField<java.lang.String, org.tensorflow.framework.AttrValue>
@@ -1440,11 +1246,9 @@ private static final long serialVersionUID = 0L;
       }
       return attr_;
     }
-
-    public int getAttrCount() {
-      return internalGetAttr().getMap().size();
-    }
     /**
+     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+     *
      * <pre>
      * Operation-specific graph-construction-time configuration.
      * Note that this should include all attrs defined in the
@@ -1459,45 +1263,13 @@ private static final long serialVersionUID = 0L;
      * attr's type field.
      * TODO(josh11b): Add some examples here showing best practices.
      * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
      */
-
-    public boolean containsAttr(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      return internalGetAttr().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getAttrMap()} instead.
-     */
-    @java.lang.Deprecated
     public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttr() {
-      return getAttrMap();
-    }
-    /**
-     * <pre>
-     * Operation-specific graph-construction-time configuration.
-     * Note that this should include all attrs defined in the
-     * corresponding OpDef, including those with a value matching
-     * the default -- this allows the default to change and makes
-     * NodeDefs easier to interpret on their own.  However, if
-     * an attr with a default is not specified in this list, the
-     * default will be used.
-     * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-     * one of the names from the corresponding OpDef's attr field).
-     * The values must have a type matching the corresponding OpDef
-     * attr's type field.
-     * TODO(josh11b): Add some examples here showing best practices.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
-    public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttrMap() {
       return internalGetAttr().getMap();
     }
     /**
+     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+     *
      * <pre>
      * Operation-specific graph-construction-time configuration.
      * Note that this should include all attrs defined in the
@@ -1512,88 +1284,14 @@ private static final long serialVersionUID = 0L;
      * attr's type field.
      * TODO(josh11b): Add some examples here showing best practices.
      * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
      */
-
-    public org.tensorflow.framework.AttrValue getAttrOrDefault(
-        java.lang.String key,
-        org.tensorflow.framework.AttrValue defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-          internalGetAttr().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <pre>
-     * Operation-specific graph-construction-time configuration.
-     * Note that this should include all attrs defined in the
-     * corresponding OpDef, including those with a value matching
-     * the default -- this allows the default to change and makes
-     * NodeDefs easier to interpret on their own.  However, if
-     * an attr with a default is not specified in this list, the
-     * default will be used.
-     * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-     * one of the names from the corresponding OpDef's attr field).
-     * The values must have a type matching the corresponding OpDef
-     * attr's type field.
-     * TODO(josh11b): Add some examples here showing best practices.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
-    public org.tensorflow.framework.AttrValue getAttrOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-          internalGetAttr().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public Builder clearAttr() {
-      internalGetMutableAttr().getMutableMap()
-          .clear();
-      return this;
-    }
-    /**
-     * <pre>
-     * Operation-specific graph-construction-time configuration.
-     * Note that this should include all attrs defined in the
-     * corresponding OpDef, including those with a value matching
-     * the default -- this allows the default to change and makes
-     * NodeDefs easier to interpret on their own.  However, if
-     * an attr with a default is not specified in this list, the
-     * default will be used.
-     * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-     * one of the names from the corresponding OpDef's attr field).
-     * The values must have a type matching the corresponding OpDef
-     * attr's type field.
-     * TODO(josh11b): Add some examples here showing best practices.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
-    public Builder removeAttr(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      internalGetMutableAttr().getMutableMap()
-          .remove(key);
-      return this;
-    }
-    /**
-     * Use alternate mutation accessors instead.
-     */
-    @java.lang.Deprecated
     public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue>
     getMutableAttr() {
       return internalGetMutableAttr().getMutableMap();
     }
     /**
+     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+     *
      * <pre>
      * Operation-specific graph-construction-time configuration.
      * Note that this should include all attrs defined in the
@@ -1608,51 +1306,20 @@ private static final long serialVersionUID = 0L;
      * attr's type field.
      * TODO(josh11b): Add some examples here showing best practices.
      * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
      */
-    public Builder putAttr(
-        java.lang.String key,
-        org.tensorflow.framework.AttrValue value) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      if (value == null) { throw new java.lang.NullPointerException(); }
-      internalGetMutableAttr().getMutableMap()
-          .put(key, value);
-      return this;
-    }
-    /**
-     * <pre>
-     * Operation-specific graph-construction-time configuration.
-     * Note that this should include all attrs defined in the
-     * corresponding OpDef, including those with a value matching
-     * the default -- this allows the default to change and makes
-     * NodeDefs easier to interpret on their own.  However, if
-     * an attr with a default is not specified in this list, the
-     * default will be used.
-     * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-     * one of the names from the corresponding OpDef's attr field).
-     * The values must have a type matching the corresponding OpDef
-     * attr's type field.
-     * TODO(josh11b): Add some examples here showing best practices.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
     public Builder putAllAttr(
         java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> values) {
-      internalGetMutableAttr().getMutableMap()
-          .putAll(values);
+      getMutableAttr().putAll(values);
       return this;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1675,7 +1342,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new NodeDef(input, extensionRegistry);
+      try {
+        return new NodeDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

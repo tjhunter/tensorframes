@@ -8,109 +8,109 @@ public interface OpDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * Op names starting with an underscore are reserved for internal use.
    * Names should be CamelCase and match the regexp "[A-Z][a-zA-Z0-9_]*".
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   java.lang.String getName();
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * Op names starting with an underscore are reserved for internal use.
    * Names should be CamelCase and match the regexp "[A-Z][a-zA-Z0-9_]*".
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
+   *
    * <pre>
    * Description of the input(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
    */
   java.util.List<org.tensorflow.framework.OpDef.ArgDef> 
       getInputArgList();
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
+   *
    * <pre>
    * Description of the input(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
    */
   org.tensorflow.framework.OpDef.ArgDef getInputArg(int index);
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
+   *
    * <pre>
    * Description of the input(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
    */
   int getInputArgCount();
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
+   *
    * <pre>
    * Description of the input(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
    */
   java.util.List<? extends org.tensorflow.framework.OpDef.ArgDefOrBuilder> 
       getInputArgOrBuilderList();
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
+   *
    * <pre>
    * Description of the input(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef input_arg = 2;</code>
    */
   org.tensorflow.framework.OpDef.ArgDefOrBuilder getInputArgOrBuilder(
       int index);
 
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
+   *
    * <pre>
    * Description of the output(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
    */
   java.util.List<org.tensorflow.framework.OpDef.ArgDef> 
       getOutputArgList();
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
+   *
    * <pre>
    * Description of the output(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
    */
   org.tensorflow.framework.OpDef.ArgDef getOutputArg(int index);
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
+   *
    * <pre>
    * Description of the output(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
    */
   int getOutputArgCount();
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
+   *
    * <pre>
    * Description of the output(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
    */
   java.util.List<? extends org.tensorflow.framework.OpDef.ArgDefOrBuilder> 
       getOutputArgOrBuilderList();
   /**
+   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
+   *
    * <pre>
    * Description of the output(s).
    * </pre>
-   *
-   * <code>repeated .tensorflow.OpDef.ArgDef output_arg = 3;</code>
    */
   org.tensorflow.framework.OpDef.ArgDefOrBuilder getOutputArgOrBuilder(
       int index);
@@ -140,76 +140,78 @@ public interface OpDefOrBuilder extends
       int index);
 
   /**
+   * <code>optional .tensorflow.OpDeprecation deprecation = 8;</code>
+   *
    * <pre>
    * Optional deprecation based on GraphDef versions.
    * </pre>
-   *
-   * <code>.tensorflow.OpDeprecation deprecation = 8;</code>
    */
   boolean hasDeprecation();
   /**
+   * <code>optional .tensorflow.OpDeprecation deprecation = 8;</code>
+   *
    * <pre>
    * Optional deprecation based on GraphDef versions.
    * </pre>
-   *
-   * <code>.tensorflow.OpDeprecation deprecation = 8;</code>
    */
   org.tensorflow.framework.OpDeprecation getDeprecation();
   /**
+   * <code>optional .tensorflow.OpDeprecation deprecation = 8;</code>
+   *
    * <pre>
    * Optional deprecation based on GraphDef versions.
    * </pre>
-   *
-   * <code>.tensorflow.OpDeprecation deprecation = 8;</code>
    */
   org.tensorflow.framework.OpDeprecationOrBuilder getDeprecationOrBuilder();
 
   /**
+   * <code>optional string summary = 5;</code>
+   *
    * <pre>
    * One-line human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string summary = 5;</code>
    */
   java.lang.String getSummary();
   /**
+   * <code>optional string summary = 5;</code>
+   *
    * <pre>
    * One-line human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string summary = 5;</code>
    */
   com.google.protobuf.ByteString
       getSummaryBytes();
 
   /**
+   * <code>optional string description = 6;</code>
+   *
    * <pre>
    * Additional, longer human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string description = 6;</code>
    */
   java.lang.String getDescription();
   /**
+   * <code>optional string description = 6;</code>
+   *
    * <pre>
    * Additional, longer human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string description = 6;</code>
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
 
   /**
+   * <code>optional bool is_commutative = 18;</code>
+   *
    * <pre>
    * True if the operation is commutative ("op(a,b) == op(b,a)" for all inputs)
    * </pre>
-   *
-   * <code>bool is_commutative = 18;</code>
    */
   boolean getIsCommutative();
 
   /**
+   * <code>optional bool is_aggregate = 16;</code>
+   *
    * <pre>
    * If is_aggregate is true, then this operation accepts N &gt;= 2
    * inputs and produces 1 output all of the same type.  Should be
@@ -220,12 +222,12 @@ public interface OpDefOrBuilder extends
    * groups of nearby devices) before communicating.
    * TODO(josh11b): Implement that optimization.
    * </pre>
-   *
-   * <code>bool is_aggregate = 16;</code>
    */
   boolean getIsAggregate();
 
   /**
+   * <code>optional bool is_stateful = 17;</code>
+   *
    * <pre>
    * By default Ops may be moved between devices.  Stateful ops should
    * either not be moved, or should only be moved if that state can also
@@ -233,20 +235,18 @@ public interface OpDefOrBuilder extends
    * Stateful ops are guaranteed to never be optimized away by Common
    * Subexpression Elimination (CSE).
    * </pre>
-   *
-   * <code>bool is_stateful = 17;</code>
    */
   boolean getIsStateful();
 
   /**
+   * <code>optional bool allows_uninitialized_input = 19;</code>
+   *
    * <pre>
    * By default, all inputs to an Op must be initialized Tensors.  Ops
    * that may initialize tensors for the first time should set this
    * field to true, to allow the Op to take an uninitialized Tensor as
    * input.
    * </pre>
-   *
-   * <code>bool allows_uninitialized_input = 19;</code>
    */
   boolean getAllowsUninitializedInput();
 }

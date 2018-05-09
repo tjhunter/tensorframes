@@ -6,30 +6,24 @@ package org.tensorflow.framework;
 public final class RemoteFusedGraphExecuteInfoProto {
   private RemoteFusedGraphExecuteInfoProto() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_RemoteFusedGraphExecuteInfo_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_RemoteFusedGraphExecuteInfo_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -42,7 +36,7 @@ public final class RemoteFusedGraphExecuteInfoProto {
       "ote_graph\030\001 \001(\0132\024.tensorflow.GraphDef\022\035\n" +
       "\025graph_input_node_name\030\002 \003(\t\022\036\n\026graph_ou" +
       "tput_node_name\030\003 \003(\t\022\025\n\rexecutor_name\030\004 " +
-      "\001(\t\022&\n\036serialized_executor_parameters\030\005 " +
+      "\001(\t\022&\n\036serialized_executor_parameters\030\005 ",
       "\001(\014\022f\n default_graph_input_tensor_shape\030" +
       "\006 \003(\0132<.tensorflow.RemoteFusedGraphExecu" +
       "teInfo.TensorShapeTypeProto\022g\n!default_g" +
@@ -52,7 +46,7 @@ public final class RemoteFusedGraphExecuteInfoProto {
       "dtype\030\001 \001(\0162\024.tensorflow.DataType\022+\n\005sha" +
       "pe\030\002 \001(\0132\034.tensorflow.TensorShapeProto\"n" +
       "\n\010NodeType\022\n\n\006UNUSED\020\000\022\017\n\013GRAPH_INPUT\020\001\022" +
-      "\020\n\014GRAPH_OUTPUT\020\002\022\016\n\nFUSED_NODE\020\003\022\020\n\014BOR" +
+      "\020\n\014GRAPH_OUTPUT\020\002\022\016\n\nFUSED_NODE\020\003\022\020\n\014BOR",
       "DER_INPUT\020\004\022\021\n\rBORDER_OUTPUT\020\005BA\n\030org.te" +
       "nsorflow.frameworkB RemoteFusedGraphExec" +
       "uteInfoProtoP\001\370\001\001b\006proto3"
@@ -75,13 +69,13 @@ public final class RemoteFusedGraphExecuteInfoProto {
     internal_static_tensorflow_RemoteFusedGraphExecuteInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_RemoteFusedGraphExecuteInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_RemoteFusedGraphExecuteInfo_descriptor,
         new java.lang.String[] { "RemoteGraph", "GraphInputNodeName", "GraphOutputNodeName", "ExecutorName", "SerializedExecutorParameters", "DefaultGraphInputTensorShape", "DefaultGraphOutputTensorShape", });
     internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_descriptor =
       internal_static_tensorflow_RemoteFusedGraphExecuteInfo_descriptor.getNestedTypes().get(0);
     internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_descriptor,
         new java.lang.String[] { "Dtype", "Shape", });
     org.tensorflow.framework.GraphProtos.getDescriptor();

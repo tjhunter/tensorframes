@@ -8,21 +8,21 @@ public interface SummaryDescriptionOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string type_hint = 1;</code>
+   *
    * <pre>
    * Hint on how plugins should process the data in this series.
    * Supported values include "scalar", "histogram", "image", "audio"
    * </pre>
-   *
-   * <code>string type_hint = 1;</code>
    */
   java.lang.String getTypeHint();
   /**
+   * <code>optional string type_hint = 1;</code>
+   *
    * <pre>
    * Hint on how plugins should process the data in this series.
    * Supported values include "scalar", "histogram", "image", "audio"
    * </pre>
-   *
-   * <code>string type_hint = 1;</code>
    */
   com.google.protobuf.ByteString
       getTypeHintBytes();

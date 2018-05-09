@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.KernelDef}
  */
 public  final class KernelDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.KernelDef)
     KernelDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use KernelDef.newBuilder() to construct.
-  private KernelDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private KernelDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private KernelDef() {
@@ -26,19 +25,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private KernelDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -48,20 +41,19 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             op_ = s;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             deviceType_ = s;
             break;
@@ -71,12 +63,11 @@ private static final long serialVersionUID = 0L;
               constraint_ = new java.util.ArrayList<org.tensorflow.framework.KernelDef.AttrConstraint>();
               mutable_bitField0_ |= 0x00000004;
             }
-            constraint_.add(
-                input.readMessage(org.tensorflow.framework.KernelDef.AttrConstraint.parser(), extensionRegistry));
+            constraint_.add(input.readMessage(org.tensorflow.framework.KernelDef.AttrConstraint.parser(), extensionRegistry));
             break;
           }
           case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
               hostMemoryArg_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000008;
@@ -85,7 +76,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             label_ = s;
             break;
@@ -93,10 +84,11 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
         constraint_ = java.util.Collections.unmodifiableList(constraint_);
@@ -104,7 +96,6 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
         hostMemoryArg_ = hostMemoryArg_.getUnmodifiableView();
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -113,7 +104,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -125,48 +116,48 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name of an attr from the Op.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name of an attr from the Op.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
+     * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+     *
      * <pre>
      * A list of values that this kernel supports for this attr.
      * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue allowed_values = 2;</code>
      */
     boolean hasAllowedValues();
     /**
+     * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+     *
      * <pre>
      * A list of values that this kernel supports for this attr.
      * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue allowed_values = 2;</code>
      */
     org.tensorflow.framework.AttrValue getAllowedValues();
     /**
+     * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+     *
      * <pre>
      * A list of values that this kernel supports for this attr.
      * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue allowed_values = 2;</code>
      */
     org.tensorflow.framework.AttrValueOrBuilder getAllowedValuesOrBuilder();
   }
@@ -174,12 +165,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.KernelDef.AttrConstraint}
    */
   public  static final class AttrConstraint extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.KernelDef.AttrConstraint)
       AttrConstraintOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use AttrConstraint.newBuilder() to construct.
-    private AttrConstraint(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private AttrConstraint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private AttrConstraint() {
@@ -189,19 +179,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private AttrConstraint(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -211,14 +195,13 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
@@ -239,12 +222,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -253,7 +236,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_AttrConstraint_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_AttrConstraint_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -263,11 +246,11 @@ private static final long serialVersionUID = 0L;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name of an attr from the Op.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -282,11 +265,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * Name of an attr from the Op.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -305,34 +288,34 @@ private static final long serialVersionUID = 0L;
     public static final int ALLOWED_VALUES_FIELD_NUMBER = 2;
     private org.tensorflow.framework.AttrValue allowedValues_;
     /**
+     * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+     *
      * <pre>
      * A list of values that this kernel supports for this attr.
      * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue allowed_values = 2;</code>
      */
     public boolean hasAllowedValues() {
       return allowedValues_ != null;
     }
     /**
+     * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+     *
      * <pre>
      * A list of values that this kernel supports for this attr.
      * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue allowed_values = 2;</code>
      */
     public org.tensorflow.framework.AttrValue getAllowedValues() {
       return allowedValues_ == null ? org.tensorflow.framework.AttrValue.getDefaultInstance() : allowedValues_;
     }
     /**
+     * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+     *
      * <pre>
      * A list of values that this kernel supports for this attr.
      * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue allowed_values = 2;</code>
      */
     public org.tensorflow.framework.AttrValueOrBuilder getAllowedValuesOrBuilder() {
       return getAllowedValues();
@@ -351,12 +334,11 @@ private static final long serialVersionUID = 0L;
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
       if (allowedValues_ != null) {
         output.writeMessage(2, getAllowedValues());
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -365,68 +347,17 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
       }
       if (allowedValues_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getAllowedValues());
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.KernelDef.AttrConstraint)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.KernelDef.AttrConstraint other = (org.tensorflow.framework.KernelDef.AttrConstraint) obj;
-
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && (hasAllowedValues() == other.hasAllowedValues());
-      if (hasAllowedValues()) {
-        result = result && getAllowedValues()
-            .equals(other.getAllowedValues());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      if (hasAllowedValues()) {
-        hash = (37 * hash) + ALLOWED_VALUES_FIELD_NUMBER;
-        hash = (53 * hash) + getAllowedValues().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -450,40 +381,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.KernelDef.AttrConstraint parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -500,7 +425,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -508,7 +433,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.KernelDef.AttrConstraint}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.KernelDef.AttrConstraint)
         org.tensorflow.framework.KernelDef.AttrConstraintOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -516,7 +441,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_AttrConstraint_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_AttrConstraint_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -529,13 +454,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -580,32 +504,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.KernelDef.AttrConstraint) {
           return mergeFrom((org.tensorflow.framework.KernelDef.AttrConstraint)other);
@@ -624,7 +522,6 @@ private static final long serialVersionUID = 0L;
         if (other.hasAllowedValues()) {
           mergeAllowedValues(other.getAllowedValues());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -642,7 +539,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.KernelDef.AttrConstraint) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -653,11 +550,11 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object name_ = "";
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name of an attr from the Op.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -672,11 +569,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name of an attr from the Op.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -692,11 +589,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name of an attr from the Op.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -709,11 +606,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name of an attr from the Op.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -722,11 +619,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * Name of an attr from the Op.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -741,26 +638,26 @@ private static final long serialVersionUID = 0L;
       }
 
       private org.tensorflow.framework.AttrValue allowedValues_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.AttrValue, org.tensorflow.framework.AttrValue.Builder, org.tensorflow.framework.AttrValueOrBuilder> allowedValuesBuilder_;
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public boolean hasAllowedValues() {
         return allowedValuesBuilder_ != null || allowedValues_ != null;
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public org.tensorflow.framework.AttrValue getAllowedValues() {
         if (allowedValuesBuilder_ == null) {
@@ -770,12 +667,12 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public Builder setAllowedValues(org.tensorflow.framework.AttrValue value) {
         if (allowedValuesBuilder_ == null) {
@@ -791,12 +688,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public Builder setAllowedValues(
           org.tensorflow.framework.AttrValue.Builder builderForValue) {
@@ -810,12 +707,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public Builder mergeAllowedValues(org.tensorflow.framework.AttrValue value) {
         if (allowedValuesBuilder_ == null) {
@@ -833,12 +730,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public Builder clearAllowedValues() {
         if (allowedValuesBuilder_ == null) {
@@ -852,12 +749,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public org.tensorflow.framework.AttrValue.Builder getAllowedValuesBuilder() {
         
@@ -865,12 +762,12 @@ private static final long serialVersionUID = 0L;
         return getAllowedValuesFieldBuilder().getBuilder();
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
       public org.tensorflow.framework.AttrValueOrBuilder getAllowedValuesOrBuilder() {
         if (allowedValuesBuilder_ != null) {
@@ -881,18 +778,18 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional .tensorflow.AttrValue allowed_values = 2;</code>
+       *
        * <pre>
        * A list of values that this kernel supports for this attr.
        * Like OpDef.AttrDef.allowed_values, except for kernels instead of Ops.
        * </pre>
-       *
-       * <code>.tensorflow.AttrValue allowed_values = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.AttrValue, org.tensorflow.framework.AttrValue.Builder, org.tensorflow.framework.AttrValueOrBuilder> 
           getAllowedValuesFieldBuilder() {
         if (allowedValuesBuilder_ == null) {
-          allowedValuesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          allowedValuesBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.AttrValue, org.tensorflow.framework.AttrValue.Builder, org.tensorflow.framework.AttrValueOrBuilder>(
                   getAllowedValues(),
                   getParentForChildren(),
@@ -903,12 +800,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -931,7 +828,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new AttrConstraint(input, extensionRegistry);
+        try {
+          return new AttrConstraint(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -954,11 +860,11 @@ private static final long serialVersionUID = 0L;
   public static final int OP_FIELD_NUMBER = 1;
   private volatile java.lang.Object op_;
   /**
+   * <code>optional string op = 1;</code>
+   *
    * <pre>
    * Must match the name of an Op.
    * </pre>
-   *
-   * <code>string op = 1;</code>
    */
   public java.lang.String getOp() {
     java.lang.Object ref = op_;
@@ -973,11 +879,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string op = 1;</code>
+   *
    * <pre>
    * Must match the name of an Op.
    * </pre>
-   *
-   * <code>string op = 1;</code>
    */
   public com.google.protobuf.ByteString
       getOpBytes() {
@@ -996,11 +902,11 @@ private static final long serialVersionUID = 0L;
   public static final int DEVICE_TYPE_FIELD_NUMBER = 2;
   private volatile java.lang.Object deviceType_;
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * Type of device this kernel runs on.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   public java.lang.String getDeviceType() {
     java.lang.Object ref = deviceType_;
@@ -1015,11 +921,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * Type of device this kernel runs on.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   public com.google.protobuf.ByteString
       getDeviceTypeBytes() {
@@ -1073,46 +979,46 @@ private static final long serialVersionUID = 0L;
   public static final int HOST_MEMORY_ARG_FIELD_NUMBER = 4;
   private com.google.protobuf.LazyStringList hostMemoryArg_;
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   public com.google.protobuf.ProtocolStringList
       getHostMemoryArgList() {
     return hostMemoryArg_;
   }
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   public int getHostMemoryArgCount() {
     return hostMemoryArg_.size();
   }
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   public java.lang.String getHostMemoryArg(int index) {
     return hostMemoryArg_.get(index);
   }
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   public com.google.protobuf.ByteString
       getHostMemoryArgBytes(int index) {
@@ -1122,13 +1028,13 @@ private static final long serialVersionUID = 0L;
   public static final int LABEL_FIELD_NUMBER = 5;
   private volatile java.lang.Object label_;
   /**
+   * <code>optional string label = 5;</code>
+   *
    * <pre>
    * This allows experimental kernels to be registered for an op that
    * won't be used unless the user specifies a "_kernel" attr with
    * value matching this.
    * </pre>
-   *
-   * <code>string label = 5;</code>
    */
   public java.lang.String getLabel() {
     java.lang.Object ref = label_;
@@ -1143,13 +1049,13 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string label = 5;</code>
+   *
    * <pre>
    * This allows experimental kernels to be registered for an op that
    * won't be used unless the user specifies a "_kernel" attr with
    * value matching this.
    * </pre>
-   *
-   * <code>string label = 5;</code>
    */
   public com.google.protobuf.ByteString
       getLabelBytes() {
@@ -1178,21 +1084,20 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getOpBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, op_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, op_);
     }
     if (!getDeviceTypeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deviceType_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, deviceType_);
     }
     for (int i = 0; i < constraint_.size(); i++) {
       output.writeMessage(3, constraint_.get(i));
     }
     for (int i = 0; i < hostMemoryArg_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, hostMemoryArg_.getRaw(i));
+      com.google.protobuf.GeneratedMessage.writeString(output, 4, hostMemoryArg_.getRaw(i));
     }
     if (!getLabelBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, label_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 5, label_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -1201,10 +1106,10 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getOpBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, op_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, op_);
     }
     if (!getDeviceTypeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deviceType_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, deviceType_);
     }
     for (int i = 0; i < constraint_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -1219,75 +1124,13 @@ private static final long serialVersionUID = 0L;
       size += 1 * getHostMemoryArgList().size();
     }
     if (!getLabelBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, label_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(5, label_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.KernelDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.KernelDef other = (org.tensorflow.framework.KernelDef) obj;
-
-    boolean result = true;
-    result = result && getOp()
-        .equals(other.getOp());
-    result = result && getDeviceType()
-        .equals(other.getDeviceType());
-    result = result && getConstraintList()
-        .equals(other.getConstraintList());
-    result = result && getHostMemoryArgList()
-        .equals(other.getHostMemoryArgList());
-    result = result && getLabel()
-        .equals(other.getLabel());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + OP_FIELD_NUMBER;
-    hash = (53 * hash) + getOp().hashCode();
-    hash = (37 * hash) + DEVICE_TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getDeviceType().hashCode();
-    if (getConstraintCount() > 0) {
-      hash = (37 * hash) + CONSTRAINT_FIELD_NUMBER;
-      hash = (53 * hash) + getConstraintList().hashCode();
-    }
-    if (getHostMemoryArgCount() > 0) {
-      hash = (37 * hash) + HOST_MEMORY_ARG_FIELD_NUMBER;
-      hash = (53 * hash) + getHostMemoryArgList().hashCode();
-    }
-    hash = (37 * hash) + LABEL_FIELD_NUMBER;
-    hash = (53 * hash) + getLabel().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.KernelDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.KernelDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.KernelDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1311,40 +1154,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.KernelDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.KernelDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.KernelDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.KernelDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.KernelDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.KernelDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -1361,7 +1198,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -1369,7 +1206,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.KernelDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.KernelDef)
       org.tensorflow.framework.KernelDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1377,7 +1214,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.KernelDefProtos.internal_static_tensorflow_KernelDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1390,13 +1227,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getConstraintFieldBuilder();
       }
     }
@@ -1462,32 +1298,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.KernelDef) {
         return mergeFrom((org.tensorflow.framework.KernelDef)other);
@@ -1526,7 +1336,7 @@ private static final long serialVersionUID = 0L;
             constraint_ = other.constraint_;
             bitField0_ = (bitField0_ & ~0x00000004);
             constraintBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getConstraintFieldBuilder() : null;
           } else {
             constraintBuilder_.addAllMessages(other.constraint_);
@@ -1547,7 +1357,6 @@ private static final long serialVersionUID = 0L;
         label_ = other.label_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -1565,7 +1374,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.KernelDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -1577,11 +1386,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object op_ = "";
     /**
+     * <code>optional string op = 1;</code>
+     *
      * <pre>
      * Must match the name of an Op.
      * </pre>
-     *
-     * <code>string op = 1;</code>
      */
     public java.lang.String getOp() {
       java.lang.Object ref = op_;
@@ -1596,11 +1405,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string op = 1;</code>
+     *
      * <pre>
      * Must match the name of an Op.
      * </pre>
-     *
-     * <code>string op = 1;</code>
      */
     public com.google.protobuf.ByteString
         getOpBytes() {
@@ -1616,11 +1425,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string op = 1;</code>
+     *
      * <pre>
      * Must match the name of an Op.
      * </pre>
-     *
-     * <code>string op = 1;</code>
      */
     public Builder setOp(
         java.lang.String value) {
@@ -1633,11 +1442,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string op = 1;</code>
+     *
      * <pre>
      * Must match the name of an Op.
      * </pre>
-     *
-     * <code>string op = 1;</code>
      */
     public Builder clearOp() {
       
@@ -1646,11 +1455,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string op = 1;</code>
+     *
      * <pre>
      * Must match the name of an Op.
      * </pre>
-     *
-     * <code>string op = 1;</code>
      */
     public Builder setOpBytes(
         com.google.protobuf.ByteString value) {
@@ -1666,11 +1475,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object deviceType_ = "";
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * Type of device this kernel runs on.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public java.lang.String getDeviceType() {
       java.lang.Object ref = deviceType_;
@@ -1685,11 +1494,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * Type of device this kernel runs on.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDeviceTypeBytes() {
@@ -1705,11 +1514,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * Type of device this kernel runs on.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public Builder setDeviceType(
         java.lang.String value) {
@@ -1722,11 +1531,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * Type of device this kernel runs on.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public Builder clearDeviceType() {
       
@@ -1735,11 +1544,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device_type = 2;</code>
+     *
      * <pre>
      * Type of device this kernel runs on.
      * </pre>
-     *
-     * <code>string device_type = 2;</code>
      */
     public Builder setDeviceTypeBytes(
         com.google.protobuf.ByteString value) {
@@ -1762,7 +1571,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.KernelDef.AttrConstraint, org.tensorflow.framework.KernelDef.AttrConstraint.Builder, org.tensorflow.framework.KernelDef.AttrConstraintOrBuilder> constraintBuilder_;
 
     /**
@@ -1978,11 +1787,11 @@ private static final long serialVersionUID = 0L;
          getConstraintBuilderList() {
       return getConstraintFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.KernelDef.AttrConstraint, org.tensorflow.framework.KernelDef.AttrConstraint.Builder, org.tensorflow.framework.KernelDef.AttrConstraintOrBuilder> 
         getConstraintFieldBuilder() {
       if (constraintBuilder_ == null) {
-        constraintBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        constraintBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.KernelDef.AttrConstraint, org.tensorflow.framework.KernelDef.AttrConstraint.Builder, org.tensorflow.framework.KernelDef.AttrConstraintOrBuilder>(
                 constraint_,
                 ((bitField0_ & 0x00000004) == 0x00000004),
@@ -2001,58 +1810,58 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getHostMemoryArgList() {
       return hostMemoryArg_.getUnmodifiableView();
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public int getHostMemoryArgCount() {
       return hostMemoryArg_.size();
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public java.lang.String getHostMemoryArg(int index) {
       return hostMemoryArg_.get(index);
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public com.google.protobuf.ByteString
         getHostMemoryArgBytes(int index) {
       return hostMemoryArg_.getByteString(index);
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public Builder setHostMemoryArg(
         int index, java.lang.String value) {
@@ -2065,12 +1874,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public Builder addHostMemoryArg(
         java.lang.String value) {
@@ -2083,12 +1892,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public Builder addAllHostMemoryArg(
         java.lang.Iterable<java.lang.String> values) {
@@ -2099,12 +1908,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public Builder clearHostMemoryArg() {
       hostMemoryArg_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -2113,12 +1922,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string host_memory_arg = 4;</code>
+     *
      * <pre>
      * Names of the Op's input_/output_args that reside in host memory
      * instead of device memory.
      * </pre>
-     *
-     * <code>repeated string host_memory_arg = 4;</code>
      */
     public Builder addHostMemoryArgBytes(
         com.google.protobuf.ByteString value) {
@@ -2134,13 +1943,13 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object label_ = "";
     /**
+     * <code>optional string label = 5;</code>
+     *
      * <pre>
      * This allows experimental kernels to be registered for an op that
      * won't be used unless the user specifies a "_kernel" attr with
      * value matching this.
      * </pre>
-     *
-     * <code>string label = 5;</code>
      */
     public java.lang.String getLabel() {
       java.lang.Object ref = label_;
@@ -2155,13 +1964,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string label = 5;</code>
+     *
      * <pre>
      * This allows experimental kernels to be registered for an op that
      * won't be used unless the user specifies a "_kernel" attr with
      * value matching this.
      * </pre>
-     *
-     * <code>string label = 5;</code>
      */
     public com.google.protobuf.ByteString
         getLabelBytes() {
@@ -2177,13 +1986,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string label = 5;</code>
+     *
      * <pre>
      * This allows experimental kernels to be registered for an op that
      * won't be used unless the user specifies a "_kernel" attr with
      * value matching this.
      * </pre>
-     *
-     * <code>string label = 5;</code>
      */
     public Builder setLabel(
         java.lang.String value) {
@@ -2196,13 +2005,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string label = 5;</code>
+     *
      * <pre>
      * This allows experimental kernels to be registered for an op that
      * won't be used unless the user specifies a "_kernel" attr with
      * value matching this.
      * </pre>
-     *
-     * <code>string label = 5;</code>
      */
     public Builder clearLabel() {
       
@@ -2211,13 +2020,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string label = 5;</code>
+     *
      * <pre>
      * This allows experimental kernels to be registered for an op that
      * won't be used unless the user specifies a "_kernel" attr with
      * value matching this.
      * </pre>
-     *
-     * <code>string label = 5;</code>
      */
     public Builder setLabelBytes(
         com.google.protobuf.ByteString value) {
@@ -2232,12 +2041,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -2260,7 +2069,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new KernelDef(input, extensionRegistry);
+      try {
+        return new KernelDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

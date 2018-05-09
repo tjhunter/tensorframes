@@ -8,108 +8,108 @@ public interface VariableDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string variable_name = 1;</code>
+   *
    * <pre>
    * Name of the variable tensor.
    * </pre>
-   *
-   * <code>string variable_name = 1;</code>
    */
   java.lang.String getVariableName();
   /**
+   * <code>optional string variable_name = 1;</code>
+   *
    * <pre>
    * Name of the variable tensor.
    * </pre>
-   *
-   * <code>string variable_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getVariableNameBytes();
 
   /**
+   * <code>optional string initial_value_name = 6;</code>
+   *
    * <pre>
    * Name of the tensor holding the variable's initial value.
    * </pre>
-   *
-   * <code>string initial_value_name = 6;</code>
    */
   java.lang.String getInitialValueName();
   /**
+   * <code>optional string initial_value_name = 6;</code>
+   *
    * <pre>
    * Name of the tensor holding the variable's initial value.
    * </pre>
-   *
-   * <code>string initial_value_name = 6;</code>
    */
   com.google.protobuf.ByteString
       getInitialValueNameBytes();
 
   /**
+   * <code>optional string initializer_name = 2;</code>
+   *
    * <pre>
    * Name of the initializer op.
    * </pre>
-   *
-   * <code>string initializer_name = 2;</code>
    */
   java.lang.String getInitializerName();
   /**
+   * <code>optional string initializer_name = 2;</code>
+   *
    * <pre>
    * Name of the initializer op.
    * </pre>
-   *
-   * <code>string initializer_name = 2;</code>
    */
   com.google.protobuf.ByteString
       getInitializerNameBytes();
 
   /**
+   * <code>optional string snapshot_name = 3;</code>
+   *
    * <pre>
    * Name of the snapshot tensor.
    * </pre>
-   *
-   * <code>string snapshot_name = 3;</code>
    */
   java.lang.String getSnapshotName();
   /**
+   * <code>optional string snapshot_name = 3;</code>
+   *
    * <pre>
    * Name of the snapshot tensor.
    * </pre>
-   *
-   * <code>string snapshot_name = 3;</code>
    */
   com.google.protobuf.ByteString
       getSnapshotNameBytes();
 
   /**
+   * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+   *
    * <pre>
    * Support for saving variables as slices of a larger variable.
    * </pre>
-   *
-   * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
    */
   boolean hasSaveSliceInfoDef();
   /**
+   * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+   *
    * <pre>
    * Support for saving variables as slices of a larger variable.
    * </pre>
-   *
-   * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
    */
   org.tensorflow.framework.SaveSliceInfoDef getSaveSliceInfoDef();
   /**
+   * <code>optional .tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
+   *
    * <pre>
    * Support for saving variables as slices of a larger variable.
    * </pre>
-   *
-   * <code>.tensorflow.SaveSliceInfoDef save_slice_info_def = 4;</code>
    */
   org.tensorflow.framework.SaveSliceInfoDefOrBuilder getSaveSliceInfoDefOrBuilder();
 
   /**
+   * <code>optional bool is_resource = 5;</code>
+   *
    * <pre>
    * Whether to represent this as a ResourceVariable.
    * </pre>
-   *
-   * <code>bool is_resource = 5;</code>
    */
   boolean getIsResource();
 }

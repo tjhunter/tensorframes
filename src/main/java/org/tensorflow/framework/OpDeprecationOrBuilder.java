@@ -8,28 +8,28 @@ public interface OpDeprecationOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int32 version = 1;</code>
+   *
    * <pre>
    * First GraphDef version at which the op is disallowed.
    * </pre>
-   *
-   * <code>int32 version = 1;</code>
    */
   int getVersion();
 
   /**
+   * <code>optional string explanation = 2;</code>
+   *
    * <pre>
    * Explanation of why it was deprecated and what to use instead.
    * </pre>
-   *
-   * <code>string explanation = 2;</code>
    */
   java.lang.String getExplanation();
   /**
+   * <code>optional string explanation = 2;</code>
+   *
    * <pre>
    * Explanation of why it was deprecated and what to use instead.
    * </pre>
-   *
-   * <code>string explanation = 2;</code>
    */
   com.google.protobuf.ByteString
       getExplanationBytes();

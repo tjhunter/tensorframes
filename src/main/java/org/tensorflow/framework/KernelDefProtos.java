@@ -6,30 +6,24 @@ package org.tensorflow.framework;
 public final class KernelDefProtos {
   private KernelDefProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_KernelDef_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_KernelDef_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_KernelDef_AttrConstraint_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_KernelDef_AttrConstraint_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -60,13 +54,13 @@ public final class KernelDefProtos {
     internal_static_tensorflow_KernelDef_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_KernelDef_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_KernelDef_descriptor,
         new java.lang.String[] { "Op", "DeviceType", "Constraint", "HostMemoryArg", "Label", });
     internal_static_tensorflow_KernelDef_AttrConstraint_descriptor =
       internal_static_tensorflow_KernelDef_descriptor.getNestedTypes().get(0);
     internal_static_tensorflow_KernelDef_AttrConstraint_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_KernelDef_AttrConstraint_descriptor,
         new java.lang.String[] { "Name", "AllowedValues", });
     org.tensorflow.framework.AttrValueProtos.getDescriptor();

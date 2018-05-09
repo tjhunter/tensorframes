@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.AllocatorMemoryUsed}
  */
 public  final class AllocatorMemoryUsed extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.AllocatorMemoryUsed)
     AllocatorMemoryUsedOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use AllocatorMemoryUsed.newBuilder() to construct.
-  private AllocatorMemoryUsed(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private AllocatorMemoryUsed(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private AllocatorMemoryUsed() {
@@ -27,19 +26,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private AllocatorMemoryUsed(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -49,14 +42,13 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             allocatorName_ = s;
             break;
@@ -86,22 +78,21 @@ private static final long serialVersionUID = 0L;
               allocationRecords_ = new java.util.ArrayList<org.tensorflow.framework.AllocationRecord>();
               mutable_bitField0_ |= 0x00000010;
             }
-            allocationRecords_.add(
-                input.readMessage(org.tensorflow.framework.AllocationRecord.parser(), extensionRegistry));
+            allocationRecords_.add(input.readMessage(org.tensorflow.framework.AllocationRecord.parser(), extensionRegistry));
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
         allocationRecords_ = java.util.Collections.unmodifiableList(allocationRecords_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -110,7 +101,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocatorMemoryUsed_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocatorMemoryUsed_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -121,7 +112,7 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOCATOR_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object allocatorName_;
   /**
-   * <code>string allocator_name = 1;</code>
+   * <code>optional string allocator_name = 1;</code>
    */
   public java.lang.String getAllocatorName() {
     java.lang.Object ref = allocatorName_;
@@ -136,7 +127,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string allocator_name = 1;</code>
+   * <code>optional string allocator_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getAllocatorNameBytes() {
@@ -155,11 +146,11 @@ private static final long serialVersionUID = 0L;
   public static final int TOTAL_BYTES_FIELD_NUMBER = 2;
   private long totalBytes_;
   /**
+   * <code>optional int64 total_bytes = 2;</code>
+   *
    * <pre>
    * These are per-node allocator memory stats.
    * </pre>
-   *
-   * <code>int64 total_bytes = 2;</code>
    */
   public long getTotalBytes() {
     return totalBytes_;
@@ -168,7 +159,7 @@ private static final long serialVersionUID = 0L;
   public static final int PEAK_BYTES_FIELD_NUMBER = 3;
   private long peakBytes_;
   /**
-   * <code>int64 peak_bytes = 3;</code>
+   * <code>optional int64 peak_bytes = 3;</code>
    */
   public long getPeakBytes() {
     return peakBytes_;
@@ -177,11 +168,11 @@ private static final long serialVersionUID = 0L;
   public static final int LIVE_BYTES_FIELD_NUMBER = 4;
   private long liveBytes_;
   /**
+   * <code>optional int64 live_bytes = 4;</code>
+   *
    * <pre>
    * The bytes that are not deallocated.
    * </pre>
-   *
-   * <code>int64 live_bytes = 4;</code>
    */
   public long getLiveBytes() {
     return liveBytes_;
@@ -190,52 +181,52 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOCATION_RECORDS_FIELD_NUMBER = 6;
   private java.util.List<org.tensorflow.framework.AllocationRecord> allocationRecords_;
   /**
+   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+   *
    * <pre>
    * The allocation and deallocation timeline.
    * </pre>
-   *
-   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
    */
   public java.util.List<org.tensorflow.framework.AllocationRecord> getAllocationRecordsList() {
     return allocationRecords_;
   }
   /**
+   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+   *
    * <pre>
    * The allocation and deallocation timeline.
    * </pre>
-   *
-   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.AllocationRecordOrBuilder> 
       getAllocationRecordsOrBuilderList() {
     return allocationRecords_;
   }
   /**
+   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+   *
    * <pre>
    * The allocation and deallocation timeline.
    * </pre>
-   *
-   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
    */
   public int getAllocationRecordsCount() {
     return allocationRecords_.size();
   }
   /**
+   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+   *
    * <pre>
    * The allocation and deallocation timeline.
    * </pre>
-   *
-   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
    */
   public org.tensorflow.framework.AllocationRecord getAllocationRecords(int index) {
     return allocationRecords_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+   *
    * <pre>
    * The allocation and deallocation timeline.
    * </pre>
-   *
-   * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
    */
   public org.tensorflow.framework.AllocationRecordOrBuilder getAllocationRecordsOrBuilder(
       int index) {
@@ -245,12 +236,12 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOCATOR_BYTES_IN_USE_FIELD_NUMBER = 5;
   private long allocatorBytesInUse_;
   /**
+   * <code>optional int64 allocator_bytes_in_use = 5;</code>
+   *
    * <pre>
    * These are snapshots of the overall allocator memory stats.
    * The number of live bytes currently allocated by the allocator.
    * </pre>
-   *
-   * <code>int64 allocator_bytes_in_use = 5;</code>
    */
   public long getAllocatorBytesInUse() {
     return allocatorBytesInUse_;
@@ -269,7 +260,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getAllocatorNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, allocatorName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, allocatorName_);
     }
     if (totalBytes_ != 0L) {
       output.writeInt64(2, totalBytes_);
@@ -286,7 +277,6 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < allocationRecords_.size(); i++) {
       output.writeMessage(6, allocationRecords_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -295,7 +285,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getAllocatorNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, allocatorName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, allocatorName_);
     }
     if (totalBytes_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -317,79 +307,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(6, allocationRecords_.get(i));
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.AllocatorMemoryUsed)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.AllocatorMemoryUsed other = (org.tensorflow.framework.AllocatorMemoryUsed) obj;
-
-    boolean result = true;
-    result = result && getAllocatorName()
-        .equals(other.getAllocatorName());
-    result = result && (getTotalBytes()
-        == other.getTotalBytes());
-    result = result && (getPeakBytes()
-        == other.getPeakBytes());
-    result = result && (getLiveBytes()
-        == other.getLiveBytes());
-    result = result && getAllocationRecordsList()
-        .equals(other.getAllocationRecordsList());
-    result = result && (getAllocatorBytesInUse()
-        == other.getAllocatorBytesInUse());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ALLOCATOR_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getAllocatorName().hashCode();
-    hash = (37 * hash) + TOTAL_BYTES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getTotalBytes());
-    hash = (37 * hash) + PEAK_BYTES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getPeakBytes());
-    hash = (37 * hash) + LIVE_BYTES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getLiveBytes());
-    if (getAllocationRecordsCount() > 0) {
-      hash = (37 * hash) + ALLOCATION_RECORDS_FIELD_NUMBER;
-      hash = (53 * hash) + getAllocationRecordsList().hashCode();
-    }
-    hash = (37 * hash) + ALLOCATOR_BYTES_IN_USE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getAllocatorBytesInUse());
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -413,40 +335,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.AllocatorMemoryUsed parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.AllocatorMemoryUsed parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.AllocatorMemoryUsed parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -463,7 +379,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -471,7 +387,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.AllocatorMemoryUsed}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.AllocatorMemoryUsed)
       org.tensorflow.framework.AllocatorMemoryUsedOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -479,7 +395,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocatorMemoryUsed_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocatorMemoryUsed_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -492,13 +408,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getAllocationRecordsFieldBuilder();
       }
     }
@@ -563,32 +478,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.AllocatorMemoryUsed) {
         return mergeFrom((org.tensorflow.framework.AllocatorMemoryUsed)other);
@@ -632,7 +521,7 @@ private static final long serialVersionUID = 0L;
             allocationRecords_ = other.allocationRecords_;
             bitField0_ = (bitField0_ & ~0x00000010);
             allocationRecordsBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getAllocationRecordsFieldBuilder() : null;
           } else {
             allocationRecordsBuilder_.addAllMessages(other.allocationRecords_);
@@ -642,7 +531,6 @@ private static final long serialVersionUID = 0L;
       if (other.getAllocatorBytesInUse() != 0L) {
         setAllocatorBytesInUse(other.getAllocatorBytesInUse());
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -660,7 +548,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.AllocatorMemoryUsed) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -672,7 +560,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object allocatorName_ = "";
     /**
-     * <code>string allocator_name = 1;</code>
+     * <code>optional string allocator_name = 1;</code>
      */
     public java.lang.String getAllocatorName() {
       java.lang.Object ref = allocatorName_;
@@ -687,7 +575,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string allocator_name = 1;</code>
+     * <code>optional string allocator_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getAllocatorNameBytes() {
@@ -703,7 +591,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string allocator_name = 1;</code>
+     * <code>optional string allocator_name = 1;</code>
      */
     public Builder setAllocatorName(
         java.lang.String value) {
@@ -716,7 +604,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string allocator_name = 1;</code>
+     * <code>optional string allocator_name = 1;</code>
      */
     public Builder clearAllocatorName() {
       
@@ -725,7 +613,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string allocator_name = 1;</code>
+     * <code>optional string allocator_name = 1;</code>
      */
     public Builder setAllocatorNameBytes(
         com.google.protobuf.ByteString value) {
@@ -741,21 +629,21 @@ private static final long serialVersionUID = 0L;
 
     private long totalBytes_ ;
     /**
+     * <code>optional int64 total_bytes = 2;</code>
+     *
      * <pre>
      * These are per-node allocator memory stats.
      * </pre>
-     *
-     * <code>int64 total_bytes = 2;</code>
      */
     public long getTotalBytes() {
       return totalBytes_;
     }
     /**
+     * <code>optional int64 total_bytes = 2;</code>
+     *
      * <pre>
      * These are per-node allocator memory stats.
      * </pre>
-     *
-     * <code>int64 total_bytes = 2;</code>
      */
     public Builder setTotalBytes(long value) {
       
@@ -764,11 +652,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 total_bytes = 2;</code>
+     *
      * <pre>
      * These are per-node allocator memory stats.
      * </pre>
-     *
-     * <code>int64 total_bytes = 2;</code>
      */
     public Builder clearTotalBytes() {
       
@@ -779,13 +667,13 @@ private static final long serialVersionUID = 0L;
 
     private long peakBytes_ ;
     /**
-     * <code>int64 peak_bytes = 3;</code>
+     * <code>optional int64 peak_bytes = 3;</code>
      */
     public long getPeakBytes() {
       return peakBytes_;
     }
     /**
-     * <code>int64 peak_bytes = 3;</code>
+     * <code>optional int64 peak_bytes = 3;</code>
      */
     public Builder setPeakBytes(long value) {
       
@@ -794,7 +682,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 peak_bytes = 3;</code>
+     * <code>optional int64 peak_bytes = 3;</code>
      */
     public Builder clearPeakBytes() {
       
@@ -805,21 +693,21 @@ private static final long serialVersionUID = 0L;
 
     private long liveBytes_ ;
     /**
+     * <code>optional int64 live_bytes = 4;</code>
+     *
      * <pre>
      * The bytes that are not deallocated.
      * </pre>
-     *
-     * <code>int64 live_bytes = 4;</code>
      */
     public long getLiveBytes() {
       return liveBytes_;
     }
     /**
+     * <code>optional int64 live_bytes = 4;</code>
+     *
      * <pre>
      * The bytes that are not deallocated.
      * </pre>
-     *
-     * <code>int64 live_bytes = 4;</code>
      */
     public Builder setLiveBytes(long value) {
       
@@ -828,11 +716,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 live_bytes = 4;</code>
+     *
      * <pre>
      * The bytes that are not deallocated.
      * </pre>
-     *
-     * <code>int64 live_bytes = 4;</code>
      */
     public Builder clearLiveBytes() {
       
@@ -850,15 +738,15 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.AllocationRecord, org.tensorflow.framework.AllocationRecord.Builder, org.tensorflow.framework.AllocationRecordOrBuilder> allocationRecordsBuilder_;
 
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public java.util.List<org.tensorflow.framework.AllocationRecord> getAllocationRecordsList() {
       if (allocationRecordsBuilder_ == null) {
@@ -868,11 +756,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public int getAllocationRecordsCount() {
       if (allocationRecordsBuilder_ == null) {
@@ -882,11 +770,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public org.tensorflow.framework.AllocationRecord getAllocationRecords(int index) {
       if (allocationRecordsBuilder_ == null) {
@@ -896,11 +784,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder setAllocationRecords(
         int index, org.tensorflow.framework.AllocationRecord value) {
@@ -917,11 +805,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder setAllocationRecords(
         int index, org.tensorflow.framework.AllocationRecord.Builder builderForValue) {
@@ -935,11 +823,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder addAllocationRecords(org.tensorflow.framework.AllocationRecord value) {
       if (allocationRecordsBuilder_ == null) {
@@ -955,11 +843,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder addAllocationRecords(
         int index, org.tensorflow.framework.AllocationRecord value) {
@@ -976,11 +864,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder addAllocationRecords(
         org.tensorflow.framework.AllocationRecord.Builder builderForValue) {
@@ -994,11 +882,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder addAllocationRecords(
         int index, org.tensorflow.framework.AllocationRecord.Builder builderForValue) {
@@ -1012,11 +900,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder addAllAllocationRecords(
         java.lang.Iterable<? extends org.tensorflow.framework.AllocationRecord> values) {
@@ -1031,11 +919,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder clearAllocationRecords() {
       if (allocationRecordsBuilder_ == null) {
@@ -1048,11 +936,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public Builder removeAllocationRecords(int index) {
       if (allocationRecordsBuilder_ == null) {
@@ -1065,22 +953,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public org.tensorflow.framework.AllocationRecord.Builder getAllocationRecordsBuilder(
         int index) {
       return getAllocationRecordsFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public org.tensorflow.framework.AllocationRecordOrBuilder getAllocationRecordsOrBuilder(
         int index) {
@@ -1090,11 +978,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.AllocationRecordOrBuilder> 
          getAllocationRecordsOrBuilderList() {
@@ -1105,22 +993,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public org.tensorflow.framework.AllocationRecord.Builder addAllocationRecordsBuilder() {
       return getAllocationRecordsFieldBuilder().addBuilder(
           org.tensorflow.framework.AllocationRecord.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public org.tensorflow.framework.AllocationRecord.Builder addAllocationRecordsBuilder(
         int index) {
@@ -1128,21 +1016,21 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.AllocationRecord.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
+     *
      * <pre>
      * The allocation and deallocation timeline.
      * </pre>
-     *
-     * <code>repeated .tensorflow.AllocationRecord allocation_records = 6;</code>
      */
     public java.util.List<org.tensorflow.framework.AllocationRecord.Builder> 
          getAllocationRecordsBuilderList() {
       return getAllocationRecordsFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.AllocationRecord, org.tensorflow.framework.AllocationRecord.Builder, org.tensorflow.framework.AllocationRecordOrBuilder> 
         getAllocationRecordsFieldBuilder() {
       if (allocationRecordsBuilder_ == null) {
-        allocationRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        allocationRecordsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.AllocationRecord, org.tensorflow.framework.AllocationRecord.Builder, org.tensorflow.framework.AllocationRecordOrBuilder>(
                 allocationRecords_,
                 ((bitField0_ & 0x00000010) == 0x00000010),
@@ -1155,23 +1043,23 @@ private static final long serialVersionUID = 0L;
 
     private long allocatorBytesInUse_ ;
     /**
+     * <code>optional int64 allocator_bytes_in_use = 5;</code>
+     *
      * <pre>
      * These are snapshots of the overall allocator memory stats.
      * The number of live bytes currently allocated by the allocator.
      * </pre>
-     *
-     * <code>int64 allocator_bytes_in_use = 5;</code>
      */
     public long getAllocatorBytesInUse() {
       return allocatorBytesInUse_;
     }
     /**
+     * <code>optional int64 allocator_bytes_in_use = 5;</code>
+     *
      * <pre>
      * These are snapshots of the overall allocator memory stats.
      * The number of live bytes currently allocated by the allocator.
      * </pre>
-     *
-     * <code>int64 allocator_bytes_in_use = 5;</code>
      */
     public Builder setAllocatorBytesInUse(long value) {
       
@@ -1180,12 +1068,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 allocator_bytes_in_use = 5;</code>
+     *
      * <pre>
      * These are snapshots of the overall allocator memory stats.
      * The number of live bytes currently allocated by the allocator.
      * </pre>
-     *
-     * <code>int64 allocator_bytes_in_use = 5;</code>
      */
     public Builder clearAllocatorBytesInUse() {
       
@@ -1195,12 +1083,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1223,7 +1111,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AllocatorMemoryUsed(input, extensionRegistry);
+      try {
+        return new AllocatorMemoryUsed(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

@@ -8,11 +8,11 @@ public interface NameAttrListOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 1;</code>
+   * <code>optional string name = 1;</code>
    */
   java.lang.String getName();
   /**
-   * <code>string name = 1;</code>
+   * <code>optional string name = 1;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
@@ -20,34 +20,6 @@ public interface NameAttrListOrBuilder extends
   /**
    * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 2;</code>
    */
-  int getAttrCount();
-  /**
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 2;</code>
-   */
-  boolean containsAttr(
-      java.lang.String key);
-  /**
-   * Use {@link #getAttrMap()} instead.
-   */
-  @java.lang.Deprecated
   java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue>
   getAttr();
-  /**
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 2;</code>
-   */
-  java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue>
-  getAttrMap();
-  /**
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 2;</code>
-   */
-
-  org.tensorflow.framework.AttrValue getAttrOrDefault(
-      java.lang.String key,
-      org.tensorflow.framework.AttrValue defaultValue);
-  /**
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 2;</code>
-   */
-
-  org.tensorflow.framework.AttrValue getAttrOrThrow(
-      java.lang.String key);
 }

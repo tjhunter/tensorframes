@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.DeviceLocality}
  */
 public  final class DeviceLocality extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.DeviceLocality)
     DeviceLocalityOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use DeviceLocality.newBuilder() to construct.
-  private DeviceLocality(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private DeviceLocality(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private DeviceLocality() {
@@ -22,19 +21,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private DeviceLocality(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -44,8 +37,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -58,12 +50,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -72,7 +64,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceLocality_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceLocality_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -82,12 +74,12 @@ private static final long serialVersionUID = 0L;
   public static final int BUS_ID_FIELD_NUMBER = 1;
   private int busId_;
   /**
+   * <code>optional int32 bus_id = 1;</code>
+   *
    * <pre>
    * Optional bus locality of device.  Default value of 0 means
    * no specific locality.  Specific localities are indexed from 1.
    * </pre>
-   *
-   * <code>int32 bus_id = 1;</code>
    */
   public int getBusId() {
     return busId_;
@@ -108,7 +100,6 @@ private static final long serialVersionUID = 0L;
     if (busId_ != 0) {
       output.writeInt32(1, busId_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -120,53 +111,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, busId_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.DeviceLocality)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.DeviceLocality other = (org.tensorflow.framework.DeviceLocality) obj;
-
-    boolean result = true;
-    result = result && (getBusId()
-        == other.getBusId());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + BUS_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getBusId();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.DeviceLocality parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.DeviceLocality parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.DeviceLocality parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -190,40 +139,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.DeviceLocality parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.DeviceLocality parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.DeviceLocality parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.DeviceLocality parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.DeviceLocality parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.DeviceLocality parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -240,7 +183,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -248,7 +191,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.DeviceLocality}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.DeviceLocality)
       org.tensorflow.framework.DeviceLocalityOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -256,7 +199,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceLocality_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.DeviceAttributesProtos.internal_static_tensorflow_DeviceLocality_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -269,13 +212,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -309,32 +251,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.DeviceLocality) {
         return mergeFrom((org.tensorflow.framework.DeviceLocality)other);
@@ -349,7 +265,6 @@ private static final long serialVersionUID = 0L;
       if (other.getBusId() != 0) {
         setBusId(other.getBusId());
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -367,7 +282,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.DeviceLocality) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -378,23 +293,23 @@ private static final long serialVersionUID = 0L;
 
     private int busId_ ;
     /**
+     * <code>optional int32 bus_id = 1;</code>
+     *
      * <pre>
      * Optional bus locality of device.  Default value of 0 means
      * no specific locality.  Specific localities are indexed from 1.
      * </pre>
-     *
-     * <code>int32 bus_id = 1;</code>
      */
     public int getBusId() {
       return busId_;
     }
     /**
+     * <code>optional int32 bus_id = 1;</code>
+     *
      * <pre>
      * Optional bus locality of device.  Default value of 0 means
      * no specific locality.  Specific localities are indexed from 1.
      * </pre>
-     *
-     * <code>int32 bus_id = 1;</code>
      */
     public Builder setBusId(int value) {
       
@@ -403,12 +318,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int32 bus_id = 1;</code>
+     *
      * <pre>
      * Optional bus locality of device.  Default value of 0 means
      * no specific locality.  Specific localities are indexed from 1.
      * </pre>
-     *
-     * <code>int32 bus_id = 1;</code>
      */
     public Builder clearBusId() {
       
@@ -418,12 +333,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -446,7 +361,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new DeviceLocality(input, extensionRegistry);
+      try {
+        return new DeviceLocality(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

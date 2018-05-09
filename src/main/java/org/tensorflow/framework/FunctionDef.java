@@ -4,6 +4,8 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.FunctionDef}
+ *
  * <pre>
  * A function can be instantiated when the runtime can bind every attr
  * with a value. When a GraphDef has a call to a function, it must
@@ -11,16 +13,13 @@ package org.tensorflow.framework;
  * TODO(zhifengc):
  *   * device spec, etc.
  * </pre>
- *
- * Protobuf type {@code tensorflow.FunctionDef}
  */
 public  final class FunctionDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.FunctionDef)
     FunctionDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use FunctionDef.newBuilder() to construct.
-  private FunctionDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private FunctionDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private FunctionDef() {
@@ -30,19 +29,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private FunctionDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -52,8 +45,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -76,8 +68,7 @@ private static final long serialVersionUID = 0L;
               nodeDef_ = new java.util.ArrayList<org.tensorflow.framework.NodeDef>();
               mutable_bitField0_ |= 0x00000004;
             }
-            nodeDef_.add(
-                input.readMessage(org.tensorflow.framework.NodeDef.parser(), extensionRegistry));
+            nodeDef_.add(input.readMessage(org.tensorflow.framework.NodeDef.parser(), extensionRegistry));
             break;
           }
           case 34: {
@@ -87,10 +78,9 @@ private static final long serialVersionUID = 0L;
               mutable_bitField0_ |= 0x00000008;
             }
             com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
-            ret__ = input.readMessage(
+            ret = input.readMessage(
                 RetDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-            ret_.getMutableMap().put(
-                ret__.getKey(), ret__.getValue());
+            ret_.getMutableMap().put(ret.getKey(), ret.getValue());
             break;
           }
           case 42: {
@@ -100,24 +90,23 @@ private static final long serialVersionUID = 0L;
               mutable_bitField0_ |= 0x00000002;
             }
             com.google.protobuf.MapEntry<java.lang.String, org.tensorflow.framework.AttrValue>
-            attr__ = input.readMessage(
+            attr = input.readMessage(
                 AttrDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-            attr_.getMutableMap().put(
-                attr__.getKey(), attr__.getValue());
+            attr_.getMutableMap().put(attr.getKey(), attr.getValue());
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
         nodeDef_ = java.util.Collections.unmodifiableList(nodeDef_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -139,7 +128,7 @@ private static final long serialVersionUID = 0L;
             "Invalid map field number: " + number);
     }
   }
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.FunctionProtos.internal_static_tensorflow_FunctionDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -150,34 +139,34 @@ private static final long serialVersionUID = 0L;
   public static final int SIGNATURE_FIELD_NUMBER = 1;
   private org.tensorflow.framework.OpDef signature_;
   /**
+   * <code>optional .tensorflow.OpDef signature = 1;</code>
+   *
    * <pre>
    * The definition of the function's name, arguments, return values,
    * attrs etc.
    * </pre>
-   *
-   * <code>.tensorflow.OpDef signature = 1;</code>
    */
   public boolean hasSignature() {
     return signature_ != null;
   }
   /**
+   * <code>optional .tensorflow.OpDef signature = 1;</code>
+   *
    * <pre>
    * The definition of the function's name, arguments, return values,
    * attrs etc.
    * </pre>
-   *
-   * <code>.tensorflow.OpDef signature = 1;</code>
    */
   public org.tensorflow.framework.OpDef getSignature() {
     return signature_ == null ? org.tensorflow.framework.OpDef.getDefaultInstance() : signature_;
   }
   /**
+   * <code>optional .tensorflow.OpDef signature = 1;</code>
+   *
    * <pre>
    * The definition of the function's name, arguments, return values,
    * attrs etc.
    * </pre>
-   *
-   * <code>.tensorflow.OpDef signature = 1;</code>
    */
   public org.tensorflow.framework.OpDefOrBuilder getSignatureOrBuilder() {
     return getSignature();
@@ -202,138 +191,80 @@ private static final long serialVersionUID = 0L;
     if (attr_ == null) {
       return com.google.protobuf.MapField.emptyMapField(
           AttrDefaultEntryHolder.defaultEntry);
-    }
+   }
     return attr_;
   }
-
-  public int getAttrCount() {
-    return internalGetAttr().getMap().size();
-  }
   /**
+   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+   *
    * <pre>
    * Attributes specific to this function definition.
    * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
    */
 
-  public boolean containsAttr(
-      java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    return internalGetAttr().getMap().containsKey(key);
-  }
-  /**
-   * Use {@link #getAttrMap()} instead.
-   */
-  @java.lang.Deprecated
   public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttr() {
-    return getAttrMap();
-  }
-  /**
-   * <pre>
-   * Attributes specific to this function definition.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttrMap() {
     return internalGetAttr().getMap();
-  }
-  /**
-   * <pre>
-   * Attributes specific to this function definition.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  public org.tensorflow.framework.AttrValue getAttrOrDefault(
-      java.lang.String key,
-      org.tensorflow.framework.AttrValue defaultValue) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-        internalGetAttr().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   * <pre>
-   * Attributes specific to this function definition.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  public org.tensorflow.framework.AttrValue getAttrOrThrow(
-      java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-        internalGetAttr().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
   }
 
   public static final int NODE_DEF_FIELD_NUMBER = 3;
   private java.util.List<org.tensorflow.framework.NodeDef> nodeDef_;
   /**
+   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+   *
    * <pre>
    * By convention, "op" in node_def is resolved by consulting with a
    * user-defined library first. If not resolved, "func" is assumed to
    * be a builtin op.
    * </pre>
-   *
-   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
    */
   public java.util.List<org.tensorflow.framework.NodeDef> getNodeDefList() {
     return nodeDef_;
   }
   /**
+   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+   *
    * <pre>
    * By convention, "op" in node_def is resolved by consulting with a
    * user-defined library first. If not resolved, "func" is assumed to
    * be a builtin op.
    * </pre>
-   *
-   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.NodeDefOrBuilder> 
       getNodeDefOrBuilderList() {
     return nodeDef_;
   }
   /**
+   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+   *
    * <pre>
    * By convention, "op" in node_def is resolved by consulting with a
    * user-defined library first. If not resolved, "func" is assumed to
    * be a builtin op.
    * </pre>
-   *
-   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
    */
   public int getNodeDefCount() {
     return nodeDef_.size();
   }
   /**
+   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+   *
    * <pre>
    * By convention, "op" in node_def is resolved by consulting with a
    * user-defined library first. If not resolved, "func" is assumed to
    * be a builtin op.
    * </pre>
-   *
-   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
    */
   public org.tensorflow.framework.NodeDef getNodeDef(int index) {
     return nodeDef_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+   *
    * <pre>
    * By convention, "op" in node_def is resolved by consulting with a
    * user-defined library first. If not resolved, "func" is assumed to
    * be a builtin op.
    * </pre>
-   *
-   * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
    */
   public org.tensorflow.framework.NodeDefOrBuilder getNodeDefOrBuilder(
       int index) {
@@ -359,81 +290,20 @@ private static final long serialVersionUID = 0L;
     if (ret_ == null) {
       return com.google.protobuf.MapField.emptyMapField(
           RetDefaultEntryHolder.defaultEntry);
-    }
+   }
     return ret_;
   }
-
-  public int getRetCount() {
-    return internalGetRet().getMap().size();
-  }
   /**
+   * <code>map&lt;string, string&gt; ret = 4;</code>
+   *
    * <pre>
    * A mapping from the output arg names from `signature` to the
    * outputs from `node_def` that should be returned by the function.
    * </pre>
-   *
-   * <code>map&lt;string, string&gt; ret = 4;</code>
    */
 
-  public boolean containsRet(
-      java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    return internalGetRet().getMap().containsKey(key);
-  }
-  /**
-   * Use {@link #getRetMap()} instead.
-   */
-  @java.lang.Deprecated
   public java.util.Map<java.lang.String, java.lang.String> getRet() {
-    return getRetMap();
-  }
-  /**
-   * <pre>
-   * A mapping from the output arg names from `signature` to the
-   * outputs from `node_def` that should be returned by the function.
-   * </pre>
-   *
-   * <code>map&lt;string, string&gt; ret = 4;</code>
-   */
-
-  public java.util.Map<java.lang.String, java.lang.String> getRetMap() {
     return internalGetRet().getMap();
-  }
-  /**
-   * <pre>
-   * A mapping from the output arg names from `signature` to the
-   * outputs from `node_def` that should be returned by the function.
-   * </pre>
-   *
-   * <code>map&lt;string, string&gt; ret = 4;</code>
-   */
-
-  public java.lang.String getRetOrDefault(
-      java.lang.String key,
-      java.lang.String defaultValue) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    java.util.Map<java.lang.String, java.lang.String> map =
-        internalGetRet().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   * <pre>
-   * A mapping from the output arg names from `signature` to the
-   * outputs from `node_def` that should be returned by the function.
-   * </pre>
-   *
-   * <code>map&lt;string, string&gt; ret = 4;</code>
-   */
-
-  public java.lang.String getRetOrThrow(
-      java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
-    java.util.Map<java.lang.String, java.lang.String> map =
-        internalGetRet().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -454,19 +324,24 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < nodeDef_.size(); i++) {
       output.writeMessage(3, nodeDef_.get(i));
     }
-    com.google.protobuf.GeneratedMessageV3
-      .serializeStringMapTo(
-        output,
-        internalGetRet(),
-        RetDefaultEntryHolder.defaultEntry,
-        4);
-    com.google.protobuf.GeneratedMessageV3
-      .serializeStringMapTo(
-        output,
-        internalGetAttr(),
-        AttrDefaultEntryHolder.defaultEntry,
-        5);
-    unknownFields.writeTo(output);
+    for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+         : internalGetRet().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+      ret = RetDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      output.writeMessage(4, ret);
+    }
+    for (java.util.Map.Entry<java.lang.String, org.tensorflow.framework.AttrValue> entry
+         : internalGetAttr().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, org.tensorflow.framework.AttrValue>
+      attr = AttrDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      output.writeMessage(5, attr);
+    }
   }
 
   public int getSerializedSize() {
@@ -485,93 +360,28 @@ private static final long serialVersionUID = 0L;
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetRet().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
-      ret__ = RetDefaultEntryHolder.defaultEntry.newBuilderForType()
+      ret = RetDefaultEntryHolder.defaultEntry.newBuilderForType()
           .setKey(entry.getKey())
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, ret__);
+          .computeMessageSize(4, ret);
     }
     for (java.util.Map.Entry<java.lang.String, org.tensorflow.framework.AttrValue> entry
          : internalGetAttr().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.String, org.tensorflow.framework.AttrValue>
-      attr__ = AttrDefaultEntryHolder.defaultEntry.newBuilderForType()
+      attr = AttrDefaultEntryHolder.defaultEntry.newBuilderForType()
           .setKey(entry.getKey())
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, attr__);
+          .computeMessageSize(5, attr);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.FunctionDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.FunctionDef other = (org.tensorflow.framework.FunctionDef) obj;
-
-    boolean result = true;
-    result = result && (hasSignature() == other.hasSignature());
-    if (hasSignature()) {
-      result = result && getSignature()
-          .equals(other.getSignature());
-    }
-    result = result && internalGetAttr().equals(
-        other.internalGetAttr());
-    result = result && getNodeDefList()
-        .equals(other.getNodeDefList());
-    result = result && internalGetRet().equals(
-        other.internalGetRet());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasSignature()) {
-      hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
-      hash = (53 * hash) + getSignature().hashCode();
-    }
-    if (!internalGetAttr().getMap().isEmpty()) {
-      hash = (37 * hash) + ATTR_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetAttr().hashCode();
-    }
-    if (getNodeDefCount() > 0) {
-      hash = (37 * hash) + NODE_DEF_FIELD_NUMBER;
-      hash = (53 * hash) + getNodeDefList().hashCode();
-    }
-    if (!internalGetRet().getMap().isEmpty()) {
-      hash = (37 * hash) + RET_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetRet().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.FunctionDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.FunctionDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.FunctionDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -595,40 +405,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.FunctionDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.FunctionDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.FunctionDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.FunctionDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.FunctionDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.FunctionDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -645,11 +449,13 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.FunctionDef}
+   *
    * <pre>
    * A function can be instantiated when the runtime can bind every attr
    * with a value. When a GraphDef has a call to a function, it must
@@ -657,11 +463,9 @@ private static final long serialVersionUID = 0L;
    * TODO(zhifengc):
    *   * device spec, etc.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.FunctionDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.FunctionDef)
       org.tensorflow.framework.FunctionDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -695,7 +499,7 @@ private static final long serialVersionUID = 0L;
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.FunctionProtos.internal_static_tensorflow_FunctionDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -708,13 +512,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getNodeDefFieldBuilder();
       }
     }
@@ -781,32 +584,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.FunctionDef) {
         return mergeFrom((org.tensorflow.framework.FunctionDef)other);
@@ -842,7 +619,7 @@ private static final long serialVersionUID = 0L;
             nodeDef_ = other.nodeDef_;
             bitField0_ = (bitField0_ & ~0x00000004);
             nodeDefBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getNodeDefFieldBuilder() : null;
           } else {
             nodeDefBuilder_.addAllMessages(other.nodeDef_);
@@ -851,7 +628,6 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableRet().mergeFrom(
           other.internalGetRet());
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -869,7 +645,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.FunctionDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -880,26 +656,26 @@ private static final long serialVersionUID = 0L;
     private int bitField0_;
 
     private org.tensorflow.framework.OpDef signature_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.OpDef, org.tensorflow.framework.OpDef.Builder, org.tensorflow.framework.OpDefOrBuilder> signatureBuilder_;
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public boolean hasSignature() {
       return signatureBuilder_ != null || signature_ != null;
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public org.tensorflow.framework.OpDef getSignature() {
       if (signatureBuilder_ == null) {
@@ -909,12 +685,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public Builder setSignature(org.tensorflow.framework.OpDef value) {
       if (signatureBuilder_ == null) {
@@ -930,12 +706,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public Builder setSignature(
         org.tensorflow.framework.OpDef.Builder builderForValue) {
@@ -949,12 +725,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public Builder mergeSignature(org.tensorflow.framework.OpDef value) {
       if (signatureBuilder_ == null) {
@@ -972,12 +748,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public Builder clearSignature() {
       if (signatureBuilder_ == null) {
@@ -991,12 +767,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public org.tensorflow.framework.OpDef.Builder getSignatureBuilder() {
       
@@ -1004,12 +780,12 @@ private static final long serialVersionUID = 0L;
       return getSignatureFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
     public org.tensorflow.framework.OpDefOrBuilder getSignatureOrBuilder() {
       if (signatureBuilder_ != null) {
@@ -1020,18 +796,18 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.OpDef signature = 1;</code>
+     *
      * <pre>
      * The definition of the function's name, arguments, return values,
      * attrs etc.
      * </pre>
-     *
-     * <code>.tensorflow.OpDef signature = 1;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.OpDef, org.tensorflow.framework.OpDef.Builder, org.tensorflow.framework.OpDefOrBuilder> 
         getSignatureFieldBuilder() {
       if (signatureBuilder_ == null) {
-        signatureBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        signatureBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.OpDef, org.tensorflow.framework.OpDef.Builder, org.tensorflow.framework.OpDefOrBuilder>(
                 getSignature(),
                 getParentForChildren(),
@@ -1048,7 +824,7 @@ private static final long serialVersionUID = 0L;
       if (attr_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             AttrDefaultEntryHolder.defaultEntry);
-      }
+     }
       return attr_;
     }
     private com.google.protobuf.MapField<java.lang.String, org.tensorflow.framework.AttrValue>
@@ -1063,132 +839,37 @@ private static final long serialVersionUID = 0L;
       }
       return attr_;
     }
-
-    public int getAttrCount() {
-      return internalGetAttr().getMap().size();
-    }
     /**
+     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+     *
      * <pre>
      * Attributes specific to this function definition.
      * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
      */
-
-    public boolean containsAttr(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      return internalGetAttr().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getAttrMap()} instead.
-     */
-    @java.lang.Deprecated
     public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttr() {
-      return getAttrMap();
-    }
-    /**
-     * <pre>
-     * Attributes specific to this function definition.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
-    public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> getAttrMap() {
       return internalGetAttr().getMap();
     }
     /**
+     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+     *
      * <pre>
      * Attributes specific to this function definition.
      * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
      */
-
-    public org.tensorflow.framework.AttrValue getAttrOrDefault(
-        java.lang.String key,
-        org.tensorflow.framework.AttrValue defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-          internalGetAttr().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <pre>
-     * Attributes specific to this function definition.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
-    public org.tensorflow.framework.AttrValue getAttrOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> map =
-          internalGetAttr().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public Builder clearAttr() {
-      internalGetMutableAttr().getMutableMap()
-          .clear();
-      return this;
-    }
-    /**
-     * <pre>
-     * Attributes specific to this function definition.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
-    public Builder removeAttr(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      internalGetMutableAttr().getMutableMap()
-          .remove(key);
-      return this;
-    }
-    /**
-     * Use alternate mutation accessors instead.
-     */
-    @java.lang.Deprecated
     public java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue>
     getMutableAttr() {
       return internalGetMutableAttr().getMutableMap();
     }
     /**
+     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+     *
      * <pre>
      * Attributes specific to this function definition.
      * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
      */
-    public Builder putAttr(
-        java.lang.String key,
-        org.tensorflow.framework.AttrValue value) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      if (value == null) { throw new java.lang.NullPointerException(); }
-      internalGetMutableAttr().getMutableMap()
-          .put(key, value);
-      return this;
-    }
-    /**
-     * <pre>
-     * Attributes specific to this function definition.
-     * </pre>
-     *
-     * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-     */
-
     public Builder putAllAttr(
         java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue> values) {
-      internalGetMutableAttr().getMutableMap()
-          .putAll(values);
+      getMutableAttr().putAll(values);
       return this;
     }
 
@@ -1201,17 +882,17 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.NodeDef, org.tensorflow.framework.NodeDef.Builder, org.tensorflow.framework.NodeDefOrBuilder> nodeDefBuilder_;
 
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public java.util.List<org.tensorflow.framework.NodeDef> getNodeDefList() {
       if (nodeDefBuilder_ == null) {
@@ -1221,13 +902,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public int getNodeDefCount() {
       if (nodeDefBuilder_ == null) {
@@ -1237,13 +918,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public org.tensorflow.framework.NodeDef getNodeDef(int index) {
       if (nodeDefBuilder_ == null) {
@@ -1253,13 +934,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder setNodeDef(
         int index, org.tensorflow.framework.NodeDef value) {
@@ -1276,13 +957,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder setNodeDef(
         int index, org.tensorflow.framework.NodeDef.Builder builderForValue) {
@@ -1296,13 +977,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder addNodeDef(org.tensorflow.framework.NodeDef value) {
       if (nodeDefBuilder_ == null) {
@@ -1318,13 +999,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder addNodeDef(
         int index, org.tensorflow.framework.NodeDef value) {
@@ -1341,13 +1022,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder addNodeDef(
         org.tensorflow.framework.NodeDef.Builder builderForValue) {
@@ -1361,13 +1042,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder addNodeDef(
         int index, org.tensorflow.framework.NodeDef.Builder builderForValue) {
@@ -1381,13 +1062,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder addAllNodeDef(
         java.lang.Iterable<? extends org.tensorflow.framework.NodeDef> values) {
@@ -1402,13 +1083,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder clearNodeDef() {
       if (nodeDefBuilder_ == null) {
@@ -1421,13 +1102,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public Builder removeNodeDef(int index) {
       if (nodeDefBuilder_ == null) {
@@ -1440,26 +1121,26 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public org.tensorflow.framework.NodeDef.Builder getNodeDefBuilder(
         int index) {
       return getNodeDefFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public org.tensorflow.framework.NodeDefOrBuilder getNodeDefOrBuilder(
         int index) {
@@ -1469,13 +1150,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.NodeDefOrBuilder> 
          getNodeDefOrBuilderList() {
@@ -1486,26 +1167,26 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public org.tensorflow.framework.NodeDef.Builder addNodeDefBuilder() {
       return getNodeDefFieldBuilder().addBuilder(
           org.tensorflow.framework.NodeDef.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public org.tensorflow.framework.NodeDef.Builder addNodeDefBuilder(
         int index) {
@@ -1513,23 +1194,23 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.NodeDef.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
+     *
      * <pre>
      * By convention, "op" in node_def is resolved by consulting with a
      * user-defined library first. If not resolved, "func" is assumed to
      * be a builtin op.
      * </pre>
-     *
-     * <code>repeated .tensorflow.NodeDef node_def = 3;</code>
      */
     public java.util.List<org.tensorflow.framework.NodeDef.Builder> 
          getNodeDefBuilderList() {
       return getNodeDefFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.NodeDef, org.tensorflow.framework.NodeDef.Builder, org.tensorflow.framework.NodeDefOrBuilder> 
         getNodeDefFieldBuilder() {
       if (nodeDefBuilder_ == null) {
-        nodeDefBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        nodeDefBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.NodeDef, org.tensorflow.framework.NodeDef.Builder, org.tensorflow.framework.NodeDefOrBuilder>(
                 nodeDef_,
                 ((bitField0_ & 0x00000004) == 0x00000004),
@@ -1547,7 +1228,7 @@ private static final long serialVersionUID = 0L;
       if (ret_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             RetDefaultEntryHolder.defaultEntry);
-      }
+     }
       return ret_;
     }
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -1562,149 +1243,50 @@ private static final long serialVersionUID = 0L;
       }
       return ret_;
     }
-
-    public int getRetCount() {
-      return internalGetRet().getMap().size();
-    }
     /**
+     * <code>map&lt;string, string&gt; ret = 4;</code>
+     *
      * <pre>
      * A mapping from the output arg names from `signature` to the
      * outputs from `node_def` that should be returned by the function.
      * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
      */
-
-    public boolean containsRet(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      return internalGetRet().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getRetMap()} instead.
-     */
-    @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String> getRet() {
-      return getRetMap();
-    }
-    /**
-     * <pre>
-     * A mapping from the output arg names from `signature` to the
-     * outputs from `node_def` that should be returned by the function.
-     * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
-     */
-
-    public java.util.Map<java.lang.String, java.lang.String> getRetMap() {
       return internalGetRet().getMap();
     }
     /**
+     * <code>map&lt;string, string&gt; ret = 4;</code>
+     *
      * <pre>
      * A mapping from the output arg names from `signature` to the
      * outputs from `node_def` that should be returned by the function.
      * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
      */
-
-    public java.lang.String getRetOrDefault(
-        java.lang.String key,
-        java.lang.String defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.String> map =
-          internalGetRet().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <pre>
-     * A mapping from the output arg names from `signature` to the
-     * outputs from `node_def` that should be returned by the function.
-     * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
-     */
-
-    public java.lang.String getRetOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.String> map =
-          internalGetRet().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public Builder clearRet() {
-      internalGetMutableRet().getMutableMap()
-          .clear();
-      return this;
-    }
-    /**
-     * <pre>
-     * A mapping from the output arg names from `signature` to the
-     * outputs from `node_def` that should be returned by the function.
-     * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
-     */
-
-    public Builder removeRet(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      internalGetMutableRet().getMutableMap()
-          .remove(key);
-      return this;
-    }
-    /**
-     * Use alternate mutation accessors instead.
-     */
-    @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String>
     getMutableRet() {
       return internalGetMutableRet().getMutableMap();
     }
     /**
+     * <code>map&lt;string, string&gt; ret = 4;</code>
+     *
      * <pre>
      * A mapping from the output arg names from `signature` to the
      * outputs from `node_def` that should be returned by the function.
      * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
      */
-    public Builder putRet(
-        java.lang.String key,
-        java.lang.String value) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      if (value == null) { throw new java.lang.NullPointerException(); }
-      internalGetMutableRet().getMutableMap()
-          .put(key, value);
-      return this;
-    }
-    /**
-     * <pre>
-     * A mapping from the output arg names from `signature` to the
-     * outputs from `node_def` that should be returned by the function.
-     * </pre>
-     *
-     * <code>map&lt;string, string&gt; ret = 4;</code>
-     */
-
     public Builder putAllRet(
         java.util.Map<java.lang.String, java.lang.String> values) {
-      internalGetMutableRet().getMutableMap()
-          .putAll(values);
+      getMutableRet().putAll(values);
       return this;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1727,7 +1309,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new FunctionDef(input, extensionRegistry);
+      try {
+        return new FunctionDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

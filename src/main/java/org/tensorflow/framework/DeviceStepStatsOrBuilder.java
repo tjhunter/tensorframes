@@ -8,11 +8,11 @@ public interface DeviceStepStatsOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string device = 1;</code>
+   * <code>optional string device = 1;</code>
    */
   java.lang.String getDevice();
   /**
-   * <code>string device = 1;</code>
+   * <code>optional string device = 1;</code>
    */
   com.google.protobuf.ByteString
       getDeviceBytes();

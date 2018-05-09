@@ -8,45 +8,45 @@ public interface SummaryOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   java.util.List<org.tensorflow.framework.Summary.Value> 
       getValueList();
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   org.tensorflow.framework.Summary.Value getValue(int index);
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   int getValueCount();
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   java.util.List<? extends org.tensorflow.framework.Summary.ValueOrBuilder> 
       getValueOrBuilderList();
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   org.tensorflow.framework.Summary.ValueOrBuilder getValueOrBuilder(
       int index);

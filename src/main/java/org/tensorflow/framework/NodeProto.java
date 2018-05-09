@@ -6,30 +6,24 @@ package org.tensorflow.framework;
 public final class NodeProto {
   private NodeProto() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_NodeDef_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_NodeDef_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_NodeDef_AttrEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_NodeDef_AttrEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -59,13 +53,13 @@ public final class NodeProto {
     internal_static_tensorflow_NodeDef_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_NodeDef_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_NodeDef_descriptor,
         new java.lang.String[] { "Name", "Op", "Input", "Device", "Attr", });
     internal_static_tensorflow_NodeDef_AttrEntry_descriptor =
       internal_static_tensorflow_NodeDef_descriptor.getNestedTypes().get(0);
     internal_static_tensorflow_NodeDef_AttrEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_NodeDef_AttrEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     org.tensorflow.framework.AttrValueProtos.getDescriptor();

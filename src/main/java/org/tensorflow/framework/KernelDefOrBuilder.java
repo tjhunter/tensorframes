@@ -8,37 +8,37 @@ public interface KernelDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string op = 1;</code>
+   *
    * <pre>
    * Must match the name of an Op.
    * </pre>
-   *
-   * <code>string op = 1;</code>
    */
   java.lang.String getOp();
   /**
+   * <code>optional string op = 1;</code>
+   *
    * <pre>
    * Must match the name of an Op.
    * </pre>
-   *
-   * <code>string op = 1;</code>
    */
   com.google.protobuf.ByteString
       getOpBytes();
 
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * Type of device this kernel runs on.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   java.lang.String getDeviceType();
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * Type of device this kernel runs on.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   com.google.protobuf.ByteString
       getDeviceTypeBytes();
@@ -68,62 +68,62 @@ public interface KernelDefOrBuilder extends
       int index);
 
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
-  java.util.List<java.lang.String>
+  com.google.protobuf.ProtocolStringList
       getHostMemoryArgList();
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   int getHostMemoryArgCount();
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   java.lang.String getHostMemoryArg(int index);
   /**
+   * <code>repeated string host_memory_arg = 4;</code>
+   *
    * <pre>
    * Names of the Op's input_/output_args that reside in host memory
    * instead of device memory.
    * </pre>
-   *
-   * <code>repeated string host_memory_arg = 4;</code>
    */
   com.google.protobuf.ByteString
       getHostMemoryArgBytes(int index);
 
   /**
+   * <code>optional string label = 5;</code>
+   *
    * <pre>
    * This allows experimental kernels to be registered for an op that
    * won't be used unless the user specifies a "_kernel" attr with
    * value matching this.
    * </pre>
-   *
-   * <code>string label = 5;</code>
    */
   java.lang.String getLabel();
   /**
+   * <code>optional string label = 5;</code>
+   *
    * <pre>
    * This allows experimental kernels to be registered for an op that
    * won't be used unless the user specifies a "_kernel" attr with
    * value matching this.
    * </pre>
-   *
-   * <code>string label = 5;</code>
    */
   com.google.protobuf.ByteString
       getLabelBytes();

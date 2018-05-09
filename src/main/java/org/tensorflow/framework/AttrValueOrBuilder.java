@@ -8,168 +8,135 @@ public interface AttrValueOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional bytes s = 2;</code>
+   *
    * <pre>
    * "string"
    * </pre>
-   *
-   * <code>bytes s = 2;</code>
    */
   com.google.protobuf.ByteString getS();
 
   /**
+   * <code>optional int64 i = 3;</code>
+   *
    * <pre>
    * "int"
    * </pre>
-   *
-   * <code>int64 i = 3;</code>
    */
   long getI();
 
   /**
+   * <code>optional float f = 4;</code>
+   *
    * <pre>
    * "float"
    * </pre>
-   *
-   * <code>float f = 4;</code>
    */
   float getF();
 
   /**
+   * <code>optional bool b = 5;</code>
+   *
    * <pre>
    * "bool"
    * </pre>
-   *
-   * <code>bool b = 5;</code>
    */
   boolean getB();
 
   /**
+   * <code>optional .tensorflow.DataType type = 6;</code>
+   *
    * <pre>
    * "type"
    * </pre>
-   *
-   * <code>.tensorflow.DataType type = 6;</code>
    */
   int getTypeValue();
   /**
+   * <code>optional .tensorflow.DataType type = 6;</code>
+   *
    * <pre>
    * "type"
    * </pre>
-   *
-   * <code>.tensorflow.DataType type = 6;</code>
    */
   org.tensorflow.framework.DataType getType();
 
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+   *
    * <pre>
    * "shape"
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 7;</code>
-   */
-  boolean hasShape();
-  /**
-   * <pre>
-   * "shape"
-   * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 7;</code>
    */
   org.tensorflow.framework.TensorShapeProto getShape();
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+   *
    * <pre>
    * "shape"
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 7;</code>
    */
   org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder();
 
   /**
+   * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+   *
    * <pre>
    * "tensor"
    * </pre>
-   *
-   * <code>.tensorflow.TensorProto tensor = 8;</code>
-   */
-  boolean hasTensor();
-  /**
-   * <pre>
-   * "tensor"
-   * </pre>
-   *
-   * <code>.tensorflow.TensorProto tensor = 8;</code>
    */
   org.tensorflow.framework.TensorProto getTensor();
   /**
+   * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+   *
    * <pre>
    * "tensor"
    * </pre>
-   *
-   * <code>.tensorflow.TensorProto tensor = 8;</code>
    */
   org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder();
 
   /**
+   * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+   *
    * <pre>
    * any "list(...)"
    * </pre>
-   *
-   * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
-   */
-  boolean hasList();
-  /**
-   * <pre>
-   * any "list(...)"
-   * </pre>
-   *
-   * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
    */
   org.tensorflow.framework.AttrValue.ListValue getList();
   /**
+   * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+   *
    * <pre>
    * any "list(...)"
    * </pre>
-   *
-   * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
    */
   org.tensorflow.framework.AttrValue.ListValueOrBuilder getListOrBuilder();
 
   /**
+   * <code>optional .tensorflow.NameAttrList func = 10;</code>
+   *
    * <pre>
    * "func" represents a function. func.name is a function's name or
    * a primitive op's name. func.attr.first is the name of an attr
    * defined for that function. func.attr.second is the value for
    * that attr in the instantiation.
    * </pre>
-   *
-   * <code>.tensorflow.NameAttrList func = 10;</code>
-   */
-  boolean hasFunc();
-  /**
-   * <pre>
-   * "func" represents a function. func.name is a function's name or
-   * a primitive op's name. func.attr.first is the name of an attr
-   * defined for that function. func.attr.second is the value for
-   * that attr in the instantiation.
-   * </pre>
-   *
-   * <code>.tensorflow.NameAttrList func = 10;</code>
    */
   org.tensorflow.framework.NameAttrList getFunc();
   /**
+   * <code>optional .tensorflow.NameAttrList func = 10;</code>
+   *
    * <pre>
    * "func" represents a function. func.name is a function's name or
    * a primitive op's name. func.attr.first is the name of an attr
    * defined for that function. func.attr.second is the value for
    * that attr in the instantiation.
    * </pre>
-   *
-   * <code>.tensorflow.NameAttrList func = 10;</code>
    */
   org.tensorflow.framework.NameAttrListOrBuilder getFuncOrBuilder();
 
   /**
+   * <code>optional string placeholder = 9;</code>
+   *
    * <pre>
    * This is a placeholder only used in nodes defined inside a
    * function.  It indicates the attr value will be supplied when
@@ -179,11 +146,11 @@ public interface AttrValueOrBuilder extends
    * set to "bar", the instantiated node N's attr A will have been
    * given the value "bar".
    * </pre>
-   *
-   * <code>string placeholder = 9;</code>
    */
   java.lang.String getPlaceholder();
   /**
+   * <code>optional string placeholder = 9;</code>
+   *
    * <pre>
    * This is a placeholder only used in nodes defined inside a
    * function.  It indicates the attr value will be supplied when
@@ -193,8 +160,6 @@ public interface AttrValueOrBuilder extends
    * set to "bar", the instantiated node N's attr A will have been
    * given the value "bar".
    * </pre>
-   *
-   * <code>string placeholder = 9;</code>
    */
   com.google.protobuf.ByteString
       getPlaceholderBytes();

@@ -8,12 +8,12 @@ public interface MemoryStatsOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 temp_memory_size = 1;</code>
+   * <code>optional int64 temp_memory_size = 1;</code>
    */
   long getTempMemorySize();
 
   /**
-   * <code>int64 persistent_memory_size = 3;</code>
+   * <code>optional int64 persistent_memory_size = 3;</code>
    */
   long getPersistentMemorySize();
 
@@ -31,12 +31,12 @@ public interface MemoryStatsOrBuilder extends
   long getPersistentTensorAllocIds(int index);
 
   /**
-   * <code>int64 device_temp_memory_size = 2 [deprecated = true];</code>
+   * <code>optional int64 device_temp_memory_size = 2 [deprecated = true];</code>
    */
   @java.lang.Deprecated long getDeviceTempMemorySize();
 
   /**
-   * <code>int64 device_persistent_memory_size = 4 [deprecated = true];</code>
+   * <code>optional int64 device_persistent_memory_size = 4 [deprecated = true];</code>
    */
   @java.lang.Deprecated long getDevicePersistentMemorySize();
 

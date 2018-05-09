@@ -8,22 +8,22 @@ public interface ReaderBaseStateOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 work_started = 1;</code>
+   * <code>optional int64 work_started = 1;</code>
    */
   long getWorkStarted();
 
   /**
-   * <code>int64 work_finished = 2;</code>
+   * <code>optional int64 work_finished = 2;</code>
    */
   long getWorkFinished();
 
   /**
-   * <code>int64 num_records_produced = 3;</code>
+   * <code>optional int64 num_records_produced = 3;</code>
    */
   long getNumRecordsProduced();
 
   /**
-   * <code>bytes current_work = 4;</code>
+   * <code>optional bytes current_work = 4;</code>
    */
   com.google.protobuf.ByteString getCurrentWork();
 }

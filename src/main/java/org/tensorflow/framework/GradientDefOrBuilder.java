@@ -8,37 +8,37 @@ public interface GradientDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string function_name = 1;</code>
+   *
    * <pre>
    * The function name.
    * </pre>
-   *
-   * <code>string function_name = 1;</code>
    */
   java.lang.String getFunctionName();
   /**
+   * <code>optional string function_name = 1;</code>
+   *
    * <pre>
    * The function name.
    * </pre>
-   *
-   * <code>string function_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getFunctionNameBytes();
 
   /**
+   * <code>optional string gradient_func = 2;</code>
+   *
    * <pre>
    * The gradient function's name.
    * </pre>
-   *
-   * <code>string gradient_func = 2;</code>
    */
   java.lang.String getGradientFunc();
   /**
+   * <code>optional string gradient_func = 2;</code>
+   *
    * <pre>
    * The gradient function's name.
    * </pre>
-   *
-   * <code>string gradient_func = 2;</code>
    */
   com.google.protobuf.ByteString
       getGradientFuncBytes();

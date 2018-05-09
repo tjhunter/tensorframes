@@ -4,6 +4,7 @@ import java.io.File
 import java.nio.file.{Files, Paths}
 
 import org.tensorflow.framework.GraphDef
+import org.tensorflow.framework.ConfigProto
 import org.{tensorflow => tf}
 import org.apache.spark.sql.types.NumericType
 import org.tensorflow.{Graph, Session}
@@ -75,7 +76,8 @@ object TensorFlowOps extends Logging {
 
   def withSession[T](g: SerializedGraph)(f: tf.Session => T): T = {
     withGraph(g) { graph =>
-      val session = new Session(graph)
+      val config = defaultConfigProto()
+      val session = new Session(graph, config.toByteArray)
       try {
         f(session)
       } finally {
@@ -147,6 +149,13 @@ object TensorFlowOps extends Logging {
       val shape = Shape.from(n.shape())
       dt -> shape
     }
+  }
+
+  private def defaultConfigProto(): ConfigProto = {
+    ConfigProto.newBuilder()
+        .setLogDevicePlacement(true)
+        .setAllowSoftPlacement(true)
+        .build()
   }
 }
 

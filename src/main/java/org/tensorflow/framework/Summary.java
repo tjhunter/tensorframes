@@ -4,6 +4,8 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.Summary}
+ *
  * <pre>
  * A Summary is a set of named values to be displayed by the
  * visualizer.
@@ -11,16 +13,13 @@ package org.tensorflow.framework;
  * the "summary_interval_secs" attribute of the training operation.
  * Summaries are also produced at the end of an evaluation.
  * </pre>
- *
- * Protobuf type {@code tensorflow.Summary}
  */
 public  final class Summary extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.Summary)
     SummaryOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use Summary.newBuilder() to construct.
-  private Summary(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private Summary(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private Summary() {
@@ -30,19 +29,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private Summary(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -52,8 +45,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -63,22 +55,21 @@ private static final long serialVersionUID = 0L;
               value_ = new java.util.ArrayList<org.tensorflow.framework.Summary.Value>();
               mutable_bitField0_ |= 0x00000001;
             }
-            value_.add(
-                input.readMessage(org.tensorflow.framework.Summary.Value.parser(), extensionRegistry));
+            value_.add(input.readMessage(org.tensorflow.framework.Summary.Value.parser(), extensionRegistry));
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
         value_ = java.util.Collections.unmodifiableList(value_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -87,7 +78,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -99,20 +90,22 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>optional int32 height = 1;</code>
+     *
      * <pre>
      * Dimensions of the image.
      * </pre>
-     *
-     * <code>int32 height = 1;</code>
      */
     int getHeight();
 
     /**
-     * <code>int32 width = 2;</code>
+     * <code>optional int32 width = 2;</code>
      */
     int getWidth();
 
     /**
+     * <code>optional int32 colorspace = 3;</code>
+     *
      * <pre>
      * Valid colorspace values are
      *   1 - grayscale
@@ -122,18 +115,16 @@ private static final long serialVersionUID = 0L;
      *   5 - DIGITAL_YUV
      *   6 - BGRA
      * </pre>
-     *
-     * <code>int32 colorspace = 3;</code>
      */
     int getColorspace();
 
     /**
+     * <code>optional bytes encoded_image_string = 4;</code>
+     *
      * <pre>
      * Image data in encoded format.  All image formats supported by
      * image_codec::CoderUtil can be stored here.
      * </pre>
-     *
-     * <code>bytes encoded_image_string = 4;</code>
      */
     com.google.protobuf.ByteString getEncodedImageString();
   }
@@ -141,12 +132,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.Summary.Image}
    */
   public  static final class Image extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.Summary.Image)
       ImageOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Image.newBuilder() to construct.
-    private Image(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Image(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Image() {
@@ -159,19 +149,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Image(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -181,8 +165,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
@@ -210,12 +193,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -224,7 +207,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Image_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Image_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -234,11 +217,11 @@ private static final long serialVersionUID = 0L;
     public static final int HEIGHT_FIELD_NUMBER = 1;
     private int height_;
     /**
+     * <code>optional int32 height = 1;</code>
+     *
      * <pre>
      * Dimensions of the image.
      * </pre>
-     *
-     * <code>int32 height = 1;</code>
      */
     public int getHeight() {
       return height_;
@@ -247,7 +230,7 @@ private static final long serialVersionUID = 0L;
     public static final int WIDTH_FIELD_NUMBER = 2;
     private int width_;
     /**
-     * <code>int32 width = 2;</code>
+     * <code>optional int32 width = 2;</code>
      */
     public int getWidth() {
       return width_;
@@ -256,6 +239,8 @@ private static final long serialVersionUID = 0L;
     public static final int COLORSPACE_FIELD_NUMBER = 3;
     private int colorspace_;
     /**
+     * <code>optional int32 colorspace = 3;</code>
+     *
      * <pre>
      * Valid colorspace values are
      *   1 - grayscale
@@ -265,8 +250,6 @@ private static final long serialVersionUID = 0L;
      *   5 - DIGITAL_YUV
      *   6 - BGRA
      * </pre>
-     *
-     * <code>int32 colorspace = 3;</code>
      */
     public int getColorspace() {
       return colorspace_;
@@ -275,12 +258,12 @@ private static final long serialVersionUID = 0L;
     public static final int ENCODED_IMAGE_STRING_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString encodedImageString_;
     /**
+     * <code>optional bytes encoded_image_string = 4;</code>
+     *
      * <pre>
      * Image data in encoded format.  All image formats supported by
      * image_codec::CoderUtil can be stored here.
      * </pre>
-     *
-     * <code>bytes encoded_image_string = 4;</code>
      */
     public com.google.protobuf.ByteString getEncodedImageString() {
       return encodedImageString_;
@@ -310,7 +293,6 @@ private static final long serialVersionUID = 0L;
       if (!encodedImageString_.isEmpty()) {
         output.writeBytes(4, encodedImageString_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -334,65 +316,11 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, encodedImageString_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.Summary.Image)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.Summary.Image other = (org.tensorflow.framework.Summary.Image) obj;
-
-      boolean result = true;
-      result = result && (getHeight()
-          == other.getHeight());
-      result = result && (getWidth()
-          == other.getWidth());
-      result = result && (getColorspace()
-          == other.getColorspace());
-      result = result && getEncodedImageString()
-          .equals(other.getEncodedImageString());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
-      hash = (53 * hash) + getHeight();
-      hash = (37 * hash) + WIDTH_FIELD_NUMBER;
-      hash = (53 * hash) + getWidth();
-      hash = (37 * hash) + COLORSPACE_FIELD_NUMBER;
-      hash = (53 * hash) + getColorspace();
-      hash = (37 * hash) + ENCODED_IMAGE_STRING_FIELD_NUMBER;
-      hash = (53 * hash) + getEncodedImageString().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.Summary.Image parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.Summary.Image parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.Summary.Image parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -416,40 +344,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.Summary.Image parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.Summary.Image parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.Summary.Image parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.Summary.Image parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.Summary.Image parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.Summary.Image parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -466,7 +388,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -474,7 +396,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.Summary.Image}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.Summary.Image)
         org.tensorflow.framework.Summary.ImageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -482,7 +404,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Image_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Image_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -495,13 +417,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -544,32 +465,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.Summary.Image) {
           return mergeFrom((org.tensorflow.framework.Summary.Image)other);
@@ -593,7 +488,6 @@ private static final long serialVersionUID = 0L;
         if (other.getEncodedImageString() != com.google.protobuf.ByteString.EMPTY) {
           setEncodedImageString(other.getEncodedImageString());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -611,7 +505,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.Summary.Image) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -622,21 +516,21 @@ private static final long serialVersionUID = 0L;
 
       private int height_ ;
       /**
+       * <code>optional int32 height = 1;</code>
+       *
        * <pre>
        * Dimensions of the image.
        * </pre>
-       *
-       * <code>int32 height = 1;</code>
        */
       public int getHeight() {
         return height_;
       }
       /**
+       * <code>optional int32 height = 1;</code>
+       *
        * <pre>
        * Dimensions of the image.
        * </pre>
-       *
-       * <code>int32 height = 1;</code>
        */
       public Builder setHeight(int value) {
         
@@ -645,11 +539,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int32 height = 1;</code>
+       *
        * <pre>
        * Dimensions of the image.
        * </pre>
-       *
-       * <code>int32 height = 1;</code>
        */
       public Builder clearHeight() {
         
@@ -660,13 +554,13 @@ private static final long serialVersionUID = 0L;
 
       private int width_ ;
       /**
-       * <code>int32 width = 2;</code>
+       * <code>optional int32 width = 2;</code>
        */
       public int getWidth() {
         return width_;
       }
       /**
-       * <code>int32 width = 2;</code>
+       * <code>optional int32 width = 2;</code>
        */
       public Builder setWidth(int value) {
         
@@ -675,7 +569,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>int32 width = 2;</code>
+       * <code>optional int32 width = 2;</code>
        */
       public Builder clearWidth() {
         
@@ -686,6 +580,8 @@ private static final long serialVersionUID = 0L;
 
       private int colorspace_ ;
       /**
+       * <code>optional int32 colorspace = 3;</code>
+       *
        * <pre>
        * Valid colorspace values are
        *   1 - grayscale
@@ -695,13 +591,13 @@ private static final long serialVersionUID = 0L;
        *   5 - DIGITAL_YUV
        *   6 - BGRA
        * </pre>
-       *
-       * <code>int32 colorspace = 3;</code>
        */
       public int getColorspace() {
         return colorspace_;
       }
       /**
+       * <code>optional int32 colorspace = 3;</code>
+       *
        * <pre>
        * Valid colorspace values are
        *   1 - grayscale
@@ -711,8 +607,6 @@ private static final long serialVersionUID = 0L;
        *   5 - DIGITAL_YUV
        *   6 - BGRA
        * </pre>
-       *
-       * <code>int32 colorspace = 3;</code>
        */
       public Builder setColorspace(int value) {
         
@@ -721,6 +615,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int32 colorspace = 3;</code>
+       *
        * <pre>
        * Valid colorspace values are
        *   1 - grayscale
@@ -730,8 +626,6 @@ private static final long serialVersionUID = 0L;
        *   5 - DIGITAL_YUV
        *   6 - BGRA
        * </pre>
-       *
-       * <code>int32 colorspace = 3;</code>
        */
       public Builder clearColorspace() {
         
@@ -742,23 +636,23 @@ private static final long serialVersionUID = 0L;
 
       private com.google.protobuf.ByteString encodedImageString_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <code>optional bytes encoded_image_string = 4;</code>
+       *
        * <pre>
        * Image data in encoded format.  All image formats supported by
        * image_codec::CoderUtil can be stored here.
        * </pre>
-       *
-       * <code>bytes encoded_image_string = 4;</code>
        */
       public com.google.protobuf.ByteString getEncodedImageString() {
         return encodedImageString_;
       }
       /**
+       * <code>optional bytes encoded_image_string = 4;</code>
+       *
        * <pre>
        * Image data in encoded format.  All image formats supported by
        * image_codec::CoderUtil can be stored here.
        * </pre>
-       *
-       * <code>bytes encoded_image_string = 4;</code>
        */
       public Builder setEncodedImageString(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -770,12 +664,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional bytes encoded_image_string = 4;</code>
+       *
        * <pre>
        * Image data in encoded format.  All image formats supported by
        * image_codec::CoderUtil can be stored here.
        * </pre>
-       *
-       * <code>bytes encoded_image_string = 4;</code>
        */
       public Builder clearEncodedImageString() {
         
@@ -785,12 +679,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -813,7 +707,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Image(input, extensionRegistry);
+        try {
+          return new Image(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -837,48 +740,48 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>optional float sample_rate = 1;</code>
+     *
      * <pre>
      * Sample rate of the audio in Hz.
      * </pre>
-     *
-     * <code>float sample_rate = 1;</code>
      */
     float getSampleRate();
 
     /**
+     * <code>optional int64 num_channels = 2;</code>
+     *
      * <pre>
      * Number of channels of audio.
      * </pre>
-     *
-     * <code>int64 num_channels = 2;</code>
      */
     long getNumChannels();
 
     /**
+     * <code>optional int64 length_frames = 3;</code>
+     *
      * <pre>
      * Length of the audio in frames (samples per channel).
      * </pre>
-     *
-     * <code>int64 length_frames = 3;</code>
      */
     long getLengthFrames();
 
     /**
+     * <code>optional bytes encoded_audio_string = 4;</code>
+     *
      * <pre>
      * Encoded audio data and its associated RFC 2045 content type (e.g.
      * "audio/wav").
      * </pre>
-     *
-     * <code>bytes encoded_audio_string = 4;</code>
      */
     com.google.protobuf.ByteString getEncodedAudioString();
 
     /**
-     * <code>string content_type = 5;</code>
+     * <code>optional string content_type = 5;</code>
      */
     java.lang.String getContentType();
     /**
-     * <code>string content_type = 5;</code>
+     * <code>optional string content_type = 5;</code>
      */
     com.google.protobuf.ByteString
         getContentTypeBytes();
@@ -887,12 +790,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.Summary.Audio}
    */
   public  static final class Audio extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.Summary.Audio)
       AudioOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Audio.newBuilder() to construct.
-    private Audio(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Audio(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Audio() {
@@ -906,19 +808,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Audio(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -928,8 +824,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
@@ -955,7 +850,7 @@ private static final long serialVersionUID = 0L;
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               contentType_ = s;
               break;
@@ -963,12 +858,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -977,7 +872,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Audio_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Audio_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -987,11 +882,11 @@ private static final long serialVersionUID = 0L;
     public static final int SAMPLE_RATE_FIELD_NUMBER = 1;
     private float sampleRate_;
     /**
+     * <code>optional float sample_rate = 1;</code>
+     *
      * <pre>
      * Sample rate of the audio in Hz.
      * </pre>
-     *
-     * <code>float sample_rate = 1;</code>
      */
     public float getSampleRate() {
       return sampleRate_;
@@ -1000,11 +895,11 @@ private static final long serialVersionUID = 0L;
     public static final int NUM_CHANNELS_FIELD_NUMBER = 2;
     private long numChannels_;
     /**
+     * <code>optional int64 num_channels = 2;</code>
+     *
      * <pre>
      * Number of channels of audio.
      * </pre>
-     *
-     * <code>int64 num_channels = 2;</code>
      */
     public long getNumChannels() {
       return numChannels_;
@@ -1013,11 +908,11 @@ private static final long serialVersionUID = 0L;
     public static final int LENGTH_FRAMES_FIELD_NUMBER = 3;
     private long lengthFrames_;
     /**
+     * <code>optional int64 length_frames = 3;</code>
+     *
      * <pre>
      * Length of the audio in frames (samples per channel).
      * </pre>
-     *
-     * <code>int64 length_frames = 3;</code>
      */
     public long getLengthFrames() {
       return lengthFrames_;
@@ -1026,12 +921,12 @@ private static final long serialVersionUID = 0L;
     public static final int ENCODED_AUDIO_STRING_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString encodedAudioString_;
     /**
+     * <code>optional bytes encoded_audio_string = 4;</code>
+     *
      * <pre>
      * Encoded audio data and its associated RFC 2045 content type (e.g.
      * "audio/wav").
      * </pre>
-     *
-     * <code>bytes encoded_audio_string = 4;</code>
      */
     public com.google.protobuf.ByteString getEncodedAudioString() {
       return encodedAudioString_;
@@ -1040,7 +935,7 @@ private static final long serialVersionUID = 0L;
     public static final int CONTENT_TYPE_FIELD_NUMBER = 5;
     private volatile java.lang.Object contentType_;
     /**
-     * <code>string content_type = 5;</code>
+     * <code>optional string content_type = 5;</code>
      */
     public java.lang.String getContentType() {
       java.lang.Object ref = contentType_;
@@ -1055,7 +950,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string content_type = 5;</code>
+     * <code>optional string content_type = 5;</code>
      */
     public com.google.protobuf.ByteString
         getContentTypeBytes() {
@@ -1096,9 +991,8 @@ private static final long serialVersionUID = 0L;
         output.writeBytes(4, encodedAudioString_);
       }
       if (!getContentTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contentType_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, contentType_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1123,76 +1017,13 @@ private static final long serialVersionUID = 0L;
           .computeBytesSize(4, encodedAudioString_);
       }
       if (!getContentTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contentType_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, contentType_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.Summary.Audio)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.Summary.Audio other = (org.tensorflow.framework.Summary.Audio) obj;
-
-      boolean result = true;
-      result = result && (
-          java.lang.Float.floatToIntBits(getSampleRate())
-          == java.lang.Float.floatToIntBits(
-              other.getSampleRate()));
-      result = result && (getNumChannels()
-          == other.getNumChannels());
-      result = result && (getLengthFrames()
-          == other.getLengthFrames());
-      result = result && getEncodedAudioString()
-          .equals(other.getEncodedAudioString());
-      result = result && getContentType()
-          .equals(other.getContentType());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SAMPLE_RATE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getSampleRate());
-      hash = (37 * hash) + NUM_CHANNELS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNumChannels());
-      hash = (37 * hash) + LENGTH_FRAMES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getLengthFrames());
-      hash = (37 * hash) + ENCODED_AUDIO_STRING_FIELD_NUMBER;
-      hash = (53 * hash) + getEncodedAudioString().hashCode();
-      hash = (37 * hash) + CONTENT_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getContentType().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.Summary.Audio parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.Summary.Audio parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.Summary.Audio parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1216,40 +1047,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.Summary.Audio parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.Summary.Audio parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.Summary.Audio parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.Summary.Audio parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.Summary.Audio parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.Summary.Audio parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -1266,7 +1091,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1274,7 +1099,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.Summary.Audio}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.Summary.Audio)
         org.tensorflow.framework.Summary.AudioOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1282,7 +1107,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Audio_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Audio_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1295,13 +1120,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -1347,32 +1171,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.Summary.Audio) {
           return mergeFrom((org.tensorflow.framework.Summary.Audio)other);
@@ -1400,7 +1198,6 @@ private static final long serialVersionUID = 0L;
           contentType_ = other.contentType_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1418,7 +1215,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.Summary.Audio) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1429,21 +1226,21 @@ private static final long serialVersionUID = 0L;
 
       private float sampleRate_ ;
       /**
+       * <code>optional float sample_rate = 1;</code>
+       *
        * <pre>
        * Sample rate of the audio in Hz.
        * </pre>
-       *
-       * <code>float sample_rate = 1;</code>
        */
       public float getSampleRate() {
         return sampleRate_;
       }
       /**
+       * <code>optional float sample_rate = 1;</code>
+       *
        * <pre>
        * Sample rate of the audio in Hz.
        * </pre>
-       *
-       * <code>float sample_rate = 1;</code>
        */
       public Builder setSampleRate(float value) {
         
@@ -1452,11 +1249,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional float sample_rate = 1;</code>
+       *
        * <pre>
        * Sample rate of the audio in Hz.
        * </pre>
-       *
-       * <code>float sample_rate = 1;</code>
        */
       public Builder clearSampleRate() {
         
@@ -1467,21 +1264,21 @@ private static final long serialVersionUID = 0L;
 
       private long numChannels_ ;
       /**
+       * <code>optional int64 num_channels = 2;</code>
+       *
        * <pre>
        * Number of channels of audio.
        * </pre>
-       *
-       * <code>int64 num_channels = 2;</code>
        */
       public long getNumChannels() {
         return numChannels_;
       }
       /**
+       * <code>optional int64 num_channels = 2;</code>
+       *
        * <pre>
        * Number of channels of audio.
        * </pre>
-       *
-       * <code>int64 num_channels = 2;</code>
        */
       public Builder setNumChannels(long value) {
         
@@ -1490,11 +1287,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 num_channels = 2;</code>
+       *
        * <pre>
        * Number of channels of audio.
        * </pre>
-       *
-       * <code>int64 num_channels = 2;</code>
        */
       public Builder clearNumChannels() {
         
@@ -1505,21 +1302,21 @@ private static final long serialVersionUID = 0L;
 
       private long lengthFrames_ ;
       /**
+       * <code>optional int64 length_frames = 3;</code>
+       *
        * <pre>
        * Length of the audio in frames (samples per channel).
        * </pre>
-       *
-       * <code>int64 length_frames = 3;</code>
        */
       public long getLengthFrames() {
         return lengthFrames_;
       }
       /**
+       * <code>optional int64 length_frames = 3;</code>
+       *
        * <pre>
        * Length of the audio in frames (samples per channel).
        * </pre>
-       *
-       * <code>int64 length_frames = 3;</code>
        */
       public Builder setLengthFrames(long value) {
         
@@ -1528,11 +1325,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 length_frames = 3;</code>
+       *
        * <pre>
        * Length of the audio in frames (samples per channel).
        * </pre>
-       *
-       * <code>int64 length_frames = 3;</code>
        */
       public Builder clearLengthFrames() {
         
@@ -1543,23 +1340,23 @@ private static final long serialVersionUID = 0L;
 
       private com.google.protobuf.ByteString encodedAudioString_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       * <code>optional bytes encoded_audio_string = 4;</code>
+       *
        * <pre>
        * Encoded audio data and its associated RFC 2045 content type (e.g.
        * "audio/wav").
        * </pre>
-       *
-       * <code>bytes encoded_audio_string = 4;</code>
        */
       public com.google.protobuf.ByteString getEncodedAudioString() {
         return encodedAudioString_;
       }
       /**
+       * <code>optional bytes encoded_audio_string = 4;</code>
+       *
        * <pre>
        * Encoded audio data and its associated RFC 2045 content type (e.g.
        * "audio/wav").
        * </pre>
-       *
-       * <code>bytes encoded_audio_string = 4;</code>
        */
       public Builder setEncodedAudioString(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1571,12 +1368,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional bytes encoded_audio_string = 4;</code>
+       *
        * <pre>
        * Encoded audio data and its associated RFC 2045 content type (e.g.
        * "audio/wav").
        * </pre>
-       *
-       * <code>bytes encoded_audio_string = 4;</code>
        */
       public Builder clearEncodedAudioString() {
         
@@ -1587,7 +1384,7 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object contentType_ = "";
       /**
-       * <code>string content_type = 5;</code>
+       * <code>optional string content_type = 5;</code>
        */
       public java.lang.String getContentType() {
         java.lang.Object ref = contentType_;
@@ -1602,7 +1399,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string content_type = 5;</code>
+       * <code>optional string content_type = 5;</code>
        */
       public com.google.protobuf.ByteString
           getContentTypeBytes() {
@@ -1618,7 +1415,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>string content_type = 5;</code>
+       * <code>optional string content_type = 5;</code>
        */
       public Builder setContentType(
           java.lang.String value) {
@@ -1631,7 +1428,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>string content_type = 5;</code>
+       * <code>optional string content_type = 5;</code>
        */
       public Builder clearContentType() {
         
@@ -1640,7 +1437,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>string content_type = 5;</code>
+       * <code>optional string content_type = 5;</code>
        */
       public Builder setContentTypeBytes(
           com.google.protobuf.ByteString value) {
@@ -1655,12 +1452,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -1683,7 +1480,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Audio(input, extensionRegistry);
+        try {
+          return new Audio(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -1707,46 +1513,48 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>optional string node_name = 7;</code>
+     *
      * <pre>
      * This field is deprecated and will not be set.
      * </pre>
-     *
-     * <code>string node_name = 7;</code>
      */
     java.lang.String getNodeName();
     /**
+     * <code>optional string node_name = 7;</code>
+     *
      * <pre>
      * This field is deprecated and will not be set.
      * </pre>
-     *
-     * <code>string node_name = 7;</code>
      */
     com.google.protobuf.ByteString
         getNodeNameBytes();
 
     /**
+     * <code>optional string tag = 1;</code>
+     *
      * <pre>
      * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
      * are often organized by scope (which contains slashes to convey
      * hierarchy). For example: foo/bar/0
      * </pre>
-     *
-     * <code>string tag = 1;</code>
      */
     java.lang.String getTag();
     /**
+     * <code>optional string tag = 1;</code>
+     *
      * <pre>
      * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
      * are often organized by scope (which contains slashes to convey
      * hierarchy). For example: foo/bar/0
      * </pre>
-     *
-     * <code>string tag = 1;</code>
      */
     com.google.protobuf.ByteString
         getTagBytes();
 
     /**
+     * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+     *
      * <pre>
      * Contains metadata on the summary value such as which plugins may use it.
      * Take note that many summary values may lack a metadata field. This is
@@ -1754,11 +1562,11 @@ private static final long serialVersionUID = 0L;
      * value with a certain tag for each tag. TensorBoard then remembers which
      * tags are associated with which plugins. This saves space.
      * </pre>
-     *
-     * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
      */
     boolean hasMetadata();
     /**
+     * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+     *
      * <pre>
      * Contains metadata on the summary value such as which plugins may use it.
      * Take note that many summary values may lack a metadata field. This is
@@ -1766,11 +1574,11 @@ private static final long serialVersionUID = 0L;
      * value with a certain tag for each tag. TensorBoard then remembers which
      * tags are associated with which plugins. This saves space.
      * </pre>
-     *
-     * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
      */
     org.tensorflow.framework.SummaryMetadata getMetadata();
     /**
+     * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+     *
      * <pre>
      * Contains metadata on the summary value such as which plugins may use it.
      * Take note that many summary values may lack a metadata field. This is
@@ -1778,70 +1586,52 @@ private static final long serialVersionUID = 0L;
      * value with a certain tag for each tag. TensorBoard then remembers which
      * tags are associated with which plugins. This saves space.
      * </pre>
-     *
-     * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
      */
     org.tensorflow.framework.SummaryMetadataOrBuilder getMetadataOrBuilder();
 
     /**
-     * <code>float simple_value = 2;</code>
+     * <code>optional float simple_value = 2;</code>
      */
     float getSimpleValue();
 
     /**
-     * <code>bytes obsolete_old_style_histogram = 3;</code>
+     * <code>optional bytes obsolete_old_style_histogram = 3;</code>
      */
     com.google.protobuf.ByteString getObsoleteOldStyleHistogram();
 
     /**
-     * <code>.tensorflow.Summary.Image image = 4;</code>
-     */
-    boolean hasImage();
-    /**
-     * <code>.tensorflow.Summary.Image image = 4;</code>
+     * <code>optional .tensorflow.Summary.Image image = 4;</code>
      */
     org.tensorflow.framework.Summary.Image getImage();
     /**
-     * <code>.tensorflow.Summary.Image image = 4;</code>
+     * <code>optional .tensorflow.Summary.Image image = 4;</code>
      */
     org.tensorflow.framework.Summary.ImageOrBuilder getImageOrBuilder();
 
     /**
-     * <code>.tensorflow.HistogramProto histo = 5;</code>
-     */
-    boolean hasHisto();
-    /**
-     * <code>.tensorflow.HistogramProto histo = 5;</code>
+     * <code>optional .tensorflow.HistogramProto histo = 5;</code>
      */
     org.tensorflow.framework.HistogramProto getHisto();
     /**
-     * <code>.tensorflow.HistogramProto histo = 5;</code>
+     * <code>optional .tensorflow.HistogramProto histo = 5;</code>
      */
     org.tensorflow.framework.HistogramProtoOrBuilder getHistoOrBuilder();
 
     /**
-     * <code>.tensorflow.Summary.Audio audio = 6;</code>
-     */
-    boolean hasAudio();
-    /**
-     * <code>.tensorflow.Summary.Audio audio = 6;</code>
+     * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
      */
     org.tensorflow.framework.Summary.Audio getAudio();
     /**
-     * <code>.tensorflow.Summary.Audio audio = 6;</code>
+     * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
      */
     org.tensorflow.framework.Summary.AudioOrBuilder getAudioOrBuilder();
 
     /**
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
-     */
-    boolean hasTensor();
-    /**
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
      */
     org.tensorflow.framework.TensorProto getTensor();
     /**
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
      */
     org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder();
 
@@ -1851,12 +1641,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.Summary.Value}
    */
   public  static final class Value extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.Summary.Value)
       ValueOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Value.newBuilder() to construct.
-    private Value(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Value(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Value() {
@@ -1867,19 +1656,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Value(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1889,14 +1672,13 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               tag_ = s;
               break;
@@ -1954,7 +1736,7 @@ private static final long serialVersionUID = 0L;
               break;
             }
             case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               nodeName_ = s;
               break;
@@ -1989,12 +1771,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2003,7 +1785,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Value_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Value_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -2021,19 +1803,11 @@ private static final long serialVersionUID = 0L;
       AUDIO(6),
       TENSOR(8),
       VALUE_NOT_SET(0);
-      private final int value;
+      private int value = 0;
       private ValueCase(int value) {
         this.value = value;
       }
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
       public static ValueCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static ValueCase forNumber(int value) {
         switch (value) {
           case 2: return SIMPLE_VALUE;
           case 3: return OBSOLETE_OLD_STYLE_HISTOGRAM;
@@ -2042,7 +1816,8 @@ private static final long serialVersionUID = 0L;
           case 6: return AUDIO;
           case 8: return TENSOR;
           case 0: return VALUE_NOT_SET;
-          default: return null;
+          default: throw new java.lang.IllegalArgumentException(
+            "Value is undefined for this oneof enum.");
         }
       }
       public int getNumber() {
@@ -2052,18 +1827,18 @@ private static final long serialVersionUID = 0L;
 
     public ValueCase
     getValueCase() {
-      return ValueCase.forNumber(
+      return ValueCase.valueOf(
           valueCase_);
     }
 
     public static final int NODE_NAME_FIELD_NUMBER = 7;
     private volatile java.lang.Object nodeName_;
     /**
+     * <code>optional string node_name = 7;</code>
+     *
      * <pre>
      * This field is deprecated and will not be set.
      * </pre>
-     *
-     * <code>string node_name = 7;</code>
      */
     public java.lang.String getNodeName() {
       java.lang.Object ref = nodeName_;
@@ -2078,11 +1853,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string node_name = 7;</code>
+     *
      * <pre>
      * This field is deprecated and will not be set.
      * </pre>
-     *
-     * <code>string node_name = 7;</code>
      */
     public com.google.protobuf.ByteString
         getNodeNameBytes() {
@@ -2101,13 +1876,13 @@ private static final long serialVersionUID = 0L;
     public static final int TAG_FIELD_NUMBER = 1;
     private volatile java.lang.Object tag_;
     /**
+     * <code>optional string tag = 1;</code>
+     *
      * <pre>
      * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
      * are often organized by scope (which contains slashes to convey
      * hierarchy). For example: foo/bar/0
      * </pre>
-     *
-     * <code>string tag = 1;</code>
      */
     public java.lang.String getTag() {
       java.lang.Object ref = tag_;
@@ -2122,13 +1897,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string tag = 1;</code>
+     *
      * <pre>
      * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
      * are often organized by scope (which contains slashes to convey
      * hierarchy). For example: foo/bar/0
      * </pre>
-     *
-     * <code>string tag = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTagBytes() {
@@ -2147,6 +1922,8 @@ private static final long serialVersionUID = 0L;
     public static final int METADATA_FIELD_NUMBER = 9;
     private org.tensorflow.framework.SummaryMetadata metadata_;
     /**
+     * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+     *
      * <pre>
      * Contains metadata on the summary value such as which plugins may use it.
      * Take note that many summary values may lack a metadata field. This is
@@ -2154,13 +1931,13 @@ private static final long serialVersionUID = 0L;
      * value with a certain tag for each tag. TensorBoard then remembers which
      * tags are associated with which plugins. This saves space.
      * </pre>
-     *
-     * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
      */
     public boolean hasMetadata() {
       return metadata_ != null;
     }
     /**
+     * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+     *
      * <pre>
      * Contains metadata on the summary value such as which plugins may use it.
      * Take note that many summary values may lack a metadata field. This is
@@ -2168,13 +1945,13 @@ private static final long serialVersionUID = 0L;
      * value with a certain tag for each tag. TensorBoard then remembers which
      * tags are associated with which plugins. This saves space.
      * </pre>
-     *
-     * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
      */
     public org.tensorflow.framework.SummaryMetadata getMetadata() {
       return metadata_ == null ? org.tensorflow.framework.SummaryMetadata.getDefaultInstance() : metadata_;
     }
     /**
+     * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+     *
      * <pre>
      * Contains metadata on the summary value such as which plugins may use it.
      * Take note that many summary values may lack a metadata field. This is
@@ -2182,8 +1959,6 @@ private static final long serialVersionUID = 0L;
      * value with a certain tag for each tag. TensorBoard then remembers which
      * tags are associated with which plugins. This saves space.
      * </pre>
-     *
-     * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
      */
     public org.tensorflow.framework.SummaryMetadataOrBuilder getMetadataOrBuilder() {
       return getMetadata();
@@ -2191,7 +1966,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int SIMPLE_VALUE_FIELD_NUMBER = 2;
     /**
-     * <code>float simple_value = 2;</code>
+     * <code>optional float simple_value = 2;</code>
      */
     public float getSimpleValue() {
       if (valueCase_ == 2) {
@@ -2202,7 +1977,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int OBSOLETE_OLD_STYLE_HISTOGRAM_FIELD_NUMBER = 3;
     /**
-     * <code>bytes obsolete_old_style_histogram = 3;</code>
+     * <code>optional bytes obsolete_old_style_histogram = 3;</code>
      */
     public com.google.protobuf.ByteString getObsoleteOldStyleHistogram() {
       if (valueCase_ == 3) {
@@ -2213,13 +1988,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int IMAGE_FIELD_NUMBER = 4;
     /**
-     * <code>.tensorflow.Summary.Image image = 4;</code>
-     */
-    public boolean hasImage() {
-      return valueCase_ == 4;
-    }
-    /**
-     * <code>.tensorflow.Summary.Image image = 4;</code>
+     * <code>optional .tensorflow.Summary.Image image = 4;</code>
      */
     public org.tensorflow.framework.Summary.Image getImage() {
       if (valueCase_ == 4) {
@@ -2228,7 +1997,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.Summary.Image.getDefaultInstance();
     }
     /**
-     * <code>.tensorflow.Summary.Image image = 4;</code>
+     * <code>optional .tensorflow.Summary.Image image = 4;</code>
      */
     public org.tensorflow.framework.Summary.ImageOrBuilder getImageOrBuilder() {
       if (valueCase_ == 4) {
@@ -2239,13 +2008,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int HISTO_FIELD_NUMBER = 5;
     /**
-     * <code>.tensorflow.HistogramProto histo = 5;</code>
-     */
-    public boolean hasHisto() {
-      return valueCase_ == 5;
-    }
-    /**
-     * <code>.tensorflow.HistogramProto histo = 5;</code>
+     * <code>optional .tensorflow.HistogramProto histo = 5;</code>
      */
     public org.tensorflow.framework.HistogramProto getHisto() {
       if (valueCase_ == 5) {
@@ -2254,7 +2017,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.HistogramProto.getDefaultInstance();
     }
     /**
-     * <code>.tensorflow.HistogramProto histo = 5;</code>
+     * <code>optional .tensorflow.HistogramProto histo = 5;</code>
      */
     public org.tensorflow.framework.HistogramProtoOrBuilder getHistoOrBuilder() {
       if (valueCase_ == 5) {
@@ -2265,13 +2028,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int AUDIO_FIELD_NUMBER = 6;
     /**
-     * <code>.tensorflow.Summary.Audio audio = 6;</code>
-     */
-    public boolean hasAudio() {
-      return valueCase_ == 6;
-    }
-    /**
-     * <code>.tensorflow.Summary.Audio audio = 6;</code>
+     * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
      */
     public org.tensorflow.framework.Summary.Audio getAudio() {
       if (valueCase_ == 6) {
@@ -2280,7 +2037,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.Summary.Audio.getDefaultInstance();
     }
     /**
-     * <code>.tensorflow.Summary.Audio audio = 6;</code>
+     * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
      */
     public org.tensorflow.framework.Summary.AudioOrBuilder getAudioOrBuilder() {
       if (valueCase_ == 6) {
@@ -2291,13 +2048,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int TENSOR_FIELD_NUMBER = 8;
     /**
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
-     */
-    public boolean hasTensor() {
-      return valueCase_ == 8;
-    }
-    /**
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProto getTensor() {
       if (valueCase_ == 8) {
@@ -2306,7 +2057,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.TensorProto.getDefaultInstance();
     }
     /**
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder() {
       if (valueCase_ == 8) {
@@ -2328,7 +2079,7 @@ private static final long serialVersionUID = 0L;
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getTagBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tag_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, tag_);
       }
       if (valueCase_ == 2) {
         output.writeFloat(
@@ -2336,7 +2087,7 @@ private static final long serialVersionUID = 0L;
       }
       if (valueCase_ == 3) {
         output.writeBytes(
-            3, (com.google.protobuf.ByteString) value_);
+            3, (com.google.protobuf.ByteString)((com.google.protobuf.ByteString) value_));
       }
       if (valueCase_ == 4) {
         output.writeMessage(4, (org.tensorflow.framework.Summary.Image) value_);
@@ -2348,7 +2099,7 @@ private static final long serialVersionUID = 0L;
         output.writeMessage(6, (org.tensorflow.framework.Summary.Audio) value_);
       }
       if (!getNodeNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, nodeName_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 7, nodeName_);
       }
       if (valueCase_ == 8) {
         output.writeMessage(8, (org.tensorflow.framework.TensorProto) value_);
@@ -2356,7 +2107,6 @@ private static final long serialVersionUID = 0L;
       if (metadata_ != null) {
         output.writeMessage(9, getMetadata());
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -2365,7 +2115,7 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (!getTagBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tag_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, tag_);
       }
       if (valueCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
@@ -2375,7 +2125,7 @@ private static final long serialVersionUID = 0L;
       if (valueCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(
-              3, (com.google.protobuf.ByteString) value_);
+              3, (com.google.protobuf.ByteString)((com.google.protobuf.ByteString) value_));
       }
       if (valueCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
@@ -2390,7 +2140,7 @@ private static final long serialVersionUID = 0L;
           .computeMessageSize(6, (org.tensorflow.framework.Summary.Audio) value_);
       }
       if (!getNodeNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, nodeName_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(7, nodeName_);
       }
       if (valueCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
@@ -2400,128 +2150,11 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, getMetadata());
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.Summary.Value)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.Summary.Value other = (org.tensorflow.framework.Summary.Value) obj;
-
-      boolean result = true;
-      result = result && getNodeName()
-          .equals(other.getNodeName());
-      result = result && getTag()
-          .equals(other.getTag());
-      result = result && (hasMetadata() == other.hasMetadata());
-      if (hasMetadata()) {
-        result = result && getMetadata()
-            .equals(other.getMetadata());
-      }
-      result = result && getValueCase().equals(
-          other.getValueCase());
-      if (!result) return false;
-      switch (valueCase_) {
-        case 2:
-          result = result && (
-              java.lang.Float.floatToIntBits(getSimpleValue())
-              == java.lang.Float.floatToIntBits(
-                  other.getSimpleValue()));
-          break;
-        case 3:
-          result = result && getObsoleteOldStyleHistogram()
-              .equals(other.getObsoleteOldStyleHistogram());
-          break;
-        case 4:
-          result = result && getImage()
-              .equals(other.getImage());
-          break;
-        case 5:
-          result = result && getHisto()
-              .equals(other.getHisto());
-          break;
-        case 6:
-          result = result && getAudio()
-              .equals(other.getAudio());
-          break;
-        case 8:
-          result = result && getTensor()
-              .equals(other.getTensor());
-          break;
-        case 0:
-        default:
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NODE_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getNodeName().hashCode();
-      hash = (37 * hash) + TAG_FIELD_NUMBER;
-      hash = (53 * hash) + getTag().hashCode();
-      if (hasMetadata()) {
-        hash = (37 * hash) + METADATA_FIELD_NUMBER;
-        hash = (53 * hash) + getMetadata().hashCode();
-      }
-      switch (valueCase_) {
-        case 2:
-          hash = (37 * hash) + SIMPLE_VALUE_FIELD_NUMBER;
-          hash = (53 * hash) + java.lang.Float.floatToIntBits(
-              getSimpleValue());
-          break;
-        case 3:
-          hash = (37 * hash) + OBSOLETE_OLD_STYLE_HISTOGRAM_FIELD_NUMBER;
-          hash = (53 * hash) + getObsoleteOldStyleHistogram().hashCode();
-          break;
-        case 4:
-          hash = (37 * hash) + IMAGE_FIELD_NUMBER;
-          hash = (53 * hash) + getImage().hashCode();
-          break;
-        case 5:
-          hash = (37 * hash) + HISTO_FIELD_NUMBER;
-          hash = (53 * hash) + getHisto().hashCode();
-          break;
-        case 6:
-          hash = (37 * hash) + AUDIO_FIELD_NUMBER;
-          hash = (53 * hash) + getAudio().hashCode();
-          break;
-        case 8:
-          hash = (37 * hash) + TENSOR_FIELD_NUMBER;
-          hash = (53 * hash) + getTensor().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.Summary.Value parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.Summary.Value parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.Summary.Value parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2545,40 +2178,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.Summary.Value parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.Summary.Value parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.Summary.Value parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.Summary.Value parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.Summary.Value parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.Summary.Value parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -2595,7 +2222,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2603,7 +2230,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.Summary.Value}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.Summary.Value)
         org.tensorflow.framework.Summary.ValueOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2611,7 +2238,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Value_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_Value_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2624,13 +2251,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -2715,32 +2341,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.Summary.Value) {
           return mergeFrom((org.tensorflow.framework.Summary.Value)other);
@@ -2792,7 +2392,6 @@ private static final long serialVersionUID = 0L;
             break;
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -2810,7 +2409,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.Summary.Value) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2822,7 +2421,7 @@ private static final long serialVersionUID = 0L;
       private java.lang.Object value_;
       public ValueCase
           getValueCase() {
-        return ValueCase.forNumber(
+        return ValueCase.valueOf(
             valueCase_);
       }
 
@@ -2836,11 +2435,11 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object nodeName_ = "";
       /**
+       * <code>optional string node_name = 7;</code>
+       *
        * <pre>
        * This field is deprecated and will not be set.
        * </pre>
-       *
-       * <code>string node_name = 7;</code>
        */
       public java.lang.String getNodeName() {
         java.lang.Object ref = nodeName_;
@@ -2855,11 +2454,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string node_name = 7;</code>
+       *
        * <pre>
        * This field is deprecated and will not be set.
        * </pre>
-       *
-       * <code>string node_name = 7;</code>
        */
       public com.google.protobuf.ByteString
           getNodeNameBytes() {
@@ -2875,11 +2474,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string node_name = 7;</code>
+       *
        * <pre>
        * This field is deprecated and will not be set.
        * </pre>
-       *
-       * <code>string node_name = 7;</code>
        */
       public Builder setNodeName(
           java.lang.String value) {
@@ -2892,11 +2491,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string node_name = 7;</code>
+       *
        * <pre>
        * This field is deprecated and will not be set.
        * </pre>
-       *
-       * <code>string node_name = 7;</code>
        */
       public Builder clearNodeName() {
         
@@ -2905,11 +2504,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string node_name = 7;</code>
+       *
        * <pre>
        * This field is deprecated and will not be set.
        * </pre>
-       *
-       * <code>string node_name = 7;</code>
        */
       public Builder setNodeNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2925,13 +2524,13 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object tag_ = "";
       /**
+       * <code>optional string tag = 1;</code>
+       *
        * <pre>
        * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
        * are often organized by scope (which contains slashes to convey
        * hierarchy). For example: foo/bar/0
        * </pre>
-       *
-       * <code>string tag = 1;</code>
        */
       public java.lang.String getTag() {
         java.lang.Object ref = tag_;
@@ -2946,13 +2545,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string tag = 1;</code>
+       *
        * <pre>
        * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
        * are often organized by scope (which contains slashes to convey
        * hierarchy). For example: foo/bar/0
        * </pre>
-       *
-       * <code>string tag = 1;</code>
        */
       public com.google.protobuf.ByteString
           getTagBytes() {
@@ -2968,13 +2567,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string tag = 1;</code>
+       *
        * <pre>
        * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
        * are often organized by scope (which contains slashes to convey
        * hierarchy). For example: foo/bar/0
        * </pre>
-       *
-       * <code>string tag = 1;</code>
        */
       public Builder setTag(
           java.lang.String value) {
@@ -2987,13 +2586,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string tag = 1;</code>
+       *
        * <pre>
        * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
        * are often organized by scope (which contains slashes to convey
        * hierarchy). For example: foo/bar/0
        * </pre>
-       *
-       * <code>string tag = 1;</code>
        */
       public Builder clearTag() {
         
@@ -3002,13 +2601,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string tag = 1;</code>
+       *
        * <pre>
        * Tag name for the data. Used by TensorBoard plugins to organize data. Tags
        * are often organized by scope (which contains slashes to convey
        * hierarchy). For example: foo/bar/0
        * </pre>
-       *
-       * <code>string tag = 1;</code>
        */
       public Builder setTagBytes(
           com.google.protobuf.ByteString value) {
@@ -3023,9 +2622,11 @@ private static final long serialVersionUID = 0L;
       }
 
       private org.tensorflow.framework.SummaryMetadata metadata_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.SummaryMetadata, org.tensorflow.framework.SummaryMetadata.Builder, org.tensorflow.framework.SummaryMetadataOrBuilder> metadataBuilder_;
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3033,13 +2634,13 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public boolean hasMetadata() {
         return metadataBuilder_ != null || metadata_ != null;
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3047,8 +2648,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public org.tensorflow.framework.SummaryMetadata getMetadata() {
         if (metadataBuilder_ == null) {
@@ -3058,6 +2657,8 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3065,8 +2666,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public Builder setMetadata(org.tensorflow.framework.SummaryMetadata value) {
         if (metadataBuilder_ == null) {
@@ -3082,6 +2681,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3089,8 +2690,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public Builder setMetadata(
           org.tensorflow.framework.SummaryMetadata.Builder builderForValue) {
@@ -3104,6 +2703,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3111,8 +2712,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public Builder mergeMetadata(org.tensorflow.framework.SummaryMetadata value) {
         if (metadataBuilder_ == null) {
@@ -3130,6 +2729,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3137,8 +2738,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public Builder clearMetadata() {
         if (metadataBuilder_ == null) {
@@ -3152,6 +2751,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3159,8 +2760,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public org.tensorflow.framework.SummaryMetadata.Builder getMetadataBuilder() {
         
@@ -3168,6 +2767,8 @@ private static final long serialVersionUID = 0L;
         return getMetadataFieldBuilder().getBuilder();
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3175,8 +2776,6 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
       public org.tensorflow.framework.SummaryMetadataOrBuilder getMetadataOrBuilder() {
         if (metadataBuilder_ != null) {
@@ -3187,6 +2786,8 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional .tensorflow.SummaryMetadata metadata = 9;</code>
+       *
        * <pre>
        * Contains metadata on the summary value such as which plugins may use it.
        * Take note that many summary values may lack a metadata field. This is
@@ -3194,14 +2795,12 @@ private static final long serialVersionUID = 0L;
        * value with a certain tag for each tag. TensorBoard then remembers which
        * tags are associated with which plugins. This saves space.
        * </pre>
-       *
-       * <code>.tensorflow.SummaryMetadata metadata = 9;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.SummaryMetadata, org.tensorflow.framework.SummaryMetadata.Builder, org.tensorflow.framework.SummaryMetadataOrBuilder> 
           getMetadataFieldBuilder() {
         if (metadataBuilder_ == null) {
-          metadataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          metadataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.SummaryMetadata, org.tensorflow.framework.SummaryMetadata.Builder, org.tensorflow.framework.SummaryMetadataOrBuilder>(
                   getMetadata(),
                   getParentForChildren(),
@@ -3212,7 +2811,7 @@ private static final long serialVersionUID = 0L;
       }
 
       /**
-       * <code>float simple_value = 2;</code>
+       * <code>optional float simple_value = 2;</code>
        */
       public float getSimpleValue() {
         if (valueCase_ == 2) {
@@ -3221,7 +2820,7 @@ private static final long serialVersionUID = 0L;
         return 0F;
       }
       /**
-       * <code>float simple_value = 2;</code>
+       * <code>optional float simple_value = 2;</code>
        */
       public Builder setSimpleValue(float value) {
         valueCase_ = 2;
@@ -3230,7 +2829,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>float simple_value = 2;</code>
+       * <code>optional float simple_value = 2;</code>
        */
       public Builder clearSimpleValue() {
         if (valueCase_ == 2) {
@@ -3242,7 +2841,7 @@ private static final long serialVersionUID = 0L;
       }
 
       /**
-       * <code>bytes obsolete_old_style_histogram = 3;</code>
+       * <code>optional bytes obsolete_old_style_histogram = 3;</code>
        */
       public com.google.protobuf.ByteString getObsoleteOldStyleHistogram() {
         if (valueCase_ == 3) {
@@ -3251,7 +2850,7 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.ByteString.EMPTY;
       }
       /**
-       * <code>bytes obsolete_old_style_histogram = 3;</code>
+       * <code>optional bytes obsolete_old_style_histogram = 3;</code>
        */
       public Builder setObsoleteOldStyleHistogram(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -3263,7 +2862,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>bytes obsolete_old_style_histogram = 3;</code>
+       * <code>optional bytes obsolete_old_style_histogram = 3;</code>
        */
       public Builder clearObsoleteOldStyleHistogram() {
         if (valueCase_ == 3) {
@@ -3274,16 +2873,10 @@ private static final long serialVersionUID = 0L;
         return this;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.Summary.Image, org.tensorflow.framework.Summary.Image.Builder, org.tensorflow.framework.Summary.ImageOrBuilder> imageBuilder_;
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
-       */
-      public boolean hasImage() {
-        return valueCase_ == 4;
-      }
-      /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public org.tensorflow.framework.Summary.Image getImage() {
         if (imageBuilder_ == null) {
@@ -3299,7 +2892,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public Builder setImage(org.tensorflow.framework.Summary.Image value) {
         if (imageBuilder_ == null) {
@@ -3315,7 +2908,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public Builder setImage(
           org.tensorflow.framework.Summary.Image.Builder builderForValue) {
@@ -3329,7 +2922,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public Builder mergeImage(org.tensorflow.framework.Summary.Image value) {
         if (imageBuilder_ == null) {
@@ -3351,7 +2944,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
@@ -3370,13 +2963,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public org.tensorflow.framework.Summary.Image.Builder getImageBuilder() {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
       public org.tensorflow.framework.Summary.ImageOrBuilder getImageOrBuilder() {
         if ((valueCase_ == 4) && (imageBuilder_ != null)) {
@@ -3389,16 +2982,16 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.Summary.Image image = 4;</code>
+       * <code>optional .tensorflow.Summary.Image image = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.Summary.Image, org.tensorflow.framework.Summary.Image.Builder, org.tensorflow.framework.Summary.ImageOrBuilder> 
           getImageFieldBuilder() {
         if (imageBuilder_ == null) {
           if (!(valueCase_ == 4)) {
             value_ = org.tensorflow.framework.Summary.Image.getDefaultInstance();
           }
-          imageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          imageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.Summary.Image, org.tensorflow.framework.Summary.Image.Builder, org.tensorflow.framework.Summary.ImageOrBuilder>(
                   (org.tensorflow.framework.Summary.Image) value_,
                   getParentForChildren(),
@@ -3410,16 +3003,10 @@ private static final long serialVersionUID = 0L;
         return imageBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.HistogramProto, org.tensorflow.framework.HistogramProto.Builder, org.tensorflow.framework.HistogramProtoOrBuilder> histoBuilder_;
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
-       */
-      public boolean hasHisto() {
-        return valueCase_ == 5;
-      }
-      /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public org.tensorflow.framework.HistogramProto getHisto() {
         if (histoBuilder_ == null) {
@@ -3435,7 +3022,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public Builder setHisto(org.tensorflow.framework.HistogramProto value) {
         if (histoBuilder_ == null) {
@@ -3451,7 +3038,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public Builder setHisto(
           org.tensorflow.framework.HistogramProto.Builder builderForValue) {
@@ -3465,7 +3052,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public Builder mergeHisto(org.tensorflow.framework.HistogramProto value) {
         if (histoBuilder_ == null) {
@@ -3487,7 +3074,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public Builder clearHisto() {
         if (histoBuilder_ == null) {
@@ -3506,13 +3093,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public org.tensorflow.framework.HistogramProto.Builder getHistoBuilder() {
         return getHistoFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
       public org.tensorflow.framework.HistogramProtoOrBuilder getHistoOrBuilder() {
         if ((valueCase_ == 5) && (histoBuilder_ != null)) {
@@ -3525,16 +3112,16 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.HistogramProto histo = 5;</code>
+       * <code>optional .tensorflow.HistogramProto histo = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.HistogramProto, org.tensorflow.framework.HistogramProto.Builder, org.tensorflow.framework.HistogramProtoOrBuilder> 
           getHistoFieldBuilder() {
         if (histoBuilder_ == null) {
           if (!(valueCase_ == 5)) {
             value_ = org.tensorflow.framework.HistogramProto.getDefaultInstance();
           }
-          histoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          histoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.HistogramProto, org.tensorflow.framework.HistogramProto.Builder, org.tensorflow.framework.HistogramProtoOrBuilder>(
                   (org.tensorflow.framework.HistogramProto) value_,
                   getParentForChildren(),
@@ -3546,16 +3133,10 @@ private static final long serialVersionUID = 0L;
         return histoBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.Summary.Audio, org.tensorflow.framework.Summary.Audio.Builder, org.tensorflow.framework.Summary.AudioOrBuilder> audioBuilder_;
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
-       */
-      public boolean hasAudio() {
-        return valueCase_ == 6;
-      }
-      /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public org.tensorflow.framework.Summary.Audio getAudio() {
         if (audioBuilder_ == null) {
@@ -3571,7 +3152,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public Builder setAudio(org.tensorflow.framework.Summary.Audio value) {
         if (audioBuilder_ == null) {
@@ -3587,7 +3168,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public Builder setAudio(
           org.tensorflow.framework.Summary.Audio.Builder builderForValue) {
@@ -3601,7 +3182,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public Builder mergeAudio(org.tensorflow.framework.Summary.Audio value) {
         if (audioBuilder_ == null) {
@@ -3623,7 +3204,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public Builder clearAudio() {
         if (audioBuilder_ == null) {
@@ -3642,13 +3223,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public org.tensorflow.framework.Summary.Audio.Builder getAudioBuilder() {
         return getAudioFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
       public org.tensorflow.framework.Summary.AudioOrBuilder getAudioOrBuilder() {
         if ((valueCase_ == 6) && (audioBuilder_ != null)) {
@@ -3661,16 +3242,16 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.Summary.Audio audio = 6;</code>
+       * <code>optional .tensorflow.Summary.Audio audio = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.Summary.Audio, org.tensorflow.framework.Summary.Audio.Builder, org.tensorflow.framework.Summary.AudioOrBuilder> 
           getAudioFieldBuilder() {
         if (audioBuilder_ == null) {
           if (!(valueCase_ == 6)) {
             value_ = org.tensorflow.framework.Summary.Audio.getDefaultInstance();
           }
-          audioBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          audioBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.Summary.Audio, org.tensorflow.framework.Summary.Audio.Builder, org.tensorflow.framework.Summary.AudioOrBuilder>(
                   (org.tensorflow.framework.Summary.Audio) value_,
                   getParentForChildren(),
@@ -3682,16 +3263,10 @@ private static final long serialVersionUID = 0L;
         return audioBuilder_;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> tensorBuilder_;
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
-       */
-      public boolean hasTensor() {
-        return valueCase_ == 8;
-      }
-      /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProto getTensor() {
         if (tensorBuilder_ == null) {
@@ -3707,7 +3282,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder setTensor(org.tensorflow.framework.TensorProto value) {
         if (tensorBuilder_ == null) {
@@ -3723,7 +3298,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder setTensor(
           org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -3737,7 +3312,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder mergeTensor(org.tensorflow.framework.TensorProto value) {
         if (tensorBuilder_ == null) {
@@ -3759,7 +3334,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder clearTensor() {
         if (tensorBuilder_ == null) {
@@ -3778,13 +3353,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProto.Builder getTensorBuilder() {
         return getTensorFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder() {
         if ((valueCase_ == 8) && (tensorBuilder_ != null)) {
@@ -3797,16 +3372,16 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.TensorProto tensor = 8;</code>
+       * <code>optional .tensorflow.TensorProto tensor = 8;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> 
           getTensorFieldBuilder() {
         if (tensorBuilder_ == null) {
           if (!(valueCase_ == 8)) {
             value_ = org.tensorflow.framework.TensorProto.getDefaultInstance();
           }
-          tensorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          tensorBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder>(
                   (org.tensorflow.framework.TensorProto) value_,
                   getParentForChildren(),
@@ -3819,12 +3394,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -3847,7 +3422,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Value(input, extensionRegistry);
+        try {
+          return new Value(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -3869,52 +3453,52 @@ private static final long serialVersionUID = 0L;
   public static final int VALUE_FIELD_NUMBER = 1;
   private java.util.List<org.tensorflow.framework.Summary.Value> value_;
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   public java.util.List<org.tensorflow.framework.Summary.Value> getValueList() {
     return value_;
   }
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.Summary.ValueOrBuilder> 
       getValueOrBuilderList() {
     return value_;
   }
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   public int getValueCount() {
     return value_.size();
   }
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   public org.tensorflow.framework.Summary.Value getValue(int index) {
     return value_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+   *
    * <pre>
    * Set of values for the summary.
    * </pre>
-   *
-   * <code>repeated .tensorflow.Summary.Value value = 1;</code>
    */
   public org.tensorflow.framework.Summary.ValueOrBuilder getValueOrBuilder(
       int index) {
@@ -3936,7 +3520,6 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < value_.size(); i++) {
       output.writeMessage(1, value_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -3948,55 +3531,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, value_.get(i));
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.Summary)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.Summary other = (org.tensorflow.framework.Summary) obj;
-
-    boolean result = true;
-    result = result && getValueList()
-        .equals(other.getValueList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (getValueCount() > 0) {
-      hash = (37 * hash) + VALUE_FIELD_NUMBER;
-      hash = (53 * hash) + getValueList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.Summary parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.Summary parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.Summary parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4020,40 +3559,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.Summary parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.Summary parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.Summary parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.Summary parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.Summary parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.Summary parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -4070,11 +3603,13 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.Summary}
+   *
    * <pre>
    * A Summary is a set of named values to be displayed by the
    * visualizer.
@@ -4082,11 +3617,9 @@ private static final long serialVersionUID = 0L;
    * the "summary_interval_secs" attribute of the training operation.
    * Summaries are also produced at the end of an evaluation.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.Summary}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.Summary)
       org.tensorflow.framework.SummaryOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -4094,7 +3627,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_Summary_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -4107,13 +3640,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getValueFieldBuilder();
       }
     }
@@ -4161,32 +3693,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.Summary) {
         return mergeFrom((org.tensorflow.framework.Summary)other);
@@ -4217,14 +3723,13 @@ private static final long serialVersionUID = 0L;
             value_ = other.value_;
             bitField0_ = (bitField0_ & ~0x00000001);
             valueBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getValueFieldBuilder() : null;
           } else {
             valueBuilder_.addAllMessages(other.value_);
           }
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -4242,7 +3747,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.Summary) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -4261,15 +3766,15 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.Summary.Value, org.tensorflow.framework.Summary.Value.Builder, org.tensorflow.framework.Summary.ValueOrBuilder> valueBuilder_;
 
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public java.util.List<org.tensorflow.framework.Summary.Value> getValueList() {
       if (valueBuilder_ == null) {
@@ -4279,11 +3784,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public int getValueCount() {
       if (valueBuilder_ == null) {
@@ -4293,11 +3798,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public org.tensorflow.framework.Summary.Value getValue(int index) {
       if (valueBuilder_ == null) {
@@ -4307,11 +3812,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder setValue(
         int index, org.tensorflow.framework.Summary.Value value) {
@@ -4328,11 +3833,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder setValue(
         int index, org.tensorflow.framework.Summary.Value.Builder builderForValue) {
@@ -4346,11 +3851,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder addValue(org.tensorflow.framework.Summary.Value value) {
       if (valueBuilder_ == null) {
@@ -4366,11 +3871,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder addValue(
         int index, org.tensorflow.framework.Summary.Value value) {
@@ -4387,11 +3892,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder addValue(
         org.tensorflow.framework.Summary.Value.Builder builderForValue) {
@@ -4405,11 +3910,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder addValue(
         int index, org.tensorflow.framework.Summary.Value.Builder builderForValue) {
@@ -4423,11 +3928,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder addAllValue(
         java.lang.Iterable<? extends org.tensorflow.framework.Summary.Value> values) {
@@ -4442,11 +3947,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder clearValue() {
       if (valueBuilder_ == null) {
@@ -4459,11 +3964,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public Builder removeValue(int index) {
       if (valueBuilder_ == null) {
@@ -4476,22 +3981,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public org.tensorflow.framework.Summary.Value.Builder getValueBuilder(
         int index) {
       return getValueFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public org.tensorflow.framework.Summary.ValueOrBuilder getValueOrBuilder(
         int index) {
@@ -4501,11 +4006,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.Summary.ValueOrBuilder> 
          getValueOrBuilderList() {
@@ -4516,22 +4021,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public org.tensorflow.framework.Summary.Value.Builder addValueBuilder() {
       return getValueFieldBuilder().addBuilder(
           org.tensorflow.framework.Summary.Value.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public org.tensorflow.framework.Summary.Value.Builder addValueBuilder(
         int index) {
@@ -4539,21 +4044,21 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.Summary.Value.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
+     *
      * <pre>
      * Set of values for the summary.
      * </pre>
-     *
-     * <code>repeated .tensorflow.Summary.Value value = 1;</code>
      */
     public java.util.List<org.tensorflow.framework.Summary.Value.Builder> 
          getValueBuilderList() {
       return getValueFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.Summary.Value, org.tensorflow.framework.Summary.Value.Builder, org.tensorflow.framework.Summary.ValueOrBuilder> 
         getValueFieldBuilder() {
       if (valueBuilder_ == null) {
-        valueBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        valueBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.Summary.Value, org.tensorflow.framework.Summary.Value.Builder, org.tensorflow.framework.Summary.ValueOrBuilder>(
                 value_,
                 ((bitField0_ & 0x00000001) == 0x00000001),
@@ -4565,12 +4070,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -4593,7 +4098,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Summary(input, extensionRegistry);
+      try {
+        return new Summary(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

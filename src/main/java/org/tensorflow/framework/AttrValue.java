@@ -4,21 +4,20 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.AttrValue}
+ *
  * <pre>
  * Protocol buffer representing the value for an attr used to configure an Op.
  * Comment indicates the corresponding attr type.  Only the field matching the
  * attr type may be filled.
  * </pre>
- *
- * Protobuf type {@code tensorflow.AttrValue}
  */
 public  final class AttrValue extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.AttrValue)
     AttrValueOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use AttrValue.newBuilder() to construct.
-  private AttrValue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private AttrValue(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private AttrValue() {
@@ -27,19 +26,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private AttrValue(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -49,8 +42,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -124,7 +116,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 74: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
             valueCase_ = 9;
             value_ = s;
             break;
@@ -146,12 +138,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -160,7 +152,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -172,293 +164,292 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>repeated bytes s = 2;</code>
+     *
      * <pre>
      * "list(string)"
      * </pre>
-     *
-     * <code>repeated bytes s = 2;</code>
      */
     java.util.List<com.google.protobuf.ByteString> getSList();
     /**
+     * <code>repeated bytes s = 2;</code>
+     *
      * <pre>
      * "list(string)"
      * </pre>
-     *
-     * <code>repeated bytes s = 2;</code>
      */
     int getSCount();
     /**
+     * <code>repeated bytes s = 2;</code>
+     *
      * <pre>
      * "list(string)"
      * </pre>
-     *
-     * <code>repeated bytes s = 2;</code>
      */
     com.google.protobuf.ByteString getS(int index);
 
     /**
+     * <code>repeated int64 i = 3 [packed = true];</code>
+     *
      * <pre>
      * "list(int)"
      * </pre>
-     *
-     * <code>repeated int64 i = 3 [packed = true];</code>
      */
     java.util.List<java.lang.Long> getIList();
     /**
+     * <code>repeated int64 i = 3 [packed = true];</code>
+     *
      * <pre>
      * "list(int)"
      * </pre>
-     *
-     * <code>repeated int64 i = 3 [packed = true];</code>
      */
     int getICount();
     /**
+     * <code>repeated int64 i = 3 [packed = true];</code>
+     *
      * <pre>
      * "list(int)"
      * </pre>
-     *
-     * <code>repeated int64 i = 3 [packed = true];</code>
      */
     long getI(int index);
 
     /**
+     * <code>repeated float f = 4 [packed = true];</code>
+     *
      * <pre>
      * "list(float)"
      * </pre>
-     *
-     * <code>repeated float f = 4 [packed = true];</code>
      */
     java.util.List<java.lang.Float> getFList();
     /**
+     * <code>repeated float f = 4 [packed = true];</code>
+     *
      * <pre>
      * "list(float)"
      * </pre>
-     *
-     * <code>repeated float f = 4 [packed = true];</code>
      */
     int getFCount();
     /**
+     * <code>repeated float f = 4 [packed = true];</code>
+     *
      * <pre>
      * "list(float)"
      * </pre>
-     *
-     * <code>repeated float f = 4 [packed = true];</code>
      */
     float getF(int index);
 
     /**
+     * <code>repeated bool b = 5 [packed = true];</code>
+     *
      * <pre>
      * "list(bool)"
      * </pre>
-     *
-     * <code>repeated bool b = 5 [packed = true];</code>
      */
     java.util.List<java.lang.Boolean> getBList();
     /**
+     * <code>repeated bool b = 5 [packed = true];</code>
+     *
      * <pre>
      * "list(bool)"
      * </pre>
-     *
-     * <code>repeated bool b = 5 [packed = true];</code>
      */
     int getBCount();
     /**
+     * <code>repeated bool b = 5 [packed = true];</code>
+     *
      * <pre>
      * "list(bool)"
      * </pre>
-     *
-     * <code>repeated bool b = 5 [packed = true];</code>
      */
     boolean getB(int index);
 
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     java.util.List<org.tensorflow.framework.DataType> getTypeList();
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     int getTypeCount();
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     org.tensorflow.framework.DataType getType(int index);
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     java.util.List<java.lang.Integer>
     getTypeValueList();
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     int getTypeValue(int index);
 
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     java.util.List<org.tensorflow.framework.TensorShapeProto> 
         getShapeList();
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     org.tensorflow.framework.TensorShapeProto getShape(int index);
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     int getShapeCount();
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     java.util.List<? extends org.tensorflow.framework.TensorShapeProtoOrBuilder> 
         getShapeOrBuilderList();
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder(
         int index);
 
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     java.util.List<org.tensorflow.framework.TensorProto> 
         getTensorList();
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     org.tensorflow.framework.TensorProto getTensor(int index);
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     int getTensorCount();
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     java.util.List<? extends org.tensorflow.framework.TensorProtoOrBuilder> 
         getTensorOrBuilderList();
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder(
         int index);
 
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     java.util.List<org.tensorflow.framework.NameAttrList> 
         getFuncList();
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     org.tensorflow.framework.NameAttrList getFunc(int index);
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     int getFuncCount();
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     java.util.List<? extends org.tensorflow.framework.NameAttrListOrBuilder> 
         getFuncOrBuilderList();
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     org.tensorflow.framework.NameAttrListOrBuilder getFuncOrBuilder(
         int index);
   }
   /**
+   * Protobuf type {@code tensorflow.AttrValue.ListValue}
+   *
    * <pre>
    * LINT.IfChange
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.AttrValue.ListValue}
    */
   public  static final class ListValue extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.AttrValue.ListValue)
       ListValueOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use ListValue.newBuilder() to construct.
-    private ListValue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ListValue(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private ListValue() {
@@ -475,19 +466,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private ListValue(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -497,8 +482,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
@@ -602,8 +586,7 @@ private static final long serialVersionUID = 0L;
                 shape_ = new java.util.ArrayList<org.tensorflow.framework.TensorShapeProto>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              shape_.add(
-                  input.readMessage(org.tensorflow.framework.TensorShapeProto.parser(), extensionRegistry));
+              shape_.add(input.readMessage(org.tensorflow.framework.TensorShapeProto.parser(), extensionRegistry));
               break;
             }
             case 66: {
@@ -611,8 +594,7 @@ private static final long serialVersionUID = 0L;
                 tensor_ = new java.util.ArrayList<org.tensorflow.framework.TensorProto>();
                 mutable_bitField0_ |= 0x00000040;
               }
-              tensor_.add(
-                  input.readMessage(org.tensorflow.framework.TensorProto.parser(), extensionRegistry));
+              tensor_.add(input.readMessage(org.tensorflow.framework.TensorProto.parser(), extensionRegistry));
               break;
             }
             case 74: {
@@ -620,17 +602,17 @@ private static final long serialVersionUID = 0L;
                 func_ = new java.util.ArrayList<org.tensorflow.framework.NameAttrList>();
                 mutable_bitField0_ |= 0x00000080;
               }
-              func_.add(
-                  input.readMessage(org.tensorflow.framework.NameAttrList.parser(), extensionRegistry));
+              func_.add(input.readMessage(org.tensorflow.framework.NameAttrList.parser(), extensionRegistry));
               break;
             }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           s_ = java.util.Collections.unmodifiableList(s_);
@@ -656,7 +638,6 @@ private static final long serialVersionUID = 0L;
         if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           func_ = java.util.Collections.unmodifiableList(func_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -665,7 +646,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_ListValue_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_ListValue_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -675,32 +656,32 @@ private static final long serialVersionUID = 0L;
     public static final int S_FIELD_NUMBER = 2;
     private java.util.List<com.google.protobuf.ByteString> s_;
     /**
+     * <code>repeated bytes s = 2;</code>
+     *
      * <pre>
      * "list(string)"
      * </pre>
-     *
-     * <code>repeated bytes s = 2;</code>
      */
     public java.util.List<com.google.protobuf.ByteString>
         getSList() {
       return s_;
     }
     /**
+     * <code>repeated bytes s = 2;</code>
+     *
      * <pre>
      * "list(string)"
      * </pre>
-     *
-     * <code>repeated bytes s = 2;</code>
      */
     public int getSCount() {
       return s_.size();
     }
     /**
+     * <code>repeated bytes s = 2;</code>
+     *
      * <pre>
      * "list(string)"
      * </pre>
-     *
-     * <code>repeated bytes s = 2;</code>
      */
     public com.google.protobuf.ByteString getS(int index) {
       return s_.get(index);
@@ -709,32 +690,32 @@ private static final long serialVersionUID = 0L;
     public static final int I_FIELD_NUMBER = 3;
     private java.util.List<java.lang.Long> i_;
     /**
+     * <code>repeated int64 i = 3 [packed = true];</code>
+     *
      * <pre>
      * "list(int)"
      * </pre>
-     *
-     * <code>repeated int64 i = 3 [packed = true];</code>
      */
     public java.util.List<java.lang.Long>
         getIList() {
       return i_;
     }
     /**
+     * <code>repeated int64 i = 3 [packed = true];</code>
+     *
      * <pre>
      * "list(int)"
      * </pre>
-     *
-     * <code>repeated int64 i = 3 [packed = true];</code>
      */
     public int getICount() {
       return i_.size();
     }
     /**
+     * <code>repeated int64 i = 3 [packed = true];</code>
+     *
      * <pre>
      * "list(int)"
      * </pre>
-     *
-     * <code>repeated int64 i = 3 [packed = true];</code>
      */
     public long getI(int index) {
       return i_.get(index);
@@ -744,32 +725,32 @@ private static final long serialVersionUID = 0L;
     public static final int F_FIELD_NUMBER = 4;
     private java.util.List<java.lang.Float> f_;
     /**
+     * <code>repeated float f = 4 [packed = true];</code>
+     *
      * <pre>
      * "list(float)"
      * </pre>
-     *
-     * <code>repeated float f = 4 [packed = true];</code>
      */
     public java.util.List<java.lang.Float>
         getFList() {
       return f_;
     }
     /**
+     * <code>repeated float f = 4 [packed = true];</code>
+     *
      * <pre>
      * "list(float)"
      * </pre>
-     *
-     * <code>repeated float f = 4 [packed = true];</code>
      */
     public int getFCount() {
       return f_.size();
     }
     /**
+     * <code>repeated float f = 4 [packed = true];</code>
+     *
      * <pre>
      * "list(float)"
      * </pre>
-     *
-     * <code>repeated float f = 4 [packed = true];</code>
      */
     public float getF(int index) {
       return f_.get(index);
@@ -779,32 +760,32 @@ private static final long serialVersionUID = 0L;
     public static final int B_FIELD_NUMBER = 5;
     private java.util.List<java.lang.Boolean> b_;
     /**
+     * <code>repeated bool b = 5 [packed = true];</code>
+     *
      * <pre>
      * "list(bool)"
      * </pre>
-     *
-     * <code>repeated bool b = 5 [packed = true];</code>
      */
     public java.util.List<java.lang.Boolean>
         getBList() {
       return b_;
     }
     /**
+     * <code>repeated bool b = 5 [packed = true];</code>
+     *
      * <pre>
      * "list(bool)"
      * </pre>
-     *
-     * <code>repeated bool b = 5 [packed = true];</code>
      */
     public int getBCount() {
       return b_.size();
     }
     /**
+     * <code>repeated bool b = 5 [packed = true];</code>
+     *
      * <pre>
      * "list(bool)"
      * </pre>
-     *
-     * <code>repeated bool b = 5 [packed = true];</code>
      */
     public boolean getB(int index) {
       return b_.get(index);
@@ -823,53 +804,53 @@ private static final long serialVersionUID = 0L;
               }
             };
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     public java.util.List<org.tensorflow.framework.DataType> getTypeList() {
       return new com.google.protobuf.Internal.ListAdapter<
           java.lang.Integer, org.tensorflow.framework.DataType>(type_, type_converter_);
     }
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     public int getTypeCount() {
       return type_.size();
     }
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     public org.tensorflow.framework.DataType getType(int index) {
       return type_converter_.convert(type_.get(index));
     }
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     public java.util.List<java.lang.Integer>
     getTypeValueList() {
       return type_;
     }
     /**
+     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+     *
      * <pre>
      * "list(type)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
      */
     public int getTypeValue(int index) {
       return type_.get(index);
@@ -879,52 +860,52 @@ private static final long serialVersionUID = 0L;
     public static final int SHAPE_FIELD_NUMBER = 7;
     private java.util.List<org.tensorflow.framework.TensorShapeProto> shape_;
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     public java.util.List<org.tensorflow.framework.TensorShapeProto> getShapeList() {
       return shape_;
     }
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.TensorShapeProtoOrBuilder> 
         getShapeOrBuilderList() {
       return shape_;
     }
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     public int getShapeCount() {
       return shape_.size();
     }
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     public org.tensorflow.framework.TensorShapeProto getShape(int index) {
       return shape_.get(index);
     }
     /**
+     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "list(shape)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
      */
     public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder(
         int index) {
@@ -934,52 +915,52 @@ private static final long serialVersionUID = 0L;
     public static final int TENSOR_FIELD_NUMBER = 8;
     private java.util.List<org.tensorflow.framework.TensorProto> tensor_;
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     public java.util.List<org.tensorflow.framework.TensorProto> getTensorList() {
       return tensor_;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.TensorProtoOrBuilder> 
         getTensorOrBuilderList() {
       return tensor_;
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     public int getTensorCount() {
       return tensor_.size();
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProto getTensor(int index) {
       return tensor_.get(index);
     }
     /**
+     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "list(tensor)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder(
         int index) {
@@ -989,52 +970,52 @@ private static final long serialVersionUID = 0L;
     public static final int FUNC_FIELD_NUMBER = 9;
     private java.util.List<org.tensorflow.framework.NameAttrList> func_;
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     public java.util.List<org.tensorflow.framework.NameAttrList> getFuncList() {
       return func_;
     }
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.NameAttrListOrBuilder> 
         getFuncOrBuilderList() {
       return func_;
     }
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     public int getFuncCount() {
       return func_.size();
     }
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     public org.tensorflow.framework.NameAttrList getFunc(int index) {
       return func_.get(index);
     }
     /**
+     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+     *
      * <pre>
      * "list(attr)"
      * </pre>
-     *
-     * <code>repeated .tensorflow.NameAttrList func = 9;</code>
      */
     public org.tensorflow.framework.NameAttrListOrBuilder getFuncOrBuilder(
         int index) {
@@ -1058,29 +1039,29 @@ private static final long serialVersionUID = 0L;
         output.writeBytes(2, s_.get(i));
       }
       if (getIList().size() > 0) {
-        output.writeUInt32NoTag(26);
-        output.writeUInt32NoTag(iMemoizedSerializedSize);
+        output.writeRawVarint32(26);
+        output.writeRawVarint32(iMemoizedSerializedSize);
       }
       for (int i = 0; i < i_.size(); i++) {
         output.writeInt64NoTag(i_.get(i));
       }
       if (getFList().size() > 0) {
-        output.writeUInt32NoTag(34);
-        output.writeUInt32NoTag(fMemoizedSerializedSize);
+        output.writeRawVarint32(34);
+        output.writeRawVarint32(fMemoizedSerializedSize);
       }
       for (int i = 0; i < f_.size(); i++) {
         output.writeFloatNoTag(f_.get(i));
       }
       if (getBList().size() > 0) {
-        output.writeUInt32NoTag(42);
-        output.writeUInt32NoTag(bMemoizedSerializedSize);
+        output.writeRawVarint32(42);
+        output.writeRawVarint32(bMemoizedSerializedSize);
       }
       for (int i = 0; i < b_.size(); i++) {
         output.writeBoolNoTag(b_.get(i));
       }
       if (getTypeList().size() > 0) {
-        output.writeUInt32NoTag(50);
-        output.writeUInt32NoTag(typeMemoizedSerializedSize);
+        output.writeRawVarint32(50);
+        output.writeRawVarint32(typeMemoizedSerializedSize);
       }
       for (int i = 0; i < type_.size(); i++) {
         output.writeEnumNoTag(type_.get(i));
@@ -1094,7 +1075,6 @@ private static final long serialVersionUID = 0L;
       for (int i = 0; i < func_.size(); i++) {
         output.writeMessage(9, func_.get(i));
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1156,7 +1136,7 @@ private static final long serialVersionUID = 0L;
         size += dataSize;
         if (!getTypeList().isEmpty()) {  size += 1;
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32SizeNoTag(dataSize);
+            .computeRawVarint32Size(dataSize);
         }typeMemoizedSerializedSize = dataSize;
       }
       for (int i = 0; i < shape_.size(); i++) {
@@ -1171,96 +1151,11 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, func_.get(i));
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.AttrValue.ListValue)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.AttrValue.ListValue other = (org.tensorflow.framework.AttrValue.ListValue) obj;
-
-      boolean result = true;
-      result = result && getSList()
-          .equals(other.getSList());
-      result = result && getIList()
-          .equals(other.getIList());
-      result = result && getFList()
-          .equals(other.getFList());
-      result = result && getBList()
-          .equals(other.getBList());
-      result = result && type_.equals(other.type_);
-      result = result && getShapeList()
-          .equals(other.getShapeList());
-      result = result && getTensorList()
-          .equals(other.getTensorList());
-      result = result && getFuncList()
-          .equals(other.getFuncList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getSCount() > 0) {
-        hash = (37 * hash) + S_FIELD_NUMBER;
-        hash = (53 * hash) + getSList().hashCode();
-      }
-      if (getICount() > 0) {
-        hash = (37 * hash) + I_FIELD_NUMBER;
-        hash = (53 * hash) + getIList().hashCode();
-      }
-      if (getFCount() > 0) {
-        hash = (37 * hash) + F_FIELD_NUMBER;
-        hash = (53 * hash) + getFList().hashCode();
-      }
-      if (getBCount() > 0) {
-        hash = (37 * hash) + B_FIELD_NUMBER;
-        hash = (53 * hash) + getBList().hashCode();
-      }
-      if (getTypeCount() > 0) {
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + type_.hashCode();
-      }
-      if (getShapeCount() > 0) {
-        hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-        hash = (53 * hash) + getShapeList().hashCode();
-      }
-      if (getTensorCount() > 0) {
-        hash = (37 * hash) + TENSOR_FIELD_NUMBER;
-        hash = (53 * hash) + getTensorList().hashCode();
-      }
-      if (getFuncCount() > 0) {
-        hash = (37 * hash) + FUNC_FIELD_NUMBER;
-        hash = (53 * hash) + getFuncList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.AttrValue.ListValue parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.AttrValue.ListValue parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.AttrValue.ListValue parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1284,40 +1179,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.AttrValue.ListValue parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.AttrValue.ListValue parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.AttrValue.ListValue parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.AttrValue.ListValue parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.AttrValue.ListValue parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.AttrValue.ListValue parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -1334,19 +1223,19 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     /**
+     * Protobuf type {@code tensorflow.AttrValue.ListValue}
+     *
      * <pre>
      * LINT.IfChange
      * </pre>
-     *
-     * Protobuf type {@code tensorflow.AttrValue.ListValue}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.AttrValue.ListValue)
         org.tensorflow.framework.AttrValue.ListValueOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1354,7 +1243,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_ListValue_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_ListValue_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1367,13 +1256,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getShapeFieldBuilder();
           getTensorFieldBuilder();
           getFuncFieldBuilder();
@@ -1488,32 +1376,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.AttrValue.ListValue) {
           return mergeFrom((org.tensorflow.framework.AttrValue.ListValue)other);
@@ -1594,7 +1456,7 @@ private static final long serialVersionUID = 0L;
               shape_ = other.shape_;
               bitField0_ = (bitField0_ & ~0x00000020);
               shapeBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getShapeFieldBuilder() : null;
             } else {
               shapeBuilder_.addAllMessages(other.shape_);
@@ -1620,7 +1482,7 @@ private static final long serialVersionUID = 0L;
               tensor_ = other.tensor_;
               bitField0_ = (bitField0_ & ~0x00000040);
               tensorBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getTensorFieldBuilder() : null;
             } else {
               tensorBuilder_.addAllMessages(other.tensor_);
@@ -1646,14 +1508,13 @@ private static final long serialVersionUID = 0L;
               func_ = other.func_;
               bitField0_ = (bitField0_ & ~0x00000080);
               funcBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getFuncFieldBuilder() : null;
             } else {
               funcBuilder_.addAllMessages(other.func_);
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -1671,7 +1532,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.AttrValue.ListValue) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1689,42 +1550,42 @@ private static final long serialVersionUID = 0L;
          }
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public java.util.List<com.google.protobuf.ByteString>
           getSList() {
         return java.util.Collections.unmodifiableList(s_);
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public int getSCount() {
         return s_.size();
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public com.google.protobuf.ByteString getS(int index) {
         return s_.get(index);
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public Builder setS(
           int index, com.google.protobuf.ByteString value) {
@@ -1737,11 +1598,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public Builder addS(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1753,11 +1614,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public Builder addAllS(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -1768,11 +1629,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated bytes s = 2;</code>
+       *
        * <pre>
        * "list(string)"
        * </pre>
-       *
-       * <code>repeated bytes s = 2;</code>
        */
       public Builder clearS() {
         s_ = java.util.Collections.emptyList();
@@ -1789,42 +1650,42 @@ private static final long serialVersionUID = 0L;
          }
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public java.util.List<java.lang.Long>
           getIList() {
         return java.util.Collections.unmodifiableList(i_);
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public int getICount() {
         return i_.size();
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public long getI(int index) {
         return i_.get(index);
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public Builder setI(
           int index, long value) {
@@ -1834,11 +1695,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public Builder addI(long value) {
         ensureIIsMutable();
@@ -1847,11 +1708,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public Builder addAllI(
           java.lang.Iterable<? extends java.lang.Long> values) {
@@ -1862,11 +1723,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated int64 i = 3 [packed = true];</code>
+       *
        * <pre>
        * "list(int)"
        * </pre>
-       *
-       * <code>repeated int64 i = 3 [packed = true];</code>
        */
       public Builder clearI() {
         i_ = java.util.Collections.emptyList();
@@ -1883,42 +1744,42 @@ private static final long serialVersionUID = 0L;
          }
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public java.util.List<java.lang.Float>
           getFList() {
         return java.util.Collections.unmodifiableList(f_);
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public int getFCount() {
         return f_.size();
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public float getF(int index) {
         return f_.get(index);
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public Builder setF(
           int index, float value) {
@@ -1928,11 +1789,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public Builder addF(float value) {
         ensureFIsMutable();
@@ -1941,11 +1802,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public Builder addAllF(
           java.lang.Iterable<? extends java.lang.Float> values) {
@@ -1956,11 +1817,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated float f = 4 [packed = true];</code>
+       *
        * <pre>
        * "list(float)"
        * </pre>
-       *
-       * <code>repeated float f = 4 [packed = true];</code>
        */
       public Builder clearF() {
         f_ = java.util.Collections.emptyList();
@@ -1977,42 +1838,42 @@ private static final long serialVersionUID = 0L;
          }
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public java.util.List<java.lang.Boolean>
           getBList() {
         return java.util.Collections.unmodifiableList(b_);
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public int getBCount() {
         return b_.size();
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public boolean getB(int index) {
         return b_.get(index);
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public Builder setB(
           int index, boolean value) {
@@ -2022,11 +1883,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public Builder addB(boolean value) {
         ensureBIsMutable();
@@ -2035,11 +1896,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public Builder addAllB(
           java.lang.Iterable<? extends java.lang.Boolean> values) {
@@ -2050,11 +1911,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated bool b = 5 [packed = true];</code>
+       *
        * <pre>
        * "list(bool)"
        * </pre>
-       *
-       * <code>repeated bool b = 5 [packed = true];</code>
        */
       public Builder clearB() {
         b_ = java.util.Collections.emptyList();
@@ -2072,42 +1933,42 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public java.util.List<org.tensorflow.framework.DataType> getTypeList() {
         return new com.google.protobuf.Internal.ListAdapter<
             java.lang.Integer, org.tensorflow.framework.DataType>(type_, type_converter_);
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public int getTypeCount() {
         return type_.size();
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public org.tensorflow.framework.DataType getType(int index) {
         return type_converter_.convert(type_.get(index));
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder setType(
           int index, org.tensorflow.framework.DataType value) {
@@ -2120,11 +1981,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder addType(org.tensorflow.framework.DataType value) {
         if (value == null) {
@@ -2136,11 +1997,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder addAllType(
           java.lang.Iterable<? extends org.tensorflow.framework.DataType> values) {
@@ -2152,11 +2013,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder clearType() {
         type_ = java.util.Collections.emptyList();
@@ -2165,32 +2026,32 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public java.util.List<java.lang.Integer>
       getTypeValueList() {
         return java.util.Collections.unmodifiableList(type_);
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public int getTypeValue(int index) {
         return type_.get(index);
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder setTypeValue(
           int index, int value) {
@@ -2200,11 +2061,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder addTypeValue(int value) {
         ensureTypeIsMutable();
@@ -2213,11 +2074,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
+       *
        * <pre>
        * "list(type)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.DataType type = 6 [packed = true];</code>
        */
       public Builder addAllTypeValue(
           java.lang.Iterable<java.lang.Integer> values) {
@@ -2238,15 +2099,15 @@ private static final long serialVersionUID = 0L;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> shapeBuilder_;
 
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public java.util.List<org.tensorflow.framework.TensorShapeProto> getShapeList() {
         if (shapeBuilder_ == null) {
@@ -2256,11 +2117,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public int getShapeCount() {
         if (shapeBuilder_ == null) {
@@ -2270,11 +2131,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public org.tensorflow.framework.TensorShapeProto getShape(int index) {
         if (shapeBuilder_ == null) {
@@ -2284,11 +2145,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder setShape(
           int index, org.tensorflow.framework.TensorShapeProto value) {
@@ -2305,11 +2166,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder setShape(
           int index, org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -2323,11 +2184,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder addShape(org.tensorflow.framework.TensorShapeProto value) {
         if (shapeBuilder_ == null) {
@@ -2343,11 +2204,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder addShape(
           int index, org.tensorflow.framework.TensorShapeProto value) {
@@ -2364,11 +2225,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder addShape(
           org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -2382,11 +2243,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder addShape(
           int index, org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -2400,11 +2261,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder addAllShape(
           java.lang.Iterable<? extends org.tensorflow.framework.TensorShapeProto> values) {
@@ -2419,11 +2280,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder clearShape() {
         if (shapeBuilder_ == null) {
@@ -2436,11 +2297,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public Builder removeShape(int index) {
         if (shapeBuilder_ == null) {
@@ -2453,22 +2314,22 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public org.tensorflow.framework.TensorShapeProto.Builder getShapeBuilder(
           int index) {
         return getShapeFieldBuilder().getBuilder(index);
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder(
           int index) {
@@ -2478,11 +2339,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public java.util.List<? extends org.tensorflow.framework.TensorShapeProtoOrBuilder> 
            getShapeOrBuilderList() {
@@ -2493,22 +2354,22 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public org.tensorflow.framework.TensorShapeProto.Builder addShapeBuilder() {
         return getShapeFieldBuilder().addBuilder(
             org.tensorflow.framework.TensorShapeProto.getDefaultInstance());
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public org.tensorflow.framework.TensorShapeProto.Builder addShapeBuilder(
           int index) {
@@ -2516,21 +2377,21 @@ private static final long serialVersionUID = 0L;
             index, org.tensorflow.framework.TensorShapeProto.getDefaultInstance());
       }
       /**
+       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
+       *
        * <pre>
        * "list(shape)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorShapeProto shape = 7;</code>
        */
       public java.util.List<org.tensorflow.framework.TensorShapeProto.Builder> 
            getShapeBuilderList() {
         return getShapeFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> 
           getShapeFieldBuilder() {
         if (shapeBuilder_ == null) {
-          shapeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          shapeBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder>(
                   shape_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
@@ -2550,15 +2411,15 @@ private static final long serialVersionUID = 0L;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> tensorBuilder_;
 
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public java.util.List<org.tensorflow.framework.TensorProto> getTensorList() {
         if (tensorBuilder_ == null) {
@@ -2568,11 +2429,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public int getTensorCount() {
         if (tensorBuilder_ == null) {
@@ -2582,11 +2443,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProto getTensor(int index) {
         if (tensorBuilder_ == null) {
@@ -2596,11 +2457,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder setTensor(
           int index, org.tensorflow.framework.TensorProto value) {
@@ -2617,11 +2478,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder setTensor(
           int index, org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -2635,11 +2496,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder addTensor(org.tensorflow.framework.TensorProto value) {
         if (tensorBuilder_ == null) {
@@ -2655,11 +2516,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder addTensor(
           int index, org.tensorflow.framework.TensorProto value) {
@@ -2676,11 +2537,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder addTensor(
           org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -2694,11 +2555,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder addTensor(
           int index, org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -2712,11 +2573,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder addAllTensor(
           java.lang.Iterable<? extends org.tensorflow.framework.TensorProto> values) {
@@ -2731,11 +2592,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder clearTensor() {
         if (tensorBuilder_ == null) {
@@ -2748,11 +2609,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public Builder removeTensor(int index) {
         if (tensorBuilder_ == null) {
@@ -2765,22 +2626,22 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProto.Builder getTensorBuilder(
           int index) {
         return getTensorFieldBuilder().getBuilder(index);
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder(
           int index) {
@@ -2790,11 +2651,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public java.util.List<? extends org.tensorflow.framework.TensorProtoOrBuilder> 
            getTensorOrBuilderList() {
@@ -2805,22 +2666,22 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProto.Builder addTensorBuilder() {
         return getTensorFieldBuilder().addBuilder(
             org.tensorflow.framework.TensorProto.getDefaultInstance());
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public org.tensorflow.framework.TensorProto.Builder addTensorBuilder(
           int index) {
@@ -2828,21 +2689,21 @@ private static final long serialVersionUID = 0L;
             index, org.tensorflow.framework.TensorProto.getDefaultInstance());
       }
       /**
+       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
+       *
        * <pre>
        * "list(tensor)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.TensorProto tensor = 8;</code>
        */
       public java.util.List<org.tensorflow.framework.TensorProto.Builder> 
            getTensorBuilderList() {
         return getTensorFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> 
           getTensorFieldBuilder() {
         if (tensorBuilder_ == null) {
-          tensorBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          tensorBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder>(
                   tensor_,
                   ((bitField0_ & 0x00000040) == 0x00000040),
@@ -2862,15 +2723,15 @@ private static final long serialVersionUID = 0L;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.NameAttrList, org.tensorflow.framework.NameAttrList.Builder, org.tensorflow.framework.NameAttrListOrBuilder> funcBuilder_;
 
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public java.util.List<org.tensorflow.framework.NameAttrList> getFuncList() {
         if (funcBuilder_ == null) {
@@ -2880,11 +2741,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public int getFuncCount() {
         if (funcBuilder_ == null) {
@@ -2894,11 +2755,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public org.tensorflow.framework.NameAttrList getFunc(int index) {
         if (funcBuilder_ == null) {
@@ -2908,11 +2769,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder setFunc(
           int index, org.tensorflow.framework.NameAttrList value) {
@@ -2929,11 +2790,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder setFunc(
           int index, org.tensorflow.framework.NameAttrList.Builder builderForValue) {
@@ -2947,11 +2808,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder addFunc(org.tensorflow.framework.NameAttrList value) {
         if (funcBuilder_ == null) {
@@ -2967,11 +2828,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder addFunc(
           int index, org.tensorflow.framework.NameAttrList value) {
@@ -2988,11 +2849,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder addFunc(
           org.tensorflow.framework.NameAttrList.Builder builderForValue) {
@@ -3006,11 +2867,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder addFunc(
           int index, org.tensorflow.framework.NameAttrList.Builder builderForValue) {
@@ -3024,11 +2885,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder addAllFunc(
           java.lang.Iterable<? extends org.tensorflow.framework.NameAttrList> values) {
@@ -3043,11 +2904,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder clearFunc() {
         if (funcBuilder_ == null) {
@@ -3060,11 +2921,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public Builder removeFunc(int index) {
         if (funcBuilder_ == null) {
@@ -3077,22 +2938,22 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public org.tensorflow.framework.NameAttrList.Builder getFuncBuilder(
           int index) {
         return getFuncFieldBuilder().getBuilder(index);
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public org.tensorflow.framework.NameAttrListOrBuilder getFuncOrBuilder(
           int index) {
@@ -3102,11 +2963,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public java.util.List<? extends org.tensorflow.framework.NameAttrListOrBuilder> 
            getFuncOrBuilderList() {
@@ -3117,22 +2978,22 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public org.tensorflow.framework.NameAttrList.Builder addFuncBuilder() {
         return getFuncFieldBuilder().addBuilder(
             org.tensorflow.framework.NameAttrList.getDefaultInstance());
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public org.tensorflow.framework.NameAttrList.Builder addFuncBuilder(
           int index) {
@@ -3140,21 +3001,21 @@ private static final long serialVersionUID = 0L;
             index, org.tensorflow.framework.NameAttrList.getDefaultInstance());
       }
       /**
+       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
+       *
        * <pre>
        * "list(attr)"
        * </pre>
-       *
-       * <code>repeated .tensorflow.NameAttrList func = 9;</code>
        */
       public java.util.List<org.tensorflow.framework.NameAttrList.Builder> 
            getFuncBuilderList() {
         return getFuncFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.NameAttrList, org.tensorflow.framework.NameAttrList.Builder, org.tensorflow.framework.NameAttrListOrBuilder> 
           getFuncFieldBuilder() {
         if (funcBuilder_ == null) {
-          funcBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          funcBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.tensorflow.framework.NameAttrList, org.tensorflow.framework.NameAttrList.Builder, org.tensorflow.framework.NameAttrListOrBuilder>(
                   func_,
                   ((bitField0_ & 0x00000080) == 0x00000080),
@@ -3166,12 +3027,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -3194,7 +3055,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListValue(input, extensionRegistry);
+        try {
+          return new ListValue(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -3228,19 +3098,11 @@ private static final long serialVersionUID = 0L;
     FUNC(10),
     PLACEHOLDER(9),
     VALUE_NOT_SET(0);
-    private final int value;
+    private int value = 0;
     private ValueCase(int value) {
       this.value = value;
     }
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
     public static ValueCase valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static ValueCase forNumber(int value) {
       switch (value) {
         case 2: return S;
         case 3: return I;
@@ -3253,7 +3115,8 @@ private static final long serialVersionUID = 0L;
         case 10: return FUNC;
         case 9: return PLACEHOLDER;
         case 0: return VALUE_NOT_SET;
-        default: return null;
+        default: throw new java.lang.IllegalArgumentException(
+          "Value is undefined for this oneof enum.");
       }
     }
     public int getNumber() {
@@ -3263,17 +3126,17 @@ private static final long serialVersionUID = 0L;
 
   public ValueCase
   getValueCase() {
-    return ValueCase.forNumber(
+    return ValueCase.valueOf(
         valueCase_);
   }
 
   public static final int S_FIELD_NUMBER = 2;
   /**
+   * <code>optional bytes s = 2;</code>
+   *
    * <pre>
    * "string"
    * </pre>
-   *
-   * <code>bytes s = 2;</code>
    */
   public com.google.protobuf.ByteString getS() {
     if (valueCase_ == 2) {
@@ -3284,11 +3147,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int I_FIELD_NUMBER = 3;
   /**
+   * <code>optional int64 i = 3;</code>
+   *
    * <pre>
    * "int"
    * </pre>
-   *
-   * <code>int64 i = 3;</code>
    */
   public long getI() {
     if (valueCase_ == 3) {
@@ -3299,11 +3162,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int F_FIELD_NUMBER = 4;
   /**
+   * <code>optional float f = 4;</code>
+   *
    * <pre>
    * "float"
    * </pre>
-   *
-   * <code>float f = 4;</code>
    */
   public float getF() {
     if (valueCase_ == 4) {
@@ -3314,11 +3177,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int B_FIELD_NUMBER = 5;
   /**
+   * <code>optional bool b = 5;</code>
+   *
    * <pre>
    * "bool"
    * </pre>
-   *
-   * <code>bool b = 5;</code>
    */
   public boolean getB() {
     if (valueCase_ == 5) {
@@ -3329,11 +3192,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int TYPE_FIELD_NUMBER = 6;
   /**
+   * <code>optional .tensorflow.DataType type = 6;</code>
+   *
    * <pre>
    * "type"
    * </pre>
-   *
-   * <code>.tensorflow.DataType type = 6;</code>
    */
   public int getTypeValue() {
     if (valueCase_ == 6) {
@@ -3342,16 +3205,15 @@ private static final long serialVersionUID = 0L;
     return 0;
   }
   /**
+   * <code>optional .tensorflow.DataType type = 6;</code>
+   *
    * <pre>
    * "type"
    * </pre>
-   *
-   * <code>.tensorflow.DataType type = 6;</code>
    */
   public org.tensorflow.framework.DataType getType() {
     if (valueCase_ == 6) {
-      org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(
-          (java.lang.Integer) value_);
+      org.tensorflow.framework.DataType result =  org.tensorflow.framework.DataType.valueOf((java.lang.Integer) value_);
       return result == null ? org.tensorflow.framework.DataType.UNRECOGNIZED : result;
     }
     return org.tensorflow.framework.DataType.DT_INVALID;
@@ -3359,21 +3221,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int SHAPE_FIELD_NUMBER = 7;
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+   *
    * <pre>
    * "shape"
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 7;</code>
-   */
-  public boolean hasShape() {
-    return valueCase_ == 7;
-  }
-  /**
-   * <pre>
-   * "shape"
-   * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 7;</code>
    */
   public org.tensorflow.framework.TensorShapeProto getShape() {
     if (valueCase_ == 7) {
@@ -3382,11 +3234,11 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.TensorShapeProto.getDefaultInstance();
   }
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+   *
    * <pre>
    * "shape"
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 7;</code>
    */
   public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder() {
     if (valueCase_ == 7) {
@@ -3397,21 +3249,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int TENSOR_FIELD_NUMBER = 8;
   /**
+   * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+   *
    * <pre>
    * "tensor"
    * </pre>
-   *
-   * <code>.tensorflow.TensorProto tensor = 8;</code>
-   */
-  public boolean hasTensor() {
-    return valueCase_ == 8;
-  }
-  /**
-   * <pre>
-   * "tensor"
-   * </pre>
-   *
-   * <code>.tensorflow.TensorProto tensor = 8;</code>
    */
   public org.tensorflow.framework.TensorProto getTensor() {
     if (valueCase_ == 8) {
@@ -3420,11 +3262,11 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.TensorProto.getDefaultInstance();
   }
   /**
+   * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+   *
    * <pre>
    * "tensor"
    * </pre>
-   *
-   * <code>.tensorflow.TensorProto tensor = 8;</code>
    */
   public org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder() {
     if (valueCase_ == 8) {
@@ -3435,21 +3277,11 @@ private static final long serialVersionUID = 0L;
 
   public static final int LIST_FIELD_NUMBER = 1;
   /**
+   * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+   *
    * <pre>
    * any "list(...)"
    * </pre>
-   *
-   * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
-   */
-  public boolean hasList() {
-    return valueCase_ == 1;
-  }
-  /**
-   * <pre>
-   * any "list(...)"
-   * </pre>
-   *
-   * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
    */
   public org.tensorflow.framework.AttrValue.ListValue getList() {
     if (valueCase_ == 1) {
@@ -3458,11 +3290,11 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.AttrValue.ListValue.getDefaultInstance();
   }
   /**
+   * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+   *
    * <pre>
    * any "list(...)"
    * </pre>
-   *
-   * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
    */
   public org.tensorflow.framework.AttrValue.ListValueOrBuilder getListOrBuilder() {
     if (valueCase_ == 1) {
@@ -3473,27 +3305,14 @@ private static final long serialVersionUID = 0L;
 
   public static final int FUNC_FIELD_NUMBER = 10;
   /**
+   * <code>optional .tensorflow.NameAttrList func = 10;</code>
+   *
    * <pre>
    * "func" represents a function. func.name is a function's name or
    * a primitive op's name. func.attr.first is the name of an attr
    * defined for that function. func.attr.second is the value for
    * that attr in the instantiation.
    * </pre>
-   *
-   * <code>.tensorflow.NameAttrList func = 10;</code>
-   */
-  public boolean hasFunc() {
-    return valueCase_ == 10;
-  }
-  /**
-   * <pre>
-   * "func" represents a function. func.name is a function's name or
-   * a primitive op's name. func.attr.first is the name of an attr
-   * defined for that function. func.attr.second is the value for
-   * that attr in the instantiation.
-   * </pre>
-   *
-   * <code>.tensorflow.NameAttrList func = 10;</code>
    */
   public org.tensorflow.framework.NameAttrList getFunc() {
     if (valueCase_ == 10) {
@@ -3502,14 +3321,14 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.NameAttrList.getDefaultInstance();
   }
   /**
+   * <code>optional .tensorflow.NameAttrList func = 10;</code>
+   *
    * <pre>
    * "func" represents a function. func.name is a function's name or
    * a primitive op's name. func.attr.first is the name of an attr
    * defined for that function. func.attr.second is the value for
    * that attr in the instantiation.
    * </pre>
-   *
-   * <code>.tensorflow.NameAttrList func = 10;</code>
    */
   public org.tensorflow.framework.NameAttrListOrBuilder getFuncOrBuilder() {
     if (valueCase_ == 10) {
@@ -3520,6 +3339,8 @@ private static final long serialVersionUID = 0L;
 
   public static final int PLACEHOLDER_FIELD_NUMBER = 9;
   /**
+   * <code>optional string placeholder = 9;</code>
+   *
    * <pre>
    * This is a placeholder only used in nodes defined inside a
    * function.  It indicates the attr value will be supplied when
@@ -3529,8 +3350,6 @@ private static final long serialVersionUID = 0L;
    * set to "bar", the instantiated node N's attr A will have been
    * given the value "bar".
    * </pre>
-   *
-   * <code>string placeholder = 9;</code>
    */
   public java.lang.String getPlaceholder() {
     java.lang.Object ref = "";
@@ -3550,6 +3369,8 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string placeholder = 9;</code>
+   *
    * <pre>
    * This is a placeholder only used in nodes defined inside a
    * function.  It indicates the attr value will be supplied when
@@ -3559,8 +3380,6 @@ private static final long serialVersionUID = 0L;
    * set to "bar", the instantiated node N's attr A will have been
    * given the value "bar".
    * </pre>
-   *
-   * <code>string placeholder = 9;</code>
    */
   public com.google.protobuf.ByteString
       getPlaceholderBytes() {
@@ -3598,7 +3417,7 @@ private static final long serialVersionUID = 0L;
     }
     if (valueCase_ == 2) {
       output.writeBytes(
-          2, (com.google.protobuf.ByteString) value_);
+          2, (com.google.protobuf.ByteString)((com.google.protobuf.ByteString) value_));
     }
     if (valueCase_ == 3) {
       output.writeInt64(
@@ -3622,12 +3441,11 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(8, (org.tensorflow.framework.TensorProto) value_);
     }
     if (valueCase_ == 9) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, value_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 9, value_);
     }
     if (valueCase_ == 10) {
       output.writeMessage(10, (org.tensorflow.framework.NameAttrList) value_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -3642,7 +3460,7 @@ private static final long serialVersionUID = 0L;
     if (valueCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
         .computeBytesSize(
-            2, (com.google.protobuf.ByteString) value_);
+            2, (com.google.protobuf.ByteString)((com.google.protobuf.ByteString) value_));
     }
     if (valueCase_ == 3) {
       size += com.google.protobuf.CodedOutputStream
@@ -3672,151 +3490,17 @@ private static final long serialVersionUID = 0L;
         .computeMessageSize(8, (org.tensorflow.framework.TensorProto) value_);
     }
     if (valueCase_ == 9) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, value_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(9, value_);
     }
     if (valueCase_ == 10) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(10, (org.tensorflow.framework.NameAttrList) value_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.AttrValue)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.AttrValue other = (org.tensorflow.framework.AttrValue) obj;
-
-    boolean result = true;
-    result = result && getValueCase().equals(
-        other.getValueCase());
-    if (!result) return false;
-    switch (valueCase_) {
-      case 2:
-        result = result && getS()
-            .equals(other.getS());
-        break;
-      case 3:
-        result = result && (getI()
-            == other.getI());
-        break;
-      case 4:
-        result = result && (
-            java.lang.Float.floatToIntBits(getF())
-            == java.lang.Float.floatToIntBits(
-                other.getF()));
-        break;
-      case 5:
-        result = result && (getB()
-            == other.getB());
-        break;
-      case 6:
-        result = result && getTypeValue()
-            == other.getTypeValue();
-        break;
-      case 7:
-        result = result && getShape()
-            .equals(other.getShape());
-        break;
-      case 8:
-        result = result && getTensor()
-            .equals(other.getTensor());
-        break;
-      case 1:
-        result = result && getList()
-            .equals(other.getList());
-        break;
-      case 10:
-        result = result && getFunc()
-            .equals(other.getFunc());
-        break;
-      case 9:
-        result = result && getPlaceholder()
-            .equals(other.getPlaceholder());
-        break;
-      case 0:
-      default:
-    }
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    switch (valueCase_) {
-      case 2:
-        hash = (37 * hash) + S_FIELD_NUMBER;
-        hash = (53 * hash) + getS().hashCode();
-        break;
-      case 3:
-        hash = (37 * hash) + I_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getI());
-        break;
-      case 4:
-        hash = (37 * hash) + F_FIELD_NUMBER;
-        hash = (53 * hash) + java.lang.Float.floatToIntBits(
-            getF());
-        break;
-      case 5:
-        hash = (37 * hash) + B_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getB());
-        break;
-      case 6:
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + getTypeValue();
-        break;
-      case 7:
-        hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-        hash = (53 * hash) + getShape().hashCode();
-        break;
-      case 8:
-        hash = (37 * hash) + TENSOR_FIELD_NUMBER;
-        hash = (53 * hash) + getTensor().hashCode();
-        break;
-      case 1:
-        hash = (37 * hash) + LIST_FIELD_NUMBER;
-        hash = (53 * hash) + getList().hashCode();
-        break;
-      case 10:
-        hash = (37 * hash) + FUNC_FIELD_NUMBER;
-        hash = (53 * hash) + getFunc().hashCode();
-        break;
-      case 9:
-        hash = (37 * hash) + PLACEHOLDER_FIELD_NUMBER;
-        hash = (53 * hash) + getPlaceholder().hashCode();
-        break;
-      case 0:
-      default:
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.AttrValue parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.AttrValue parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.AttrValue parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3840,40 +3524,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.AttrValue parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.AttrValue parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.AttrValue parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.AttrValue parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.AttrValue parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.AttrValue parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -3890,21 +3568,21 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.AttrValue}
+   *
    * <pre>
    * Protocol buffer representing the value for an attr used to configure an Op.
    * Comment indicates the corresponding attr type.  Only the field matching the
    * attr type may be filled.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.AttrValue}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.AttrValue)
       org.tensorflow.framework.AttrValueOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -3912,7 +3590,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.AttrValueProtos.internal_static_tensorflow_AttrValue_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -3925,13 +3603,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -4011,32 +3688,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.AttrValue) {
         return mergeFrom((org.tensorflow.framework.AttrValue)other);
@@ -4095,7 +3746,6 @@ private static final long serialVersionUID = 0L;
           break;
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -4113,7 +3763,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.AttrValue) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -4125,7 +3775,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object value_;
     public ValueCase
         getValueCase() {
-      return ValueCase.forNumber(
+      return ValueCase.valueOf(
           valueCase_);
     }
 
@@ -4138,11 +3788,11 @@ private static final long serialVersionUID = 0L;
 
 
     /**
+     * <code>optional bytes s = 2;</code>
+     *
      * <pre>
      * "string"
      * </pre>
-     *
-     * <code>bytes s = 2;</code>
      */
     public com.google.protobuf.ByteString getS() {
       if (valueCase_ == 2) {
@@ -4151,11 +3801,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.ByteString.EMPTY;
     }
     /**
+     * <code>optional bytes s = 2;</code>
+     *
      * <pre>
      * "string"
      * </pre>
-     *
-     * <code>bytes s = 2;</code>
      */
     public Builder setS(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -4167,11 +3817,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bytes s = 2;</code>
+     *
      * <pre>
      * "string"
      * </pre>
-     *
-     * <code>bytes s = 2;</code>
      */
     public Builder clearS() {
       if (valueCase_ == 2) {
@@ -4183,11 +3833,11 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     * <code>optional int64 i = 3;</code>
+     *
      * <pre>
      * "int"
      * </pre>
-     *
-     * <code>int64 i = 3;</code>
      */
     public long getI() {
       if (valueCase_ == 3) {
@@ -4196,11 +3846,11 @@ private static final long serialVersionUID = 0L;
       return 0L;
     }
     /**
+     * <code>optional int64 i = 3;</code>
+     *
      * <pre>
      * "int"
      * </pre>
-     *
-     * <code>int64 i = 3;</code>
      */
     public Builder setI(long value) {
       valueCase_ = 3;
@@ -4209,11 +3859,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 i = 3;</code>
+     *
      * <pre>
      * "int"
      * </pre>
-     *
-     * <code>int64 i = 3;</code>
      */
     public Builder clearI() {
       if (valueCase_ == 3) {
@@ -4225,11 +3875,11 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     * <code>optional float f = 4;</code>
+     *
      * <pre>
      * "float"
      * </pre>
-     *
-     * <code>float f = 4;</code>
      */
     public float getF() {
       if (valueCase_ == 4) {
@@ -4238,11 +3888,11 @@ private static final long serialVersionUID = 0L;
       return 0F;
     }
     /**
+     * <code>optional float f = 4;</code>
+     *
      * <pre>
      * "float"
      * </pre>
-     *
-     * <code>float f = 4;</code>
      */
     public Builder setF(float value) {
       valueCase_ = 4;
@@ -4251,11 +3901,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional float f = 4;</code>
+     *
      * <pre>
      * "float"
      * </pre>
-     *
-     * <code>float f = 4;</code>
      */
     public Builder clearF() {
       if (valueCase_ == 4) {
@@ -4267,11 +3917,11 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     * <code>optional bool b = 5;</code>
+     *
      * <pre>
      * "bool"
      * </pre>
-     *
-     * <code>bool b = 5;</code>
      */
     public boolean getB() {
       if (valueCase_ == 5) {
@@ -4280,11 +3930,11 @@ private static final long serialVersionUID = 0L;
       return false;
     }
     /**
+     * <code>optional bool b = 5;</code>
+     *
      * <pre>
      * "bool"
      * </pre>
-     *
-     * <code>bool b = 5;</code>
      */
     public Builder setB(boolean value) {
       valueCase_ = 5;
@@ -4293,11 +3943,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bool b = 5;</code>
+     *
      * <pre>
      * "bool"
      * </pre>
-     *
-     * <code>bool b = 5;</code>
      */
     public Builder clearB() {
       if (valueCase_ == 5) {
@@ -4309,11 +3959,11 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     * <code>optional .tensorflow.DataType type = 6;</code>
+     *
      * <pre>
      * "type"
      * </pre>
-     *
-     * <code>.tensorflow.DataType type = 6;</code>
      */
     public int getTypeValue() {
       if (valueCase_ == 6) {
@@ -4322,11 +3972,11 @@ private static final long serialVersionUID = 0L;
       return 0;
     }
     /**
+     * <code>optional .tensorflow.DataType type = 6;</code>
+     *
      * <pre>
      * "type"
      * </pre>
-     *
-     * <code>.tensorflow.DataType type = 6;</code>
      */
     public Builder setTypeValue(int value) {
       valueCase_ = 6;
@@ -4335,26 +3985,25 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.DataType type = 6;</code>
+     *
      * <pre>
      * "type"
      * </pre>
-     *
-     * <code>.tensorflow.DataType type = 6;</code>
      */
     public org.tensorflow.framework.DataType getType() {
       if (valueCase_ == 6) {
-        org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(
-            (java.lang.Integer) value_);
+        org.tensorflow.framework.DataType result =  org.tensorflow.framework.DataType.valueOf((java.lang.Integer) value_);
         return result == null ? org.tensorflow.framework.DataType.UNRECOGNIZED : result;
       }
       return org.tensorflow.framework.DataType.DT_INVALID;
     }
     /**
+     * <code>optional .tensorflow.DataType type = 6;</code>
+     *
      * <pre>
      * "type"
      * </pre>
-     *
-     * <code>.tensorflow.DataType type = 6;</code>
      */
     public Builder setType(org.tensorflow.framework.DataType value) {
       if (value == null) {
@@ -4366,11 +4015,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.DataType type = 6;</code>
+     *
      * <pre>
      * "type"
      * </pre>
-     *
-     * <code>.tensorflow.DataType type = 6;</code>
      */
     public Builder clearType() {
       if (valueCase_ == 6) {
@@ -4381,24 +4030,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> shapeBuilder_;
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
-     */
-    public boolean hasShape() {
-      return valueCase_ == 7;
-    }
-    /**
-     * <pre>
-     * "shape"
-     * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public org.tensorflow.framework.TensorShapeProto getShape() {
       if (shapeBuilder_ == null) {
@@ -4414,11 +4053,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public Builder setShape(org.tensorflow.framework.TensorShapeProto value) {
       if (shapeBuilder_ == null) {
@@ -4434,11 +4073,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public Builder setShape(
         org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -4452,11 +4091,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public Builder mergeShape(org.tensorflow.framework.TensorShapeProto value) {
       if (shapeBuilder_ == null) {
@@ -4478,11 +4117,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public Builder clearShape() {
       if (shapeBuilder_ == null) {
@@ -4501,21 +4140,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public org.tensorflow.framework.TensorShapeProto.Builder getShapeBuilder() {
       return getShapeFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
     public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder() {
       if ((valueCase_ == 7) && (shapeBuilder_ != null)) {
@@ -4528,20 +4167,20 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto shape = 7;</code>
+     *
      * <pre>
      * "shape"
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto shape = 7;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> 
         getShapeFieldBuilder() {
       if (shapeBuilder_ == null) {
         if (!(valueCase_ == 7)) {
           value_ = org.tensorflow.framework.TensorShapeProto.getDefaultInstance();
         }
-        shapeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        shapeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder>(
                 (org.tensorflow.framework.TensorShapeProto) value_,
                 getParentForChildren(),
@@ -4553,24 +4192,14 @@ private static final long serialVersionUID = 0L;
       return shapeBuilder_;
     }
 
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> tensorBuilder_;
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
-     */
-    public boolean hasTensor() {
-      return valueCase_ == 8;
-    }
-    /**
-     * <pre>
-     * "tensor"
-     * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProto getTensor() {
       if (tensorBuilder_ == null) {
@@ -4586,11 +4215,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public Builder setTensor(org.tensorflow.framework.TensorProto value) {
       if (tensorBuilder_ == null) {
@@ -4606,11 +4235,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public Builder setTensor(
         org.tensorflow.framework.TensorProto.Builder builderForValue) {
@@ -4624,11 +4253,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public Builder mergeTensor(org.tensorflow.framework.TensorProto value) {
       if (tensorBuilder_ == null) {
@@ -4650,11 +4279,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public Builder clearTensor() {
       if (tensorBuilder_ == null) {
@@ -4673,21 +4302,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProto.Builder getTensorBuilder() {
       return getTensorFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
     public org.tensorflow.framework.TensorProtoOrBuilder getTensorOrBuilder() {
       if ((valueCase_ == 8) && (tensorBuilder_ != null)) {
@@ -4700,20 +4329,20 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.TensorProto tensor = 8;</code>
+     *
      * <pre>
      * "tensor"
      * </pre>
-     *
-     * <code>.tensorflow.TensorProto tensor = 8;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder> 
         getTensorFieldBuilder() {
       if (tensorBuilder_ == null) {
         if (!(valueCase_ == 8)) {
           value_ = org.tensorflow.framework.TensorProto.getDefaultInstance();
         }
-        tensorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        tensorBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.TensorProto, org.tensorflow.framework.TensorProto.Builder, org.tensorflow.framework.TensorProtoOrBuilder>(
                 (org.tensorflow.framework.TensorProto) value_,
                 getParentForChildren(),
@@ -4725,24 +4354,14 @@ private static final long serialVersionUID = 0L;
       return tensorBuilder_;
     }
 
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.AttrValue.ListValue, org.tensorflow.framework.AttrValue.ListValue.Builder, org.tensorflow.framework.AttrValue.ListValueOrBuilder> listBuilder_;
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
-     */
-    public boolean hasList() {
-      return valueCase_ == 1;
-    }
-    /**
-     * <pre>
-     * any "list(...)"
-     * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public org.tensorflow.framework.AttrValue.ListValue getList() {
       if (listBuilder_ == null) {
@@ -4758,11 +4377,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public Builder setList(org.tensorflow.framework.AttrValue.ListValue value) {
       if (listBuilder_ == null) {
@@ -4778,11 +4397,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public Builder setList(
         org.tensorflow.framework.AttrValue.ListValue.Builder builderForValue) {
@@ -4796,11 +4415,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public Builder mergeList(org.tensorflow.framework.AttrValue.ListValue value) {
       if (listBuilder_ == null) {
@@ -4822,11 +4441,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public Builder clearList() {
       if (listBuilder_ == null) {
@@ -4845,21 +4464,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public org.tensorflow.framework.AttrValue.ListValue.Builder getListBuilder() {
       return getListFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
     public org.tensorflow.framework.AttrValue.ListValueOrBuilder getListOrBuilder() {
       if ((valueCase_ == 1) && (listBuilder_ != null)) {
@@ -4872,20 +4491,20 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.AttrValue.ListValue list = 1;</code>
+     *
      * <pre>
      * any "list(...)"
      * </pre>
-     *
-     * <code>.tensorflow.AttrValue.ListValue list = 1;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.AttrValue.ListValue, org.tensorflow.framework.AttrValue.ListValue.Builder, org.tensorflow.framework.AttrValue.ListValueOrBuilder> 
         getListFieldBuilder() {
       if (listBuilder_ == null) {
         if (!(valueCase_ == 1)) {
           value_ = org.tensorflow.framework.AttrValue.ListValue.getDefaultInstance();
         }
-        listBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        listBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.AttrValue.ListValue, org.tensorflow.framework.AttrValue.ListValue.Builder, org.tensorflow.framework.AttrValue.ListValueOrBuilder>(
                 (org.tensorflow.framework.AttrValue.ListValue) value_,
                 getParentForChildren(),
@@ -4897,30 +4516,17 @@ private static final long serialVersionUID = 0L;
       return listBuilder_;
     }
 
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.NameAttrList, org.tensorflow.framework.NameAttrList.Builder, org.tensorflow.framework.NameAttrListOrBuilder> funcBuilder_;
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
-     */
-    public boolean hasFunc() {
-      return valueCase_ == 10;
-    }
-    /**
-     * <pre>
-     * "func" represents a function. func.name is a function's name or
-     * a primitive op's name. func.attr.first is the name of an attr
-     * defined for that function. func.attr.second is the value for
-     * that attr in the instantiation.
-     * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public org.tensorflow.framework.NameAttrList getFunc() {
       if (funcBuilder_ == null) {
@@ -4936,14 +4542,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public Builder setFunc(org.tensorflow.framework.NameAttrList value) {
       if (funcBuilder_ == null) {
@@ -4959,14 +4565,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public Builder setFunc(
         org.tensorflow.framework.NameAttrList.Builder builderForValue) {
@@ -4980,14 +4586,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public Builder mergeFunc(org.tensorflow.framework.NameAttrList value) {
       if (funcBuilder_ == null) {
@@ -5009,14 +4615,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public Builder clearFunc() {
       if (funcBuilder_ == null) {
@@ -5035,27 +4641,27 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public org.tensorflow.framework.NameAttrList.Builder getFuncBuilder() {
       return getFuncFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
     public org.tensorflow.framework.NameAttrListOrBuilder getFuncOrBuilder() {
       if ((valueCase_ == 10) && (funcBuilder_ != null)) {
@@ -5068,23 +4674,23 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.NameAttrList func = 10;</code>
+     *
      * <pre>
      * "func" represents a function. func.name is a function's name or
      * a primitive op's name. func.attr.first is the name of an attr
      * defined for that function. func.attr.second is the value for
      * that attr in the instantiation.
      * </pre>
-     *
-     * <code>.tensorflow.NameAttrList func = 10;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.NameAttrList, org.tensorflow.framework.NameAttrList.Builder, org.tensorflow.framework.NameAttrListOrBuilder> 
         getFuncFieldBuilder() {
       if (funcBuilder_ == null) {
         if (!(valueCase_ == 10)) {
           value_ = org.tensorflow.framework.NameAttrList.getDefaultInstance();
         }
-        funcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        funcBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.NameAttrList, org.tensorflow.framework.NameAttrList.Builder, org.tensorflow.framework.NameAttrListOrBuilder>(
                 (org.tensorflow.framework.NameAttrList) value_,
                 getParentForChildren(),
@@ -5097,6 +4703,8 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     * <code>optional string placeholder = 9;</code>
+     *
      * <pre>
      * This is a placeholder only used in nodes defined inside a
      * function.  It indicates the attr value will be supplied when
@@ -5106,8 +4714,6 @@ private static final long serialVersionUID = 0L;
      * set to "bar", the instantiated node N's attr A will have been
      * given the value "bar".
      * </pre>
-     *
-     * <code>string placeholder = 9;</code>
      */
     public java.lang.String getPlaceholder() {
       java.lang.Object ref = "";
@@ -5127,6 +4733,8 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string placeholder = 9;</code>
+     *
      * <pre>
      * This is a placeholder only used in nodes defined inside a
      * function.  It indicates the attr value will be supplied when
@@ -5136,8 +4744,6 @@ private static final long serialVersionUID = 0L;
      * set to "bar", the instantiated node N's attr A will have been
      * given the value "bar".
      * </pre>
-     *
-     * <code>string placeholder = 9;</code>
      */
     public com.google.protobuf.ByteString
         getPlaceholderBytes() {
@@ -5158,6 +4764,8 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string placeholder = 9;</code>
+     *
      * <pre>
      * This is a placeholder only used in nodes defined inside a
      * function.  It indicates the attr value will be supplied when
@@ -5167,8 +4775,6 @@ private static final long serialVersionUID = 0L;
      * set to "bar", the instantiated node N's attr A will have been
      * given the value "bar".
      * </pre>
-     *
-     * <code>string placeholder = 9;</code>
      */
     public Builder setPlaceholder(
         java.lang.String value) {
@@ -5181,6 +4787,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string placeholder = 9;</code>
+     *
      * <pre>
      * This is a placeholder only used in nodes defined inside a
      * function.  It indicates the attr value will be supplied when
@@ -5190,8 +4798,6 @@ private static final long serialVersionUID = 0L;
      * set to "bar", the instantiated node N's attr A will have been
      * given the value "bar".
      * </pre>
-     *
-     * <code>string placeholder = 9;</code>
      */
     public Builder clearPlaceholder() {
       if (valueCase_ == 9) {
@@ -5202,6 +4808,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string placeholder = 9;</code>
+     *
      * <pre>
      * This is a placeholder only used in nodes defined inside a
      * function.  It indicates the attr value will be supplied when
@@ -5211,8 +4819,6 @@ private static final long serialVersionUID = 0L;
      * set to "bar", the instantiated node N's attr A will have been
      * given the value "bar".
      * </pre>
-     *
-     * <code>string placeholder = 9;</code>
      */
     public Builder setPlaceholderBytes(
         com.google.protobuf.ByteString value) {
@@ -5227,12 +4833,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -5255,7 +4861,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AttrValue(input, extensionRegistry);
+      try {
+        return new AttrValue(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

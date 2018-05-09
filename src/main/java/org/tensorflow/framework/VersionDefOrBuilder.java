@@ -8,45 +8,45 @@ public interface VersionDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int32 producer = 1;</code>
+   *
    * <pre>
    * The version of the code that produced this data.
    * </pre>
-   *
-   * <code>int32 producer = 1;</code>
    */
   int getProducer();
 
   /**
+   * <code>optional int32 min_consumer = 2;</code>
+   *
    * <pre>
    * Any consumer below this version is not allowed to consume this data.
    * </pre>
-   *
-   * <code>int32 min_consumer = 2;</code>
    */
   int getMinConsumer();
 
   /**
+   * <code>repeated int32 bad_consumers = 3;</code>
+   *
    * <pre>
    * Specific consumer versions which are disallowed (e.g. due to bugs).
    * </pre>
-   *
-   * <code>repeated int32 bad_consumers = 3;</code>
    */
   java.util.List<java.lang.Integer> getBadConsumersList();
   /**
+   * <code>repeated int32 bad_consumers = 3;</code>
+   *
    * <pre>
    * Specific consumer versions which are disallowed (e.g. due to bugs).
    * </pre>
-   *
-   * <code>repeated int32 bad_consumers = 3;</code>
    */
   int getBadConsumersCount();
   /**
+   * <code>repeated int32 bad_consumers = 3;</code>
+   *
    * <pre>
    * Specific consumer versions which are disallowed (e.g. due to bugs).
    * </pre>
-   *
-   * <code>repeated int32 bad_consumers = 3;</code>
    */
   int getBadConsumers(int index);
 }

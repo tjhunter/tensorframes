@@ -8,46 +8,46 @@ public interface NodeExecStatsOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string node_name = 1;</code>
+   *
    * <pre>
    * TODO(tucker): Use some more compact form of node identity than
    * the full string name.  Either all processes should agree on a
    * global id (cost_id?) for each node, or we should use a hash of
    * the name.
    * </pre>
-   *
-   * <code>string node_name = 1;</code>
    */
   java.lang.String getNodeName();
   /**
+   * <code>optional string node_name = 1;</code>
+   *
    * <pre>
    * TODO(tucker): Use some more compact form of node identity than
    * the full string name.  Either all processes should agree on a
    * global id (cost_id?) for each node, or we should use a hash of
    * the name.
    * </pre>
-   *
-   * <code>string node_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getNodeNameBytes();
 
   /**
-   * <code>int64 all_start_micros = 2;</code>
+   * <code>optional int64 all_start_micros = 2;</code>
    */
   long getAllStartMicros();
 
   /**
-   * <code>int64 op_start_rel_micros = 3;</code>
+   * <code>optional int64 op_start_rel_micros = 3;</code>
    */
   long getOpStartRelMicros();
 
   /**
-   * <code>int64 op_end_rel_micros = 4;</code>
+   * <code>optional int64 op_end_rel_micros = 4;</code>
    */
   long getOpEndRelMicros();
 
   /**
-   * <code>int64 all_end_rel_micros = 5;</code>
+   * <code>optional int64 all_end_rel_micros = 5;</code>
    */
   long getAllEndRelMicros();
 
@@ -100,22 +100,22 @@ public interface NodeExecStatsOrBuilder extends
       int index);
 
   /**
-   * <code>string timeline_label = 8;</code>
+   * <code>optional string timeline_label = 8;</code>
    */
   java.lang.String getTimelineLabel();
   /**
-   * <code>string timeline_label = 8;</code>
+   * <code>optional string timeline_label = 8;</code>
    */
   com.google.protobuf.ByteString
       getTimelineLabelBytes();
 
   /**
-   * <code>int64 scheduled_micros = 9;</code>
+   * <code>optional int64 scheduled_micros = 9;</code>
    */
   long getScheduledMicros();
 
   /**
-   * <code>uint32 thread_id = 10;</code>
+   * <code>optional uint32 thread_id = 10;</code>
    */
   int getThreadId();
 
@@ -144,15 +144,15 @@ public interface NodeExecStatsOrBuilder extends
       int index);
 
   /**
-   * <code>.tensorflow.MemoryStats memory_stats = 12;</code>
+   * <code>optional .tensorflow.MemoryStats memory_stats = 12;</code>
    */
   boolean hasMemoryStats();
   /**
-   * <code>.tensorflow.MemoryStats memory_stats = 12;</code>
+   * <code>optional .tensorflow.MemoryStats memory_stats = 12;</code>
    */
   org.tensorflow.framework.MemoryStats getMemoryStats();
   /**
-   * <code>.tensorflow.MemoryStats memory_stats = 12;</code>
+   * <code>optional .tensorflow.MemoryStats memory_stats = 12;</code>
    */
   org.tensorflow.framework.MemoryStatsOrBuilder getMemoryStatsOrBuilder();
 }

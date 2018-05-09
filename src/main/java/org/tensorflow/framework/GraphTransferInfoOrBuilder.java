@@ -104,45 +104,45 @@ public interface GraphTransferInfoOrBuilder extends
       int index);
 
   /**
+   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
+   *
    * <pre>
    * Input Node parameters of transferred graph
    * </pre>
-   *
-   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
    */
   java.util.List<org.tensorflow.framework.GraphTransferInfo.GraphInputNodeInfo> 
       getGraphInputNodeInfoList();
   /**
+   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
+   *
    * <pre>
    * Input Node parameters of transferred graph
    * </pre>
-   *
-   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
    */
   org.tensorflow.framework.GraphTransferInfo.GraphInputNodeInfo getGraphInputNodeInfo(int index);
   /**
+   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
+   *
    * <pre>
    * Input Node parameters of transferred graph
    * </pre>
-   *
-   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
    */
   int getGraphInputNodeInfoCount();
   /**
+   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
+   *
    * <pre>
    * Input Node parameters of transferred graph
    * </pre>
-   *
-   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
    */
   java.util.List<? extends org.tensorflow.framework.GraphTransferInfo.GraphInputNodeInfoOrBuilder> 
       getGraphInputNodeInfoOrBuilderList();
   /**
+   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
+   *
    * <pre>
    * Input Node parameters of transferred graph
    * </pre>
-   *
-   * <code>repeated .tensorflow.GraphTransferInfo.GraphInputNodeInfo graph_input_node_info = 5;</code>
    */
   org.tensorflow.framework.GraphTransferInfo.GraphInputNodeInfoOrBuilder getGraphInputNodeInfoOrBuilder(
       int index);
@@ -172,19 +172,19 @@ public interface GraphTransferInfoOrBuilder extends
       int index);
 
   /**
+   * <code>optional .tensorflow.GraphTransferInfo.Destination destination = 7;</code>
+   *
    * <pre>
    * Destination of graph transfer
    * </pre>
-   *
-   * <code>.tensorflow.GraphTransferInfo.Destination destination = 7;</code>
    */
   int getDestinationValue();
   /**
+   * <code>optional .tensorflow.GraphTransferInfo.Destination destination = 7;</code>
+   *
    * <pre>
    * Destination of graph transfer
    * </pre>
-   *
-   * <code>.tensorflow.GraphTransferInfo.Destination destination = 7;</code>
    */
   org.tensorflow.framework.GraphTransferInfo.Destination getDestination();
 }

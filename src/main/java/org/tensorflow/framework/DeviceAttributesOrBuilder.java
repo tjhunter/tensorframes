@@ -8,102 +8,102 @@ public interface DeviceAttributesOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * Fully specified name of the device within a cluster.
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   java.lang.String getName();
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * Fully specified name of the device within a cluster.
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * String representation of device_type.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   java.lang.String getDeviceType();
   /**
+   * <code>optional string device_type = 2;</code>
+   *
    * <pre>
    * String representation of device_type.
    * </pre>
-   *
-   * <code>string device_type = 2;</code>
    */
   com.google.protobuf.ByteString
       getDeviceTypeBytes();
 
   /**
+   * <code>optional int64 memory_limit = 4;</code>
+   *
    * <pre>
    * Memory capacity of device in bytes.
    * </pre>
-   *
-   * <code>int64 memory_limit = 4;</code>
    */
   long getMemoryLimit();
 
   /**
+   * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+   *
    * <pre>
    * Platform-specific data about device that may be useful
    * for supporting efficient data transfers.
    * </pre>
-   *
-   * <code>.tensorflow.DeviceLocality locality = 5;</code>
    */
   boolean hasLocality();
   /**
+   * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+   *
    * <pre>
    * Platform-specific data about device that may be useful
    * for supporting efficient data transfers.
    * </pre>
-   *
-   * <code>.tensorflow.DeviceLocality locality = 5;</code>
    */
   org.tensorflow.framework.DeviceLocality getLocality();
   /**
+   * <code>optional .tensorflow.DeviceLocality locality = 5;</code>
+   *
    * <pre>
    * Platform-specific data about device that may be useful
    * for supporting efficient data transfers.
    * </pre>
-   *
-   * <code>.tensorflow.DeviceLocality locality = 5;</code>
    */
   org.tensorflow.framework.DeviceLocalityOrBuilder getLocalityOrBuilder();
 
   /**
+   * <code>optional fixed64 incarnation = 6;</code>
+   *
    * <pre>
    * A device is assigned a global unique number each time it is
    * initialized. "incarnation" should never be 0.
    * </pre>
-   *
-   * <code>fixed64 incarnation = 6;</code>
    */
   long getIncarnation();
 
   /**
+   * <code>optional string physical_device_desc = 7;</code>
+   *
    * <pre>
    * String representation of the physical device that this device maps to.
    * </pre>
-   *
-   * <code>string physical_device_desc = 7;</code>
    */
   java.lang.String getPhysicalDeviceDesc();
   /**
+   * <code>optional string physical_device_desc = 7;</code>
+   *
    * <pre>
    * String representation of the physical device that this device maps to.
    * </pre>
-   *
-   * <code>string physical_device_desc = 7;</code>
    */
   com.google.protobuf.ByteString
       getPhysicalDeviceDescBytes();

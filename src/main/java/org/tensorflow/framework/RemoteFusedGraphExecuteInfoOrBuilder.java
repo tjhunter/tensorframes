@@ -8,231 +8,231 @@ public interface RemoteFusedGraphExecuteInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+   *
    * <pre>
    * Definition of remote graph
    * </pre>
-   *
-   * <code>.tensorflow.GraphDef remote_graph = 1;</code>
    */
   boolean hasRemoteGraph();
   /**
+   * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+   *
    * <pre>
    * Definition of remote graph
    * </pre>
-   *
-   * <code>.tensorflow.GraphDef remote_graph = 1;</code>
    */
   org.tensorflow.framework.GraphDef getRemoteGraph();
   /**
+   * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+   *
    * <pre>
    * Definition of remote graph
    * </pre>
-   *
-   * <code>.tensorflow.GraphDef remote_graph = 1;</code>
    */
   org.tensorflow.framework.GraphDefOrBuilder getRemoteGraphOrBuilder();
 
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
-  java.util.List<java.lang.String>
+  com.google.protobuf.ProtocolStringList
       getGraphInputNodeNameList();
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   int getGraphInputNodeNameCount();
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   java.lang.String getGraphInputNodeName(int index);
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   com.google.protobuf.ByteString
       getGraphInputNodeNameBytes(int index);
 
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
-  java.util.List<java.lang.String>
+  com.google.protobuf.ProtocolStringList
       getGraphOutputNodeNameList();
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   int getGraphOutputNodeNameCount();
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   java.lang.String getGraphOutputNodeName(int index);
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   com.google.protobuf.ByteString
       getGraphOutputNodeNameBytes(int index);
 
   /**
+   * <code>optional string executor_name = 4;</code>
+   *
    * <pre>
    * Executor's name
    * </pre>
-   *
-   * <code>string executor_name = 4;</code>
    */
   java.lang.String getExecutorName();
   /**
+   * <code>optional string executor_name = 4;</code>
+   *
    * <pre>
    * Executor's name
    * </pre>
-   *
-   * <code>string executor_name = 4;</code>
    */
   com.google.protobuf.ByteString
       getExecutorNameBytes();
 
   /**
+   * <code>optional bytes serialized_executor_parameters = 5;</code>
+   *
    * <pre>
    * Optional: Parameters given to the executor
    * </pre>
-   *
-   * <code>bytes serialized_executor_parameters = 5;</code>
    */
   com.google.protobuf.ByteString getSerializedExecutorParameters();
 
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> 
       getDefaultGraphInputTensorShapeList();
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto getDefaultGraphInputTensorShape(int index);
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   int getDefaultGraphInputTensorShapeCount();
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   java.util.List<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
       getDefaultGraphInputTensorShapeOrBuilderList();
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder getDefaultGraphInputTensorShapeOrBuilder(
       int index);
 
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> 
       getDefaultGraphOutputTensorShapeList();
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto getDefaultGraphOutputTensorShape(int index);
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   int getDefaultGraphOutputTensorShapeCount();
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   java.util.List<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
       getDefaultGraphOutputTensorShapeOrBuilderList();
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder getDefaultGraphOutputTensorShapeOrBuilder(
       int index);

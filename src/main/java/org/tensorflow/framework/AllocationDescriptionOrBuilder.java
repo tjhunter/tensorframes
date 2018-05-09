@@ -8,65 +8,65 @@ public interface AllocationDescriptionOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int64 requested_bytes = 1;</code>
+   *
    * <pre>
    * Total number of bytes requested
    * </pre>
-   *
-   * <code>int64 requested_bytes = 1;</code>
    */
   long getRequestedBytes();
 
   /**
+   * <code>optional int64 allocated_bytes = 2;</code>
+   *
    * <pre>
    * Total number of bytes allocated if known
    * </pre>
-   *
-   * <code>int64 allocated_bytes = 2;</code>
    */
   long getAllocatedBytes();
 
   /**
+   * <code>optional string allocator_name = 3;</code>
+   *
    * <pre>
    * Name of the allocator used
    * </pre>
-   *
-   * <code>string allocator_name = 3;</code>
    */
   java.lang.String getAllocatorName();
   /**
+   * <code>optional string allocator_name = 3;</code>
+   *
    * <pre>
    * Name of the allocator used
    * </pre>
-   *
-   * <code>string allocator_name = 3;</code>
    */
   com.google.protobuf.ByteString
       getAllocatorNameBytes();
 
   /**
+   * <code>optional int64 allocation_id = 4;</code>
+   *
    * <pre>
    * Identifier of the allocated buffer if known
    * </pre>
-   *
-   * <code>int64 allocation_id = 4;</code>
    */
   long getAllocationId();
 
   /**
+   * <code>optional bool has_single_reference = 5;</code>
+   *
    * <pre>
    * Set if this tensor only has one remaining reference
    * </pre>
-   *
-   * <code>bool has_single_reference = 5;</code>
    */
   boolean getHasSingleReference();
 
   /**
+   * <code>optional uint64 ptr = 6;</code>
+   *
    * <pre>
    * Address of the allocation.
    * </pre>
-   *
-   * <code>uint64 ptr = 6;</code>
    */
   long getPtr();
 }

@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.CostGraphDef}
  */
 public  final class CostGraphDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.CostGraphDef)
     CostGraphDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use CostGraphDef.newBuilder() to construct.
-  private CostGraphDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private CostGraphDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private CostGraphDef() {
@@ -22,19 +21,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private CostGraphDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -44,8 +37,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -55,22 +47,21 @@ private static final long serialVersionUID = 0L;
               node_ = new java.util.ArrayList<org.tensorflow.framework.CostGraphDef.Node>();
               mutable_bitField0_ |= 0x00000001;
             }
-            node_.add(
-                input.readMessage(org.tensorflow.framework.CostGraphDef.Node.parser(), extensionRegistry));
+            node_.add(input.readMessage(org.tensorflow.framework.CostGraphDef.Node.parser(), extensionRegistry));
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
         node_ = java.util.Collections.unmodifiableList(node_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -79,7 +70,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -91,49 +82,49 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name of the node. Names are globally unique.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name of the node. Names are globally unique.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
+     * <code>optional string device = 2;</code>
+     *
      * <pre>
      * The device of the node. Can be empty if the node is mapped to the
      * default partition or partitioning hasn't been run yet.
      * </pre>
-     *
-     * <code>string device = 2;</code>
      */
     java.lang.String getDevice();
     /**
+     * <code>optional string device = 2;</code>
+     *
      * <pre>
      * The device of the node. Can be empty if the node is mapped to the
      * default partition or partitioning hasn't been run yet.
      * </pre>
-     *
-     * <code>string device = 2;</code>
      */
     com.google.protobuf.ByteString
         getDeviceBytes();
 
     /**
+     * <code>optional int32 id = 3;</code>
+     *
      * <pre>
      * The id of the node. Node ids are only unique inside a partition.
      * </pre>
-     *
-     * <code>int32 id = 3;</code>
      */
     int getId();
 
@@ -186,99 +177,99 @@ private static final long serialVersionUID = 0L;
         int index);
 
     /**
+     * <code>optional int64 temporary_memory_size = 6;</code>
+     *
      * <pre>
      * Temporary memory used by this node.
      * </pre>
-     *
-     * <code>int64 temporary_memory_size = 6;</code>
      */
     long getTemporaryMemorySize();
 
     /**
+     * <code>optional int64 persistent_memory_size = 12;</code>
+     *
      * <pre>
      * Persistent memory used by this node.
      * </pre>
-     *
-     * <code>int64 persistent_memory_size = 12;</code>
      */
     long getPersistentMemorySize();
 
     /**
-     * <code>int64 host_temp_memory_size = 10 [deprecated = true];</code>
+     * <code>optional int64 host_temp_memory_size = 10 [deprecated = true];</code>
      */
     @java.lang.Deprecated long getHostTempMemorySize();
 
     /**
-     * <code>int64 device_temp_memory_size = 11 [deprecated = true];</code>
+     * <code>optional int64 device_temp_memory_size = 11 [deprecated = true];</code>
      */
     @java.lang.Deprecated long getDeviceTempMemorySize();
 
     /**
-     * <code>int64 device_persistent_memory_size = 16 [deprecated = true];</code>
+     * <code>optional int64 device_persistent_memory_size = 16 [deprecated = true];</code>
      */
     @java.lang.Deprecated long getDevicePersistentMemorySize();
 
     /**
+     * <code>optional int64 compute_cost = 9;</code>
+     *
      * <pre>
      * Estimate of the computational cost of this node, in microseconds.
      * </pre>
-     *
-     * <code>int64 compute_cost = 9;</code>
      */
     long getComputeCost();
 
     /**
+     * <code>optional int64 compute_time = 14;</code>
+     *
      * <pre>
      * Analytical estimate of the computational cost of this node, in
      * microseconds.
      * </pre>
-     *
-     * <code>int64 compute_time = 14;</code>
      */
     long getComputeTime();
 
     /**
+     * <code>optional int64 memory_time = 15;</code>
+     *
      * <pre>
      * Analytical estimate of the memory access cost of this node, in
      * microseconds.
      * </pre>
-     *
-     * <code>int64 memory_time = 15;</code>
      */
     long getMemoryTime();
 
     /**
+     * <code>optional bool is_final = 7;</code>
+     *
      * <pre>
      * If true, the output is permanent: it can't be discarded, because this
      * node is part of the "final output". Nodes may depend on final nodes.
      * </pre>
-     *
-     * <code>bool is_final = 7;</code>
      */
     boolean getIsFinal();
 
     /**
+     * <code>repeated int32 control_input = 8;</code>
+     *
      * <pre>
      * Ids of the control inputs for this node.
      * </pre>
-     *
-     * <code>repeated int32 control_input = 8;</code>
      */
     java.util.List<java.lang.Integer> getControlInputList();
     /**
+     * <code>repeated int32 control_input = 8;</code>
+     *
      * <pre>
      * Ids of the control inputs for this node.
      * </pre>
-     *
-     * <code>repeated int32 control_input = 8;</code>
      */
     int getControlInputCount();
     /**
+     * <code>repeated int32 control_input = 8;</code>
+     *
      * <pre>
      * Ids of the control inputs for this node.
      * </pre>
-     *
-     * <code>repeated int32 control_input = 8;</code>
      */
     int getControlInput(int index);
   }
@@ -286,12 +277,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.CostGraphDef.Node}
    */
   public  static final class Node extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.CostGraphDef.Node)
       NodeOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Node.newBuilder() to construct.
-    private Node(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Node(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private Node() {
@@ -315,19 +305,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Node(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -337,20 +321,19 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               device_ = s;
               break;
@@ -365,8 +348,7 @@ private static final long serialVersionUID = 0L;
                 inputInfo_ = new java.util.ArrayList<org.tensorflow.framework.CostGraphDef.Node.InputInfo>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              inputInfo_.add(
-                  input.readMessage(org.tensorflow.framework.CostGraphDef.Node.InputInfo.parser(), extensionRegistry));
+              inputInfo_.add(input.readMessage(org.tensorflow.framework.CostGraphDef.Node.InputInfo.parser(), extensionRegistry));
               break;
             }
             case 42: {
@@ -374,8 +356,7 @@ private static final long serialVersionUID = 0L;
                 outputInfo_ = new java.util.ArrayList<org.tensorflow.framework.CostGraphDef.Node.OutputInfo>();
                 mutable_bitField0_ |= 0x00000010;
               }
-              outputInfo_.add(
-                  input.readMessage(org.tensorflow.framework.CostGraphDef.Node.OutputInfo.parser(), extensionRegistry));
+              outputInfo_.add(input.readMessage(org.tensorflow.framework.CostGraphDef.Node.OutputInfo.parser(), extensionRegistry));
               break;
             }
             case 48: {
@@ -447,10 +428,11 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           inputInfo_ = java.util.Collections.unmodifiableList(inputInfo_);
@@ -461,7 +443,6 @@ private static final long serialVersionUID = 0L;
         if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
           controlInput_ = java.util.Collections.unmodifiableList(controlInput_);
         }
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -470,7 +451,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -482,31 +463,30 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>int32 preceding_node = 1;</code>
+       * <code>optional int32 preceding_node = 1;</code>
        */
       int getPrecedingNode();
 
       /**
-       * <code>int32 preceding_port = 2;</code>
+       * <code>optional int32 preceding_port = 2;</code>
        */
       int getPrecedingPort();
     }
     /**
+     * Protobuf type {@code tensorflow.CostGraphDef.Node.InputInfo}
+     *
      * <pre>
      * Inputs of this node. They must be executed before this node can be
      * executed. An input is a particular output of another node, specified
      * by the node id and the output index.
      * </pre>
-     *
-     * Protobuf type {@code tensorflow.CostGraphDef.Node.InputInfo}
      */
     public  static final class InputInfo extends
-        com.google.protobuf.GeneratedMessageV3 implements
+        com.google.protobuf.GeneratedMessage implements
         // @@protoc_insertion_point(message_implements:tensorflow.CostGraphDef.Node.InputInfo)
         InputInfoOrBuilder {
-    private static final long serialVersionUID = 0L;
       // Use InputInfo.newBuilder() to construct.
-      private InputInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      private InputInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
       }
       private InputInfo() {
@@ -517,19 +497,13 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
-        return this.unknownFields;
+        return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
       }
       private InputInfo(
           com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
         this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
         int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
           boolean done = false;
           while (!done) {
@@ -539,8 +513,7 @@ private static final long serialVersionUID = 0L;
                 done = true;
                 break;
               default: {
-                if (!parseUnknownFieldProto3(
-                    input, unknownFields, extensionRegistry, tag)) {
+                if (!input.skipField(tag)) {
                   done = true;
                 }
                 break;
@@ -558,12 +531,12 @@ private static final long serialVersionUID = 0L;
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+          throw new RuntimeException(e.setUnfinishedMessage(this));
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
+          throw new RuntimeException(
+              new com.google.protobuf.InvalidProtocolBufferException(
+                  e.getMessage()).setUnfinishedMessage(this));
         } finally {
-          this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
@@ -572,7 +545,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_InputInfo_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_InputInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -582,7 +555,7 @@ private static final long serialVersionUID = 0L;
       public static final int PRECEDING_NODE_FIELD_NUMBER = 1;
       private int precedingNode_;
       /**
-       * <code>int32 preceding_node = 1;</code>
+       * <code>optional int32 preceding_node = 1;</code>
        */
       public int getPrecedingNode() {
         return precedingNode_;
@@ -591,7 +564,7 @@ private static final long serialVersionUID = 0L;
       public static final int PRECEDING_PORT_FIELD_NUMBER = 2;
       private int precedingPort_;
       /**
-       * <code>int32 preceding_port = 2;</code>
+       * <code>optional int32 preceding_port = 2;</code>
        */
       public int getPrecedingPort() {
         return precedingPort_;
@@ -615,7 +588,6 @@ private static final long serialVersionUID = 0L;
         if (precedingPort_ != 0) {
           output.writeInt32(2, precedingPort_);
         }
-        unknownFields.writeTo(output);
       }
 
       public int getSerializedSize() {
@@ -631,57 +603,11 @@ private static final long serialVersionUID = 0L;
           size += com.google.protobuf.CodedOutputStream
             .computeInt32Size(2, precedingPort_);
         }
-        size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
       }
 
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof org.tensorflow.framework.CostGraphDef.Node.InputInfo)) {
-          return super.equals(obj);
-        }
-        org.tensorflow.framework.CostGraphDef.Node.InputInfo other = (org.tensorflow.framework.CostGraphDef.Node.InputInfo) obj;
-
-        boolean result = true;
-        result = result && (getPrecedingNode()
-            == other.getPrecedingNode());
-        result = result && (getPrecedingPort()
-            == other.getPrecedingPort());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + PRECEDING_NODE_FIELD_NUMBER;
-        hash = (53 * hash) + getPrecedingNode();
-        hash = (37 * hash) + PRECEDING_PORT_FIELD_NUMBER;
-        hash = (53 * hash) + getPrecedingPort();
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
+      private static final long serialVersionUID = 0L;
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -705,40 +631,34 @@ private static final long serialVersionUID = 0L;
       }
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+        return PARSER.parseFrom(input);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+        return PARSER.parseFrom(input, extensionRegistry);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
+        return PARSER.parseDelimitedFrom(input);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+        return PARSER.parseFrom(input);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.InputInfo parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+        return PARSER.parseFrom(input, extensionRegistry);
       }
 
       public Builder newBuilderForType() { return newBuilder(); }
@@ -755,21 +675,21 @@ private static final long serialVersionUID = 0L;
 
       @java.lang.Override
       protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
       /**
+       * Protobuf type {@code tensorflow.CostGraphDef.Node.InputInfo}
+       *
        * <pre>
        * Inputs of this node. They must be executed before this node can be
        * executed. An input is a particular output of another node, specified
        * by the node id and the output index.
        * </pre>
-       *
-       * Protobuf type {@code tensorflow.CostGraphDef.Node.InputInfo}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:tensorflow.CostGraphDef.Node.InputInfo)
           org.tensorflow.framework.CostGraphDef.Node.InputInfoOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
@@ -777,7 +697,7 @@ private static final long serialVersionUID = 0L;
           return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_InputInfo_descriptor;
         }
 
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
           return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_InputInfo_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
@@ -790,13 +710,12 @@ private static final long serialVersionUID = 0L;
         }
 
         private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           }
         }
         public Builder clear() {
@@ -833,32 +752,6 @@ private static final long serialVersionUID = 0L;
           return result;
         }
 
-        public Builder clone() {
-          return (Builder) super.clone();
-        }
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return (Builder) super.setField(field, value);
-        }
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
-        }
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
-        }
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
-        }
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
-        }
         public Builder mergeFrom(com.google.protobuf.Message other) {
           if (other instanceof org.tensorflow.framework.CostGraphDef.Node.InputInfo) {
             return mergeFrom((org.tensorflow.framework.CostGraphDef.Node.InputInfo)other);
@@ -876,7 +769,6 @@ private static final long serialVersionUID = 0L;
           if (other.getPrecedingPort() != 0) {
             setPrecedingPort(other.getPrecedingPort());
           }
-          this.mergeUnknownFields(other.unknownFields);
           onChanged();
           return this;
         }
@@ -894,7 +786,7 @@ private static final long serialVersionUID = 0L;
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             parsedMessage = (org.tensorflow.framework.CostGraphDef.Node.InputInfo) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
+            throw e;
           } finally {
             if (parsedMessage != null) {
               mergeFrom(parsedMessage);
@@ -905,13 +797,13 @@ private static final long serialVersionUID = 0L;
 
         private int precedingNode_ ;
         /**
-         * <code>int32 preceding_node = 1;</code>
+         * <code>optional int32 preceding_node = 1;</code>
          */
         public int getPrecedingNode() {
           return precedingNode_;
         }
         /**
-         * <code>int32 preceding_node = 1;</code>
+         * <code>optional int32 preceding_node = 1;</code>
          */
         public Builder setPrecedingNode(int value) {
           
@@ -920,7 +812,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>int32 preceding_node = 1;</code>
+         * <code>optional int32 preceding_node = 1;</code>
          */
         public Builder clearPrecedingNode() {
           
@@ -931,13 +823,13 @@ private static final long serialVersionUID = 0L;
 
         private int precedingPort_ ;
         /**
-         * <code>int32 preceding_port = 2;</code>
+         * <code>optional int32 preceding_port = 2;</code>
          */
         public int getPrecedingPort() {
           return precedingPort_;
         }
         /**
-         * <code>int32 preceding_port = 2;</code>
+         * <code>optional int32 preceding_port = 2;</code>
          */
         public Builder setPrecedingPort(int value) {
           
@@ -946,7 +838,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>int32 preceding_port = 2;</code>
+         * <code>optional int32 preceding_port = 2;</code>
          */
         public Builder clearPrecedingPort() {
           
@@ -956,12 +848,12 @@ private static final long serialVersionUID = 0L;
         }
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return this;
         }
 
         public final Builder mergeUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
+          return this;
         }
 
 
@@ -984,7 +876,16 @@ private static final long serialVersionUID = 0L;
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new InputInfo(input, extensionRegistry);
+          try {
+            return new InputInfo(input, extensionRegistry);
+          } catch (RuntimeException e) {
+            if (e.getCause() instanceof
+                com.google.protobuf.InvalidProtocolBufferException) {
+              throw (com.google.protobuf.InvalidProtocolBufferException)
+                  e.getCause();
+            }
+            throw e;
+          }
         }
       };
 
@@ -1008,57 +909,56 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>int64 size = 1;</code>
+       * <code>optional int64 size = 1;</code>
        */
       long getSize();
 
       /**
+       * <code>optional int64 alias_input_port = 2;</code>
+       *
        * <pre>
        * If &gt;= 0, the output is an alias of an input. Note that an alias input
        * may itself be an alias. The algorithm will therefore need to follow
        * those pointers.
        * </pre>
-       *
-       * <code>int64 alias_input_port = 2;</code>
        */
       long getAliasInputPort();
 
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
        */
       boolean hasShape();
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
        */
       org.tensorflow.framework.TensorShapeProto getShape();
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
        */
       org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder();
 
       /**
-       * <code>.tensorflow.DataType dtype = 4;</code>
+       * <code>optional .tensorflow.DataType dtype = 4;</code>
        */
       int getDtypeValue();
       /**
-       * <code>.tensorflow.DataType dtype = 4;</code>
+       * <code>optional .tensorflow.DataType dtype = 4;</code>
        */
       org.tensorflow.framework.DataType getDtype();
     }
     /**
+     * Protobuf type {@code tensorflow.CostGraphDef.Node.OutputInfo}
+     *
      * <pre>
      * Outputs of this node.
      * </pre>
-     *
-     * Protobuf type {@code tensorflow.CostGraphDef.Node.OutputInfo}
      */
     public  static final class OutputInfo extends
-        com.google.protobuf.GeneratedMessageV3 implements
+        com.google.protobuf.GeneratedMessage implements
         // @@protoc_insertion_point(message_implements:tensorflow.CostGraphDef.Node.OutputInfo)
         OutputInfoOrBuilder {
-    private static final long serialVersionUID = 0L;
       // Use OutputInfo.newBuilder() to construct.
-      private OutputInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      private OutputInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
       }
       private OutputInfo() {
@@ -1070,19 +970,13 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
-        return this.unknownFields;
+        return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
       }
       private OutputInfo(
           com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
         this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
         int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
           boolean done = false;
           while (!done) {
@@ -1092,8 +986,7 @@ private static final long serialVersionUID = 0L;
                 done = true;
                 break;
               default: {
-                if (!parseUnknownFieldProto3(
-                    input, unknownFields, extensionRegistry, tag)) {
+                if (!input.skipField(tag)) {
                   done = true;
                 }
                 break;
@@ -1130,12 +1023,12 @@ private static final long serialVersionUID = 0L;
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+          throw new RuntimeException(e.setUnfinishedMessage(this));
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
+          throw new RuntimeException(
+              new com.google.protobuf.InvalidProtocolBufferException(
+                  e.getMessage()).setUnfinishedMessage(this));
         } finally {
-          this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
@@ -1144,7 +1037,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_OutputInfo_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_OutputInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1154,7 +1047,7 @@ private static final long serialVersionUID = 0L;
       public static final int SIZE_FIELD_NUMBER = 1;
       private long size_;
       /**
-       * <code>int64 size = 1;</code>
+       * <code>optional int64 size = 1;</code>
        */
       public long getSize() {
         return size_;
@@ -1163,13 +1056,13 @@ private static final long serialVersionUID = 0L;
       public static final int ALIAS_INPUT_PORT_FIELD_NUMBER = 2;
       private long aliasInputPort_;
       /**
+       * <code>optional int64 alias_input_port = 2;</code>
+       *
        * <pre>
        * If &gt;= 0, the output is an alias of an input. Note that an alias input
        * may itself be an alias. The algorithm will therefore need to follow
        * those pointers.
        * </pre>
-       *
-       * <code>int64 alias_input_port = 2;</code>
        */
       public long getAliasInputPort() {
         return aliasInputPort_;
@@ -1178,19 +1071,19 @@ private static final long serialVersionUID = 0L;
       public static final int SHAPE_FIELD_NUMBER = 3;
       private org.tensorflow.framework.TensorShapeProto shape_;
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
        */
       public boolean hasShape() {
         return shape_ != null;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
        */
       public org.tensorflow.framework.TensorShapeProto getShape() {
         return shape_ == null ? org.tensorflow.framework.TensorShapeProto.getDefaultInstance() : shape_;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
        */
       public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder() {
         return getShape();
@@ -1199,13 +1092,13 @@ private static final long serialVersionUID = 0L;
       public static final int DTYPE_FIELD_NUMBER = 4;
       private int dtype_;
       /**
-       * <code>.tensorflow.DataType dtype = 4;</code>
+       * <code>optional .tensorflow.DataType dtype = 4;</code>
        */
       public int getDtypeValue() {
         return dtype_;
       }
       /**
-       * <code>.tensorflow.DataType dtype = 4;</code>
+       * <code>optional .tensorflow.DataType dtype = 4;</code>
        */
       public org.tensorflow.framework.DataType getDtype() {
         org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(dtype_);
@@ -1236,7 +1129,6 @@ private static final long serialVersionUID = 0L;
         if (dtype_ != org.tensorflow.framework.DataType.DT_INVALID.getNumber()) {
           output.writeEnum(4, dtype_);
         }
-        unknownFields.writeTo(output);
       }
 
       public int getSerializedSize() {
@@ -1260,71 +1152,11 @@ private static final long serialVersionUID = 0L;
           size += com.google.protobuf.CodedOutputStream
             .computeEnumSize(4, dtype_);
         }
-        size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
       }
 
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof org.tensorflow.framework.CostGraphDef.Node.OutputInfo)) {
-          return super.equals(obj);
-        }
-        org.tensorflow.framework.CostGraphDef.Node.OutputInfo other = (org.tensorflow.framework.CostGraphDef.Node.OutputInfo) obj;
-
-        boolean result = true;
-        result = result && (getSize()
-            == other.getSize());
-        result = result && (getAliasInputPort()
-            == other.getAliasInputPort());
-        result = result && (hasShape() == other.hasShape());
-        if (hasShape()) {
-          result = result && getShape()
-              .equals(other.getShape());
-        }
-        result = result && dtype_ == other.dtype_;
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + SIZE_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getSize());
-        hash = (37 * hash) + ALIAS_INPUT_PORT_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getAliasInputPort());
-        if (hasShape()) {
-          hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-          hash = (53 * hash) + getShape().hashCode();
-        }
-        hash = (37 * hash) + DTYPE_FIELD_NUMBER;
-        hash = (53 * hash) + dtype_;
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
+      private static final long serialVersionUID = 0L;
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1348,40 +1180,34 @@ private static final long serialVersionUID = 0L;
       }
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+        return PARSER.parseFrom(input);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+        return PARSER.parseFrom(input, extensionRegistry);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
+        return PARSER.parseDelimitedFrom(input);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+        return PARSER.parseFrom(input);
       }
       public static org.tensorflow.framework.CostGraphDef.Node.OutputInfo parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+        return PARSER.parseFrom(input, extensionRegistry);
       }
 
       public Builder newBuilderForType() { return newBuilder(); }
@@ -1398,19 +1224,19 @@ private static final long serialVersionUID = 0L;
 
       @java.lang.Override
       protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
       /**
+       * Protobuf type {@code tensorflow.CostGraphDef.Node.OutputInfo}
+       *
        * <pre>
        * Outputs of this node.
        * </pre>
-       *
-       * Protobuf type {@code tensorflow.CostGraphDef.Node.OutputInfo}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:tensorflow.CostGraphDef.Node.OutputInfo)
           org.tensorflow.framework.CostGraphDef.Node.OutputInfoOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
@@ -1418,7 +1244,7 @@ private static final long serialVersionUID = 0L;
           return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_OutputInfo_descriptor;
         }
 
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
           return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_OutputInfo_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
@@ -1431,13 +1257,12 @@ private static final long serialVersionUID = 0L;
         }
 
         private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           }
         }
         public Builder clear() {
@@ -1488,32 +1313,6 @@ private static final long serialVersionUID = 0L;
           return result;
         }
 
-        public Builder clone() {
-          return (Builder) super.clone();
-        }
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return (Builder) super.setField(field, value);
-        }
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
-        }
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
-        }
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
-        }
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
-        }
         public Builder mergeFrom(com.google.protobuf.Message other) {
           if (other instanceof org.tensorflow.framework.CostGraphDef.Node.OutputInfo) {
             return mergeFrom((org.tensorflow.framework.CostGraphDef.Node.OutputInfo)other);
@@ -1537,7 +1336,6 @@ private static final long serialVersionUID = 0L;
           if (other.dtype_ != 0) {
             setDtypeValue(other.getDtypeValue());
           }
-          this.mergeUnknownFields(other.unknownFields);
           onChanged();
           return this;
         }
@@ -1555,7 +1353,7 @@ private static final long serialVersionUID = 0L;
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             parsedMessage = (org.tensorflow.framework.CostGraphDef.Node.OutputInfo) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
+            throw e;
           } finally {
             if (parsedMessage != null) {
               mergeFrom(parsedMessage);
@@ -1566,13 +1364,13 @@ private static final long serialVersionUID = 0L;
 
         private long size_ ;
         /**
-         * <code>int64 size = 1;</code>
+         * <code>optional int64 size = 1;</code>
          */
         public long getSize() {
           return size_;
         }
         /**
-         * <code>int64 size = 1;</code>
+         * <code>optional int64 size = 1;</code>
          */
         public Builder setSize(long value) {
           
@@ -1581,7 +1379,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>int64 size = 1;</code>
+         * <code>optional int64 size = 1;</code>
          */
         public Builder clearSize() {
           
@@ -1592,25 +1390,25 @@ private static final long serialVersionUID = 0L;
 
         private long aliasInputPort_ ;
         /**
+         * <code>optional int64 alias_input_port = 2;</code>
+         *
          * <pre>
          * If &gt;= 0, the output is an alias of an input. Note that an alias input
          * may itself be an alias. The algorithm will therefore need to follow
          * those pointers.
          * </pre>
-         *
-         * <code>int64 alias_input_port = 2;</code>
          */
         public long getAliasInputPort() {
           return aliasInputPort_;
         }
         /**
+         * <code>optional int64 alias_input_port = 2;</code>
+         *
          * <pre>
          * If &gt;= 0, the output is an alias of an input. Note that an alias input
          * may itself be an alias. The algorithm will therefore need to follow
          * those pointers.
          * </pre>
-         *
-         * <code>int64 alias_input_port = 2;</code>
          */
         public Builder setAliasInputPort(long value) {
           
@@ -1619,13 +1417,13 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
+         * <code>optional int64 alias_input_port = 2;</code>
+         *
          * <pre>
          * If &gt;= 0, the output is an alias of an input. Note that an alias input
          * may itself be an alias. The algorithm will therefore need to follow
          * those pointers.
          * </pre>
-         *
-         * <code>int64 alias_input_port = 2;</code>
          */
         public Builder clearAliasInputPort() {
           
@@ -1635,16 +1433,16 @@ private static final long serialVersionUID = 0L;
         }
 
         private org.tensorflow.framework.TensorShapeProto shape_ = null;
-        private com.google.protobuf.SingleFieldBuilderV3<
+        private com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> shapeBuilder_;
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public boolean hasShape() {
           return shapeBuilder_ != null || shape_ != null;
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public org.tensorflow.framework.TensorShapeProto getShape() {
           if (shapeBuilder_ == null) {
@@ -1654,7 +1452,7 @@ private static final long serialVersionUID = 0L;
           }
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public Builder setShape(org.tensorflow.framework.TensorShapeProto value) {
           if (shapeBuilder_ == null) {
@@ -1670,7 +1468,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public Builder setShape(
             org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -1684,7 +1482,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public Builder mergeShape(org.tensorflow.framework.TensorShapeProto value) {
           if (shapeBuilder_ == null) {
@@ -1702,7 +1500,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public Builder clearShape() {
           if (shapeBuilder_ == null) {
@@ -1716,7 +1514,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public org.tensorflow.framework.TensorShapeProto.Builder getShapeBuilder() {
           
@@ -1724,7 +1522,7 @@ private static final long serialVersionUID = 0L;
           return getShapeFieldBuilder().getBuilder();
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
         public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder() {
           if (shapeBuilder_ != null) {
@@ -1735,13 +1533,13 @@ private static final long serialVersionUID = 0L;
           }
         }
         /**
-         * <code>.tensorflow.TensorShapeProto shape = 3;</code>
+         * <code>optional .tensorflow.TensorShapeProto shape = 3;</code>
          */
-        private com.google.protobuf.SingleFieldBuilderV3<
+        private com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> 
             getShapeFieldBuilder() {
           if (shapeBuilder_ == null) {
-            shapeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            shapeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
                 org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder>(
                     getShape(),
                     getParentForChildren(),
@@ -1753,13 +1551,13 @@ private static final long serialVersionUID = 0L;
 
         private int dtype_ = 0;
         /**
-         * <code>.tensorflow.DataType dtype = 4;</code>
+         * <code>optional .tensorflow.DataType dtype = 4;</code>
          */
         public int getDtypeValue() {
           return dtype_;
         }
         /**
-         * <code>.tensorflow.DataType dtype = 4;</code>
+         * <code>optional .tensorflow.DataType dtype = 4;</code>
          */
         public Builder setDtypeValue(int value) {
           dtype_ = value;
@@ -1767,14 +1565,14 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>.tensorflow.DataType dtype = 4;</code>
+         * <code>optional .tensorflow.DataType dtype = 4;</code>
          */
         public org.tensorflow.framework.DataType getDtype() {
           org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(dtype_);
           return result == null ? org.tensorflow.framework.DataType.UNRECOGNIZED : result;
         }
         /**
-         * <code>.tensorflow.DataType dtype = 4;</code>
+         * <code>optional .tensorflow.DataType dtype = 4;</code>
          */
         public Builder setDtype(org.tensorflow.framework.DataType value) {
           if (value == null) {
@@ -1786,7 +1584,7 @@ private static final long serialVersionUID = 0L;
           return this;
         }
         /**
-         * <code>.tensorflow.DataType dtype = 4;</code>
+         * <code>optional .tensorflow.DataType dtype = 4;</code>
          */
         public Builder clearDtype() {
           
@@ -1796,12 +1594,12 @@ private static final long serialVersionUID = 0L;
         }
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return this;
         }
 
         public final Builder mergeUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
+          return this;
         }
 
 
@@ -1824,7 +1622,16 @@ private static final long serialVersionUID = 0L;
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new OutputInfo(input, extensionRegistry);
+          try {
+            return new OutputInfo(input, extensionRegistry);
+          } catch (RuntimeException e) {
+            if (e.getCause() instanceof
+                com.google.protobuf.InvalidProtocolBufferException) {
+              throw (com.google.protobuf.InvalidProtocolBufferException)
+                  e.getCause();
+            }
+            throw e;
+          }
         }
       };
 
@@ -1847,11 +1654,11 @@ private static final long serialVersionUID = 0L;
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name of the node. Names are globally unique.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1866,11 +1673,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 1;</code>
+     *
      * <pre>
      * The name of the node. Names are globally unique.
      * </pre>
-     *
-     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -1889,12 +1696,12 @@ private static final long serialVersionUID = 0L;
     public static final int DEVICE_FIELD_NUMBER = 2;
     private volatile java.lang.Object device_;
     /**
+     * <code>optional string device = 2;</code>
+     *
      * <pre>
      * The device of the node. Can be empty if the node is mapped to the
      * default partition or partitioning hasn't been run yet.
      * </pre>
-     *
-     * <code>string device = 2;</code>
      */
     public java.lang.String getDevice() {
       java.lang.Object ref = device_;
@@ -1909,12 +1716,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device = 2;</code>
+     *
      * <pre>
      * The device of the node. Can be empty if the node is mapped to the
      * default partition or partitioning hasn't been run yet.
      * </pre>
-     *
-     * <code>string device = 2;</code>
      */
     public com.google.protobuf.ByteString
         getDeviceBytes() {
@@ -1933,11 +1740,11 @@ private static final long serialVersionUID = 0L;
     public static final int ID_FIELD_NUMBER = 3;
     private int id_;
     /**
+     * <code>optional int32 id = 3;</code>
+     *
      * <pre>
      * The id of the node. Node ids are only unique inside a partition.
      * </pre>
-     *
-     * <code>int32 id = 3;</code>
      */
     public int getId() {
       return id_;
@@ -2016,11 +1823,11 @@ private static final long serialVersionUID = 0L;
     public static final int TEMPORARY_MEMORY_SIZE_FIELD_NUMBER = 6;
     private long temporaryMemorySize_;
     /**
+     * <code>optional int64 temporary_memory_size = 6;</code>
+     *
      * <pre>
      * Temporary memory used by this node.
      * </pre>
-     *
-     * <code>int64 temporary_memory_size = 6;</code>
      */
     public long getTemporaryMemorySize() {
       return temporaryMemorySize_;
@@ -2029,11 +1836,11 @@ private static final long serialVersionUID = 0L;
     public static final int PERSISTENT_MEMORY_SIZE_FIELD_NUMBER = 12;
     private long persistentMemorySize_;
     /**
+     * <code>optional int64 persistent_memory_size = 12;</code>
+     *
      * <pre>
      * Persistent memory used by this node.
      * </pre>
-     *
-     * <code>int64 persistent_memory_size = 12;</code>
      */
     public long getPersistentMemorySize() {
       return persistentMemorySize_;
@@ -2042,7 +1849,7 @@ private static final long serialVersionUID = 0L;
     public static final int HOST_TEMP_MEMORY_SIZE_FIELD_NUMBER = 10;
     private long hostTempMemorySize_;
     /**
-     * <code>int64 host_temp_memory_size = 10 [deprecated = true];</code>
+     * <code>optional int64 host_temp_memory_size = 10 [deprecated = true];</code>
      */
     @java.lang.Deprecated public long getHostTempMemorySize() {
       return hostTempMemorySize_;
@@ -2051,7 +1858,7 @@ private static final long serialVersionUID = 0L;
     public static final int DEVICE_TEMP_MEMORY_SIZE_FIELD_NUMBER = 11;
     private long deviceTempMemorySize_;
     /**
-     * <code>int64 device_temp_memory_size = 11 [deprecated = true];</code>
+     * <code>optional int64 device_temp_memory_size = 11 [deprecated = true];</code>
      */
     @java.lang.Deprecated public long getDeviceTempMemorySize() {
       return deviceTempMemorySize_;
@@ -2060,7 +1867,7 @@ private static final long serialVersionUID = 0L;
     public static final int DEVICE_PERSISTENT_MEMORY_SIZE_FIELD_NUMBER = 16;
     private long devicePersistentMemorySize_;
     /**
-     * <code>int64 device_persistent_memory_size = 16 [deprecated = true];</code>
+     * <code>optional int64 device_persistent_memory_size = 16 [deprecated = true];</code>
      */
     @java.lang.Deprecated public long getDevicePersistentMemorySize() {
       return devicePersistentMemorySize_;
@@ -2069,11 +1876,11 @@ private static final long serialVersionUID = 0L;
     public static final int COMPUTE_COST_FIELD_NUMBER = 9;
     private long computeCost_;
     /**
+     * <code>optional int64 compute_cost = 9;</code>
+     *
      * <pre>
      * Estimate of the computational cost of this node, in microseconds.
      * </pre>
-     *
-     * <code>int64 compute_cost = 9;</code>
      */
     public long getComputeCost() {
       return computeCost_;
@@ -2082,12 +1889,12 @@ private static final long serialVersionUID = 0L;
     public static final int COMPUTE_TIME_FIELD_NUMBER = 14;
     private long computeTime_;
     /**
+     * <code>optional int64 compute_time = 14;</code>
+     *
      * <pre>
      * Analytical estimate of the computational cost of this node, in
      * microseconds.
      * </pre>
-     *
-     * <code>int64 compute_time = 14;</code>
      */
     public long getComputeTime() {
       return computeTime_;
@@ -2096,12 +1903,12 @@ private static final long serialVersionUID = 0L;
     public static final int MEMORY_TIME_FIELD_NUMBER = 15;
     private long memoryTime_;
     /**
+     * <code>optional int64 memory_time = 15;</code>
+     *
      * <pre>
      * Analytical estimate of the memory access cost of this node, in
      * microseconds.
      * </pre>
-     *
-     * <code>int64 memory_time = 15;</code>
      */
     public long getMemoryTime() {
       return memoryTime_;
@@ -2110,12 +1917,12 @@ private static final long serialVersionUID = 0L;
     public static final int IS_FINAL_FIELD_NUMBER = 7;
     private boolean isFinal_;
     /**
+     * <code>optional bool is_final = 7;</code>
+     *
      * <pre>
      * If true, the output is permanent: it can't be discarded, because this
      * node is part of the "final output". Nodes may depend on final nodes.
      * </pre>
-     *
-     * <code>bool is_final = 7;</code>
      */
     public boolean getIsFinal() {
       return isFinal_;
@@ -2124,32 +1931,32 @@ private static final long serialVersionUID = 0L;
     public static final int CONTROL_INPUT_FIELD_NUMBER = 8;
     private java.util.List<java.lang.Integer> controlInput_;
     /**
+     * <code>repeated int32 control_input = 8;</code>
+     *
      * <pre>
      * Ids of the control inputs for this node.
      * </pre>
-     *
-     * <code>repeated int32 control_input = 8;</code>
      */
     public java.util.List<java.lang.Integer>
         getControlInputList() {
       return controlInput_;
     }
     /**
+     * <code>repeated int32 control_input = 8;</code>
+     *
      * <pre>
      * Ids of the control inputs for this node.
      * </pre>
-     *
-     * <code>repeated int32 control_input = 8;</code>
      */
     public int getControlInputCount() {
       return controlInput_.size();
     }
     /**
+     * <code>repeated int32 control_input = 8;</code>
+     *
      * <pre>
      * Ids of the control inputs for this node.
      * </pre>
-     *
-     * <code>repeated int32 control_input = 8;</code>
      */
     public int getControlInput(int index) {
       return controlInput_.get(index);
@@ -2170,10 +1977,10 @@ private static final long serialVersionUID = 0L;
                         throws java.io.IOException {
       getSerializedSize();
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
       }
       if (!getDeviceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, device_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, device_);
       }
       if (id_ != 0) {
         output.writeInt32(3, id_);
@@ -2191,8 +1998,8 @@ private static final long serialVersionUID = 0L;
         output.writeBool(7, isFinal_);
       }
       if (getControlInputList().size() > 0) {
-        output.writeUInt32NoTag(66);
-        output.writeUInt32NoTag(controlInputMemoizedSerializedSize);
+        output.writeRawVarint32(66);
+        output.writeRawVarint32(controlInputMemoizedSerializedSize);
       }
       for (int i = 0; i < controlInput_.size(); i++) {
         output.writeInt32NoTag(controlInput_.get(i));
@@ -2218,7 +2025,6 @@ private static final long serialVersionUID = 0L;
       if (devicePersistentMemorySize_ != 0L) {
         output.writeInt64(16, devicePersistentMemorySize_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -2227,10 +2033,10 @@ private static final long serialVersionUID = 0L;
 
       size = 0;
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
       }
       if (!getDeviceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, device_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, device_);
       }
       if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -2294,124 +2100,11 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(16, devicePersistentMemorySize_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.CostGraphDef.Node)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.CostGraphDef.Node other = (org.tensorflow.framework.CostGraphDef.Node) obj;
-
-      boolean result = true;
-      result = result && getName()
-          .equals(other.getName());
-      result = result && getDevice()
-          .equals(other.getDevice());
-      result = result && (getId()
-          == other.getId());
-      result = result && getInputInfoList()
-          .equals(other.getInputInfoList());
-      result = result && getOutputInfoList()
-          .equals(other.getOutputInfoList());
-      result = result && (getTemporaryMemorySize()
-          == other.getTemporaryMemorySize());
-      result = result && (getPersistentMemorySize()
-          == other.getPersistentMemorySize());
-      result = result && (getHostTempMemorySize()
-          == other.getHostTempMemorySize());
-      result = result && (getDeviceTempMemorySize()
-          == other.getDeviceTempMemorySize());
-      result = result && (getDevicePersistentMemorySize()
-          == other.getDevicePersistentMemorySize());
-      result = result && (getComputeCost()
-          == other.getComputeCost());
-      result = result && (getComputeTime()
-          == other.getComputeTime());
-      result = result && (getMemoryTime()
-          == other.getMemoryTime());
-      result = result && (getIsFinal()
-          == other.getIsFinal());
-      result = result && getControlInputList()
-          .equals(other.getControlInputList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + DEVICE_FIELD_NUMBER;
-      hash = (53 * hash) + getDevice().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      if (getInputInfoCount() > 0) {
-        hash = (37 * hash) + INPUT_INFO_FIELD_NUMBER;
-        hash = (53 * hash) + getInputInfoList().hashCode();
-      }
-      if (getOutputInfoCount() > 0) {
-        hash = (37 * hash) + OUTPUT_INFO_FIELD_NUMBER;
-        hash = (53 * hash) + getOutputInfoList().hashCode();
-      }
-      hash = (37 * hash) + TEMPORARY_MEMORY_SIZE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTemporaryMemorySize());
-      hash = (37 * hash) + PERSISTENT_MEMORY_SIZE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getPersistentMemorySize());
-      hash = (37 * hash) + HOST_TEMP_MEMORY_SIZE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getHostTempMemorySize());
-      hash = (37 * hash) + DEVICE_TEMP_MEMORY_SIZE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getDeviceTempMemorySize());
-      hash = (37 * hash) + DEVICE_PERSISTENT_MEMORY_SIZE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getDevicePersistentMemorySize());
-      hash = (37 * hash) + COMPUTE_COST_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getComputeCost());
-      hash = (37 * hash) + COMPUTE_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getComputeTime());
-      hash = (37 * hash) + MEMORY_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMemoryTime());
-      hash = (37 * hash) + IS_FINAL_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsFinal());
-      if (getControlInputCount() > 0) {
-        hash = (37 * hash) + CONTROL_INPUT_FIELD_NUMBER;
-        hash = (53 * hash) + getControlInputList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.CostGraphDef.Node parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.CostGraphDef.Node parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.CostGraphDef.Node parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2435,40 +2128,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.CostGraphDef.Node parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.CostGraphDef.Node parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.CostGraphDef.Node parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.CostGraphDef.Node parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.CostGraphDef.Node parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.CostGraphDef.Node parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -2485,7 +2172,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2493,7 +2180,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.CostGraphDef.Node}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.CostGraphDef.Node)
         org.tensorflow.framework.CostGraphDef.NodeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2501,7 +2188,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_Node_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2514,13 +2201,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getInputInfoFieldBuilder();
           getOutputInfoFieldBuilder();
         }
@@ -2629,32 +2315,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.CostGraphDef.Node) {
           return mergeFrom((org.tensorflow.framework.CostGraphDef.Node)other);
@@ -2696,7 +2356,7 @@ private static final long serialVersionUID = 0L;
               inputInfo_ = other.inputInfo_;
               bitField0_ = (bitField0_ & ~0x00000008);
               inputInfoBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getInputInfoFieldBuilder() : null;
             } else {
               inputInfoBuilder_.addAllMessages(other.inputInfo_);
@@ -2722,7 +2382,7 @@ private static final long serialVersionUID = 0L;
               outputInfo_ = other.outputInfo_;
               bitField0_ = (bitField0_ & ~0x00000010);
               outputInfoBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getOutputInfoFieldBuilder() : null;
             } else {
               outputInfoBuilder_.addAllMessages(other.outputInfo_);
@@ -2766,7 +2426,6 @@ private static final long serialVersionUID = 0L;
           }
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -2784,7 +2443,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.CostGraphDef.Node) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2796,11 +2455,11 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object name_ = "";
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * The name of the node. Names are globally unique.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2815,11 +2474,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * The name of the node. Names are globally unique.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2835,11 +2494,11 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * The name of the node. Names are globally unique.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2852,11 +2511,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * The name of the node. Names are globally unique.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder clearName() {
         
@@ -2865,11 +2524,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string name = 1;</code>
+       *
        * <pre>
        * The name of the node. Names are globally unique.
        * </pre>
-       *
-       * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2885,12 +2544,12 @@ private static final long serialVersionUID = 0L;
 
       private java.lang.Object device_ = "";
       /**
+       * <code>optional string device = 2;</code>
+       *
        * <pre>
        * The device of the node. Can be empty if the node is mapped to the
        * default partition or partitioning hasn't been run yet.
        * </pre>
-       *
-       * <code>string device = 2;</code>
        */
       public java.lang.String getDevice() {
         java.lang.Object ref = device_;
@@ -2905,12 +2564,12 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string device = 2;</code>
+       *
        * <pre>
        * The device of the node. Can be empty if the node is mapped to the
        * default partition or partitioning hasn't been run yet.
        * </pre>
-       *
-       * <code>string device = 2;</code>
        */
       public com.google.protobuf.ByteString
           getDeviceBytes() {
@@ -2926,12 +2585,12 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
+       * <code>optional string device = 2;</code>
+       *
        * <pre>
        * The device of the node. Can be empty if the node is mapped to the
        * default partition or partitioning hasn't been run yet.
        * </pre>
-       *
-       * <code>string device = 2;</code>
        */
       public Builder setDevice(
           java.lang.String value) {
@@ -2944,12 +2603,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string device = 2;</code>
+       *
        * <pre>
        * The device of the node. Can be empty if the node is mapped to the
        * default partition or partitioning hasn't been run yet.
        * </pre>
-       *
-       * <code>string device = 2;</code>
        */
       public Builder clearDevice() {
         
@@ -2958,12 +2617,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional string device = 2;</code>
+       *
        * <pre>
        * The device of the node. Can be empty if the node is mapped to the
        * default partition or partitioning hasn't been run yet.
        * </pre>
-       *
-       * <code>string device = 2;</code>
        */
       public Builder setDeviceBytes(
           com.google.protobuf.ByteString value) {
@@ -2979,21 +2638,21 @@ private static final long serialVersionUID = 0L;
 
       private int id_ ;
       /**
+       * <code>optional int32 id = 3;</code>
+       *
        * <pre>
        * The id of the node. Node ids are only unique inside a partition.
        * </pre>
-       *
-       * <code>int32 id = 3;</code>
        */
       public int getId() {
         return id_;
       }
       /**
+       * <code>optional int32 id = 3;</code>
+       *
        * <pre>
        * The id of the node. Node ids are only unique inside a partition.
        * </pre>
-       *
-       * <code>int32 id = 3;</code>
        */
       public Builder setId(int value) {
         
@@ -3002,11 +2661,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int32 id = 3;</code>
+       *
        * <pre>
        * The id of the node. Node ids are only unique inside a partition.
        * </pre>
-       *
-       * <code>int32 id = 3;</code>
        */
       public Builder clearId() {
         
@@ -3024,7 +2683,7 @@ private static final long serialVersionUID = 0L;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.CostGraphDef.Node.InputInfo, org.tensorflow.framework.CostGraphDef.Node.InputInfo.Builder, org.tensorflow.framework.CostGraphDef.Node.InputInfoOrBuilder> inputInfoBuilder_;
 
       /**
@@ -3240,11 +2899,11 @@ private static final long serialVersionUID = 0L;
            getInputInfoBuilderList() {
         return getInputInfoFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.CostGraphDef.Node.InputInfo, org.tensorflow.framework.CostGraphDef.Node.InputInfo.Builder, org.tensorflow.framework.CostGraphDef.Node.InputInfoOrBuilder> 
           getInputInfoFieldBuilder() {
         if (inputInfoBuilder_ == null) {
-          inputInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          inputInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.tensorflow.framework.CostGraphDef.Node.InputInfo, org.tensorflow.framework.CostGraphDef.Node.InputInfo.Builder, org.tensorflow.framework.CostGraphDef.Node.InputInfoOrBuilder>(
                   inputInfo_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -3264,7 +2923,7 @@ private static final long serialVersionUID = 0L;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.CostGraphDef.Node.OutputInfo, org.tensorflow.framework.CostGraphDef.Node.OutputInfo.Builder, org.tensorflow.framework.CostGraphDef.Node.OutputInfoOrBuilder> outputInfoBuilder_;
 
       /**
@@ -3480,11 +3139,11 @@ private static final long serialVersionUID = 0L;
            getOutputInfoBuilderList() {
         return getOutputInfoFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.tensorflow.framework.CostGraphDef.Node.OutputInfo, org.tensorflow.framework.CostGraphDef.Node.OutputInfo.Builder, org.tensorflow.framework.CostGraphDef.Node.OutputInfoOrBuilder> 
           getOutputInfoFieldBuilder() {
         if (outputInfoBuilder_ == null) {
-          outputInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          outputInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.tensorflow.framework.CostGraphDef.Node.OutputInfo, org.tensorflow.framework.CostGraphDef.Node.OutputInfo.Builder, org.tensorflow.framework.CostGraphDef.Node.OutputInfoOrBuilder>(
                   outputInfo_,
                   ((bitField0_ & 0x00000010) == 0x00000010),
@@ -3497,21 +3156,21 @@ private static final long serialVersionUID = 0L;
 
       private long temporaryMemorySize_ ;
       /**
+       * <code>optional int64 temporary_memory_size = 6;</code>
+       *
        * <pre>
        * Temporary memory used by this node.
        * </pre>
-       *
-       * <code>int64 temporary_memory_size = 6;</code>
        */
       public long getTemporaryMemorySize() {
         return temporaryMemorySize_;
       }
       /**
+       * <code>optional int64 temporary_memory_size = 6;</code>
+       *
        * <pre>
        * Temporary memory used by this node.
        * </pre>
-       *
-       * <code>int64 temporary_memory_size = 6;</code>
        */
       public Builder setTemporaryMemorySize(long value) {
         
@@ -3520,11 +3179,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 temporary_memory_size = 6;</code>
+       *
        * <pre>
        * Temporary memory used by this node.
        * </pre>
-       *
-       * <code>int64 temporary_memory_size = 6;</code>
        */
       public Builder clearTemporaryMemorySize() {
         
@@ -3535,21 +3194,21 @@ private static final long serialVersionUID = 0L;
 
       private long persistentMemorySize_ ;
       /**
+       * <code>optional int64 persistent_memory_size = 12;</code>
+       *
        * <pre>
        * Persistent memory used by this node.
        * </pre>
-       *
-       * <code>int64 persistent_memory_size = 12;</code>
        */
       public long getPersistentMemorySize() {
         return persistentMemorySize_;
       }
       /**
+       * <code>optional int64 persistent_memory_size = 12;</code>
+       *
        * <pre>
        * Persistent memory used by this node.
        * </pre>
-       *
-       * <code>int64 persistent_memory_size = 12;</code>
        */
       public Builder setPersistentMemorySize(long value) {
         
@@ -3558,11 +3217,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 persistent_memory_size = 12;</code>
+       *
        * <pre>
        * Persistent memory used by this node.
        * </pre>
-       *
-       * <code>int64 persistent_memory_size = 12;</code>
        */
       public Builder clearPersistentMemorySize() {
         
@@ -3573,13 +3232,13 @@ private static final long serialVersionUID = 0L;
 
       private long hostTempMemorySize_ ;
       /**
-       * <code>int64 host_temp_memory_size = 10 [deprecated = true];</code>
+       * <code>optional int64 host_temp_memory_size = 10 [deprecated = true];</code>
        */
       @java.lang.Deprecated public long getHostTempMemorySize() {
         return hostTempMemorySize_;
       }
       /**
-       * <code>int64 host_temp_memory_size = 10 [deprecated = true];</code>
+       * <code>optional int64 host_temp_memory_size = 10 [deprecated = true];</code>
        */
       @java.lang.Deprecated public Builder setHostTempMemorySize(long value) {
         
@@ -3588,7 +3247,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>int64 host_temp_memory_size = 10 [deprecated = true];</code>
+       * <code>optional int64 host_temp_memory_size = 10 [deprecated = true];</code>
        */
       @java.lang.Deprecated public Builder clearHostTempMemorySize() {
         
@@ -3599,13 +3258,13 @@ private static final long serialVersionUID = 0L;
 
       private long deviceTempMemorySize_ ;
       /**
-       * <code>int64 device_temp_memory_size = 11 [deprecated = true];</code>
+       * <code>optional int64 device_temp_memory_size = 11 [deprecated = true];</code>
        */
       @java.lang.Deprecated public long getDeviceTempMemorySize() {
         return deviceTempMemorySize_;
       }
       /**
-       * <code>int64 device_temp_memory_size = 11 [deprecated = true];</code>
+       * <code>optional int64 device_temp_memory_size = 11 [deprecated = true];</code>
        */
       @java.lang.Deprecated public Builder setDeviceTempMemorySize(long value) {
         
@@ -3614,7 +3273,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>int64 device_temp_memory_size = 11 [deprecated = true];</code>
+       * <code>optional int64 device_temp_memory_size = 11 [deprecated = true];</code>
        */
       @java.lang.Deprecated public Builder clearDeviceTempMemorySize() {
         
@@ -3625,13 +3284,13 @@ private static final long serialVersionUID = 0L;
 
       private long devicePersistentMemorySize_ ;
       /**
-       * <code>int64 device_persistent_memory_size = 16 [deprecated = true];</code>
+       * <code>optional int64 device_persistent_memory_size = 16 [deprecated = true];</code>
        */
       @java.lang.Deprecated public long getDevicePersistentMemorySize() {
         return devicePersistentMemorySize_;
       }
       /**
-       * <code>int64 device_persistent_memory_size = 16 [deprecated = true];</code>
+       * <code>optional int64 device_persistent_memory_size = 16 [deprecated = true];</code>
        */
       @java.lang.Deprecated public Builder setDevicePersistentMemorySize(long value) {
         
@@ -3640,7 +3299,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>int64 device_persistent_memory_size = 16 [deprecated = true];</code>
+       * <code>optional int64 device_persistent_memory_size = 16 [deprecated = true];</code>
        */
       @java.lang.Deprecated public Builder clearDevicePersistentMemorySize() {
         
@@ -3651,21 +3310,21 @@ private static final long serialVersionUID = 0L;
 
       private long computeCost_ ;
       /**
+       * <code>optional int64 compute_cost = 9;</code>
+       *
        * <pre>
        * Estimate of the computational cost of this node, in microseconds.
        * </pre>
-       *
-       * <code>int64 compute_cost = 9;</code>
        */
       public long getComputeCost() {
         return computeCost_;
       }
       /**
+       * <code>optional int64 compute_cost = 9;</code>
+       *
        * <pre>
        * Estimate of the computational cost of this node, in microseconds.
        * </pre>
-       *
-       * <code>int64 compute_cost = 9;</code>
        */
       public Builder setComputeCost(long value) {
         
@@ -3674,11 +3333,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 compute_cost = 9;</code>
+       *
        * <pre>
        * Estimate of the computational cost of this node, in microseconds.
        * </pre>
-       *
-       * <code>int64 compute_cost = 9;</code>
        */
       public Builder clearComputeCost() {
         
@@ -3689,23 +3348,23 @@ private static final long serialVersionUID = 0L;
 
       private long computeTime_ ;
       /**
+       * <code>optional int64 compute_time = 14;</code>
+       *
        * <pre>
        * Analytical estimate of the computational cost of this node, in
        * microseconds.
        * </pre>
-       *
-       * <code>int64 compute_time = 14;</code>
        */
       public long getComputeTime() {
         return computeTime_;
       }
       /**
+       * <code>optional int64 compute_time = 14;</code>
+       *
        * <pre>
        * Analytical estimate of the computational cost of this node, in
        * microseconds.
        * </pre>
-       *
-       * <code>int64 compute_time = 14;</code>
        */
       public Builder setComputeTime(long value) {
         
@@ -3714,12 +3373,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 compute_time = 14;</code>
+       *
        * <pre>
        * Analytical estimate of the computational cost of this node, in
        * microseconds.
        * </pre>
-       *
-       * <code>int64 compute_time = 14;</code>
        */
       public Builder clearComputeTime() {
         
@@ -3730,23 +3389,23 @@ private static final long serialVersionUID = 0L;
 
       private long memoryTime_ ;
       /**
+       * <code>optional int64 memory_time = 15;</code>
+       *
        * <pre>
        * Analytical estimate of the memory access cost of this node, in
        * microseconds.
        * </pre>
-       *
-       * <code>int64 memory_time = 15;</code>
        */
       public long getMemoryTime() {
         return memoryTime_;
       }
       /**
+       * <code>optional int64 memory_time = 15;</code>
+       *
        * <pre>
        * Analytical estimate of the memory access cost of this node, in
        * microseconds.
        * </pre>
-       *
-       * <code>int64 memory_time = 15;</code>
        */
       public Builder setMemoryTime(long value) {
         
@@ -3755,12 +3414,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional int64 memory_time = 15;</code>
+       *
        * <pre>
        * Analytical estimate of the memory access cost of this node, in
        * microseconds.
        * </pre>
-       *
-       * <code>int64 memory_time = 15;</code>
        */
       public Builder clearMemoryTime() {
         
@@ -3771,23 +3430,23 @@ private static final long serialVersionUID = 0L;
 
       private boolean isFinal_ ;
       /**
+       * <code>optional bool is_final = 7;</code>
+       *
        * <pre>
        * If true, the output is permanent: it can't be discarded, because this
        * node is part of the "final output". Nodes may depend on final nodes.
        * </pre>
-       *
-       * <code>bool is_final = 7;</code>
        */
       public boolean getIsFinal() {
         return isFinal_;
       }
       /**
+       * <code>optional bool is_final = 7;</code>
+       *
        * <pre>
        * If true, the output is permanent: it can't be discarded, because this
        * node is part of the "final output". Nodes may depend on final nodes.
        * </pre>
-       *
-       * <code>bool is_final = 7;</code>
        */
       public Builder setIsFinal(boolean value) {
         
@@ -3796,12 +3455,12 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>optional bool is_final = 7;</code>
+       *
        * <pre>
        * If true, the output is permanent: it can't be discarded, because this
        * node is part of the "final output". Nodes may depend on final nodes.
        * </pre>
-       *
-       * <code>bool is_final = 7;</code>
        */
       public Builder clearIsFinal() {
         
@@ -3818,42 +3477,42 @@ private static final long serialVersionUID = 0L;
          }
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public java.util.List<java.lang.Integer>
           getControlInputList() {
         return java.util.Collections.unmodifiableList(controlInput_);
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public int getControlInputCount() {
         return controlInput_.size();
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public int getControlInput(int index) {
         return controlInput_.get(index);
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public Builder setControlInput(
           int index, int value) {
@@ -3863,11 +3522,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public Builder addControlInput(int value) {
         ensureControlInputIsMutable();
@@ -3876,11 +3535,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public Builder addAllControlInput(
           java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -3891,11 +3550,11 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
+       * <code>repeated int32 control_input = 8;</code>
+       *
        * <pre>
        * Ids of the control inputs for this node.
        * </pre>
-       *
-       * <code>repeated int32 control_input = 8;</code>
        */
       public Builder clearControlInput() {
         controlInput_ = java.util.Collections.emptyList();
@@ -3905,12 +3564,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -3933,7 +3592,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Node(input, extensionRegistry);
+        try {
+          return new Node(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -4002,7 +3670,6 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < node_.size(); i++) {
       output.writeMessage(1, node_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -4014,55 +3681,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, node_.get(i));
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.CostGraphDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.CostGraphDef other = (org.tensorflow.framework.CostGraphDef) obj;
-
-    boolean result = true;
-    result = result && getNodeList()
-        .equals(other.getNodeList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (getNodeCount() > 0) {
-      hash = (37 * hash) + NODE_FIELD_NUMBER;
-      hash = (53 * hash) + getNodeList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.CostGraphDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.CostGraphDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.CostGraphDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4086,40 +3709,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.CostGraphDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.CostGraphDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.CostGraphDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.CostGraphDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.CostGraphDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.CostGraphDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -4136,7 +3753,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -4144,7 +3761,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.CostGraphDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.CostGraphDef)
       org.tensorflow.framework.CostGraphDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -4152,7 +3769,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.CostGraphProtos.internal_static_tensorflow_CostGraphDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -4165,13 +3782,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getNodeFieldBuilder();
       }
     }
@@ -4219,32 +3835,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.CostGraphDef) {
         return mergeFrom((org.tensorflow.framework.CostGraphDef)other);
@@ -4275,14 +3865,13 @@ private static final long serialVersionUID = 0L;
             node_ = other.node_;
             bitField0_ = (bitField0_ & ~0x00000001);
             nodeBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getNodeFieldBuilder() : null;
           } else {
             nodeBuilder_.addAllMessages(other.node_);
           }
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -4300,7 +3889,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.CostGraphDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -4319,7 +3908,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.CostGraphDef.Node, org.tensorflow.framework.CostGraphDef.Node.Builder, org.tensorflow.framework.CostGraphDef.NodeOrBuilder> nodeBuilder_;
 
     /**
@@ -4535,11 +4124,11 @@ private static final long serialVersionUID = 0L;
          getNodeBuilderList() {
       return getNodeFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.CostGraphDef.Node, org.tensorflow.framework.CostGraphDef.Node.Builder, org.tensorflow.framework.CostGraphDef.NodeOrBuilder> 
         getNodeFieldBuilder() {
       if (nodeBuilder_ == null) {
-        nodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        nodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.CostGraphDef.Node, org.tensorflow.framework.CostGraphDef.Node.Builder, org.tensorflow.framework.CostGraphDef.NodeOrBuilder>(
                 node_,
                 ((bitField0_ & 0x00000001) == 0x00000001),
@@ -4551,12 +4140,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -4579,7 +4168,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new CostGraphDef(input, extensionRegistry);
+      try {
+        return new CostGraphDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

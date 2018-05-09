@@ -8,95 +8,95 @@ public interface SaveSliceInfoDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string full_name = 1;</code>
+   *
    * <pre>
    * Name of the full variable of which this is a slice.
    * </pre>
-   *
-   * <code>string full_name = 1;</code>
    */
   java.lang.String getFullName();
   /**
+   * <code>optional string full_name = 1;</code>
+   *
    * <pre>
    * Name of the full variable of which this is a slice.
    * </pre>
-   *
-   * <code>string full_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getFullNameBytes();
 
   /**
+   * <code>repeated int64 full_shape = 2;</code>
+   *
    * <pre>
    * Shape of the full variable.
    * </pre>
-   *
-   * <code>repeated int64 full_shape = 2;</code>
    */
   java.util.List<java.lang.Long> getFullShapeList();
   /**
+   * <code>repeated int64 full_shape = 2;</code>
+   *
    * <pre>
    * Shape of the full variable.
    * </pre>
-   *
-   * <code>repeated int64 full_shape = 2;</code>
    */
   int getFullShapeCount();
   /**
+   * <code>repeated int64 full_shape = 2;</code>
+   *
    * <pre>
    * Shape of the full variable.
    * </pre>
-   *
-   * <code>repeated int64 full_shape = 2;</code>
    */
   long getFullShape(int index);
 
   /**
+   * <code>repeated int64 var_offset = 3;</code>
+   *
    * <pre>
    * Offset of this variable into the full variable.
    * </pre>
-   *
-   * <code>repeated int64 var_offset = 3;</code>
    */
   java.util.List<java.lang.Long> getVarOffsetList();
   /**
+   * <code>repeated int64 var_offset = 3;</code>
+   *
    * <pre>
    * Offset of this variable into the full variable.
    * </pre>
-   *
-   * <code>repeated int64 var_offset = 3;</code>
    */
   int getVarOffsetCount();
   /**
+   * <code>repeated int64 var_offset = 3;</code>
+   *
    * <pre>
    * Offset of this variable into the full variable.
    * </pre>
-   *
-   * <code>repeated int64 var_offset = 3;</code>
    */
   long getVarOffset(int index);
 
   /**
+   * <code>repeated int64 var_shape = 4;</code>
+   *
    * <pre>
    * Shape of this variable.
    * </pre>
-   *
-   * <code>repeated int64 var_shape = 4;</code>
    */
   java.util.List<java.lang.Long> getVarShapeList();
   /**
+   * <code>repeated int64 var_shape = 4;</code>
+   *
    * <pre>
    * Shape of this variable.
    * </pre>
-   *
-   * <code>repeated int64 var_shape = 4;</code>
    */
   int getVarShapeCount();
   /**
+   * <code>repeated int64 var_shape = 4;</code>
+   *
    * <pre>
    * Shape of this variable.
    * </pre>
-   *
-   * <code>repeated int64 var_shape = 4;</code>
    */
   long getVarShape(int index);
 }

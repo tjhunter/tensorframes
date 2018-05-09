@@ -4,19 +4,18 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.AllocationRecord}
+ *
  * <pre>
  * An allocation/de-allocation operation performed by the allocator.
  * </pre>
- *
- * Protobuf type {@code tensorflow.AllocationRecord}
  */
 public  final class AllocationRecord extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.AllocationRecord)
     AllocationRecordOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use AllocationRecord.newBuilder() to construct.
-  private AllocationRecord(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private AllocationRecord(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private AllocationRecord() {
@@ -27,19 +26,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private AllocationRecord(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -49,8 +42,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -68,12 +60,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -82,7 +74,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocationRecord_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocationRecord_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -92,11 +84,11 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOC_MICROS_FIELD_NUMBER = 1;
   private long allocMicros_;
   /**
+   * <code>optional int64 alloc_micros = 1;</code>
+   *
    * <pre>
    * The timestamp of the operation.
    * </pre>
-   *
-   * <code>int64 alloc_micros = 1;</code>
    */
   public long getAllocMicros() {
     return allocMicros_;
@@ -105,11 +97,11 @@ private static final long serialVersionUID = 0L;
   public static final int ALLOC_BYTES_FIELD_NUMBER = 2;
   private long allocBytes_;
   /**
+   * <code>optional int64 alloc_bytes = 2;</code>
+   *
    * <pre>
    * Number of bytes allocated, or de-allocated if negative.
    * </pre>
-   *
-   * <code>int64 alloc_bytes = 2;</code>
    */
   public long getAllocBytes() {
     return allocBytes_;
@@ -133,7 +125,6 @@ private static final long serialVersionUID = 0L;
     if (allocBytes_ != 0L) {
       output.writeInt64(2, allocBytes_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -149,59 +140,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(2, allocBytes_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.AllocationRecord)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.AllocationRecord other = (org.tensorflow.framework.AllocationRecord) obj;
-
-    boolean result = true;
-    result = result && (getAllocMicros()
-        == other.getAllocMicros());
-    result = result && (getAllocBytes()
-        == other.getAllocBytes());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ALLOC_MICROS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getAllocMicros());
-    hash = (37 * hash) + ALLOC_BYTES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getAllocBytes());
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.AllocationRecord parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.AllocationRecord parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.AllocationRecord parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -225,40 +168,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.AllocationRecord parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.AllocationRecord parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.AllocationRecord parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.AllocationRecord parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.AllocationRecord parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.AllocationRecord parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -275,19 +212,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.AllocationRecord}
+   *
    * <pre>
    * An allocation/de-allocation operation performed by the allocator.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.AllocationRecord}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.AllocationRecord)
       org.tensorflow.framework.AllocationRecordOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -295,7 +232,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocationRecord_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.StepStatsProtos.internal_static_tensorflow_AllocationRecord_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -308,13 +245,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -351,32 +287,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.AllocationRecord) {
         return mergeFrom((org.tensorflow.framework.AllocationRecord)other);
@@ -394,7 +304,6 @@ private static final long serialVersionUID = 0L;
       if (other.getAllocBytes() != 0L) {
         setAllocBytes(other.getAllocBytes());
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -412,7 +321,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.AllocationRecord) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -423,21 +332,21 @@ private static final long serialVersionUID = 0L;
 
     private long allocMicros_ ;
     /**
+     * <code>optional int64 alloc_micros = 1;</code>
+     *
      * <pre>
      * The timestamp of the operation.
      * </pre>
-     *
-     * <code>int64 alloc_micros = 1;</code>
      */
     public long getAllocMicros() {
       return allocMicros_;
     }
     /**
+     * <code>optional int64 alloc_micros = 1;</code>
+     *
      * <pre>
      * The timestamp of the operation.
      * </pre>
-     *
-     * <code>int64 alloc_micros = 1;</code>
      */
     public Builder setAllocMicros(long value) {
       
@@ -446,11 +355,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 alloc_micros = 1;</code>
+     *
      * <pre>
      * The timestamp of the operation.
      * </pre>
-     *
-     * <code>int64 alloc_micros = 1;</code>
      */
     public Builder clearAllocMicros() {
       
@@ -461,21 +370,21 @@ private static final long serialVersionUID = 0L;
 
     private long allocBytes_ ;
     /**
+     * <code>optional int64 alloc_bytes = 2;</code>
+     *
      * <pre>
      * Number of bytes allocated, or de-allocated if negative.
      * </pre>
-     *
-     * <code>int64 alloc_bytes = 2;</code>
      */
     public long getAllocBytes() {
       return allocBytes_;
     }
     /**
+     * <code>optional int64 alloc_bytes = 2;</code>
+     *
      * <pre>
      * Number of bytes allocated, or de-allocated if negative.
      * </pre>
-     *
-     * <code>int64 alloc_bytes = 2;</code>
      */
     public Builder setAllocBytes(long value) {
       
@@ -484,11 +393,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int64 alloc_bytes = 2;</code>
+     *
      * <pre>
      * Number of bytes allocated, or de-allocated if negative.
      * </pre>
-     *
-     * <code>int64 alloc_bytes = 2;</code>
      */
     public Builder clearAllocBytes() {
       
@@ -498,12 +407,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -526,7 +435,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AllocationRecord(input, extensionRegistry);
+      try {
+        return new AllocationRecord(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

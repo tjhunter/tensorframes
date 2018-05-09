@@ -8,52 +8,54 @@ public interface TensorProtoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.tensorflow.DataType dtype = 1;</code>
+   * <code>optional .tensorflow.DataType dtype = 1;</code>
    */
   int getDtypeValue();
   /**
-   * <code>.tensorflow.DataType dtype = 1;</code>
+   * <code>optional .tensorflow.DataType dtype = 1;</code>
    */
   org.tensorflow.framework.DataType getDtype();
 
   /**
+   * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
    */
   boolean hasTensorShape();
   /**
+   * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
    */
   org.tensorflow.framework.TensorShapeProto getTensorShape();
   /**
+   * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
    */
   org.tensorflow.framework.TensorShapeProtoOrBuilder getTensorShapeOrBuilder();
 
   /**
+   * <code>optional int32 version_number = 3;</code>
+   *
    * <pre>
    * Version number.
    * In version 0, if the "repeated xxx" representations contain only one
    * element, that element is repeated to fill the shape.  This makes it easy
    * to represent a constant Tensor with a single value.
    * </pre>
-   *
-   * <code>int32 version_number = 3;</code>
    */
   int getVersionNumber();
 
   /**
+   * <code>optional bytes tensor_content = 4;</code>
+   *
    * <pre>
    * Serialized raw tensor content from either Tensor::AsProtoTensorContent or
    * memcpy in tensorflow::grpc::EncodeTensorToByteBuffer. This representation
@@ -61,380 +63,378 @@ public interface TensorProtoOrBuilder extends
    * reduce serialization overhead during RPC call by avoiding serialization of
    * many repeated small items.
    * </pre>
-   *
-   * <code>bytes tensor_content = 4;</code>
    */
   com.google.protobuf.ByteString getTensorContent();
 
   /**
+   * <code>repeated int32 half_val = 13 [packed = true];</code>
+   *
    * <pre>
    * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
    * have some pointless zero padding for each value here.
    * </pre>
-   *
-   * <code>repeated int32 half_val = 13 [packed = true];</code>
    */
   java.util.List<java.lang.Integer> getHalfValList();
   /**
+   * <code>repeated int32 half_val = 13 [packed = true];</code>
+   *
    * <pre>
    * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
    * have some pointless zero padding for each value here.
    * </pre>
-   *
-   * <code>repeated int32 half_val = 13 [packed = true];</code>
    */
   int getHalfValCount();
   /**
+   * <code>repeated int32 half_val = 13 [packed = true];</code>
+   *
    * <pre>
    * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
    * have some pointless zero padding for each value here.
    * </pre>
-   *
-   * <code>repeated int32 half_val = 13 [packed = true];</code>
    */
   int getHalfVal(int index);
 
   /**
+   * <code>repeated float float_val = 5 [packed = true];</code>
+   *
    * <pre>
    * DT_FLOAT.
    * </pre>
-   *
-   * <code>repeated float float_val = 5 [packed = true];</code>
    */
   java.util.List<java.lang.Float> getFloatValList();
   /**
+   * <code>repeated float float_val = 5 [packed = true];</code>
+   *
    * <pre>
    * DT_FLOAT.
    * </pre>
-   *
-   * <code>repeated float float_val = 5 [packed = true];</code>
    */
   int getFloatValCount();
   /**
+   * <code>repeated float float_val = 5 [packed = true];</code>
+   *
    * <pre>
    * DT_FLOAT.
    * </pre>
-   *
-   * <code>repeated float float_val = 5 [packed = true];</code>
    */
   float getFloatVal(int index);
 
   /**
+   * <code>repeated double double_val = 6 [packed = true];</code>
+   *
    * <pre>
    * DT_DOUBLE.
    * </pre>
-   *
-   * <code>repeated double double_val = 6 [packed = true];</code>
    */
   java.util.List<java.lang.Double> getDoubleValList();
   /**
+   * <code>repeated double double_val = 6 [packed = true];</code>
+   *
    * <pre>
    * DT_DOUBLE.
    * </pre>
-   *
-   * <code>repeated double double_val = 6 [packed = true];</code>
    */
   int getDoubleValCount();
   /**
+   * <code>repeated double double_val = 6 [packed = true];</code>
+   *
    * <pre>
    * DT_DOUBLE.
    * </pre>
-   *
-   * <code>repeated double double_val = 6 [packed = true];</code>
    */
   double getDoubleVal(int index);
 
   /**
+   * <code>repeated int32 int_val = 7 [packed = true];</code>
+   *
    * <pre>
    * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
    * </pre>
-   *
-   * <code>repeated int32 int_val = 7 [packed = true];</code>
    */
   java.util.List<java.lang.Integer> getIntValList();
   /**
+   * <code>repeated int32 int_val = 7 [packed = true];</code>
+   *
    * <pre>
    * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
    * </pre>
-   *
-   * <code>repeated int32 int_val = 7 [packed = true];</code>
    */
   int getIntValCount();
   /**
+   * <code>repeated int32 int_val = 7 [packed = true];</code>
+   *
    * <pre>
    * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
    * </pre>
-   *
-   * <code>repeated int32 int_val = 7 [packed = true];</code>
    */
   int getIntVal(int index);
 
   /**
+   * <code>repeated bytes string_val = 8;</code>
+   *
    * <pre>
    * DT_STRING
    * </pre>
-   *
-   * <code>repeated bytes string_val = 8;</code>
    */
   java.util.List<com.google.protobuf.ByteString> getStringValList();
   /**
+   * <code>repeated bytes string_val = 8;</code>
+   *
    * <pre>
    * DT_STRING
    * </pre>
-   *
-   * <code>repeated bytes string_val = 8;</code>
    */
   int getStringValCount();
   /**
+   * <code>repeated bytes string_val = 8;</code>
+   *
    * <pre>
    * DT_STRING
    * </pre>
-   *
-   * <code>repeated bytes string_val = 8;</code>
    */
   com.google.protobuf.ByteString getStringVal(int index);
 
   /**
+   * <code>repeated float scomplex_val = 9 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
    * and imaginary parts of i-th single precision complex.
    * </pre>
-   *
-   * <code>repeated float scomplex_val = 9 [packed = true];</code>
    */
   java.util.List<java.lang.Float> getScomplexValList();
   /**
+   * <code>repeated float scomplex_val = 9 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
    * and imaginary parts of i-th single precision complex.
    * </pre>
-   *
-   * <code>repeated float scomplex_val = 9 [packed = true];</code>
    */
   int getScomplexValCount();
   /**
+   * <code>repeated float scomplex_val = 9 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
    * and imaginary parts of i-th single precision complex.
    * </pre>
-   *
-   * <code>repeated float scomplex_val = 9 [packed = true];</code>
    */
   float getScomplexVal(int index);
 
   /**
+   * <code>repeated int64 int64_val = 10 [packed = true];</code>
+   *
    * <pre>
    * DT_INT64
    * </pre>
-   *
-   * <code>repeated int64 int64_val = 10 [packed = true];</code>
    */
   java.util.List<java.lang.Long> getInt64ValList();
   /**
+   * <code>repeated int64 int64_val = 10 [packed = true];</code>
+   *
    * <pre>
    * DT_INT64
    * </pre>
-   *
-   * <code>repeated int64 int64_val = 10 [packed = true];</code>
    */
   int getInt64ValCount();
   /**
+   * <code>repeated int64 int64_val = 10 [packed = true];</code>
+   *
    * <pre>
    * DT_INT64
    * </pre>
-   *
-   * <code>repeated int64 int64_val = 10 [packed = true];</code>
    */
   long getInt64Val(int index);
 
   /**
+   * <code>repeated bool bool_val = 11 [packed = true];</code>
+   *
    * <pre>
    * DT_BOOL
    * </pre>
-   *
-   * <code>repeated bool bool_val = 11 [packed = true];</code>
    */
   java.util.List<java.lang.Boolean> getBoolValList();
   /**
+   * <code>repeated bool bool_val = 11 [packed = true];</code>
+   *
    * <pre>
    * DT_BOOL
    * </pre>
-   *
-   * <code>repeated bool bool_val = 11 [packed = true];</code>
    */
   int getBoolValCount();
   /**
+   * <code>repeated bool bool_val = 11 [packed = true];</code>
+   *
    * <pre>
    * DT_BOOL
    * </pre>
-   *
-   * <code>repeated bool bool_val = 11 [packed = true];</code>
    */
   boolean getBoolVal(int index);
 
   /**
+   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
    * and imaginary parts of i-th double precision complex.
    * </pre>
-   *
-   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
    */
   java.util.List<java.lang.Double> getDcomplexValList();
   /**
+   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
    * and imaginary parts of i-th double precision complex.
    * </pre>
-   *
-   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
    */
   int getDcomplexValCount();
   /**
+   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
    * and imaginary parts of i-th double precision complex.
    * </pre>
-   *
-   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
    */
   double getDcomplexVal(int index);
 
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   java.util.List<org.tensorflow.framework.ResourceHandleProto> 
       getResourceHandleValList();
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   org.tensorflow.framework.ResourceHandleProto getResourceHandleVal(int index);
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   int getResourceHandleValCount();
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   java.util.List<? extends org.tensorflow.framework.ResourceHandleProtoOrBuilder> 
       getResourceHandleValOrBuilderList();
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   org.tensorflow.framework.ResourceHandleProtoOrBuilder getResourceHandleValOrBuilder(
       int index);
 
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   java.util.List<org.tensorflow.framework.VariantTensorDataProto> 
       getVariantValList();
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   org.tensorflow.framework.VariantTensorDataProto getVariantVal(int index);
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   int getVariantValCount();
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   java.util.List<? extends org.tensorflow.framework.VariantTensorDataProtoOrBuilder> 
       getVariantValOrBuilderList();
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   org.tensorflow.framework.VariantTensorDataProtoOrBuilder getVariantValOrBuilder(
       int index);
 
   /**
+   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT32
    * </pre>
-   *
-   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
    */
   java.util.List<java.lang.Integer> getUint32ValList();
   /**
+   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT32
    * </pre>
-   *
-   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
    */
   int getUint32ValCount();
   /**
+   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT32
    * </pre>
-   *
-   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
    */
   int getUint32Val(int index);
 
   /**
+   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT64
    * </pre>
-   *
-   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
    */
   java.util.List<java.lang.Long> getUint64ValList();
   /**
+   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT64
    * </pre>
-   *
-   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
    */
   int getUint64ValCount();
   /**
+   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT64
    * </pre>
-   *
-   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
    */
   long getUint64Val(int index);
 }

@@ -4,19 +4,18 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.GraphDef}
+ *
  * <pre>
  * Represents the graph of operations
  * </pre>
- *
- * Protobuf type {@code tensorflow.GraphDef}
  */
 public  final class GraphDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.GraphDef)
     GraphDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use GraphDef.newBuilder() to construct.
-  private GraphDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private GraphDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private GraphDef() {
@@ -27,19 +26,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private GraphDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -49,8 +42,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -60,8 +52,7 @@ private static final long serialVersionUID = 0L;
               node_ = new java.util.ArrayList<org.tensorflow.framework.NodeDef>();
               mutable_bitField0_ |= 0x00000001;
             }
-            node_.add(
-                input.readMessage(org.tensorflow.framework.NodeDef.parser(), extensionRegistry));
+            node_.add(input.readMessage(org.tensorflow.framework.NodeDef.parser(), extensionRegistry));
             break;
           }
           case 18: {
@@ -98,15 +89,15 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
         node_ = java.util.Collections.unmodifiableList(node_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -115,7 +106,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.GraphProtos.internal_static_tensorflow_GraphDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.GraphProtos.internal_static_tensorflow_GraphDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -161,37 +152,37 @@ private static final long serialVersionUID = 0L;
   public static final int VERSIONS_FIELD_NUMBER = 4;
   private org.tensorflow.framework.VersionDef versions_;
   /**
+   * <code>optional .tensorflow.VersionDef versions = 4;</code>
+   *
    * <pre>
    * Compatibility versions of the graph.  See core/public/version.h for version
    * history.  The GraphDef version is distinct from the TensorFlow version, and
    * each release of TensorFlow will support a range of GraphDef versions.
    * </pre>
-   *
-   * <code>.tensorflow.VersionDef versions = 4;</code>
    */
   public boolean hasVersions() {
     return versions_ != null;
   }
   /**
+   * <code>optional .tensorflow.VersionDef versions = 4;</code>
+   *
    * <pre>
    * Compatibility versions of the graph.  See core/public/version.h for version
    * history.  The GraphDef version is distinct from the TensorFlow version, and
    * each release of TensorFlow will support a range of GraphDef versions.
    * </pre>
-   *
-   * <code>.tensorflow.VersionDef versions = 4;</code>
    */
   public org.tensorflow.framework.VersionDef getVersions() {
     return versions_ == null ? org.tensorflow.framework.VersionDef.getDefaultInstance() : versions_;
   }
   /**
+   * <code>optional .tensorflow.VersionDef versions = 4;</code>
+   *
    * <pre>
    * Compatibility versions of the graph.  See core/public/version.h for version
    * history.  The GraphDef version is distinct from the TensorFlow version, and
    * each release of TensorFlow will support a range of GraphDef versions.
    * </pre>
-   *
-   * <code>.tensorflow.VersionDef versions = 4;</code>
    */
   public org.tensorflow.framework.VersionDefOrBuilder getVersionsOrBuilder() {
     return getVersions();
@@ -200,13 +191,13 @@ private static final long serialVersionUID = 0L;
   public static final int VERSION_FIELD_NUMBER = 3;
   private int version_;
   /**
+   * <code>optional int32 version = 3 [deprecated = true];</code>
+   *
    * <pre>
    * Deprecated single version field; use versions above instead.  Since all
    * GraphDef changes before "versions" was introduced were forward
    * compatible, this field is entirely ignored.
    * </pre>
-   *
-   * <code>int32 version = 3 [deprecated = true];</code>
    */
   @java.lang.Deprecated public int getVersion() {
     return version_;
@@ -215,6 +206,8 @@ private static final long serialVersionUID = 0L;
   public static final int LIBRARY_FIELD_NUMBER = 2;
   private org.tensorflow.framework.FunctionDefLibrary library_;
   /**
+   * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+   *
    * <pre>
    * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
    * "library" provides user-defined functions.
@@ -239,13 +232,13 @@ private static final long serialVersionUID = 0L;
    *     consumer does not start until all return values of the callee
    *     function are ready.
    * </pre>
-   *
-   * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
    */
   public boolean hasLibrary() {
     return library_ != null;
   }
   /**
+   * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+   *
    * <pre>
    * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
    * "library" provides user-defined functions.
@@ -270,13 +263,13 @@ private static final long serialVersionUID = 0L;
    *     consumer does not start until all return values of the callee
    *     function are ready.
    * </pre>
-   *
-   * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
    */
   public org.tensorflow.framework.FunctionDefLibrary getLibrary() {
     return library_ == null ? org.tensorflow.framework.FunctionDefLibrary.getDefaultInstance() : library_;
   }
   /**
+   * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+   *
    * <pre>
    * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
    * "library" provides user-defined functions.
@@ -301,8 +294,6 @@ private static final long serialVersionUID = 0L;
    *     consumer does not start until all return values of the callee
    *     function are ready.
    * </pre>
-   *
-   * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
    */
   public org.tensorflow.framework.FunctionDefLibraryOrBuilder getLibraryOrBuilder() {
     return getLibrary();
@@ -332,7 +323,6 @@ private static final long serialVersionUID = 0L;
     if (versions_ != null) {
       output.writeMessage(4, getVersions());
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -356,77 +346,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getVersions());
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.GraphDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.GraphDef other = (org.tensorflow.framework.GraphDef) obj;
-
-    boolean result = true;
-    result = result && getNodeList()
-        .equals(other.getNodeList());
-    result = result && (hasVersions() == other.hasVersions());
-    if (hasVersions()) {
-      result = result && getVersions()
-          .equals(other.getVersions());
-    }
-    result = result && (getVersion()
-        == other.getVersion());
-    result = result && (hasLibrary() == other.hasLibrary());
-    if (hasLibrary()) {
-      result = result && getLibrary()
-          .equals(other.getLibrary());
-    }
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (getNodeCount() > 0) {
-      hash = (37 * hash) + NODE_FIELD_NUMBER;
-      hash = (53 * hash) + getNodeList().hashCode();
-    }
-    if (hasVersions()) {
-      hash = (37 * hash) + VERSIONS_FIELD_NUMBER;
-      hash = (53 * hash) + getVersions().hashCode();
-    }
-    hash = (37 * hash) + VERSION_FIELD_NUMBER;
-    hash = (53 * hash) + getVersion();
-    if (hasLibrary()) {
-      hash = (37 * hash) + LIBRARY_FIELD_NUMBER;
-      hash = (53 * hash) + getLibrary().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.GraphDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.GraphDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.GraphDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -450,40 +374,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.GraphDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.GraphDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.GraphDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.GraphDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.GraphDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.GraphDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -500,19 +418,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.GraphDef}
+   *
    * <pre>
    * Represents the graph of operations
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.GraphDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.GraphDef)
       org.tensorflow.framework.GraphDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -520,7 +438,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.GraphProtos.internal_static_tensorflow_GraphDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.GraphProtos.internal_static_tensorflow_GraphDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -533,13 +451,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getNodeFieldBuilder();
       }
     }
@@ -614,32 +531,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.GraphDef) {
         return mergeFrom((org.tensorflow.framework.GraphDef)other);
@@ -670,7 +561,7 @@ private static final long serialVersionUID = 0L;
             node_ = other.node_;
             bitField0_ = (bitField0_ & ~0x00000001);
             nodeBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getNodeFieldBuilder() : null;
           } else {
             nodeBuilder_.addAllMessages(other.node_);
@@ -686,7 +577,6 @@ private static final long serialVersionUID = 0L;
       if (other.hasLibrary()) {
         mergeLibrary(other.getLibrary());
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -704,7 +594,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.GraphDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -723,7 +613,7 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.NodeDef, org.tensorflow.framework.NodeDef.Builder, org.tensorflow.framework.NodeDefOrBuilder> nodeBuilder_;
 
     /**
@@ -939,11 +829,11 @@ private static final long serialVersionUID = 0L;
          getNodeBuilderList() {
       return getNodeFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.NodeDef, org.tensorflow.framework.NodeDef.Builder, org.tensorflow.framework.NodeDefOrBuilder> 
         getNodeFieldBuilder() {
       if (nodeBuilder_ == null) {
-        nodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        nodeBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.NodeDef, org.tensorflow.framework.NodeDef.Builder, org.tensorflow.framework.NodeDefOrBuilder>(
                 node_,
                 ((bitField0_ & 0x00000001) == 0x00000001),
@@ -955,28 +845,28 @@ private static final long serialVersionUID = 0L;
     }
 
     private org.tensorflow.framework.VersionDef versions_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.VersionDef, org.tensorflow.framework.VersionDef.Builder, org.tensorflow.framework.VersionDefOrBuilder> versionsBuilder_;
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public boolean hasVersions() {
       return versionsBuilder_ != null || versions_ != null;
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public org.tensorflow.framework.VersionDef getVersions() {
       if (versionsBuilder_ == null) {
@@ -986,13 +876,13 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public Builder setVersions(org.tensorflow.framework.VersionDef value) {
       if (versionsBuilder_ == null) {
@@ -1008,13 +898,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public Builder setVersions(
         org.tensorflow.framework.VersionDef.Builder builderForValue) {
@@ -1028,13 +918,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public Builder mergeVersions(org.tensorflow.framework.VersionDef value) {
       if (versionsBuilder_ == null) {
@@ -1052,13 +942,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public Builder clearVersions() {
       if (versionsBuilder_ == null) {
@@ -1072,13 +962,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public org.tensorflow.framework.VersionDef.Builder getVersionsBuilder() {
       
@@ -1086,13 +976,13 @@ private static final long serialVersionUID = 0L;
       return getVersionsFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
     public org.tensorflow.framework.VersionDefOrBuilder getVersionsOrBuilder() {
       if (versionsBuilder_ != null) {
@@ -1103,19 +993,19 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.VersionDef versions = 4;</code>
+     *
      * <pre>
      * Compatibility versions of the graph.  See core/public/version.h for version
      * history.  The GraphDef version is distinct from the TensorFlow version, and
      * each release of TensorFlow will support a range of GraphDef versions.
      * </pre>
-     *
-     * <code>.tensorflow.VersionDef versions = 4;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.VersionDef, org.tensorflow.framework.VersionDef.Builder, org.tensorflow.framework.VersionDefOrBuilder> 
         getVersionsFieldBuilder() {
       if (versionsBuilder_ == null) {
-        versionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        versionsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.VersionDef, org.tensorflow.framework.VersionDef.Builder, org.tensorflow.framework.VersionDefOrBuilder>(
                 getVersions(),
                 getParentForChildren(),
@@ -1127,25 +1017,25 @@ private static final long serialVersionUID = 0L;
 
     private int version_ ;
     /**
+     * <code>optional int32 version = 3 [deprecated = true];</code>
+     *
      * <pre>
      * Deprecated single version field; use versions above instead.  Since all
      * GraphDef changes before "versions" was introduced were forward
      * compatible, this field is entirely ignored.
      * </pre>
-     *
-     * <code>int32 version = 3 [deprecated = true];</code>
      */
     @java.lang.Deprecated public int getVersion() {
       return version_;
     }
     /**
+     * <code>optional int32 version = 3 [deprecated = true];</code>
+     *
      * <pre>
      * Deprecated single version field; use versions above instead.  Since all
      * GraphDef changes before "versions" was introduced were forward
      * compatible, this field is entirely ignored.
      * </pre>
-     *
-     * <code>int32 version = 3 [deprecated = true];</code>
      */
     @java.lang.Deprecated public Builder setVersion(int value) {
       
@@ -1154,13 +1044,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int32 version = 3 [deprecated = true];</code>
+     *
      * <pre>
      * Deprecated single version field; use versions above instead.  Since all
      * GraphDef changes before "versions" was introduced were forward
      * compatible, this field is entirely ignored.
      * </pre>
-     *
-     * <code>int32 version = 3 [deprecated = true];</code>
      */
     @java.lang.Deprecated public Builder clearVersion() {
       
@@ -1170,9 +1060,11 @@ private static final long serialVersionUID = 0L;
     }
 
     private org.tensorflow.framework.FunctionDefLibrary library_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.FunctionDefLibrary, org.tensorflow.framework.FunctionDefLibrary.Builder, org.tensorflow.framework.FunctionDefLibraryOrBuilder> libraryBuilder_;
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1197,13 +1089,13 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public boolean hasLibrary() {
       return libraryBuilder_ != null || library_ != null;
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1228,8 +1120,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public org.tensorflow.framework.FunctionDefLibrary getLibrary() {
       if (libraryBuilder_ == null) {
@@ -1239,6 +1129,8 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1263,8 +1155,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public Builder setLibrary(org.tensorflow.framework.FunctionDefLibrary value) {
       if (libraryBuilder_ == null) {
@@ -1280,6 +1170,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1304,8 +1196,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public Builder setLibrary(
         org.tensorflow.framework.FunctionDefLibrary.Builder builderForValue) {
@@ -1319,6 +1209,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1343,8 +1235,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public Builder mergeLibrary(org.tensorflow.framework.FunctionDefLibrary value) {
       if (libraryBuilder_ == null) {
@@ -1362,6 +1252,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1386,8 +1278,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public Builder clearLibrary() {
       if (libraryBuilder_ == null) {
@@ -1401,6 +1291,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1425,8 +1317,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public org.tensorflow.framework.FunctionDefLibrary.Builder getLibraryBuilder() {
       
@@ -1434,6 +1324,8 @@ private static final long serialVersionUID = 0L;
       return getLibraryFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1458,8 +1350,6 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
     public org.tensorflow.framework.FunctionDefLibraryOrBuilder getLibraryOrBuilder() {
       if (libraryBuilder_ != null) {
@@ -1470,6 +1360,8 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.FunctionDefLibrary library = 2;</code>
+     *
      * <pre>
      * EXPERIMENTAL. DO NOT USE OR DEPEND ON THIS YET.
      * "library" provides user-defined functions.
@@ -1494,14 +1386,12 @@ private static final long serialVersionUID = 0L;
      *     consumer does not start until all return values of the callee
      *     function are ready.
      * </pre>
-     *
-     * <code>.tensorflow.FunctionDefLibrary library = 2;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.FunctionDefLibrary, org.tensorflow.framework.FunctionDefLibrary.Builder, org.tensorflow.framework.FunctionDefLibraryOrBuilder> 
         getLibraryFieldBuilder() {
       if (libraryBuilder_ == null) {
-        libraryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        libraryBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.FunctionDefLibrary, org.tensorflow.framework.FunctionDefLibrary.Builder, org.tensorflow.framework.FunctionDefLibraryOrBuilder>(
                 getLibrary(),
                 getParentForChildren(),
@@ -1512,12 +1402,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1540,7 +1430,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GraphDef(input, extensionRegistry);
+      try {
+        return new GraphDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

@@ -8,65 +8,65 @@ public interface MemoryLogTensorOutputOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int64 step_id = 1;</code>
+   *
    * <pre>
    * Process-unique step id.
    * </pre>
-   *
-   * <code>int64 step_id = 1;</code>
    */
   long getStepId();
 
   /**
+   * <code>optional string kernel_name = 2;</code>
+   *
    * <pre>
    * Name of the kernel producing an output as set in GraphDef, e.g.,
    * "affine2/weights/Assign".
    * </pre>
-   *
-   * <code>string kernel_name = 2;</code>
    */
   java.lang.String getKernelName();
   /**
+   * <code>optional string kernel_name = 2;</code>
+   *
    * <pre>
    * Name of the kernel producing an output as set in GraphDef, e.g.,
    * "affine2/weights/Assign".
    * </pre>
-   *
-   * <code>string kernel_name = 2;</code>
    */
   com.google.protobuf.ByteString
       getKernelNameBytes();
 
   /**
+   * <code>optional int32 index = 3;</code>
+   *
    * <pre>
    * Index of the output being set.
    * </pre>
-   *
-   * <code>int32 index = 3;</code>
    */
   int getIndex();
 
   /**
+   * <code>optional .tensorflow.TensorDescription tensor = 4;</code>
+   *
    * <pre>
    * Output tensor details.
    * </pre>
-   *
-   * <code>.tensorflow.TensorDescription tensor = 4;</code>
    */
   boolean hasTensor();
   /**
+   * <code>optional .tensorflow.TensorDescription tensor = 4;</code>
+   *
    * <pre>
    * Output tensor details.
    * </pre>
-   *
-   * <code>.tensorflow.TensorDescription tensor = 4;</code>
    */
   org.tensorflow.framework.TensorDescription getTensor();
   /**
+   * <code>optional .tensorflow.TensorDescription tensor = 4;</code>
+   *
    * <pre>
    * Output tensor details.
    * </pre>
-   *
-   * <code>.tensorflow.TensorDescription tensor = 4;</code>
    */
   org.tensorflow.framework.TensorDescriptionOrBuilder getTensorOrBuilder();
 }

@@ -8,12 +8,12 @@ public interface DeviceLocalityOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int32 bus_id = 1;</code>
+   *
    * <pre>
    * Optional bus locality of device.  Default value of 0 means
    * no specific locality.  Specific localities are indexed from 1.
    * </pre>
-   *
-   * <code>int32 bus_id = 1;</code>
    */
   int getBusId();
 }

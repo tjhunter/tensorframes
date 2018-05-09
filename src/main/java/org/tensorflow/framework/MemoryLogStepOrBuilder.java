@@ -8,28 +8,28 @@ public interface MemoryLogStepOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int64 step_id = 1;</code>
+   *
    * <pre>
    * Process-unique step id.
    * </pre>
-   *
-   * <code>int64 step_id = 1;</code>
    */
   long getStepId();
 
   /**
+   * <code>optional string handle = 2;</code>
+   *
    * <pre>
    * Handle describing the feeds and fetches of the step.
    * </pre>
-   *
-   * <code>string handle = 2;</code>
    */
   java.lang.String getHandle();
   /**
+   * <code>optional string handle = 2;</code>
+   *
    * <pre>
    * Handle describing the feeds and fetches of the step.
    * </pre>
-   *
-   * <code>string handle = 2;</code>
    */
   com.google.protobuf.ByteString
       getHandleBytes();

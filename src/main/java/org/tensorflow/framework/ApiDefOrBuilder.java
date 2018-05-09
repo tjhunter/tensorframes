@@ -8,29 +8,29 @@ public interface ApiDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string graph_op_name = 1;</code>
+   *
    * <pre>
    * Name of the op (in the OpDef) to specify the API for.
    * </pre>
-   *
-   * <code>string graph_op_name = 1;</code>
    */
   java.lang.String getGraphOpName();
   /**
+   * <code>optional string graph_op_name = 1;</code>
+   *
    * <pre>
    * Name of the op (in the OpDef) to specify the API for.
    * </pre>
-   *
-   * <code>string graph_op_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getGraphOpNameBytes();
 
   /**
-   * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+   * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
    */
   int getVisibilityValue();
   /**
-   * <code>.tensorflow.ApiDef.Visibility visibility = 2;</code>
+   * <code>optional .tensorflow.ApiDef.Visibility visibility = 2;</code>
    */
   org.tensorflow.framework.ApiDef.Visibility getVisibility();
 
@@ -107,44 +107,44 @@ public interface ApiDefOrBuilder extends
       int index);
 
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
-  java.util.List<java.lang.String>
+  com.google.protobuf.ProtocolStringList
       getArgOrderList();
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   int getArgOrderCount();
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   java.lang.String getArgOrder(int index);
   /**
+   * <code>repeated string arg_order = 11;</code>
+   *
    * <pre>
    * List of original in_arg names to specify new argument order.
    * Length of arg_order should be either empty to keep current order
    * or match size of in_arg.
    * </pre>
-   *
-   * <code>repeated string arg_order = 11;</code>
    */
   com.google.protobuf.ByteString
       getArgOrderBytes(int index);
@@ -174,67 +174,67 @@ public interface ApiDefOrBuilder extends
       int index);
 
   /**
+   * <code>optional string summary = 7;</code>
+   *
    * <pre>
    * One-line human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string summary = 7;</code>
    */
   java.lang.String getSummary();
   /**
+   * <code>optional string summary = 7;</code>
+   *
    * <pre>
    * One-line human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string summary = 7;</code>
    */
   com.google.protobuf.ByteString
       getSummaryBytes();
 
   /**
+   * <code>optional string description = 8;</code>
+   *
    * <pre>
    * Additional, longer human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string description = 8;</code>
    */
   java.lang.String getDescription();
   /**
+   * <code>optional string description = 8;</code>
+   *
    * <pre>
    * Additional, longer human-readable description of what the Op does.
    * </pre>
-   *
-   * <code>string description = 8;</code>
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
 
   /**
+   * <code>optional string description_prefix = 9;</code>
+   *
    * <pre>
    * Modify an existing/inherited description by adding text to the beginning
    * or end.
    * </pre>
-   *
-   * <code>string description_prefix = 9;</code>
    */
   java.lang.String getDescriptionPrefix();
   /**
+   * <code>optional string description_prefix = 9;</code>
+   *
    * <pre>
    * Modify an existing/inherited description by adding text to the beginning
    * or end.
    * </pre>
-   *
-   * <code>string description_prefix = 9;</code>
    */
   com.google.protobuf.ByteString
       getDescriptionPrefixBytes();
 
   /**
-   * <code>string description_suffix = 10;</code>
+   * <code>optional string description_suffix = 10;</code>
    */
   java.lang.String getDescriptionSuffix();
   /**
-   * <code>string description_suffix = 10;</code>
+   * <code>optional string description_suffix = 10;</code>
    */
   com.google.protobuf.ByteString
       getDescriptionSuffixBytes();

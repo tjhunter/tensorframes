@@ -8,20 +8,20 @@ public interface AllocationRecordOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional int64 alloc_micros = 1;</code>
+   *
    * <pre>
    * The timestamp of the operation.
    * </pre>
-   *
-   * <code>int64 alloc_micros = 1;</code>
    */
   long getAllocMicros();
 
   /**
+   * <code>optional int64 alloc_bytes = 2;</code>
+   *
    * <pre>
    * Number of bytes allocated, or de-allocated if negative.
    * </pre>
-   *
-   * <code>int64 alloc_bytes = 2;</code>
    */
   long getAllocBytes();
 }

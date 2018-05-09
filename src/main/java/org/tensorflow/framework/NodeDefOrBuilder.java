@@ -8,48 +8,50 @@ public interface NodeDefOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * The name given to this operator. Used for naming inputs,
    * logging, visualization, etc.  Unique within a single GraphDef.
    * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   java.lang.String getName();
   /**
+   * <code>optional string name = 1;</code>
+   *
    * <pre>
    * The name given to this operator. Used for naming inputs,
    * logging, visualization, etc.  Unique within a single GraphDef.
    * Must match the regexp "[A-Za-z0-9.][A-Za-z0-9_./]*".
    * </pre>
-   *
-   * <code>string name = 1;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
+   * <code>optional string op = 2;</code>
+   *
    * <pre>
    * The operation name.  There may be custom parameters in attrs.
    * Op names starting with an underscore are reserved for internal use.
    * </pre>
-   *
-   * <code>string op = 2;</code>
    */
   java.lang.String getOp();
   /**
+   * <code>optional string op = 2;</code>
+   *
    * <pre>
    * The operation name.  There may be custom parameters in attrs.
    * Op names starting with an underscore are reserved for internal use.
    * </pre>
-   *
-   * <code>string op = 2;</code>
    */
   com.google.protobuf.ByteString
       getOpBytes();
 
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -57,12 +59,12 @@ public interface NodeDefOrBuilder extends
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
-  java.util.List<java.lang.String>
+  com.google.protobuf.ProtocolStringList
       getInputList();
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -70,11 +72,11 @@ public interface NodeDefOrBuilder extends
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   int getInputCount();
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -82,11 +84,11 @@ public interface NodeDefOrBuilder extends
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   java.lang.String getInput(int index);
   /**
+   * <code>repeated string input = 3;</code>
+   *
    * <pre>
    * Each input is "node:src_output" with "node" being a string name and
    * "src_output" indicating which output tensor to use from "node". If
@@ -94,13 +96,13 @@ public interface NodeDefOrBuilder extends
    * may optionally be followed by control inputs that have the format
    * "^node".
    * </pre>
-   *
-   * <code>repeated string input = 3;</code>
    */
   com.google.protobuf.ByteString
       getInputBytes(int index);
 
   /**
+   * <code>optional string device = 4;</code>
+   *
    * <pre>
    * A (possibly partial) specification for the device on which this
    * node should be placed.
@@ -119,11 +121,11 @@ public interface NodeDefOrBuilder extends
    * field is empty or not present), the runtime will attempt to
    * choose a device automatically.
    * </pre>
-   *
-   * <code>string device = 4;</code>
    */
   java.lang.String getDevice();
   /**
+   * <code>optional string device = 4;</code>
+   *
    * <pre>
    * A (possibly partial) specification for the device on which this
    * node should be placed.
@@ -142,13 +144,13 @@ public interface NodeDefOrBuilder extends
    * field is empty or not present), the runtime will attempt to
    * choose a device automatically.
    * </pre>
-   *
-   * <code>string device = 4;</code>
    */
   com.google.protobuf.ByteString
       getDeviceBytes();
 
   /**
+   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
+   *
    * <pre>
    * Operation-specific graph-construction-time configuration.
    * Note that this should include all attrs defined in the
@@ -163,97 +165,7 @@ public interface NodeDefOrBuilder extends
    * attr's type field.
    * TODO(josh11b): Add some examples here showing best practices.
    * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
    */
-  int getAttrCount();
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-  boolean containsAttr(
-      java.lang.String key);
-  /**
-   * Use {@link #getAttrMap()} instead.
-   */
-  @java.lang.Deprecated
   java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue>
   getAttr();
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-  java.util.Map<java.lang.String, org.tensorflow.framework.AttrValue>
-  getAttrMap();
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  org.tensorflow.framework.AttrValue getAttrOrDefault(
-      java.lang.String key,
-      org.tensorflow.framework.AttrValue defaultValue);
-  /**
-   * <pre>
-   * Operation-specific graph-construction-time configuration.
-   * Note that this should include all attrs defined in the
-   * corresponding OpDef, including those with a value matching
-   * the default -- this allows the default to change and makes
-   * NodeDefs easier to interpret on their own.  However, if
-   * an attr with a default is not specified in this list, the
-   * default will be used.
-   * The "names" (keys) must match the regexp "[a-z][a-z0-9_]+" (and
-   * one of the names from the corresponding OpDef's attr field).
-   * The values must have a type matching the corresponding OpDef
-   * attr's type field.
-   * TODO(josh11b): Add some examples here showing best practices.
-   * </pre>
-   *
-   * <code>map&lt;string, .tensorflow.AttrValue&gt; attr = 5;</code>
-   */
-
-  org.tensorflow.framework.AttrValue getAttrOrThrow(
-      java.lang.String key);
 }

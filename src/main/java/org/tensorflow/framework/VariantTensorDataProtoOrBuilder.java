@@ -8,72 +8,72 @@ public interface VariantTensorDataProtoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional string type_name = 1;</code>
+   *
    * <pre>
    * Name of the type of objects being serialized.
    * </pre>
-   *
-   * <code>string type_name = 1;</code>
    */
   java.lang.String getTypeName();
   /**
+   * <code>optional string type_name = 1;</code>
+   *
    * <pre>
    * Name of the type of objects being serialized.
    * </pre>
-   *
-   * <code>string type_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getTypeNameBytes();
 
   /**
+   * <code>optional bytes metadata = 2;</code>
+   *
    * <pre>
    * Portions of the object that are not Tensors.
    * </pre>
-   *
-   * <code>bytes metadata = 2;</code>
    */
   com.google.protobuf.ByteString getMetadata();
 
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   java.util.List<org.tensorflow.framework.TensorProto> 
       getTensorsList();
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   org.tensorflow.framework.TensorProto getTensors(int index);
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   int getTensorsCount();
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   java.util.List<? extends org.tensorflow.framework.TensorProtoOrBuilder> 
       getTensorsOrBuilderList();
   /**
+   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
+   *
    * <pre>
    * Tensors contained within objects being serialized.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorProto tensors = 3;</code>
    */
   org.tensorflow.framework.TensorProtoOrBuilder getTensorsOrBuilder(
       int index);

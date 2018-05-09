@@ -4,6 +4,8 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.GradientDef}
+ *
  * <pre>
  * GradientDef defines the gradient function of a function defined in
  * a function library.
@@ -21,16 +23,13 @@ package org.tensorflow.framework;
  * loss function). dL/dx_i is the partial derivative of L with respect
  * to x_i.
  * </pre>
- *
- * Protobuf type {@code tensorflow.GradientDef}
  */
 public  final class GradientDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.GradientDef)
     GradientDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use GradientDef.newBuilder() to construct.
-  private GradientDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private GradientDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private GradientDef() {
@@ -41,19 +40,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private GradientDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -63,20 +56,19 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             functionName_ = s;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             gradientFunc_ = s;
             break;
@@ -84,12 +76,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -98,7 +90,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.FunctionProtos.internal_static_tensorflow_GradientDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.FunctionProtos.internal_static_tensorflow_GradientDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -108,11 +100,11 @@ private static final long serialVersionUID = 0L;
   public static final int FUNCTION_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object functionName_;
   /**
+   * <code>optional string function_name = 1;</code>
+   *
    * <pre>
    * The function name.
    * </pre>
-   *
-   * <code>string function_name = 1;</code>
    */
   public java.lang.String getFunctionName() {
     java.lang.Object ref = functionName_;
@@ -127,11 +119,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string function_name = 1;</code>
+   *
    * <pre>
    * The function name.
    * </pre>
-   *
-   * <code>string function_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getFunctionNameBytes() {
@@ -150,11 +142,11 @@ private static final long serialVersionUID = 0L;
   public static final int GRADIENT_FUNC_FIELD_NUMBER = 2;
   private volatile java.lang.Object gradientFunc_;
   /**
+   * <code>optional string gradient_func = 2;</code>
+   *
    * <pre>
    * The gradient function's name.
    * </pre>
-   *
-   * <code>string gradient_func = 2;</code>
    */
   public java.lang.String getGradientFunc() {
     java.lang.Object ref = gradientFunc_;
@@ -169,11 +161,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string gradient_func = 2;</code>
+   *
    * <pre>
    * The gradient function's name.
    * </pre>
-   *
-   * <code>string gradient_func = 2;</code>
    */
   public com.google.protobuf.ByteString
       getGradientFuncBytes() {
@@ -202,12 +194,11 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getFunctionNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, functionName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, functionName_);
     }
     if (!getGradientFuncBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, gradientFunc_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, gradientFunc_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -216,62 +207,16 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getFunctionNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, functionName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, functionName_);
     }
     if (!getGradientFuncBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, gradientFunc_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, gradientFunc_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.GradientDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.GradientDef other = (org.tensorflow.framework.GradientDef) obj;
-
-    boolean result = true;
-    result = result && getFunctionName()
-        .equals(other.getFunctionName());
-    result = result && getGradientFunc()
-        .equals(other.getGradientFunc());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FUNCTION_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getFunctionName().hashCode();
-    hash = (37 * hash) + GRADIENT_FUNC_FIELD_NUMBER;
-    hash = (53 * hash) + getGradientFunc().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.GradientDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.GradientDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.GradientDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -295,40 +240,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.GradientDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.GradientDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.GradientDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.GradientDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.GradientDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.GradientDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -345,11 +284,13 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.GradientDef}
+   *
    * <pre>
    * GradientDef defines the gradient function of a function defined in
    * a function library.
@@ -367,11 +308,9 @@ private static final long serialVersionUID = 0L;
    * loss function). dL/dx_i is the partial derivative of L with respect
    * to x_i.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.GradientDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.GradientDef)
       org.tensorflow.framework.GradientDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -379,7 +318,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.FunctionProtos.internal_static_tensorflow_GradientDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.FunctionProtos.internal_static_tensorflow_GradientDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -392,13 +331,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -435,32 +373,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.GradientDef) {
         return mergeFrom((org.tensorflow.framework.GradientDef)other);
@@ -480,7 +392,6 @@ private static final long serialVersionUID = 0L;
         gradientFunc_ = other.gradientFunc_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -498,7 +409,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.GradientDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -509,11 +420,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object functionName_ = "";
     /**
+     * <code>optional string function_name = 1;</code>
+     *
      * <pre>
      * The function name.
      * </pre>
-     *
-     * <code>string function_name = 1;</code>
      */
     public java.lang.String getFunctionName() {
       java.lang.Object ref = functionName_;
@@ -528,11 +439,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string function_name = 1;</code>
+     *
      * <pre>
      * The function name.
      * </pre>
-     *
-     * <code>string function_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFunctionNameBytes() {
@@ -548,11 +459,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string function_name = 1;</code>
+     *
      * <pre>
      * The function name.
      * </pre>
-     *
-     * <code>string function_name = 1;</code>
      */
     public Builder setFunctionName(
         java.lang.String value) {
@@ -565,11 +476,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string function_name = 1;</code>
+     *
      * <pre>
      * The function name.
      * </pre>
-     *
-     * <code>string function_name = 1;</code>
      */
     public Builder clearFunctionName() {
       
@@ -578,11 +489,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string function_name = 1;</code>
+     *
      * <pre>
      * The function name.
      * </pre>
-     *
-     * <code>string function_name = 1;</code>
      */
     public Builder setFunctionNameBytes(
         com.google.protobuf.ByteString value) {
@@ -598,11 +509,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object gradientFunc_ = "";
     /**
+     * <code>optional string gradient_func = 2;</code>
+     *
      * <pre>
      * The gradient function's name.
      * </pre>
-     *
-     * <code>string gradient_func = 2;</code>
      */
     public java.lang.String getGradientFunc() {
       java.lang.Object ref = gradientFunc_;
@@ -617,11 +528,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string gradient_func = 2;</code>
+     *
      * <pre>
      * The gradient function's name.
      * </pre>
-     *
-     * <code>string gradient_func = 2;</code>
      */
     public com.google.protobuf.ByteString
         getGradientFuncBytes() {
@@ -637,11 +548,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string gradient_func = 2;</code>
+     *
      * <pre>
      * The gradient function's name.
      * </pre>
-     *
-     * <code>string gradient_func = 2;</code>
      */
     public Builder setGradientFunc(
         java.lang.String value) {
@@ -654,11 +565,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string gradient_func = 2;</code>
+     *
      * <pre>
      * The gradient function's name.
      * </pre>
-     *
-     * <code>string gradient_func = 2;</code>
      */
     public Builder clearGradientFunc() {
       
@@ -667,11 +578,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string gradient_func = 2;</code>
+     *
      * <pre>
      * The gradient function's name.
      * </pre>
-     *
-     * <code>string gradient_func = 2;</code>
      */
     public Builder setGradientFuncBytes(
         com.google.protobuf.ByteString value) {
@@ -686,12 +597,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -714,7 +625,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GradientDef(input, extensionRegistry);
+      try {
+        return new GradientDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

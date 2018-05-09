@@ -4,21 +4,20 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.RemoteFusedGraphExecuteInfo}
+ *
  * <pre>
  * Protocol buffer representing a handle to a tensorflow resource. Handles are
  * not valid across executions, but can be serialized back and forth from within
  * a single run.
  * </pre>
- *
- * Protobuf type {@code tensorflow.RemoteFusedGraphExecuteInfo}
  */
 public  final class RemoteFusedGraphExecuteInfo extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.RemoteFusedGraphExecuteInfo)
     RemoteFusedGraphExecuteInfoOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use RemoteFusedGraphExecuteInfo.newBuilder() to construct.
-  private RemoteFusedGraphExecuteInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private RemoteFusedGraphExecuteInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private RemoteFusedGraphExecuteInfo() {
@@ -33,19 +32,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private RemoteFusedGraphExecuteInfo(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -55,8 +48,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -75,7 +67,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
               graphInputNodeName_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000002;
@@ -84,7 +76,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
               graphOutputNodeName_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000004;
@@ -93,7 +85,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             executorName_ = s;
             break;
@@ -108,8 +100,7 @@ private static final long serialVersionUID = 0L;
               defaultGraphInputTensorShape_ = new java.util.ArrayList<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto>();
               mutable_bitField0_ |= 0x00000020;
             }
-            defaultGraphInputTensorShape_.add(
-                input.readMessage(org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.parser(), extensionRegistry));
+            defaultGraphInputTensorShape_.add(input.readMessage(org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.parser(), extensionRegistry));
             break;
           }
           case 58: {
@@ -117,17 +108,17 @@ private static final long serialVersionUID = 0L;
               defaultGraphOutputTensorShape_ = new java.util.ArrayList<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto>();
               mutable_bitField0_ |= 0x00000040;
             }
-            defaultGraphOutputTensorShape_.add(
-                input.readMessage(org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.parser(), extensionRegistry));
+            defaultGraphOutputTensorShape_.add(input.readMessage(org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.parser(), extensionRegistry));
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
         graphInputNodeName_ = graphInputNodeName_.getUnmodifiableView();
@@ -141,7 +132,6 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
         defaultGraphOutputTensorShape_ = java.util.Collections.unmodifiableList(defaultGraphOutputTensorShape_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -150,7 +140,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -165,28 +155,28 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>UNUSED = 0;</code>
      */
-    UNUSED(0),
+    UNUSED(0, 0),
     /**
      * <code>GRAPH_INPUT = 1;</code>
      */
-    GRAPH_INPUT(1),
+    GRAPH_INPUT(1, 1),
     /**
      * <code>GRAPH_OUTPUT = 2;</code>
      */
-    GRAPH_OUTPUT(2),
+    GRAPH_OUTPUT(2, 2),
     /**
      * <code>FUSED_NODE = 3;</code>
      */
-    FUSED_NODE(3),
+    FUSED_NODE(3, 3),
     /**
      * <code>BORDER_INPUT = 4;</code>
      */
-    BORDER_INPUT(4),
+    BORDER_INPUT(4, 4),
     /**
      * <code>BORDER_OUTPUT = 5;</code>
      */
-    BORDER_OUTPUT(5),
-    UNRECOGNIZED(-1),
+    BORDER_OUTPUT(5, 5),
+    UNRECOGNIZED(-1, -1),
     ;
 
     /**
@@ -216,22 +206,14 @@ private static final long serialVersionUID = 0L;
 
 
     public final int getNumber() {
-      if (this == UNRECOGNIZED) {
+      if (index == -1) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
     public static NodeType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static NodeType forNumber(int value) {
       switch (value) {
         case 0: return UNUSED;
         case 1: return GRAPH_INPUT;
@@ -251,13 +233,13 @@ private static final long serialVersionUID = 0L;
         NodeType> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<NodeType>() {
             public NodeType findValueByNumber(int number) {
-              return NodeType.forNumber(number);
+              return NodeType.valueOf(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
+      return getDescriptor().getValues().get(index);
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -282,9 +264,11 @@ private static final long serialVersionUID = 0L;
       return VALUES[desc.getIndex()];
     }
 
+    private final int index;
     private final int value;
 
-    private NodeType(int value) {
+    private NodeType(int index, int value) {
+      this.index = index;
       this.value = value;
     }
 
@@ -296,24 +280,24 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     int getDtypeValue();
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     org.tensorflow.framework.DataType getDtype();
 
     /**
-     * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+     * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
      */
     boolean hasShape();
     /**
-     * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+     * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
      */
     org.tensorflow.framework.TensorShapeProto getShape();
     /**
-     * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+     * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
      */
     org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder();
   }
@@ -321,12 +305,11 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto}
    */
   public  static final class TensorShapeTypeProto extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto)
       TensorShapeTypeProtoOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use TensorShapeTypeProto.newBuilder() to construct.
-    private TensorShapeTypeProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private TensorShapeTypeProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private TensorShapeTypeProto() {
@@ -336,19 +319,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private TensorShapeTypeProto(
         com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -358,8 +335,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
@@ -386,12 +362,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
+        throw new RuntimeException(e.setUnfinishedMessage(this));
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -400,7 +376,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -410,13 +386,13 @@ private static final long serialVersionUID = 0L;
     public static final int DTYPE_FIELD_NUMBER = 1;
     private int dtype_;
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public int getDtypeValue() {
       return dtype_;
     }
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public org.tensorflow.framework.DataType getDtype() {
       org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(dtype_);
@@ -426,19 +402,19 @@ private static final long serialVersionUID = 0L;
     public static final int SHAPE_FIELD_NUMBER = 2;
     private org.tensorflow.framework.TensorShapeProto shape_;
     /**
-     * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+     * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
      */
     public boolean hasShape() {
       return shape_ != null;
     }
     /**
-     * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+     * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
      */
     public org.tensorflow.framework.TensorShapeProto getShape() {
       return shape_ == null ? org.tensorflow.framework.TensorShapeProto.getDefaultInstance() : shape_;
     }
     /**
-     * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+     * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
      */
     public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder() {
       return getShape();
@@ -462,7 +438,6 @@ private static final long serialVersionUID = 0L;
       if (shape_ != null) {
         output.writeMessage(2, getShape());
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -478,61 +453,11 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getShape());
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto)) {
-        return super.equals(obj);
-      }
-      org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto other = (org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto) obj;
-
-      boolean result = true;
-      result = result && dtype_ == other.dtype_;
-      result = result && (hasShape() == other.hasShape());
-      if (hasShape()) {
-        result = result && getShape()
-            .equals(other.getShape());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DTYPE_FIELD_NUMBER;
-      hash = (53 * hash) + dtype_;
-      if (hasShape()) {
-        hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-        hash = (53 * hash) + getShape().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
+    private static final long serialVersionUID = 0L;
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -556,40 +481,34 @@ private static final long serialVersionUID = 0L;
     }
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public Builder newBuilderForType() { return newBuilder(); }
@@ -606,7 +525,7 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -614,7 +533,7 @@ private static final long serialVersionUID = 0L;
      * Protobuf type {@code tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto)
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -622,7 +541,7 @@ private static final long serialVersionUID = 0L;
         return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_TensorShapeTypeProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -635,13 +554,12 @@ private static final long serialVersionUID = 0L;
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
       public Builder clear() {
@@ -686,32 +604,6 @@ private static final long serialVersionUID = 0L;
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto) {
           return mergeFrom((org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto)other);
@@ -729,7 +621,6 @@ private static final long serialVersionUID = 0L;
         if (other.hasShape()) {
           mergeShape(other.getShape());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -747,7 +638,7 @@ private static final long serialVersionUID = 0L;
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -758,13 +649,13 @@ private static final long serialVersionUID = 0L;
 
       private int dtype_ = 0;
       /**
-       * <code>.tensorflow.DataType dtype = 1;</code>
+       * <code>optional .tensorflow.DataType dtype = 1;</code>
        */
       public int getDtypeValue() {
         return dtype_;
       }
       /**
-       * <code>.tensorflow.DataType dtype = 1;</code>
+       * <code>optional .tensorflow.DataType dtype = 1;</code>
        */
       public Builder setDtypeValue(int value) {
         dtype_ = value;
@@ -772,14 +663,14 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.DataType dtype = 1;</code>
+       * <code>optional .tensorflow.DataType dtype = 1;</code>
        */
       public org.tensorflow.framework.DataType getDtype() {
         org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(dtype_);
         return result == null ? org.tensorflow.framework.DataType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.tensorflow.DataType dtype = 1;</code>
+       * <code>optional .tensorflow.DataType dtype = 1;</code>
        */
       public Builder setDtype(org.tensorflow.framework.DataType value) {
         if (value == null) {
@@ -791,7 +682,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.DataType dtype = 1;</code>
+       * <code>optional .tensorflow.DataType dtype = 1;</code>
        */
       public Builder clearDtype() {
         
@@ -801,16 +692,16 @@ private static final long serialVersionUID = 0L;
       }
 
       private org.tensorflow.framework.TensorShapeProto shape_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> shapeBuilder_;
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public boolean hasShape() {
         return shapeBuilder_ != null || shape_ != null;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public org.tensorflow.framework.TensorShapeProto getShape() {
         if (shapeBuilder_ == null) {
@@ -820,7 +711,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public Builder setShape(org.tensorflow.framework.TensorShapeProto value) {
         if (shapeBuilder_ == null) {
@@ -836,7 +727,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public Builder setShape(
           org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -850,7 +741,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public Builder mergeShape(org.tensorflow.framework.TensorShapeProto value) {
         if (shapeBuilder_ == null) {
@@ -868,7 +759,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public Builder clearShape() {
         if (shapeBuilder_ == null) {
@@ -882,7 +773,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public org.tensorflow.framework.TensorShapeProto.Builder getShapeBuilder() {
         
@@ -890,7 +781,7 @@ private static final long serialVersionUID = 0L;
         return getShapeFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
       public org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder() {
         if (shapeBuilder_ != null) {
@@ -901,13 +792,13 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.tensorflow.TensorShapeProto shape = 2;</code>
+       * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> 
           getShapeFieldBuilder() {
         if (shapeBuilder_ == null) {
-          shapeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          shapeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder>(
                   getShape(),
                   getParentForChildren(),
@@ -918,12 +809,12 @@ private static final long serialVersionUID = 0L;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -946,7 +837,16 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TensorShapeTypeProto(input, extensionRegistry);
+        try {
+          return new TensorShapeTypeProto(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
       }
     };
 
@@ -969,31 +869,31 @@ private static final long serialVersionUID = 0L;
   public static final int REMOTE_GRAPH_FIELD_NUMBER = 1;
   private org.tensorflow.framework.GraphDef remoteGraph_;
   /**
+   * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+   *
    * <pre>
    * Definition of remote graph
    * </pre>
-   *
-   * <code>.tensorflow.GraphDef remote_graph = 1;</code>
    */
   public boolean hasRemoteGraph() {
     return remoteGraph_ != null;
   }
   /**
+   * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+   *
    * <pre>
    * Definition of remote graph
    * </pre>
-   *
-   * <code>.tensorflow.GraphDef remote_graph = 1;</code>
    */
   public org.tensorflow.framework.GraphDef getRemoteGraph() {
     return remoteGraph_ == null ? org.tensorflow.framework.GraphDef.getDefaultInstance() : remoteGraph_;
   }
   /**
+   * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+   *
    * <pre>
    * Definition of remote graph
    * </pre>
-   *
-   * <code>.tensorflow.GraphDef remote_graph = 1;</code>
    */
   public org.tensorflow.framework.GraphDefOrBuilder getRemoteGraphOrBuilder() {
     return getRemoteGraph();
@@ -1002,42 +902,42 @@ private static final long serialVersionUID = 0L;
   public static final int GRAPH_INPUT_NODE_NAME_FIELD_NUMBER = 2;
   private com.google.protobuf.LazyStringList graphInputNodeName_;
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   public com.google.protobuf.ProtocolStringList
       getGraphInputNodeNameList() {
     return graphInputNodeName_;
   }
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   public int getGraphInputNodeNameCount() {
     return graphInputNodeName_.size();
   }
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   public java.lang.String getGraphInputNodeName(int index) {
     return graphInputNodeName_.get(index);
   }
   /**
+   * <code>repeated string graph_input_node_name = 2;</code>
+   *
    * <pre>
    * Remote fused graph input node name
    * </pre>
-   *
-   * <code>repeated string graph_input_node_name = 2;</code>
    */
   public com.google.protobuf.ByteString
       getGraphInputNodeNameBytes(int index) {
@@ -1047,42 +947,42 @@ private static final long serialVersionUID = 0L;
   public static final int GRAPH_OUTPUT_NODE_NAME_FIELD_NUMBER = 3;
   private com.google.protobuf.LazyStringList graphOutputNodeName_;
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   public com.google.protobuf.ProtocolStringList
       getGraphOutputNodeNameList() {
     return graphOutputNodeName_;
   }
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   public int getGraphOutputNodeNameCount() {
     return graphOutputNodeName_.size();
   }
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   public java.lang.String getGraphOutputNodeName(int index) {
     return graphOutputNodeName_.get(index);
   }
   /**
+   * <code>repeated string graph_output_node_name = 3;</code>
+   *
    * <pre>
    * Remote fused graph output node name
    * </pre>
-   *
-   * <code>repeated string graph_output_node_name = 3;</code>
    */
   public com.google.protobuf.ByteString
       getGraphOutputNodeNameBytes(int index) {
@@ -1092,11 +992,11 @@ private static final long serialVersionUID = 0L;
   public static final int EXECUTOR_NAME_FIELD_NUMBER = 4;
   private volatile java.lang.Object executorName_;
   /**
+   * <code>optional string executor_name = 4;</code>
+   *
    * <pre>
    * Executor's name
    * </pre>
-   *
-   * <code>string executor_name = 4;</code>
    */
   public java.lang.String getExecutorName() {
     java.lang.Object ref = executorName_;
@@ -1111,11 +1011,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string executor_name = 4;</code>
+   *
    * <pre>
    * Executor's name
    * </pre>
-   *
-   * <code>string executor_name = 4;</code>
    */
   public com.google.protobuf.ByteString
       getExecutorNameBytes() {
@@ -1134,11 +1034,11 @@ private static final long serialVersionUID = 0L;
   public static final int SERIALIZED_EXECUTOR_PARAMETERS_FIELD_NUMBER = 5;
   private com.google.protobuf.ByteString serializedExecutorParameters_;
   /**
+   * <code>optional bytes serialized_executor_parameters = 5;</code>
+   *
    * <pre>
    * Optional: Parameters given to the executor
    * </pre>
-   *
-   * <code>bytes serialized_executor_parameters = 5;</code>
    */
   public com.google.protobuf.ByteString getSerializedExecutorParameters() {
     return serializedExecutorParameters_;
@@ -1147,57 +1047,57 @@ private static final long serialVersionUID = 0L;
   public static final int DEFAULT_GRAPH_INPUT_TENSOR_SHAPE_FIELD_NUMBER = 6;
   private java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> defaultGraphInputTensorShape_;
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   public java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> getDefaultGraphInputTensorShapeList() {
     return defaultGraphInputTensorShape_;
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
       getDefaultGraphInputTensorShapeOrBuilderList() {
     return defaultGraphInputTensorShape_;
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   public int getDefaultGraphInputTensorShapeCount() {
     return defaultGraphInputTensorShape_.size();
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto getDefaultGraphInputTensorShape(int index) {
     return defaultGraphInputTensorShape_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
    */
   public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder getDefaultGraphInputTensorShapeOrBuilder(
       int index) {
@@ -1207,67 +1107,67 @@ private static final long serialVersionUID = 0L;
   public static final int DEFAULT_GRAPH_OUTPUT_TENSOR_SHAPE_FIELD_NUMBER = 7;
   private java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> defaultGraphOutputTensorShape_;
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   public java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> getDefaultGraphOutputTensorShapeList() {
     return defaultGraphOutputTensorShape_;
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
       getDefaultGraphOutputTensorShapeOrBuilderList() {
     return defaultGraphOutputTensorShape_;
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   public int getDefaultGraphOutputTensorShapeCount() {
     return defaultGraphOutputTensorShape_.size();
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto getDefaultGraphOutputTensorShape(int index) {
     return defaultGraphOutputTensorShape_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+   *
    * <pre>
    * Optional: Default graph input tensor shape used to allocate memory
    * before executing op
    * TODO(satok): Remote output tensor shape once shape information is stored
    * in NodeDef
    * </pre>
-   *
-   * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
    */
   public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder getDefaultGraphOutputTensorShapeOrBuilder(
       int index) {
@@ -1290,13 +1190,13 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(1, getRemoteGraph());
     }
     for (int i = 0; i < graphInputNodeName_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, graphInputNodeName_.getRaw(i));
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, graphInputNodeName_.getRaw(i));
     }
     for (int i = 0; i < graphOutputNodeName_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, graphOutputNodeName_.getRaw(i));
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, graphOutputNodeName_.getRaw(i));
     }
     if (!getExecutorNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, executorName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 4, executorName_);
     }
     if (!serializedExecutorParameters_.isEmpty()) {
       output.writeBytes(5, serializedExecutorParameters_);
@@ -1307,7 +1207,6 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < defaultGraphOutputTensorShape_.size(); i++) {
       output.writeMessage(7, defaultGraphOutputTensorShape_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -1336,7 +1235,7 @@ private static final long serialVersionUID = 0L;
       size += 1 * getGraphOutputNodeNameList().size();
     }
     if (!getExecutorNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, executorName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(4, executorName_);
     }
     if (!serializedExecutorParameters_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
@@ -1350,90 +1249,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, defaultGraphOutputTensorShape_.get(i));
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.RemoteFusedGraphExecuteInfo)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.RemoteFusedGraphExecuteInfo other = (org.tensorflow.framework.RemoteFusedGraphExecuteInfo) obj;
-
-    boolean result = true;
-    result = result && (hasRemoteGraph() == other.hasRemoteGraph());
-    if (hasRemoteGraph()) {
-      result = result && getRemoteGraph()
-          .equals(other.getRemoteGraph());
-    }
-    result = result && getGraphInputNodeNameList()
-        .equals(other.getGraphInputNodeNameList());
-    result = result && getGraphOutputNodeNameList()
-        .equals(other.getGraphOutputNodeNameList());
-    result = result && getExecutorName()
-        .equals(other.getExecutorName());
-    result = result && getSerializedExecutorParameters()
-        .equals(other.getSerializedExecutorParameters());
-    result = result && getDefaultGraphInputTensorShapeList()
-        .equals(other.getDefaultGraphInputTensorShapeList());
-    result = result && getDefaultGraphOutputTensorShapeList()
-        .equals(other.getDefaultGraphOutputTensorShapeList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasRemoteGraph()) {
-      hash = (37 * hash) + REMOTE_GRAPH_FIELD_NUMBER;
-      hash = (53 * hash) + getRemoteGraph().hashCode();
-    }
-    if (getGraphInputNodeNameCount() > 0) {
-      hash = (37 * hash) + GRAPH_INPUT_NODE_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getGraphInputNodeNameList().hashCode();
-    }
-    if (getGraphOutputNodeNameCount() > 0) {
-      hash = (37 * hash) + GRAPH_OUTPUT_NODE_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getGraphOutputNodeNameList().hashCode();
-    }
-    hash = (37 * hash) + EXECUTOR_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getExecutorName().hashCode();
-    hash = (37 * hash) + SERIALIZED_EXECUTOR_PARAMETERS_FIELD_NUMBER;
-    hash = (53 * hash) + getSerializedExecutorParameters().hashCode();
-    if (getDefaultGraphInputTensorShapeCount() > 0) {
-      hash = (37 * hash) + DEFAULT_GRAPH_INPUT_TENSOR_SHAPE_FIELD_NUMBER;
-      hash = (53 * hash) + getDefaultGraphInputTensorShapeList().hashCode();
-    }
-    if (getDefaultGraphOutputTensorShapeCount() > 0) {
-      hash = (37 * hash) + DEFAULT_GRAPH_OUTPUT_TENSOR_SHAPE_FIELD_NUMBER;
-      hash = (53 * hash) + getDefaultGraphOutputTensorShapeList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1457,40 +1277,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.RemoteFusedGraphExecuteInfo parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -1507,21 +1321,21 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.RemoteFusedGraphExecuteInfo}
+   *
    * <pre>
    * Protocol buffer representing a handle to a tensorflow resource. Handles are
    * not valid across executions, but can be serialized back and forth from within
    * a single run.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.RemoteFusedGraphExecuteInfo}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.RemoteFusedGraphExecuteInfo)
       org.tensorflow.framework.RemoteFusedGraphExecuteInfoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1529,7 +1343,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.RemoteFusedGraphExecuteInfoProto.internal_static_tensorflow_RemoteFusedGraphExecuteInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1542,13 +1356,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getDefaultGraphInputTensorShapeFieldBuilder();
         getDefaultGraphOutputTensorShapeFieldBuilder();
       }
@@ -1645,32 +1458,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.RemoteFusedGraphExecuteInfo) {
         return mergeFrom((org.tensorflow.framework.RemoteFusedGraphExecuteInfo)other);
@@ -1731,7 +1518,7 @@ private static final long serialVersionUID = 0L;
             defaultGraphInputTensorShape_ = other.defaultGraphInputTensorShape_;
             bitField0_ = (bitField0_ & ~0x00000020);
             defaultGraphInputTensorShapeBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getDefaultGraphInputTensorShapeFieldBuilder() : null;
           } else {
             defaultGraphInputTensorShapeBuilder_.addAllMessages(other.defaultGraphInputTensorShape_);
@@ -1757,14 +1544,13 @@ private static final long serialVersionUID = 0L;
             defaultGraphOutputTensorShape_ = other.defaultGraphOutputTensorShape_;
             bitField0_ = (bitField0_ & ~0x00000040);
             defaultGraphOutputTensorShapeBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getDefaultGraphOutputTensorShapeFieldBuilder() : null;
           } else {
             defaultGraphOutputTensorShapeBuilder_.addAllMessages(other.defaultGraphOutputTensorShape_);
           }
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -1782,7 +1568,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.RemoteFusedGraphExecuteInfo) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -1793,24 +1579,24 @@ private static final long serialVersionUID = 0L;
     private int bitField0_;
 
     private org.tensorflow.framework.GraphDef remoteGraph_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.GraphDef, org.tensorflow.framework.GraphDef.Builder, org.tensorflow.framework.GraphDefOrBuilder> remoteGraphBuilder_;
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public boolean hasRemoteGraph() {
       return remoteGraphBuilder_ != null || remoteGraph_ != null;
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public org.tensorflow.framework.GraphDef getRemoteGraph() {
       if (remoteGraphBuilder_ == null) {
@@ -1820,11 +1606,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public Builder setRemoteGraph(org.tensorflow.framework.GraphDef value) {
       if (remoteGraphBuilder_ == null) {
@@ -1840,11 +1626,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public Builder setRemoteGraph(
         org.tensorflow.framework.GraphDef.Builder builderForValue) {
@@ -1858,11 +1644,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public Builder mergeRemoteGraph(org.tensorflow.framework.GraphDef value) {
       if (remoteGraphBuilder_ == null) {
@@ -1880,11 +1666,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public Builder clearRemoteGraph() {
       if (remoteGraphBuilder_ == null) {
@@ -1898,11 +1684,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public org.tensorflow.framework.GraphDef.Builder getRemoteGraphBuilder() {
       
@@ -1910,11 +1696,11 @@ private static final long serialVersionUID = 0L;
       return getRemoteGraphFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
     public org.tensorflow.framework.GraphDefOrBuilder getRemoteGraphOrBuilder() {
       if (remoteGraphBuilder_ != null) {
@@ -1925,17 +1711,17 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.GraphDef remote_graph = 1;</code>
+     *
      * <pre>
      * Definition of remote graph
      * </pre>
-     *
-     * <code>.tensorflow.GraphDef remote_graph = 1;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.GraphDef, org.tensorflow.framework.GraphDef.Builder, org.tensorflow.framework.GraphDefOrBuilder> 
         getRemoteGraphFieldBuilder() {
       if (remoteGraphBuilder_ == null) {
-        remoteGraphBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        remoteGraphBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.GraphDef, org.tensorflow.framework.GraphDef.Builder, org.tensorflow.framework.GraphDefOrBuilder>(
                 getRemoteGraph(),
                 getParentForChildren(),
@@ -1953,53 +1739,53 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getGraphInputNodeNameList() {
       return graphInputNodeName_.getUnmodifiableView();
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public int getGraphInputNodeNameCount() {
       return graphInputNodeName_.size();
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public java.lang.String getGraphInputNodeName(int index) {
       return graphInputNodeName_.get(index);
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getGraphInputNodeNameBytes(int index) {
       return graphInputNodeName_.getByteString(index);
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public Builder setGraphInputNodeName(
         int index, java.lang.String value) {
@@ -2012,11 +1798,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public Builder addGraphInputNodeName(
         java.lang.String value) {
@@ -2029,11 +1815,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public Builder addAllGraphInputNodeName(
         java.lang.Iterable<java.lang.String> values) {
@@ -2044,11 +1830,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public Builder clearGraphInputNodeName() {
       graphInputNodeName_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -2057,11 +1843,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_input_node_name = 2;</code>
+     *
      * <pre>
      * Remote fused graph input node name
      * </pre>
-     *
-     * <code>repeated string graph_input_node_name = 2;</code>
      */
     public Builder addGraphInputNodeNameBytes(
         com.google.protobuf.ByteString value) {
@@ -2083,53 +1869,53 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getGraphOutputNodeNameList() {
       return graphOutputNodeName_.getUnmodifiableView();
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public int getGraphOutputNodeNameCount() {
       return graphOutputNodeName_.size();
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public java.lang.String getGraphOutputNodeName(int index) {
       return graphOutputNodeName_.get(index);
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getGraphOutputNodeNameBytes(int index) {
       return graphOutputNodeName_.getByteString(index);
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public Builder setGraphOutputNodeName(
         int index, java.lang.String value) {
@@ -2142,11 +1928,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public Builder addGraphOutputNodeName(
         java.lang.String value) {
@@ -2159,11 +1945,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public Builder addAllGraphOutputNodeName(
         java.lang.Iterable<java.lang.String> values) {
@@ -2174,11 +1960,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public Builder clearGraphOutputNodeName() {
       graphOutputNodeName_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -2187,11 +1973,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated string graph_output_node_name = 3;</code>
+     *
      * <pre>
      * Remote fused graph output node name
      * </pre>
-     *
-     * <code>repeated string graph_output_node_name = 3;</code>
      */
     public Builder addGraphOutputNodeNameBytes(
         com.google.protobuf.ByteString value) {
@@ -2207,11 +1993,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object executorName_ = "";
     /**
+     * <code>optional string executor_name = 4;</code>
+     *
      * <pre>
      * Executor's name
      * </pre>
-     *
-     * <code>string executor_name = 4;</code>
      */
     public java.lang.String getExecutorName() {
       java.lang.Object ref = executorName_;
@@ -2226,11 +2012,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string executor_name = 4;</code>
+     *
      * <pre>
      * Executor's name
      * </pre>
-     *
-     * <code>string executor_name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getExecutorNameBytes() {
@@ -2246,11 +2032,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string executor_name = 4;</code>
+     *
      * <pre>
      * Executor's name
      * </pre>
-     *
-     * <code>string executor_name = 4;</code>
      */
     public Builder setExecutorName(
         java.lang.String value) {
@@ -2263,11 +2049,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string executor_name = 4;</code>
+     *
      * <pre>
      * Executor's name
      * </pre>
-     *
-     * <code>string executor_name = 4;</code>
      */
     public Builder clearExecutorName() {
       
@@ -2276,11 +2062,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string executor_name = 4;</code>
+     *
      * <pre>
      * Executor's name
      * </pre>
-     *
-     * <code>string executor_name = 4;</code>
      */
     public Builder setExecutorNameBytes(
         com.google.protobuf.ByteString value) {
@@ -2296,21 +2082,21 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.ByteString serializedExecutorParameters_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <code>optional bytes serialized_executor_parameters = 5;</code>
+     *
      * <pre>
      * Optional: Parameters given to the executor
      * </pre>
-     *
-     * <code>bytes serialized_executor_parameters = 5;</code>
      */
     public com.google.protobuf.ByteString getSerializedExecutorParameters() {
       return serializedExecutorParameters_;
     }
     /**
+     * <code>optional bytes serialized_executor_parameters = 5;</code>
+     *
      * <pre>
      * Optional: Parameters given to the executor
      * </pre>
-     *
-     * <code>bytes serialized_executor_parameters = 5;</code>
      */
     public Builder setSerializedExecutorParameters(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2322,11 +2108,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bytes serialized_executor_parameters = 5;</code>
+     *
      * <pre>
      * Optional: Parameters given to the executor
      * </pre>
-     *
-     * <code>bytes serialized_executor_parameters = 5;</code>
      */
     public Builder clearSerializedExecutorParameters() {
       
@@ -2344,16 +2130,16 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> defaultGraphInputTensorShapeBuilder_;
 
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> getDefaultGraphInputTensorShapeList() {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
@@ -2363,12 +2149,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public int getDefaultGraphInputTensorShapeCount() {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
@@ -2378,12 +2164,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto getDefaultGraphInputTensorShape(int index) {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
@@ -2393,12 +2179,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder setDefaultGraphInputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto value) {
@@ -2415,12 +2201,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder setDefaultGraphInputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder builderForValue) {
@@ -2434,12 +2220,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder addDefaultGraphInputTensorShape(org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto value) {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
@@ -2455,12 +2241,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder addDefaultGraphInputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto value) {
@@ -2477,12 +2263,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder addDefaultGraphInputTensorShape(
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder builderForValue) {
@@ -2496,12 +2282,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder addDefaultGraphInputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder builderForValue) {
@@ -2515,12 +2301,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder addAllDefaultGraphInputTensorShape(
         java.lang.Iterable<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> values) {
@@ -2535,12 +2321,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder clearDefaultGraphInputTensorShape() {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
@@ -2553,12 +2339,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public Builder removeDefaultGraphInputTensorShape(int index) {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
@@ -2571,24 +2357,24 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder getDefaultGraphInputTensorShapeBuilder(
         int index) {
       return getDefaultGraphInputTensorShapeFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder getDefaultGraphInputTensorShapeOrBuilder(
         int index) {
@@ -2598,12 +2384,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
          getDefaultGraphInputTensorShapeOrBuilderList() {
@@ -2614,24 +2400,24 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder addDefaultGraphInputTensorShapeBuilder() {
       return getDefaultGraphInputTensorShapeFieldBuilder().addBuilder(
           org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder addDefaultGraphInputTensorShapeBuilder(
         int index) {
@@ -2639,22 +2425,22 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_input_tensor_shape = 6;</code>
      */
     public java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder> 
          getDefaultGraphInputTensorShapeBuilderList() {
       return getDefaultGraphInputTensorShapeFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
         getDefaultGraphInputTensorShapeFieldBuilder() {
       if (defaultGraphInputTensorShapeBuilder_ == null) {
-        defaultGraphInputTensorShapeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        defaultGraphInputTensorShapeBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder>(
                 defaultGraphInputTensorShape_,
                 ((bitField0_ & 0x00000020) == 0x00000020),
@@ -2674,18 +2460,18 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> defaultGraphOutputTensorShapeBuilder_;
 
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> getDefaultGraphOutputTensorShapeList() {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
@@ -2695,14 +2481,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public int getDefaultGraphOutputTensorShapeCount() {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
@@ -2712,14 +2498,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto getDefaultGraphOutputTensorShape(int index) {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
@@ -2729,14 +2515,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder setDefaultGraphOutputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto value) {
@@ -2753,14 +2539,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder setDefaultGraphOutputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder builderForValue) {
@@ -2774,14 +2560,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder addDefaultGraphOutputTensorShape(org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto value) {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
@@ -2797,14 +2583,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder addDefaultGraphOutputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto value) {
@@ -2821,14 +2607,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder addDefaultGraphOutputTensorShape(
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder builderForValue) {
@@ -2842,14 +2628,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder addDefaultGraphOutputTensorShape(
         int index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder builderForValue) {
@@ -2863,14 +2649,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder addAllDefaultGraphOutputTensorShape(
         java.lang.Iterable<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto> values) {
@@ -2885,14 +2671,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder clearDefaultGraphOutputTensorShape() {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
@@ -2905,14 +2691,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public Builder removeDefaultGraphOutputTensorShape(int index) {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
@@ -2925,28 +2711,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder getDefaultGraphOutputTensorShapeBuilder(
         int index) {
       return getDefaultGraphOutputTensorShapeFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder getDefaultGraphOutputTensorShapeOrBuilder(
         int index) {
@@ -2956,14 +2742,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
          getDefaultGraphOutputTensorShapeOrBuilderList() {
@@ -2974,28 +2760,28 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder addDefaultGraphOutputTensorShapeBuilder() {
       return getDefaultGraphOutputTensorShapeFieldBuilder().addBuilder(
           org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder addDefaultGraphOutputTensorShapeBuilder(
         int index) {
@@ -3003,24 +2789,24 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
+     *
      * <pre>
      * Optional: Default graph input tensor shape used to allocate memory
      * before executing op
      * TODO(satok): Remote output tensor shape once shape information is stored
      * in NodeDef
      * </pre>
-     *
-     * <code>repeated .tensorflow.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto default_graph_output_tensor_shape = 7;</code>
      */
     public java.util.List<org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder> 
          getDefaultGraphOutputTensorShapeBuilderList() {
       return getDefaultGraphOutputTensorShapeFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder> 
         getDefaultGraphOutputTensorShapeFieldBuilder() {
       if (defaultGraphOutputTensorShapeBuilder_ == null) {
-        defaultGraphOutputTensorShapeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        defaultGraphOutputTensorShapeBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProto.Builder, org.tensorflow.framework.RemoteFusedGraphExecuteInfo.TensorShapeTypeProtoOrBuilder>(
                 defaultGraphOutputTensorShape_,
                 ((bitField0_ & 0x00000040) == 0x00000040),
@@ -3032,12 +2818,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -3060,7 +2846,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new RemoteFusedGraphExecuteInfo(input, extensionRegistry);
+      try {
+        return new RemoteFusedGraphExecuteInfo(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

@@ -4,20 +4,19 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.HistogramProto}
+ *
  * <pre>
  * Serialization format for histogram module in
  * core/lib/histogram/histogram.h
  * </pre>
- *
- * Protobuf type {@code tensorflow.HistogramProto}
  */
 public  final class HistogramProto extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.HistogramProto)
     HistogramProtoOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use HistogramProto.newBuilder() to construct.
-  private HistogramProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private HistogramProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private HistogramProto() {
@@ -33,19 +32,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private HistogramProto(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -55,8 +48,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -131,10 +123,11 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
         bucketLimit_ = java.util.Collections.unmodifiableList(bucketLimit_);
@@ -142,7 +135,6 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
         bucket_ = java.util.Collections.unmodifiableList(bucket_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -151,7 +143,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_HistogramProto_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_HistogramProto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -162,7 +154,7 @@ private static final long serialVersionUID = 0L;
   public static final int MIN_FIELD_NUMBER = 1;
   private double min_;
   /**
-   * <code>double min = 1;</code>
+   * <code>optional double min = 1;</code>
    */
   public double getMin() {
     return min_;
@@ -171,7 +163,7 @@ private static final long serialVersionUID = 0L;
   public static final int MAX_FIELD_NUMBER = 2;
   private double max_;
   /**
-   * <code>double max = 2;</code>
+   * <code>optional double max = 2;</code>
    */
   public double getMax() {
     return max_;
@@ -180,7 +172,7 @@ private static final long serialVersionUID = 0L;
   public static final int NUM_FIELD_NUMBER = 3;
   private double num_;
   /**
-   * <code>double num = 3;</code>
+   * <code>optional double num = 3;</code>
    */
   public double getNum() {
     return num_;
@@ -189,7 +181,7 @@ private static final long serialVersionUID = 0L;
   public static final int SUM_FIELD_NUMBER = 4;
   private double sum_;
   /**
-   * <code>double sum = 4;</code>
+   * <code>optional double sum = 4;</code>
    */
   public double getSum() {
     return sum_;
@@ -198,7 +190,7 @@ private static final long serialVersionUID = 0L;
   public static final int SUM_SQUARES_FIELD_NUMBER = 5;
   private double sumSquares_;
   /**
-   * <code>double sum_squares = 5;</code>
+   * <code>optional double sum_squares = 5;</code>
    */
   public double getSumSquares() {
     return sumSquares_;
@@ -207,6 +199,8 @@ private static final long serialVersionUID = 0L;
   public static final int BUCKET_LIMIT_FIELD_NUMBER = 6;
   private java.util.List<java.lang.Double> bucketLimit_;
   /**
+   * <code>repeated double bucket_limit = 6 [packed = true];</code>
+   *
    * <pre>
    * Parallel arrays encoding the bucket boundaries and the bucket values.
    * bucket(i) is the count for the bucket i.  The range for
@@ -214,14 +208,14 @@ private static final long serialVersionUID = 0L;
    *   i == 0:  -DBL_MAX .. bucket_limit(0)
    *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
    * </pre>
-   *
-   * <code>repeated double bucket_limit = 6 [packed = true];</code>
    */
   public java.util.List<java.lang.Double>
       getBucketLimitList() {
     return bucketLimit_;
   }
   /**
+   * <code>repeated double bucket_limit = 6 [packed = true];</code>
+   *
    * <pre>
    * Parallel arrays encoding the bucket boundaries and the bucket values.
    * bucket(i) is the count for the bucket i.  The range for
@@ -229,13 +223,13 @@ private static final long serialVersionUID = 0L;
    *   i == 0:  -DBL_MAX .. bucket_limit(0)
    *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
    * </pre>
-   *
-   * <code>repeated double bucket_limit = 6 [packed = true];</code>
    */
   public int getBucketLimitCount() {
     return bucketLimit_.size();
   }
   /**
+   * <code>repeated double bucket_limit = 6 [packed = true];</code>
+   *
    * <pre>
    * Parallel arrays encoding the bucket boundaries and the bucket values.
    * bucket(i) is the count for the bucket i.  The range for
@@ -243,8 +237,6 @@ private static final long serialVersionUID = 0L;
    *   i == 0:  -DBL_MAX .. bucket_limit(0)
    *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
    * </pre>
-   *
-   * <code>repeated double bucket_limit = 6 [packed = true];</code>
    */
   public double getBucketLimit(int index) {
     return bucketLimit_.get(index);
@@ -303,20 +295,19 @@ private static final long serialVersionUID = 0L;
       output.writeDouble(5, sumSquares_);
     }
     if (getBucketLimitList().size() > 0) {
-      output.writeUInt32NoTag(50);
-      output.writeUInt32NoTag(bucketLimitMemoizedSerializedSize);
+      output.writeRawVarint32(50);
+      output.writeRawVarint32(bucketLimitMemoizedSerializedSize);
     }
     for (int i = 0; i < bucketLimit_.size(); i++) {
       output.writeDoubleNoTag(bucketLimit_.get(i));
     }
     if (getBucketList().size() > 0) {
-      output.writeUInt32NoTag(58);
-      output.writeUInt32NoTag(bucketMemoizedSerializedSize);
+      output.writeRawVarint32(58);
+      output.writeRawVarint32(bucketMemoizedSerializedSize);
     }
     for (int i = 0; i < bucket_.size(); i++) {
       output.writeDoubleNoTag(bucket_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -366,96 +357,11 @@ private static final long serialVersionUID = 0L;
       }
       bucketMemoizedSerializedSize = dataSize;
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.HistogramProto)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.HistogramProto other = (org.tensorflow.framework.HistogramProto) obj;
-
-    boolean result = true;
-    result = result && (
-        java.lang.Double.doubleToLongBits(getMin())
-        == java.lang.Double.doubleToLongBits(
-            other.getMin()));
-    result = result && (
-        java.lang.Double.doubleToLongBits(getMax())
-        == java.lang.Double.doubleToLongBits(
-            other.getMax()));
-    result = result && (
-        java.lang.Double.doubleToLongBits(getNum())
-        == java.lang.Double.doubleToLongBits(
-            other.getNum()));
-    result = result && (
-        java.lang.Double.doubleToLongBits(getSum())
-        == java.lang.Double.doubleToLongBits(
-            other.getSum()));
-    result = result && (
-        java.lang.Double.doubleToLongBits(getSumSquares())
-        == java.lang.Double.doubleToLongBits(
-            other.getSumSquares()));
-    result = result && getBucketLimitList()
-        .equals(other.getBucketLimitList());
-    result = result && getBucketList()
-        .equals(other.getBucketList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MIN_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getMin()));
-    hash = (37 * hash) + MAX_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getMax()));
-    hash = (37 * hash) + NUM_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getNum()));
-    hash = (37 * hash) + SUM_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getSum()));
-    hash = (37 * hash) + SUM_SQUARES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getSumSquares()));
-    if (getBucketLimitCount() > 0) {
-      hash = (37 * hash) + BUCKET_LIMIT_FIELD_NUMBER;
-      hash = (53 * hash) + getBucketLimitList().hashCode();
-    }
-    if (getBucketCount() > 0) {
-      hash = (37 * hash) + BUCKET_FIELD_NUMBER;
-      hash = (53 * hash) + getBucketList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.HistogramProto parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.HistogramProto parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.HistogramProto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -479,40 +385,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.HistogramProto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.HistogramProto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.HistogramProto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.HistogramProto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.HistogramProto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.HistogramProto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -529,20 +429,20 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.HistogramProto}
+   *
    * <pre>
    * Serialization format for histogram module in
    * core/lib/histogram/histogram.h
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.HistogramProto}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.HistogramProto)
       org.tensorflow.framework.HistogramProtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -550,7 +450,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_HistogramProto_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.SummaryProtos.internal_static_tensorflow_HistogramProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -563,13 +463,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -632,32 +531,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.HistogramProto) {
         return mergeFrom((org.tensorflow.framework.HistogramProto)other);
@@ -704,7 +577,6 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -722,7 +594,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.HistogramProto) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -734,13 +606,13 @@ private static final long serialVersionUID = 0L;
 
     private double min_ ;
     /**
-     * <code>double min = 1;</code>
+     * <code>optional double min = 1;</code>
      */
     public double getMin() {
       return min_;
     }
     /**
-     * <code>double min = 1;</code>
+     * <code>optional double min = 1;</code>
      */
     public Builder setMin(double value) {
       
@@ -749,7 +621,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double min = 1;</code>
+     * <code>optional double min = 1;</code>
      */
     public Builder clearMin() {
       
@@ -760,13 +632,13 @@ private static final long serialVersionUID = 0L;
 
     private double max_ ;
     /**
-     * <code>double max = 2;</code>
+     * <code>optional double max = 2;</code>
      */
     public double getMax() {
       return max_;
     }
     /**
-     * <code>double max = 2;</code>
+     * <code>optional double max = 2;</code>
      */
     public Builder setMax(double value) {
       
@@ -775,7 +647,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double max = 2;</code>
+     * <code>optional double max = 2;</code>
      */
     public Builder clearMax() {
       
@@ -786,13 +658,13 @@ private static final long serialVersionUID = 0L;
 
     private double num_ ;
     /**
-     * <code>double num = 3;</code>
+     * <code>optional double num = 3;</code>
      */
     public double getNum() {
       return num_;
     }
     /**
-     * <code>double num = 3;</code>
+     * <code>optional double num = 3;</code>
      */
     public Builder setNum(double value) {
       
@@ -801,7 +673,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double num = 3;</code>
+     * <code>optional double num = 3;</code>
      */
     public Builder clearNum() {
       
@@ -812,13 +684,13 @@ private static final long serialVersionUID = 0L;
 
     private double sum_ ;
     /**
-     * <code>double sum = 4;</code>
+     * <code>optional double sum = 4;</code>
      */
     public double getSum() {
       return sum_;
     }
     /**
-     * <code>double sum = 4;</code>
+     * <code>optional double sum = 4;</code>
      */
     public Builder setSum(double value) {
       
@@ -827,7 +699,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double sum = 4;</code>
+     * <code>optional double sum = 4;</code>
      */
     public Builder clearSum() {
       
@@ -838,13 +710,13 @@ private static final long serialVersionUID = 0L;
 
     private double sumSquares_ ;
     /**
-     * <code>double sum_squares = 5;</code>
+     * <code>optional double sum_squares = 5;</code>
      */
     public double getSumSquares() {
       return sumSquares_;
     }
     /**
-     * <code>double sum_squares = 5;</code>
+     * <code>optional double sum_squares = 5;</code>
      */
     public Builder setSumSquares(double value) {
       
@@ -853,7 +725,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double sum_squares = 5;</code>
+     * <code>optional double sum_squares = 5;</code>
      */
     public Builder clearSumSquares() {
       
@@ -870,6 +742,8 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -877,14 +751,14 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public java.util.List<java.lang.Double>
         getBucketLimitList() {
       return java.util.Collections.unmodifiableList(bucketLimit_);
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -892,13 +766,13 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public int getBucketLimitCount() {
       return bucketLimit_.size();
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -906,13 +780,13 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public double getBucketLimit(int index) {
       return bucketLimit_.get(index);
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -920,8 +794,6 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public Builder setBucketLimit(
         int index, double value) {
@@ -931,6 +803,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -938,8 +812,6 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public Builder addBucketLimit(double value) {
       ensureBucketLimitIsMutable();
@@ -948,6 +820,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -955,8 +829,6 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public Builder addAllBucketLimit(
         java.lang.Iterable<? extends java.lang.Double> values) {
@@ -967,6 +839,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double bucket_limit = 6 [packed = true];</code>
+     *
      * <pre>
      * Parallel arrays encoding the bucket boundaries and the bucket values.
      * bucket(i) is the count for the bucket i.  The range for
@@ -974,8 +848,6 @@ private static final long serialVersionUID = 0L;
      *   i == 0:  -DBL_MAX .. bucket_limit(0)
      *   i != 0:  bucket_limit(i-1) .. bucket_limit(i)
      * </pre>
-     *
-     * <code>repeated double bucket_limit = 6 [packed = true];</code>
      */
     public Builder clearBucketLimit() {
       bucketLimit_ = java.util.Collections.emptyList();
@@ -1051,12 +923,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1079,7 +951,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new HistogramProto(input, extensionRegistry);
+      try {
+        return new HistogramProto(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

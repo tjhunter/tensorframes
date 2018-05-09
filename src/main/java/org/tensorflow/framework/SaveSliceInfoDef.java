@@ -7,12 +7,11 @@ package org.tensorflow.framework;
  * Protobuf type {@code tensorflow.SaveSliceInfoDef}
  */
 public  final class SaveSliceInfoDef extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.SaveSliceInfoDef)
     SaveSliceInfoDefOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use SaveSliceInfoDef.newBuilder() to construct.
-  private SaveSliceInfoDef(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private SaveSliceInfoDef(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private SaveSliceInfoDef() {
@@ -25,19 +24,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private SaveSliceInfoDef(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -47,14 +40,13 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             fullName_ = s;
             break;
@@ -125,10 +117,11 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
         fullShape_ = java.util.Collections.unmodifiableList(fullShape_);
@@ -139,7 +132,6 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
         varShape_ = java.util.Collections.unmodifiableList(varShape_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -148,7 +140,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_SaveSliceInfoDef_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_SaveSliceInfoDef_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -159,11 +151,11 @@ private static final long serialVersionUID = 0L;
   public static final int FULL_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object fullName_;
   /**
+   * <code>optional string full_name = 1;</code>
+   *
    * <pre>
    * Name of the full variable of which this is a slice.
    * </pre>
-   *
-   * <code>string full_name = 1;</code>
    */
   public java.lang.String getFullName() {
     java.lang.Object ref = fullName_;
@@ -178,11 +170,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string full_name = 1;</code>
+   *
    * <pre>
    * Name of the full variable of which this is a slice.
    * </pre>
-   *
-   * <code>string full_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getFullNameBytes() {
@@ -201,32 +193,32 @@ private static final long serialVersionUID = 0L;
   public static final int FULL_SHAPE_FIELD_NUMBER = 2;
   private java.util.List<java.lang.Long> fullShape_;
   /**
+   * <code>repeated int64 full_shape = 2;</code>
+   *
    * <pre>
    * Shape of the full variable.
    * </pre>
-   *
-   * <code>repeated int64 full_shape = 2;</code>
    */
   public java.util.List<java.lang.Long>
       getFullShapeList() {
     return fullShape_;
   }
   /**
+   * <code>repeated int64 full_shape = 2;</code>
+   *
    * <pre>
    * Shape of the full variable.
    * </pre>
-   *
-   * <code>repeated int64 full_shape = 2;</code>
    */
   public int getFullShapeCount() {
     return fullShape_.size();
   }
   /**
+   * <code>repeated int64 full_shape = 2;</code>
+   *
    * <pre>
    * Shape of the full variable.
    * </pre>
-   *
-   * <code>repeated int64 full_shape = 2;</code>
    */
   public long getFullShape(int index) {
     return fullShape_.get(index);
@@ -236,32 +228,32 @@ private static final long serialVersionUID = 0L;
   public static final int VAR_OFFSET_FIELD_NUMBER = 3;
   private java.util.List<java.lang.Long> varOffset_;
   /**
+   * <code>repeated int64 var_offset = 3;</code>
+   *
    * <pre>
    * Offset of this variable into the full variable.
    * </pre>
-   *
-   * <code>repeated int64 var_offset = 3;</code>
    */
   public java.util.List<java.lang.Long>
       getVarOffsetList() {
     return varOffset_;
   }
   /**
+   * <code>repeated int64 var_offset = 3;</code>
+   *
    * <pre>
    * Offset of this variable into the full variable.
    * </pre>
-   *
-   * <code>repeated int64 var_offset = 3;</code>
    */
   public int getVarOffsetCount() {
     return varOffset_.size();
   }
   /**
+   * <code>repeated int64 var_offset = 3;</code>
+   *
    * <pre>
    * Offset of this variable into the full variable.
    * </pre>
-   *
-   * <code>repeated int64 var_offset = 3;</code>
    */
   public long getVarOffset(int index) {
     return varOffset_.get(index);
@@ -271,32 +263,32 @@ private static final long serialVersionUID = 0L;
   public static final int VAR_SHAPE_FIELD_NUMBER = 4;
   private java.util.List<java.lang.Long> varShape_;
   /**
+   * <code>repeated int64 var_shape = 4;</code>
+   *
    * <pre>
    * Shape of this variable.
    * </pre>
-   *
-   * <code>repeated int64 var_shape = 4;</code>
    */
   public java.util.List<java.lang.Long>
       getVarShapeList() {
     return varShape_;
   }
   /**
+   * <code>repeated int64 var_shape = 4;</code>
+   *
    * <pre>
    * Shape of this variable.
    * </pre>
-   *
-   * <code>repeated int64 var_shape = 4;</code>
    */
   public int getVarShapeCount() {
     return varShape_.size();
   }
   /**
+   * <code>repeated int64 var_shape = 4;</code>
+   *
    * <pre>
    * Shape of this variable.
    * </pre>
-   *
-   * <code>repeated int64 var_shape = 4;</code>
    */
   public long getVarShape(int index) {
     return varShape_.get(index);
@@ -317,30 +309,29 @@ private static final long serialVersionUID = 0L;
                       throws java.io.IOException {
     getSerializedSize();
     if (!getFullNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fullName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, fullName_);
     }
     if (getFullShapeList().size() > 0) {
-      output.writeUInt32NoTag(18);
-      output.writeUInt32NoTag(fullShapeMemoizedSerializedSize);
+      output.writeRawVarint32(18);
+      output.writeRawVarint32(fullShapeMemoizedSerializedSize);
     }
     for (int i = 0; i < fullShape_.size(); i++) {
       output.writeInt64NoTag(fullShape_.get(i));
     }
     if (getVarOffsetList().size() > 0) {
-      output.writeUInt32NoTag(26);
-      output.writeUInt32NoTag(varOffsetMemoizedSerializedSize);
+      output.writeRawVarint32(26);
+      output.writeRawVarint32(varOffsetMemoizedSerializedSize);
     }
     for (int i = 0; i < varOffset_.size(); i++) {
       output.writeInt64NoTag(varOffset_.get(i));
     }
     if (getVarShapeList().size() > 0) {
-      output.writeUInt32NoTag(34);
-      output.writeUInt32NoTag(varShapeMemoizedSerializedSize);
+      output.writeRawVarint32(34);
+      output.writeRawVarint32(varShapeMemoizedSerializedSize);
     }
     for (int i = 0; i < varShape_.size(); i++) {
       output.writeInt64NoTag(varShape_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -349,7 +340,7 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getFullNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, fullName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, fullName_);
     }
     {
       int dataSize = 0;
@@ -393,71 +384,11 @@ private static final long serialVersionUID = 0L;
       }
       varShapeMemoizedSerializedSize = dataSize;
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.SaveSliceInfoDef)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.SaveSliceInfoDef other = (org.tensorflow.framework.SaveSliceInfoDef) obj;
-
-    boolean result = true;
-    result = result && getFullName()
-        .equals(other.getFullName());
-    result = result && getFullShapeList()
-        .equals(other.getFullShapeList());
-    result = result && getVarOffsetList()
-        .equals(other.getVarOffsetList());
-    result = result && getVarShapeList()
-        .equals(other.getVarShapeList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FULL_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getFullName().hashCode();
-    if (getFullShapeCount() > 0) {
-      hash = (37 * hash) + FULL_SHAPE_FIELD_NUMBER;
-      hash = (53 * hash) + getFullShapeList().hashCode();
-    }
-    if (getVarOffsetCount() > 0) {
-      hash = (37 * hash) + VAR_OFFSET_FIELD_NUMBER;
-      hash = (53 * hash) + getVarOffsetList().hashCode();
-    }
-    if (getVarShapeCount() > 0) {
-      hash = (37 * hash) + VAR_SHAPE_FIELD_NUMBER;
-      hash = (53 * hash) + getVarShapeList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -481,40 +412,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.SaveSliceInfoDef parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.SaveSliceInfoDef parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.SaveSliceInfoDef parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -531,7 +456,7 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -539,7 +464,7 @@ private static final long serialVersionUID = 0L;
    * Protobuf type {@code tensorflow.SaveSliceInfoDef}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.SaveSliceInfoDef)
       org.tensorflow.framework.SaveSliceInfoDefOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -547,7 +472,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_SaveSliceInfoDef_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.VariableProtos.internal_static_tensorflow_SaveSliceInfoDef_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -560,13 +485,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -624,32 +548,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.SaveSliceInfoDef) {
         return mergeFrom((org.tensorflow.framework.SaveSliceInfoDef)other);
@@ -695,7 +593,6 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -713,7 +610,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.SaveSliceInfoDef) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -725,11 +622,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object fullName_ = "";
     /**
+     * <code>optional string full_name = 1;</code>
+     *
      * <pre>
      * Name of the full variable of which this is a slice.
      * </pre>
-     *
-     * <code>string full_name = 1;</code>
      */
     public java.lang.String getFullName() {
       java.lang.Object ref = fullName_;
@@ -744,11 +641,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string full_name = 1;</code>
+     *
      * <pre>
      * Name of the full variable of which this is a slice.
      * </pre>
-     *
-     * <code>string full_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFullNameBytes() {
@@ -764,11 +661,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string full_name = 1;</code>
+     *
      * <pre>
      * Name of the full variable of which this is a slice.
      * </pre>
-     *
-     * <code>string full_name = 1;</code>
      */
     public Builder setFullName(
         java.lang.String value) {
@@ -781,11 +678,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string full_name = 1;</code>
+     *
      * <pre>
      * Name of the full variable of which this is a slice.
      * </pre>
-     *
-     * <code>string full_name = 1;</code>
      */
     public Builder clearFullName() {
       
@@ -794,11 +691,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string full_name = 1;</code>
+     *
      * <pre>
      * Name of the full variable of which this is a slice.
      * </pre>
-     *
-     * <code>string full_name = 1;</code>
      */
     public Builder setFullNameBytes(
         com.google.protobuf.ByteString value) {
@@ -820,42 +717,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public java.util.List<java.lang.Long>
         getFullShapeList() {
       return java.util.Collections.unmodifiableList(fullShape_);
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public int getFullShapeCount() {
       return fullShape_.size();
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public long getFullShape(int index) {
       return fullShape_.get(index);
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public Builder setFullShape(
         int index, long value) {
@@ -865,11 +762,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public Builder addFullShape(long value) {
       ensureFullShapeIsMutable();
@@ -878,11 +775,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public Builder addAllFullShape(
         java.lang.Iterable<? extends java.lang.Long> values) {
@@ -893,11 +790,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 full_shape = 2;</code>
+     *
      * <pre>
      * Shape of the full variable.
      * </pre>
-     *
-     * <code>repeated int64 full_shape = 2;</code>
      */
     public Builder clearFullShape() {
       fullShape_ = java.util.Collections.emptyList();
@@ -914,42 +811,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public java.util.List<java.lang.Long>
         getVarOffsetList() {
       return java.util.Collections.unmodifiableList(varOffset_);
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public int getVarOffsetCount() {
       return varOffset_.size();
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public long getVarOffset(int index) {
       return varOffset_.get(index);
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public Builder setVarOffset(
         int index, long value) {
@@ -959,11 +856,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public Builder addVarOffset(long value) {
       ensureVarOffsetIsMutable();
@@ -972,11 +869,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public Builder addAllVarOffset(
         java.lang.Iterable<? extends java.lang.Long> values) {
@@ -987,11 +884,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 var_offset = 3;</code>
+     *
      * <pre>
      * Offset of this variable into the full variable.
      * </pre>
-     *
-     * <code>repeated int64 var_offset = 3;</code>
      */
     public Builder clearVarOffset() {
       varOffset_ = java.util.Collections.emptyList();
@@ -1008,42 +905,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public java.util.List<java.lang.Long>
         getVarShapeList() {
       return java.util.Collections.unmodifiableList(varShape_);
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public int getVarShapeCount() {
       return varShape_.size();
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public long getVarShape(int index) {
       return varShape_.get(index);
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public Builder setVarShape(
         int index, long value) {
@@ -1053,11 +950,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public Builder addVarShape(long value) {
       ensureVarShapeIsMutable();
@@ -1066,11 +963,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public Builder addAllVarShape(
         java.lang.Iterable<? extends java.lang.Long> values) {
@@ -1081,11 +978,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 var_shape = 4;</code>
+     *
      * <pre>
      * Shape of this variable.
      * </pre>
-     *
-     * <code>repeated int64 var_shape = 4;</code>
      */
     public Builder clearVarShape() {
       varShape_ = java.util.Collections.emptyList();
@@ -1095,12 +992,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1123,7 +1020,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new SaveSliceInfoDef(input, extensionRegistry);
+      try {
+        return new SaveSliceInfoDef(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

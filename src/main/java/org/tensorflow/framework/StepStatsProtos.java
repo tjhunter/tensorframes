@@ -6,55 +6,49 @@ package org.tensorflow.framework;
 public final class StepStatsProtos {
   private StepStatsProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_AllocationRecord_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_AllocationRecord_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_AllocatorMemoryUsed_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_AllocatorMemoryUsed_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_NodeOutput_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_NodeOutput_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_MemoryStats_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_MemoryStats_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_NodeExecStats_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_NodeExecStats_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_DeviceStepStats_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_DeviceStepStats_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_StepStats_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_StepStats_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -67,7 +61,7 @@ public final class StepStatsProtos {
       "rMemoryUsed\022\026\n\016allocator_name\030\001 \001(\t\022\023\n\013t" +
       "otal_bytes\030\002 \001(\003\022\022\n\npeak_bytes\030\003 \001(\003\022\022\n\n" +
       "live_bytes\030\004 \001(\003\0228\n\022allocation_records\030\006" +
-      " \003(\0132\034.tensorflow.AllocationRecord\022\036\n\026al" +
+      " \003(\0132\034.tensorflow.AllocationRecord\022\036\n\026al",
       "locator_bytes_in_use\030\005 \001(\003\"U\n\nNodeOutput" +
       "\022\014\n\004slot\030\001 \001(\005\0229\n\022tensor_description\030\003 \001" +
       "(\0132\035.tensorflow.TensorDescription\"\354\001\n\013Me" +
@@ -77,7 +71,7 @@ public final class StepStatsProtos {
       "memory_size\030\002 \001(\003B\002\030\001\022)\n\035device_persiste" +
       "nt_memory_size\030\004 \001(\003B\002\030\001\022.\n\"device_persi" +
       "stent_tensor_alloc_ids\030\006 \003(\003B\002\030\001\"\233\003\n\rNod" +
-      "eExecStats\022\021\n\tnode_name\030\001 \001(\t\022\030\n\020all_sta" +
+      "eExecStats\022\021\n\tnode_name\030\001 \001(\t\022\030\n\020all_sta",
       "rt_micros\030\002 \001(\003\022\033\n\023op_start_rel_micros\030\003" +
       " \001(\003\022\031\n\021op_end_rel_micros\030\004 \001(\003\022\032\n\022all_e" +
       "nd_rel_micros\030\005 \001(\003\022/\n\006memory\030\006 \003(\0132\037.te" +
@@ -87,7 +81,7 @@ public final class StepStatsProtos {
       "\n\tthread_id\030\n \001(\r\022<\n\021referenced_tensor\030\013" +
       " \003(\0132!.tensorflow.AllocationDescription\022" +
       "-\n\014memory_stats\030\014 \001(\0132\027.tensorflow.Memor" +
-      "yStats\"P\n\017DeviceStepStats\022\016\n\006device\030\001 \001(" +
+      "yStats\"P\n\017DeviceStepStats\022\016\n\006device\030\001 \001(",
       "\t\022-\n\nnode_stats\030\002 \003(\0132\031.tensorflow.NodeE" +
       "xecStats\";\n\tStepStats\022.\n\tdev_stats\030\001 \003(\013" +
       "2\033.tensorflow.DeviceStepStatsB0\n\030org.ten" +
@@ -111,43 +105,43 @@ public final class StepStatsProtos {
     internal_static_tensorflow_AllocationRecord_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_AllocationRecord_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_AllocationRecord_descriptor,
         new java.lang.String[] { "AllocMicros", "AllocBytes", });
     internal_static_tensorflow_AllocatorMemoryUsed_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_tensorflow_AllocatorMemoryUsed_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_AllocatorMemoryUsed_descriptor,
         new java.lang.String[] { "AllocatorName", "TotalBytes", "PeakBytes", "LiveBytes", "AllocationRecords", "AllocatorBytesInUse", });
     internal_static_tensorflow_NodeOutput_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_tensorflow_NodeOutput_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_NodeOutput_descriptor,
         new java.lang.String[] { "Slot", "TensorDescription", });
     internal_static_tensorflow_MemoryStats_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_tensorflow_MemoryStats_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_MemoryStats_descriptor,
         new java.lang.String[] { "TempMemorySize", "PersistentMemorySize", "PersistentTensorAllocIds", "DeviceTempMemorySize", "DevicePersistentMemorySize", "DevicePersistentTensorAllocIds", });
     internal_static_tensorflow_NodeExecStats_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_tensorflow_NodeExecStats_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_NodeExecStats_descriptor,
         new java.lang.String[] { "NodeName", "AllStartMicros", "OpStartRelMicros", "OpEndRelMicros", "AllEndRelMicros", "Memory", "Output", "TimelineLabel", "ScheduledMicros", "ThreadId", "ReferencedTensor", "MemoryStats", });
     internal_static_tensorflow_DeviceStepStats_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_tensorflow_DeviceStepStats_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_DeviceStepStats_descriptor,
         new java.lang.String[] { "Device", "NodeStats", });
     internal_static_tensorflow_StepStats_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_tensorflow_StepStats_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_StepStats_descriptor,
         new java.lang.String[] { "DevStats", });
     org.tensorflow.framework.AllocationDescriptionProtos.getDescriptor();

@@ -4,21 +4,20 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.ResourceHandleProto}
+ *
  * <pre>
  * Protocol buffer representing a handle to a tensorflow resource. Handles are
  * not valid across executions, but can be serialized back and forth from within
  * a single run.
  * </pre>
- *
- * Protobuf type {@code tensorflow.ResourceHandleProto}
  */
 public  final class ResourceHandleProto extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.ResourceHandleProto)
     ResourceHandleProtoOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use ResourceHandleProto.newBuilder() to construct.
-  private ResourceHandleProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private ResourceHandleProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private ResourceHandleProto() {
@@ -32,19 +31,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private ResourceHandleProto(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -54,26 +47,25 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
           }
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             device_ = s;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             container_ = s;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             name_ = s;
             break;
@@ -84,7 +76,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
+            String s = input.readStringRequireUtf8();
 
             maybeTypeName_ = s;
             break;
@@ -92,12 +84,12 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -106,7 +98,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.ResourceHandle.internal_static_tensorflow_ResourceHandleProto_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.ResourceHandle.internal_static_tensorflow_ResourceHandleProto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -116,11 +108,11 @@ private static final long serialVersionUID = 0L;
   public static final int DEVICE_FIELD_NUMBER = 1;
   private volatile java.lang.Object device_;
   /**
+   * <code>optional string device = 1;</code>
+   *
    * <pre>
    * Unique name for the device containing the resource.
    * </pre>
-   *
-   * <code>string device = 1;</code>
    */
   public java.lang.String getDevice() {
     java.lang.Object ref = device_;
@@ -135,11 +127,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string device = 1;</code>
+   *
    * <pre>
    * Unique name for the device containing the resource.
    * </pre>
-   *
-   * <code>string device = 1;</code>
    */
   public com.google.protobuf.ByteString
       getDeviceBytes() {
@@ -158,11 +150,11 @@ private static final long serialVersionUID = 0L;
   public static final int CONTAINER_FIELD_NUMBER = 2;
   private volatile java.lang.Object container_;
   /**
+   * <code>optional string container = 2;</code>
+   *
    * <pre>
    * Container in which this resource is placed.
    * </pre>
-   *
-   * <code>string container = 2;</code>
    */
   public java.lang.String getContainer() {
     java.lang.Object ref = container_;
@@ -177,11 +169,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string container = 2;</code>
+   *
    * <pre>
    * Container in which this resource is placed.
    * </pre>
-   *
-   * <code>string container = 2;</code>
    */
   public com.google.protobuf.ByteString
       getContainerBytes() {
@@ -200,11 +192,11 @@ private static final long serialVersionUID = 0L;
   public static final int NAME_FIELD_NUMBER = 3;
   private volatile java.lang.Object name_;
   /**
+   * <code>optional string name = 3;</code>
+   *
    * <pre>
    * Unique name of this resource.
    * </pre>
-   *
-   * <code>string name = 3;</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -219,11 +211,11 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string name = 3;</code>
+   *
    * <pre>
    * Unique name of this resource.
    * </pre>
-   *
-   * <code>string name = 3;</code>
    */
   public com.google.protobuf.ByteString
       getNameBytes() {
@@ -242,12 +234,12 @@ private static final long serialVersionUID = 0L;
   public static final int HASH_CODE_FIELD_NUMBER = 4;
   private long hashCode_;
   /**
+   * <code>optional uint64 hash_code = 4;</code>
+   *
    * <pre>
    * Hash code for the type of the resource. Is only valid in the same device
    * and in the same execution.
    * </pre>
-   *
-   * <code>uint64 hash_code = 4;</code>
    */
   public long getHashCode() {
     return hashCode_;
@@ -256,12 +248,12 @@ private static final long serialVersionUID = 0L;
   public static final int MAYBE_TYPE_NAME_FIELD_NUMBER = 5;
   private volatile java.lang.Object maybeTypeName_;
   /**
+   * <code>optional string maybe_type_name = 5;</code>
+   *
    * <pre>
    * For debug-only, the name of the type pointed to by this handle, if
    * available.
    * </pre>
-   *
-   * <code>string maybe_type_name = 5;</code>
    */
   public java.lang.String getMaybeTypeName() {
     java.lang.Object ref = maybeTypeName_;
@@ -276,12 +268,12 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <code>optional string maybe_type_name = 5;</code>
+   *
    * <pre>
    * For debug-only, the name of the type pointed to by this handle, if
    * available.
    * </pre>
-   *
-   * <code>string maybe_type_name = 5;</code>
    */
   public com.google.protobuf.ByteString
       getMaybeTypeNameBytes() {
@@ -310,21 +302,20 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getDeviceBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, device_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 1, device_);
     }
     if (!getContainerBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, container_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 2, container_);
     }
     if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, name_);
     }
     if (hashCode_ != 0L) {
       output.writeUInt64(4, hashCode_);
     }
     if (!getMaybeTypeNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, maybeTypeName_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 5, maybeTypeName_);
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -333,85 +324,26 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (!getDeviceBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, device_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, device_);
     }
     if (!getContainerBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, container_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, container_);
     }
     if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, name_);
     }
     if (hashCode_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(4, hashCode_);
     }
     if (!getMaybeTypeNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, maybeTypeName_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(5, maybeTypeName_);
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.ResourceHandleProto)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.ResourceHandleProto other = (org.tensorflow.framework.ResourceHandleProto) obj;
-
-    boolean result = true;
-    result = result && getDevice()
-        .equals(other.getDevice());
-    result = result && getContainer()
-        .equals(other.getContainer());
-    result = result && getName()
-        .equals(other.getName());
-    result = result && (getHashCode()
-        == other.getHashCode());
-    result = result && getMaybeTypeName()
-        .equals(other.getMaybeTypeName());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + DEVICE_FIELD_NUMBER;
-    hash = (53 * hash) + getDevice().hashCode();
-    hash = (37 * hash) + CONTAINER_FIELD_NUMBER;
-    hash = (53 * hash) + getContainer().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + HASH_CODE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getHashCode());
-    hash = (37 * hash) + MAYBE_TYPE_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getMaybeTypeName().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.ResourceHandleProto parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.ResourceHandleProto parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.ResourceHandleProto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -435,40 +367,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.ResourceHandleProto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.ResourceHandleProto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.ResourceHandleProto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.ResourceHandleProto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.ResourceHandleProto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.ResourceHandleProto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -485,21 +411,21 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.ResourceHandleProto}
+   *
    * <pre>
    * Protocol buffer representing a handle to a tensorflow resource. Handles are
    * not valid across executions, but can be serialized back and forth from within
    * a single run.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.ResourceHandleProto}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.ResourceHandleProto)
       org.tensorflow.framework.ResourceHandleProtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -507,7 +433,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.ResourceHandle.internal_static_tensorflow_ResourceHandleProto_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.ResourceHandle.internal_static_tensorflow_ResourceHandleProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -520,13 +446,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -572,32 +497,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.ResourceHandleProto) {
         return mergeFrom((org.tensorflow.framework.ResourceHandleProto)other);
@@ -628,7 +527,6 @@ private static final long serialVersionUID = 0L;
         maybeTypeName_ = other.maybeTypeName_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -646,7 +544,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.ResourceHandleProto) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -657,11 +555,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object device_ = "";
     /**
+     * <code>optional string device = 1;</code>
+     *
      * <pre>
      * Unique name for the device containing the resource.
      * </pre>
-     *
-     * <code>string device = 1;</code>
      */
     public java.lang.String getDevice() {
       java.lang.Object ref = device_;
@@ -676,11 +574,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device = 1;</code>
+     *
      * <pre>
      * Unique name for the device containing the resource.
      * </pre>
-     *
-     * <code>string device = 1;</code>
      */
     public com.google.protobuf.ByteString
         getDeviceBytes() {
@@ -696,11 +594,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string device = 1;</code>
+     *
      * <pre>
      * Unique name for the device containing the resource.
      * </pre>
-     *
-     * <code>string device = 1;</code>
      */
     public Builder setDevice(
         java.lang.String value) {
@@ -713,11 +611,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device = 1;</code>
+     *
      * <pre>
      * Unique name for the device containing the resource.
      * </pre>
-     *
-     * <code>string device = 1;</code>
      */
     public Builder clearDevice() {
       
@@ -726,11 +624,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string device = 1;</code>
+     *
      * <pre>
      * Unique name for the device containing the resource.
      * </pre>
-     *
-     * <code>string device = 1;</code>
      */
     public Builder setDeviceBytes(
         com.google.protobuf.ByteString value) {
@@ -746,11 +644,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object container_ = "";
     /**
+     * <code>optional string container = 2;</code>
+     *
      * <pre>
      * Container in which this resource is placed.
      * </pre>
-     *
-     * <code>string container = 2;</code>
      */
     public java.lang.String getContainer() {
       java.lang.Object ref = container_;
@@ -765,11 +663,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string container = 2;</code>
+     *
      * <pre>
      * Container in which this resource is placed.
      * </pre>
-     *
-     * <code>string container = 2;</code>
      */
     public com.google.protobuf.ByteString
         getContainerBytes() {
@@ -785,11 +683,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string container = 2;</code>
+     *
      * <pre>
      * Container in which this resource is placed.
      * </pre>
-     *
-     * <code>string container = 2;</code>
      */
     public Builder setContainer(
         java.lang.String value) {
@@ -802,11 +700,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string container = 2;</code>
+     *
      * <pre>
      * Container in which this resource is placed.
      * </pre>
-     *
-     * <code>string container = 2;</code>
      */
     public Builder clearContainer() {
       
@@ -815,11 +713,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string container = 2;</code>
+     *
      * <pre>
      * Container in which this resource is placed.
      * </pre>
-     *
-     * <code>string container = 2;</code>
      */
     public Builder setContainerBytes(
         com.google.protobuf.ByteString value) {
@@ -835,11 +733,11 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <code>optional string name = 3;</code>
+     *
      * <pre>
      * Unique name of this resource.
      * </pre>
-     *
-     * <code>string name = 3;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -854,11 +752,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 3;</code>
+     *
      * <pre>
      * Unique name of this resource.
      * </pre>
-     *
-     * <code>string name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -874,11 +772,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string name = 3;</code>
+     *
      * <pre>
      * Unique name of this resource.
      * </pre>
-     *
-     * <code>string name = 3;</code>
      */
     public Builder setName(
         java.lang.String value) {
@@ -891,11 +789,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string name = 3;</code>
+     *
      * <pre>
      * Unique name of this resource.
      * </pre>
-     *
-     * <code>string name = 3;</code>
      */
     public Builder clearName() {
       
@@ -904,11 +802,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string name = 3;</code>
+     *
      * <pre>
      * Unique name of this resource.
      * </pre>
-     *
-     * <code>string name = 3;</code>
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -924,23 +822,23 @@ private static final long serialVersionUID = 0L;
 
     private long hashCode_ ;
     /**
+     * <code>optional uint64 hash_code = 4;</code>
+     *
      * <pre>
      * Hash code for the type of the resource. Is only valid in the same device
      * and in the same execution.
      * </pre>
-     *
-     * <code>uint64 hash_code = 4;</code>
      */
     public long getHashCode() {
       return hashCode_;
     }
     /**
+     * <code>optional uint64 hash_code = 4;</code>
+     *
      * <pre>
      * Hash code for the type of the resource. Is only valid in the same device
      * and in the same execution.
      * </pre>
-     *
-     * <code>uint64 hash_code = 4;</code>
      */
     public Builder setHashCode(long value) {
       
@@ -949,12 +847,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional uint64 hash_code = 4;</code>
+     *
      * <pre>
      * Hash code for the type of the resource. Is only valid in the same device
      * and in the same execution.
      * </pre>
-     *
-     * <code>uint64 hash_code = 4;</code>
      */
     public Builder clearHashCode() {
       
@@ -965,12 +863,12 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object maybeTypeName_ = "";
     /**
+     * <code>optional string maybe_type_name = 5;</code>
+     *
      * <pre>
      * For debug-only, the name of the type pointed to by this handle, if
      * available.
      * </pre>
-     *
-     * <code>string maybe_type_name = 5;</code>
      */
     public java.lang.String getMaybeTypeName() {
       java.lang.Object ref = maybeTypeName_;
@@ -985,12 +883,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string maybe_type_name = 5;</code>
+     *
      * <pre>
      * For debug-only, the name of the type pointed to by this handle, if
      * available.
      * </pre>
-     *
-     * <code>string maybe_type_name = 5;</code>
      */
     public com.google.protobuf.ByteString
         getMaybeTypeNameBytes() {
@@ -1006,12 +904,12 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional string maybe_type_name = 5;</code>
+     *
      * <pre>
      * For debug-only, the name of the type pointed to by this handle, if
      * available.
      * </pre>
-     *
-     * <code>string maybe_type_name = 5;</code>
      */
     public Builder setMaybeTypeName(
         java.lang.String value) {
@@ -1024,12 +922,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string maybe_type_name = 5;</code>
+     *
      * <pre>
      * For debug-only, the name of the type pointed to by this handle, if
      * available.
      * </pre>
-     *
-     * <code>string maybe_type_name = 5;</code>
      */
     public Builder clearMaybeTypeName() {
       
@@ -1038,12 +936,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional string maybe_type_name = 5;</code>
+     *
      * <pre>
      * For debug-only, the name of the type pointed to by this handle, if
      * available.
      * </pre>
-     *
-     * <code>string maybe_type_name = 5;</code>
      */
     public Builder setMaybeTypeNameBytes(
         com.google.protobuf.ByteString value) {
@@ -1058,12 +956,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -1086,7 +984,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ResourceHandleProto(input, extensionRegistry);
+      try {
+        return new ResourceHandleProto(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 

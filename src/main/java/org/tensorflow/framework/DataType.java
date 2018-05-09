@@ -4,272 +4,272 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf enum {@code tensorflow.DataType}
+ *
  * <pre>
  * LINT.IfChange
  * </pre>
- *
- * Protobuf enum {@code tensorflow.DataType}
  */
 public enum DataType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
+   * <code>DT_INVALID = 0;</code>
+   *
    * <pre>
    * Not a legal value for DataType.  Used to indicate a DataType field
    * has not been set.
    * </pre>
-   *
-   * <code>DT_INVALID = 0;</code>
    */
-  DT_INVALID(0),
+  DT_INVALID(0, 0),
   /**
+   * <code>DT_FLOAT = 1;</code>
+   *
    * <pre>
    * Data types that all computation devices are expected to be
    * capable to support.
    * </pre>
-   *
-   * <code>DT_FLOAT = 1;</code>
    */
-  DT_FLOAT(1),
+  DT_FLOAT(1, 1),
   /**
    * <code>DT_DOUBLE = 2;</code>
    */
-  DT_DOUBLE(2),
+  DT_DOUBLE(2, 2),
   /**
    * <code>DT_INT32 = 3;</code>
    */
-  DT_INT32(3),
+  DT_INT32(3, 3),
   /**
    * <code>DT_UINT8 = 4;</code>
    */
-  DT_UINT8(4),
+  DT_UINT8(4, 4),
   /**
    * <code>DT_INT16 = 5;</code>
    */
-  DT_INT16(5),
+  DT_INT16(5, 5),
   /**
    * <code>DT_INT8 = 6;</code>
    */
-  DT_INT8(6),
+  DT_INT8(6, 6),
   /**
    * <code>DT_STRING = 7;</code>
    */
-  DT_STRING(7),
+  DT_STRING(7, 7),
   /**
+   * <code>DT_COMPLEX64 = 8;</code>
+   *
    * <pre>
    * Single-precision complex
    * </pre>
-   *
-   * <code>DT_COMPLEX64 = 8;</code>
    */
-  DT_COMPLEX64(8),
+  DT_COMPLEX64(8, 8),
   /**
    * <code>DT_INT64 = 9;</code>
    */
-  DT_INT64(9),
+  DT_INT64(9, 9),
   /**
    * <code>DT_BOOL = 10;</code>
    */
-  DT_BOOL(10),
+  DT_BOOL(10, 10),
   /**
+   * <code>DT_QINT8 = 11;</code>
+   *
    * <pre>
    * Quantized int8
    * </pre>
-   *
-   * <code>DT_QINT8 = 11;</code>
    */
-  DT_QINT8(11),
+  DT_QINT8(11, 11),
   /**
+   * <code>DT_QUINT8 = 12;</code>
+   *
    * <pre>
    * Quantized uint8
    * </pre>
-   *
-   * <code>DT_QUINT8 = 12;</code>
    */
-  DT_QUINT8(12),
+  DT_QUINT8(12, 12),
   /**
+   * <code>DT_QINT32 = 13;</code>
+   *
    * <pre>
    * Quantized int32
    * </pre>
-   *
-   * <code>DT_QINT32 = 13;</code>
    */
-  DT_QINT32(13),
+  DT_QINT32(13, 13),
   /**
+   * <code>DT_BFLOAT16 = 14;</code>
+   *
    * <pre>
    * Float32 truncated to 16 bits.  Only for cast ops.
    * </pre>
-   *
-   * <code>DT_BFLOAT16 = 14;</code>
    */
-  DT_BFLOAT16(14),
+  DT_BFLOAT16(14, 14),
   /**
+   * <code>DT_QINT16 = 15;</code>
+   *
    * <pre>
    * Quantized int16
    * </pre>
-   *
-   * <code>DT_QINT16 = 15;</code>
    */
-  DT_QINT16(15),
+  DT_QINT16(15, 15),
   /**
+   * <code>DT_QUINT16 = 16;</code>
+   *
    * <pre>
    * Quantized uint16
    * </pre>
-   *
-   * <code>DT_QUINT16 = 16;</code>
    */
-  DT_QUINT16(16),
+  DT_QUINT16(16, 16),
   /**
    * <code>DT_UINT16 = 17;</code>
    */
-  DT_UINT16(17),
+  DT_UINT16(17, 17),
   /**
+   * <code>DT_COMPLEX128 = 18;</code>
+   *
    * <pre>
    * Double-precision complex
    * </pre>
-   *
-   * <code>DT_COMPLEX128 = 18;</code>
    */
-  DT_COMPLEX128(18),
+  DT_COMPLEX128(18, 18),
   /**
    * <code>DT_HALF = 19;</code>
    */
-  DT_HALF(19),
+  DT_HALF(19, 19),
   /**
    * <code>DT_RESOURCE = 20;</code>
    */
-  DT_RESOURCE(20),
+  DT_RESOURCE(20, 20),
   /**
+   * <code>DT_VARIANT = 21;</code>
+   *
    * <pre>
    * Arbitrary C++ data types
    * </pre>
-   *
-   * <code>DT_VARIANT = 21;</code>
    */
-  DT_VARIANT(21),
+  DT_VARIANT(21, 21),
   /**
    * <code>DT_UINT32 = 22;</code>
    */
-  DT_UINT32(22),
+  DT_UINT32(22, 22),
   /**
    * <code>DT_UINT64 = 23;</code>
    */
-  DT_UINT64(23),
+  DT_UINT64(23, 23),
   /**
+   * <code>DT_FLOAT_REF = 101;</code>
+   *
    * <pre>
    * Do not use!  These are only for parameters.  Every enum above
    * should have a corresponding value below (verified by types_test).
    * </pre>
-   *
-   * <code>DT_FLOAT_REF = 101;</code>
    */
-  DT_FLOAT_REF(101),
+  DT_FLOAT_REF(24, 101),
   /**
    * <code>DT_DOUBLE_REF = 102;</code>
    */
-  DT_DOUBLE_REF(102),
+  DT_DOUBLE_REF(25, 102),
   /**
    * <code>DT_INT32_REF = 103;</code>
    */
-  DT_INT32_REF(103),
+  DT_INT32_REF(26, 103),
   /**
    * <code>DT_UINT8_REF = 104;</code>
    */
-  DT_UINT8_REF(104),
+  DT_UINT8_REF(27, 104),
   /**
    * <code>DT_INT16_REF = 105;</code>
    */
-  DT_INT16_REF(105),
+  DT_INT16_REF(28, 105),
   /**
    * <code>DT_INT8_REF = 106;</code>
    */
-  DT_INT8_REF(106),
+  DT_INT8_REF(29, 106),
   /**
    * <code>DT_STRING_REF = 107;</code>
    */
-  DT_STRING_REF(107),
+  DT_STRING_REF(30, 107),
   /**
    * <code>DT_COMPLEX64_REF = 108;</code>
    */
-  DT_COMPLEX64_REF(108),
+  DT_COMPLEX64_REF(31, 108),
   /**
    * <code>DT_INT64_REF = 109;</code>
    */
-  DT_INT64_REF(109),
+  DT_INT64_REF(32, 109),
   /**
    * <code>DT_BOOL_REF = 110;</code>
    */
-  DT_BOOL_REF(110),
+  DT_BOOL_REF(33, 110),
   /**
    * <code>DT_QINT8_REF = 111;</code>
    */
-  DT_QINT8_REF(111),
+  DT_QINT8_REF(34, 111),
   /**
    * <code>DT_QUINT8_REF = 112;</code>
    */
-  DT_QUINT8_REF(112),
+  DT_QUINT8_REF(35, 112),
   /**
    * <code>DT_QINT32_REF = 113;</code>
    */
-  DT_QINT32_REF(113),
+  DT_QINT32_REF(36, 113),
   /**
    * <code>DT_BFLOAT16_REF = 114;</code>
    */
-  DT_BFLOAT16_REF(114),
+  DT_BFLOAT16_REF(37, 114),
   /**
    * <code>DT_QINT16_REF = 115;</code>
    */
-  DT_QINT16_REF(115),
+  DT_QINT16_REF(38, 115),
   /**
    * <code>DT_QUINT16_REF = 116;</code>
    */
-  DT_QUINT16_REF(116),
+  DT_QUINT16_REF(39, 116),
   /**
    * <code>DT_UINT16_REF = 117;</code>
    */
-  DT_UINT16_REF(117),
+  DT_UINT16_REF(40, 117),
   /**
    * <code>DT_COMPLEX128_REF = 118;</code>
    */
-  DT_COMPLEX128_REF(118),
+  DT_COMPLEX128_REF(41, 118),
   /**
    * <code>DT_HALF_REF = 119;</code>
    */
-  DT_HALF_REF(119),
+  DT_HALF_REF(42, 119),
   /**
    * <code>DT_RESOURCE_REF = 120;</code>
    */
-  DT_RESOURCE_REF(120),
+  DT_RESOURCE_REF(43, 120),
   /**
    * <code>DT_VARIANT_REF = 121;</code>
    */
-  DT_VARIANT_REF(121),
+  DT_VARIANT_REF(44, 121),
   /**
    * <code>DT_UINT32_REF = 122;</code>
    */
-  DT_UINT32_REF(122),
+  DT_UINT32_REF(45, 122),
   /**
    * <code>DT_UINT64_REF = 123;</code>
    */
-  DT_UINT64_REF(123),
-  UNRECOGNIZED(-1),
+  DT_UINT64_REF(46, 123),
+  UNRECOGNIZED(-1, -1),
   ;
 
   /**
+   * <code>DT_INVALID = 0;</code>
+   *
    * <pre>
    * Not a legal value for DataType.  Used to indicate a DataType field
    * has not been set.
    * </pre>
-   *
-   * <code>DT_INVALID = 0;</code>
    */
   public static final int DT_INVALID_VALUE = 0;
   /**
+   * <code>DT_FLOAT = 1;</code>
+   *
    * <pre>
    * Data types that all computation devices are expected to be
    * capable to support.
    * </pre>
-   *
-   * <code>DT_FLOAT = 1;</code>
    */
   public static final int DT_FLOAT_VALUE = 1;
   /**
@@ -297,11 +297,11 @@ public enum DataType
    */
   public static final int DT_STRING_VALUE = 7;
   /**
+   * <code>DT_COMPLEX64 = 8;</code>
+   *
    * <pre>
    * Single-precision complex
    * </pre>
-   *
-   * <code>DT_COMPLEX64 = 8;</code>
    */
   public static final int DT_COMPLEX64_VALUE = 8;
   /**
@@ -313,51 +313,51 @@ public enum DataType
    */
   public static final int DT_BOOL_VALUE = 10;
   /**
+   * <code>DT_QINT8 = 11;</code>
+   *
    * <pre>
    * Quantized int8
    * </pre>
-   *
-   * <code>DT_QINT8 = 11;</code>
    */
   public static final int DT_QINT8_VALUE = 11;
   /**
+   * <code>DT_QUINT8 = 12;</code>
+   *
    * <pre>
    * Quantized uint8
    * </pre>
-   *
-   * <code>DT_QUINT8 = 12;</code>
    */
   public static final int DT_QUINT8_VALUE = 12;
   /**
+   * <code>DT_QINT32 = 13;</code>
+   *
    * <pre>
    * Quantized int32
    * </pre>
-   *
-   * <code>DT_QINT32 = 13;</code>
    */
   public static final int DT_QINT32_VALUE = 13;
   /**
+   * <code>DT_BFLOAT16 = 14;</code>
+   *
    * <pre>
    * Float32 truncated to 16 bits.  Only for cast ops.
    * </pre>
-   *
-   * <code>DT_BFLOAT16 = 14;</code>
    */
   public static final int DT_BFLOAT16_VALUE = 14;
   /**
+   * <code>DT_QINT16 = 15;</code>
+   *
    * <pre>
    * Quantized int16
    * </pre>
-   *
-   * <code>DT_QINT16 = 15;</code>
    */
   public static final int DT_QINT16_VALUE = 15;
   /**
+   * <code>DT_QUINT16 = 16;</code>
+   *
    * <pre>
    * Quantized uint16
    * </pre>
-   *
-   * <code>DT_QUINT16 = 16;</code>
    */
   public static final int DT_QUINT16_VALUE = 16;
   /**
@@ -365,11 +365,11 @@ public enum DataType
    */
   public static final int DT_UINT16_VALUE = 17;
   /**
+   * <code>DT_COMPLEX128 = 18;</code>
+   *
    * <pre>
    * Double-precision complex
    * </pre>
-   *
-   * <code>DT_COMPLEX128 = 18;</code>
    */
   public static final int DT_COMPLEX128_VALUE = 18;
   /**
@@ -381,11 +381,11 @@ public enum DataType
    */
   public static final int DT_RESOURCE_VALUE = 20;
   /**
+   * <code>DT_VARIANT = 21;</code>
+   *
    * <pre>
    * Arbitrary C++ data types
    * </pre>
-   *
-   * <code>DT_VARIANT = 21;</code>
    */
   public static final int DT_VARIANT_VALUE = 21;
   /**
@@ -397,12 +397,12 @@ public enum DataType
    */
   public static final int DT_UINT64_VALUE = 23;
   /**
+   * <code>DT_FLOAT_REF = 101;</code>
+   *
    * <pre>
    * Do not use!  These are only for parameters.  Every enum above
    * should have a corresponding value below (verified by types_test).
    * </pre>
-   *
-   * <code>DT_FLOAT_REF = 101;</code>
    */
   public static final int DT_FLOAT_REF_VALUE = 101;
   /**
@@ -496,22 +496,14 @@ public enum DataType
 
 
   public final int getNumber() {
-    if (this == UNRECOGNIZED) {
+    if (index == -1) {
       throw new java.lang.IllegalArgumentException(
           "Can't get the number of an unknown enum value.");
     }
     return value;
   }
 
-  /**
-   * @deprecated Use {@link #forNumber(int)} instead.
-   */
-  @java.lang.Deprecated
   public static DataType valueOf(int value) {
-    return forNumber(value);
-  }
-
-  public static DataType forNumber(int value) {
     switch (value) {
       case 0: return DT_INVALID;
       case 1: return DT_FLOAT;
@@ -572,13 +564,13 @@ public enum DataType
       DataType> internalValueMap =
         new com.google.protobuf.Internal.EnumLiteMap<DataType>() {
           public DataType findValueByNumber(int number) {
-            return DataType.forNumber(number);
+            return DataType.valueOf(number);
           }
         };
 
   public final com.google.protobuf.Descriptors.EnumValueDescriptor
       getValueDescriptor() {
-    return getDescriptor().getValues().get(ordinal());
+    return getDescriptor().getValues().get(index);
   }
   public final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptorForType() {
@@ -586,7 +578,8 @@ public enum DataType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return org.tensorflow.framework.TypesProtos.getDescriptor().getEnumTypes().get(0);
+    return org.tensorflow.framework.TypesProtos.getDescriptor()
+        .getEnumTypes().get(0);
   }
 
   private static final DataType[] VALUES = values();
@@ -603,9 +596,11 @@ public enum DataType
     return VALUES[desc.getIndex()];
   }
 
+  private final int index;
   private final int value;
 
-  private DataType(int value) {
+  private DataType(int index, int value) {
+    this.index = index;
     this.value = value;
   }
 

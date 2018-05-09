@@ -8,62 +8,62 @@ public interface SummaryMetadataOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional .tensorflow.SummaryMetadata.PluginData plugin_data = 1;</code>
+   *
    * <pre>
    * Data that associates a summary with a certain plugin.
    * </pre>
-   *
-   * <code>.tensorflow.SummaryMetadata.PluginData plugin_data = 1;</code>
    */
   boolean hasPluginData();
   /**
+   * <code>optional .tensorflow.SummaryMetadata.PluginData plugin_data = 1;</code>
+   *
    * <pre>
    * Data that associates a summary with a certain plugin.
    * </pre>
-   *
-   * <code>.tensorflow.SummaryMetadata.PluginData plugin_data = 1;</code>
    */
   org.tensorflow.framework.SummaryMetadata.PluginData getPluginData();
   /**
+   * <code>optional .tensorflow.SummaryMetadata.PluginData plugin_data = 1;</code>
+   *
    * <pre>
    * Data that associates a summary with a certain plugin.
    * </pre>
-   *
-   * <code>.tensorflow.SummaryMetadata.PluginData plugin_data = 1;</code>
    */
   org.tensorflow.framework.SummaryMetadata.PluginDataOrBuilder getPluginDataOrBuilder();
 
   /**
+   * <code>optional string display_name = 2;</code>
+   *
    * <pre>
    * Display name for viewing in TensorBoard.
    * </pre>
-   *
-   * <code>string display_name = 2;</code>
    */
   java.lang.String getDisplayName();
   /**
+   * <code>optional string display_name = 2;</code>
+   *
    * <pre>
    * Display name for viewing in TensorBoard.
    * </pre>
-   *
-   * <code>string display_name = 2;</code>
    */
   com.google.protobuf.ByteString
       getDisplayNameBytes();
 
   /**
+   * <code>optional string summary_description = 3;</code>
+   *
    * <pre>
    * Longform readable description of the summary sequence. Markdown supported.
    * </pre>
-   *
-   * <code>string summary_description = 3;</code>
    */
   java.lang.String getSummaryDescription();
   /**
+   * <code>optional string summary_description = 3;</code>
+   *
    * <pre>
    * Longform readable description of the summary sequence. Markdown supported.
    * </pre>
-   *
-   * <code>string summary_description = 3;</code>
    */
   com.google.protobuf.ByteString
       getSummaryDescriptionBytes();

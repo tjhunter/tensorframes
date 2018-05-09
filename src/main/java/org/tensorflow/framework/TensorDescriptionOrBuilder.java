@@ -8,69 +8,69 @@ public interface TensorDescriptionOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>optional .tensorflow.DataType dtype = 1;</code>
+   *
    * <pre>
    * Data type of tensor elements
    * </pre>
-   *
-   * <code>.tensorflow.DataType dtype = 1;</code>
    */
   int getDtypeValue();
   /**
+   * <code>optional .tensorflow.DataType dtype = 1;</code>
+   *
    * <pre>
    * Data type of tensor elements
    * </pre>
-   *
-   * <code>.tensorflow.DataType dtype = 1;</code>
    */
   org.tensorflow.framework.DataType getDtype();
 
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 2;</code>
    */
   boolean hasShape();
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 2;</code>
    */
   org.tensorflow.framework.TensorShapeProto getShape();
   /**
+   * <code>optional .tensorflow.TensorShapeProto shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto shape = 2;</code>
    */
   org.tensorflow.framework.TensorShapeProtoOrBuilder getShapeOrBuilder();
 
   /**
+   * <code>optional .tensorflow.AllocationDescription allocation_description = 4;</code>
+   *
    * <pre>
    * Information about the size and allocator used for the data
    * </pre>
-   *
-   * <code>.tensorflow.AllocationDescription allocation_description = 4;</code>
    */
   boolean hasAllocationDescription();
   /**
+   * <code>optional .tensorflow.AllocationDescription allocation_description = 4;</code>
+   *
    * <pre>
    * Information about the size and allocator used for the data
    * </pre>
-   *
-   * <code>.tensorflow.AllocationDescription allocation_description = 4;</code>
    */
   org.tensorflow.framework.AllocationDescription getAllocationDescription();
   /**
+   * <code>optional .tensorflow.AllocationDescription allocation_description = 4;</code>
+   *
    * <pre>
    * Information about the size and allocator used for the data
    * </pre>
-   *
-   * <code>.tensorflow.AllocationDescription allocation_description = 4;</code>
    */
   org.tensorflow.framework.AllocationDescriptionOrBuilder getAllocationDescriptionOrBuilder();
 }

@@ -6,45 +6,39 @@ package org.tensorflow.framework;
 public final class ApiDefProtos {
   private ApiDefProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_ApiDef_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_ApiDef_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_ApiDef_Endpoint_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_ApiDef_Endpoint_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_ApiDef_Arg_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_ApiDef_Arg_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_ApiDef_Attr_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_ApiDef_Attr_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_tensorflow_ApiDefs_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_tensorflow_ApiDefs_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -57,7 +51,7 @@ public final class ApiDefProtos {
       "\004 \003(\0132\026.tensorflow.ApiDef.Arg\022\'\n\007out_arg" +
       "\030\005 \003(\0132\026.tensorflow.ApiDef.Arg\022\021\n\targ_or" +
       "der\030\013 \003(\t\022%\n\004attr\030\006 \003(\0132\027.tensorflow.Api" +
-      "Def.Attr\022\017\n\007summary\030\007 \001(\t\022\023\n\013description" +
+      "Def.Attr\022\017\n\007summary\030\007 \001(\t\022\023\n\013description",
       "\030\010 \001(\t\022\032\n\022description_prefix\030\t \001(\t\022\032\n\022de" +
       "scription_suffix\030\n \001(\t\0325\n\010Endpoint\022\014\n\004na" +
       "me\030\001 \001(\t\022\033\n\023deprecation_version\030\002 \001(\005\032;\n" +
@@ -67,7 +61,7 @@ public final class ApiDefProtos {
       "(\0132\025.tensorflow.AttrValue\022\023\n\013description" +
       "\030\004 \001(\t\"G\n\nVisibility\022\026\n\022DEFAULT_VISIBILI" +
       "TY\020\000\022\013\n\007VISIBLE\020\001\022\010\n\004SKIP\020\002\022\n\n\006HIDDEN\020\003\"" +
-      ")\n\007ApiDefs\022\036\n\002op\030\001 \003(\0132\022.tensorflow.ApiD" +
+      ")\n\007ApiDefs\022\036\n\002op\030\001 \003(\0132\022.tensorflow.ApiD",
       "efB-\n\030org.tensorflow.frameworkB\014ApiDefPr" +
       "otosP\001\370\001\001b\006proto3"
     };
@@ -87,31 +81,31 @@ public final class ApiDefProtos {
     internal_static_tensorflow_ApiDef_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tensorflow_ApiDef_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_ApiDef_descriptor,
         new java.lang.String[] { "GraphOpName", "Visibility", "Endpoint", "InArg", "OutArg", "ArgOrder", "Attr", "Summary", "Description", "DescriptionPrefix", "DescriptionSuffix", });
     internal_static_tensorflow_ApiDef_Endpoint_descriptor =
       internal_static_tensorflow_ApiDef_descriptor.getNestedTypes().get(0);
     internal_static_tensorflow_ApiDef_Endpoint_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_ApiDef_Endpoint_descriptor,
         new java.lang.String[] { "Name", "DeprecationVersion", });
     internal_static_tensorflow_ApiDef_Arg_descriptor =
       internal_static_tensorflow_ApiDef_descriptor.getNestedTypes().get(1);
     internal_static_tensorflow_ApiDef_Arg_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_ApiDef_Arg_descriptor,
         new java.lang.String[] { "Name", "RenameTo", "Description", });
     internal_static_tensorflow_ApiDef_Attr_descriptor =
       internal_static_tensorflow_ApiDef_descriptor.getNestedTypes().get(2);
     internal_static_tensorflow_ApiDef_Attr_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_ApiDef_Attr_descriptor,
         new java.lang.String[] { "Name", "RenameTo", "DefaultValue", "Description", });
     internal_static_tensorflow_ApiDefs_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_tensorflow_ApiDefs_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tensorflow_ApiDefs_descriptor,
         new java.lang.String[] { "Op", });
     org.tensorflow.framework.AttrValueProtos.getDescriptor();

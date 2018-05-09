@@ -8,60 +8,60 @@ public interface TensorSliceProtoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
+   *
    * <pre>
    * Extent of the slice in all tensor dimensions.
    * Must have one entry for each of the dimension of the tensor that this
    * slice belongs to.  The order of sizes is the same as the order of
    * dimensions in the TensorShape.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
    */
   java.util.List<org.tensorflow.framework.TensorSliceProto.Extent> 
       getExtentList();
   /**
+   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
+   *
    * <pre>
    * Extent of the slice in all tensor dimensions.
    * Must have one entry for each of the dimension of the tensor that this
    * slice belongs to.  The order of sizes is the same as the order of
    * dimensions in the TensorShape.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
    */
   org.tensorflow.framework.TensorSliceProto.Extent getExtent(int index);
   /**
+   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
+   *
    * <pre>
    * Extent of the slice in all tensor dimensions.
    * Must have one entry for each of the dimension of the tensor that this
    * slice belongs to.  The order of sizes is the same as the order of
    * dimensions in the TensorShape.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
    */
   int getExtentCount();
   /**
+   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
+   *
    * <pre>
    * Extent of the slice in all tensor dimensions.
    * Must have one entry for each of the dimension of the tensor that this
    * slice belongs to.  The order of sizes is the same as the order of
    * dimensions in the TensorShape.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
    */
   java.util.List<? extends org.tensorflow.framework.TensorSliceProto.ExtentOrBuilder> 
       getExtentOrBuilderList();
   /**
+   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
+   *
    * <pre>
    * Extent of the slice in all tensor dimensions.
    * Must have one entry for each of the dimension of the tensor that this
    * slice belongs to.  The order of sizes is the same as the order of
    * dimensions in the TensorShape.
    * </pre>
-   *
-   * <code>repeated .tensorflow.TensorSliceProto.Extent extent = 1;</code>
    */
   org.tensorflow.framework.TensorSliceProto.ExtentOrBuilder getExtentOrBuilder(
       int index);

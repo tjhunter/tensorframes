@@ -4,19 +4,18 @@
 package org.tensorflow.framework;
 
 /**
+ * Protobuf type {@code tensorflow.TensorProto}
+ *
  * <pre>
  * Protocol buffer representing a tensor.
  * </pre>
- *
- * Protobuf type {@code tensorflow.TensorProto}
  */
 public  final class TensorProto extends
-    com.google.protobuf.GeneratedMessageV3 implements
+    com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:tensorflow.TensorProto)
     TensorProtoOrBuilder {
-private static final long serialVersionUID = 0L;
   // Use TensorProto.newBuilder() to construct.
-  private TensorProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private TensorProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
   private TensorProto() {
@@ -41,19 +40,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public final com.google.protobuf.UnknownFieldSet
   getUnknownFields() {
-    return this.unknownFields;
+    return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
   private TensorProto(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
     this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
     int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
       boolean done = false;
       while (!done) {
@@ -63,8 +56,7 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
+            if (!input.skipField(tag)) {
               done = true;
             }
             break;
@@ -279,8 +271,7 @@ private static final long serialVersionUID = 0L;
               resourceHandleVal_ = new java.util.ArrayList<org.tensorflow.framework.ResourceHandleProto>();
               mutable_bitField0_ |= 0x00002000;
             }
-            resourceHandleVal_.add(
-                input.readMessage(org.tensorflow.framework.ResourceHandleProto.parser(), extensionRegistry));
+            resourceHandleVal_.add(input.readMessage(org.tensorflow.framework.ResourceHandleProto.parser(), extensionRegistry));
             break;
           }
           case 122: {
@@ -288,8 +279,7 @@ private static final long serialVersionUID = 0L;
               variantVal_ = new java.util.ArrayList<org.tensorflow.framework.VariantTensorDataProto>();
               mutable_bitField0_ |= 0x00004000;
             }
-            variantVal_.add(
-                input.readMessage(org.tensorflow.framework.VariantTensorDataProto.parser(), extensionRegistry));
+            variantVal_.add(input.readMessage(org.tensorflow.framework.VariantTensorDataProto.parser(), extensionRegistry));
             break;
           }
           case 128: {
@@ -337,10 +327,11 @@ private static final long serialVersionUID = 0L;
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
+      throw new RuntimeException(e.setUnfinishedMessage(this));
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
+      throw new RuntimeException(
+          new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this));
     } finally {
       if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
         floatVal_ = java.util.Collections.unmodifiableList(floatVal_);
@@ -381,7 +372,6 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
         uint64Val_ = java.util.Collections.unmodifiableList(uint64Val_);
       }
-      this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
@@ -390,7 +380,7 @@ private static final long serialVersionUID = 0L;
     return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_TensorProto_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_TensorProto_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -401,13 +391,13 @@ private static final long serialVersionUID = 0L;
   public static final int DTYPE_FIELD_NUMBER = 1;
   private int dtype_;
   /**
-   * <code>.tensorflow.DataType dtype = 1;</code>
+   * <code>optional .tensorflow.DataType dtype = 1;</code>
    */
   public int getDtypeValue() {
     return dtype_;
   }
   /**
-   * <code>.tensorflow.DataType dtype = 1;</code>
+   * <code>optional .tensorflow.DataType dtype = 1;</code>
    */
   public org.tensorflow.framework.DataType getDtype() {
     org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(dtype_);
@@ -417,31 +407,31 @@ private static final long serialVersionUID = 0L;
   public static final int TENSOR_SHAPE_FIELD_NUMBER = 2;
   private org.tensorflow.framework.TensorShapeProto tensorShape_;
   /**
+   * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
    */
   public boolean hasTensorShape() {
     return tensorShape_ != null;
   }
   /**
+   * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
    */
   public org.tensorflow.framework.TensorShapeProto getTensorShape() {
     return tensorShape_ == null ? org.tensorflow.framework.TensorShapeProto.getDefaultInstance() : tensorShape_;
   }
   /**
+   * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+   *
    * <pre>
    * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
    * </pre>
-   *
-   * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
    */
   public org.tensorflow.framework.TensorShapeProtoOrBuilder getTensorShapeOrBuilder() {
     return getTensorShape();
@@ -450,14 +440,14 @@ private static final long serialVersionUID = 0L;
   public static final int VERSION_NUMBER_FIELD_NUMBER = 3;
   private int versionNumber_;
   /**
+   * <code>optional int32 version_number = 3;</code>
+   *
    * <pre>
    * Version number.
    * In version 0, if the "repeated xxx" representations contain only one
    * element, that element is repeated to fill the shape.  This makes it easy
    * to represent a constant Tensor with a single value.
    * </pre>
-   *
-   * <code>int32 version_number = 3;</code>
    */
   public int getVersionNumber() {
     return versionNumber_;
@@ -466,6 +456,8 @@ private static final long serialVersionUID = 0L;
   public static final int TENSOR_CONTENT_FIELD_NUMBER = 4;
   private com.google.protobuf.ByteString tensorContent_;
   /**
+   * <code>optional bytes tensor_content = 4;</code>
+   *
    * <pre>
    * Serialized raw tensor content from either Tensor::AsProtoTensorContent or
    * memcpy in tensorflow::grpc::EncodeTensorToByteBuffer. This representation
@@ -473,8 +465,6 @@ private static final long serialVersionUID = 0L;
    * reduce serialization overhead during RPC call by avoiding serialization of
    * many repeated small items.
    * </pre>
-   *
-   * <code>bytes tensor_content = 4;</code>
    */
   public com.google.protobuf.ByteString getTensorContent() {
     return tensorContent_;
@@ -483,35 +473,35 @@ private static final long serialVersionUID = 0L;
   public static final int HALF_VAL_FIELD_NUMBER = 13;
   private java.util.List<java.lang.Integer> halfVal_;
   /**
+   * <code>repeated int32 half_val = 13 [packed = true];</code>
+   *
    * <pre>
    * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
    * have some pointless zero padding for each value here.
    * </pre>
-   *
-   * <code>repeated int32 half_val = 13 [packed = true];</code>
    */
   public java.util.List<java.lang.Integer>
       getHalfValList() {
     return halfVal_;
   }
   /**
+   * <code>repeated int32 half_val = 13 [packed = true];</code>
+   *
    * <pre>
    * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
    * have some pointless zero padding for each value here.
    * </pre>
-   *
-   * <code>repeated int32 half_val = 13 [packed = true];</code>
    */
   public int getHalfValCount() {
     return halfVal_.size();
   }
   /**
+   * <code>repeated int32 half_val = 13 [packed = true];</code>
+   *
    * <pre>
    * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
    * have some pointless zero padding for each value here.
    * </pre>
-   *
-   * <code>repeated int32 half_val = 13 [packed = true];</code>
    */
   public int getHalfVal(int index) {
     return halfVal_.get(index);
@@ -521,32 +511,32 @@ private static final long serialVersionUID = 0L;
   public static final int FLOAT_VAL_FIELD_NUMBER = 5;
   private java.util.List<java.lang.Float> floatVal_;
   /**
+   * <code>repeated float float_val = 5 [packed = true];</code>
+   *
    * <pre>
    * DT_FLOAT.
    * </pre>
-   *
-   * <code>repeated float float_val = 5 [packed = true];</code>
    */
   public java.util.List<java.lang.Float>
       getFloatValList() {
     return floatVal_;
   }
   /**
+   * <code>repeated float float_val = 5 [packed = true];</code>
+   *
    * <pre>
    * DT_FLOAT.
    * </pre>
-   *
-   * <code>repeated float float_val = 5 [packed = true];</code>
    */
   public int getFloatValCount() {
     return floatVal_.size();
   }
   /**
+   * <code>repeated float float_val = 5 [packed = true];</code>
+   *
    * <pre>
    * DT_FLOAT.
    * </pre>
-   *
-   * <code>repeated float float_val = 5 [packed = true];</code>
    */
   public float getFloatVal(int index) {
     return floatVal_.get(index);
@@ -556,32 +546,32 @@ private static final long serialVersionUID = 0L;
   public static final int DOUBLE_VAL_FIELD_NUMBER = 6;
   private java.util.List<java.lang.Double> doubleVal_;
   /**
+   * <code>repeated double double_val = 6 [packed = true];</code>
+   *
    * <pre>
    * DT_DOUBLE.
    * </pre>
-   *
-   * <code>repeated double double_val = 6 [packed = true];</code>
    */
   public java.util.List<java.lang.Double>
       getDoubleValList() {
     return doubleVal_;
   }
   /**
+   * <code>repeated double double_val = 6 [packed = true];</code>
+   *
    * <pre>
    * DT_DOUBLE.
    * </pre>
-   *
-   * <code>repeated double double_val = 6 [packed = true];</code>
    */
   public int getDoubleValCount() {
     return doubleVal_.size();
   }
   /**
+   * <code>repeated double double_val = 6 [packed = true];</code>
+   *
    * <pre>
    * DT_DOUBLE.
    * </pre>
-   *
-   * <code>repeated double double_val = 6 [packed = true];</code>
    */
   public double getDoubleVal(int index) {
     return doubleVal_.get(index);
@@ -591,32 +581,32 @@ private static final long serialVersionUID = 0L;
   public static final int INT_VAL_FIELD_NUMBER = 7;
   private java.util.List<java.lang.Integer> intVal_;
   /**
+   * <code>repeated int32 int_val = 7 [packed = true];</code>
+   *
    * <pre>
    * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
    * </pre>
-   *
-   * <code>repeated int32 int_val = 7 [packed = true];</code>
    */
   public java.util.List<java.lang.Integer>
       getIntValList() {
     return intVal_;
   }
   /**
+   * <code>repeated int32 int_val = 7 [packed = true];</code>
+   *
    * <pre>
    * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
    * </pre>
-   *
-   * <code>repeated int32 int_val = 7 [packed = true];</code>
    */
   public int getIntValCount() {
     return intVal_.size();
   }
   /**
+   * <code>repeated int32 int_val = 7 [packed = true];</code>
+   *
    * <pre>
    * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
    * </pre>
-   *
-   * <code>repeated int32 int_val = 7 [packed = true];</code>
    */
   public int getIntVal(int index) {
     return intVal_.get(index);
@@ -626,32 +616,32 @@ private static final long serialVersionUID = 0L;
   public static final int STRING_VAL_FIELD_NUMBER = 8;
   private java.util.List<com.google.protobuf.ByteString> stringVal_;
   /**
+   * <code>repeated bytes string_val = 8;</code>
+   *
    * <pre>
    * DT_STRING
    * </pre>
-   *
-   * <code>repeated bytes string_val = 8;</code>
    */
   public java.util.List<com.google.protobuf.ByteString>
       getStringValList() {
     return stringVal_;
   }
   /**
+   * <code>repeated bytes string_val = 8;</code>
+   *
    * <pre>
    * DT_STRING
    * </pre>
-   *
-   * <code>repeated bytes string_val = 8;</code>
    */
   public int getStringValCount() {
     return stringVal_.size();
   }
   /**
+   * <code>repeated bytes string_val = 8;</code>
+   *
    * <pre>
    * DT_STRING
    * </pre>
-   *
-   * <code>repeated bytes string_val = 8;</code>
    */
   public com.google.protobuf.ByteString getStringVal(int index) {
     return stringVal_.get(index);
@@ -660,35 +650,35 @@ private static final long serialVersionUID = 0L;
   public static final int SCOMPLEX_VAL_FIELD_NUMBER = 9;
   private java.util.List<java.lang.Float> scomplexVal_;
   /**
+   * <code>repeated float scomplex_val = 9 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
    * and imaginary parts of i-th single precision complex.
    * </pre>
-   *
-   * <code>repeated float scomplex_val = 9 [packed = true];</code>
    */
   public java.util.List<java.lang.Float>
       getScomplexValList() {
     return scomplexVal_;
   }
   /**
+   * <code>repeated float scomplex_val = 9 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
    * and imaginary parts of i-th single precision complex.
    * </pre>
-   *
-   * <code>repeated float scomplex_val = 9 [packed = true];</code>
    */
   public int getScomplexValCount() {
     return scomplexVal_.size();
   }
   /**
+   * <code>repeated float scomplex_val = 9 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
    * and imaginary parts of i-th single precision complex.
    * </pre>
-   *
-   * <code>repeated float scomplex_val = 9 [packed = true];</code>
    */
   public float getScomplexVal(int index) {
     return scomplexVal_.get(index);
@@ -698,32 +688,32 @@ private static final long serialVersionUID = 0L;
   public static final int INT64_VAL_FIELD_NUMBER = 10;
   private java.util.List<java.lang.Long> int64Val_;
   /**
+   * <code>repeated int64 int64_val = 10 [packed = true];</code>
+   *
    * <pre>
    * DT_INT64
    * </pre>
-   *
-   * <code>repeated int64 int64_val = 10 [packed = true];</code>
    */
   public java.util.List<java.lang.Long>
       getInt64ValList() {
     return int64Val_;
   }
   /**
+   * <code>repeated int64 int64_val = 10 [packed = true];</code>
+   *
    * <pre>
    * DT_INT64
    * </pre>
-   *
-   * <code>repeated int64 int64_val = 10 [packed = true];</code>
    */
   public int getInt64ValCount() {
     return int64Val_.size();
   }
   /**
+   * <code>repeated int64 int64_val = 10 [packed = true];</code>
+   *
    * <pre>
    * DT_INT64
    * </pre>
-   *
-   * <code>repeated int64 int64_val = 10 [packed = true];</code>
    */
   public long getInt64Val(int index) {
     return int64Val_.get(index);
@@ -733,32 +723,32 @@ private static final long serialVersionUID = 0L;
   public static final int BOOL_VAL_FIELD_NUMBER = 11;
   private java.util.List<java.lang.Boolean> boolVal_;
   /**
+   * <code>repeated bool bool_val = 11 [packed = true];</code>
+   *
    * <pre>
    * DT_BOOL
    * </pre>
-   *
-   * <code>repeated bool bool_val = 11 [packed = true];</code>
    */
   public java.util.List<java.lang.Boolean>
       getBoolValList() {
     return boolVal_;
   }
   /**
+   * <code>repeated bool bool_val = 11 [packed = true];</code>
+   *
    * <pre>
    * DT_BOOL
    * </pre>
-   *
-   * <code>repeated bool bool_val = 11 [packed = true];</code>
    */
   public int getBoolValCount() {
     return boolVal_.size();
   }
   /**
+   * <code>repeated bool bool_val = 11 [packed = true];</code>
+   *
    * <pre>
    * DT_BOOL
    * </pre>
-   *
-   * <code>repeated bool bool_val = 11 [packed = true];</code>
    */
   public boolean getBoolVal(int index) {
     return boolVal_.get(index);
@@ -768,35 +758,35 @@ private static final long serialVersionUID = 0L;
   public static final int DCOMPLEX_VAL_FIELD_NUMBER = 12;
   private java.util.List<java.lang.Double> dcomplexVal_;
   /**
+   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
    * and imaginary parts of i-th double precision complex.
    * </pre>
-   *
-   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
    */
   public java.util.List<java.lang.Double>
       getDcomplexValList() {
     return dcomplexVal_;
   }
   /**
+   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
    * and imaginary parts of i-th double precision complex.
    * </pre>
-   *
-   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
    */
   public int getDcomplexValCount() {
     return dcomplexVal_.size();
   }
   /**
+   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+   *
    * <pre>
    * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
    * and imaginary parts of i-th double precision complex.
    * </pre>
-   *
-   * <code>repeated double dcomplex_val = 12 [packed = true];</code>
    */
   public double getDcomplexVal(int index) {
     return dcomplexVal_.get(index);
@@ -806,52 +796,52 @@ private static final long serialVersionUID = 0L;
   public static final int RESOURCE_HANDLE_VAL_FIELD_NUMBER = 14;
   private java.util.List<org.tensorflow.framework.ResourceHandleProto> resourceHandleVal_;
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   public java.util.List<org.tensorflow.framework.ResourceHandleProto> getResourceHandleValList() {
     return resourceHandleVal_;
   }
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.ResourceHandleProtoOrBuilder> 
       getResourceHandleValOrBuilderList() {
     return resourceHandleVal_;
   }
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   public int getResourceHandleValCount() {
     return resourceHandleVal_.size();
   }
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   public org.tensorflow.framework.ResourceHandleProto getResourceHandleVal(int index) {
     return resourceHandleVal_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+   *
    * <pre>
    * DT_RESOURCE
    * </pre>
-   *
-   * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
    */
   public org.tensorflow.framework.ResourceHandleProtoOrBuilder getResourceHandleValOrBuilder(
       int index) {
@@ -861,52 +851,52 @@ private static final long serialVersionUID = 0L;
   public static final int VARIANT_VAL_FIELD_NUMBER = 15;
   private java.util.List<org.tensorflow.framework.VariantTensorDataProto> variantVal_;
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   public java.util.List<org.tensorflow.framework.VariantTensorDataProto> getVariantValList() {
     return variantVal_;
   }
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   public java.util.List<? extends org.tensorflow.framework.VariantTensorDataProtoOrBuilder> 
       getVariantValOrBuilderList() {
     return variantVal_;
   }
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   public int getVariantValCount() {
     return variantVal_.size();
   }
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   public org.tensorflow.framework.VariantTensorDataProto getVariantVal(int index) {
     return variantVal_.get(index);
   }
   /**
+   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+   *
    * <pre>
    * DT_VARIANT
    * </pre>
-   *
-   * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
    */
   public org.tensorflow.framework.VariantTensorDataProtoOrBuilder getVariantValOrBuilder(
       int index) {
@@ -916,32 +906,32 @@ private static final long serialVersionUID = 0L;
   public static final int UINT32_VAL_FIELD_NUMBER = 16;
   private java.util.List<java.lang.Integer> uint32Val_;
   /**
+   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT32
    * </pre>
-   *
-   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
    */
   public java.util.List<java.lang.Integer>
       getUint32ValList() {
     return uint32Val_;
   }
   /**
+   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT32
    * </pre>
-   *
-   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
    */
   public int getUint32ValCount() {
     return uint32Val_.size();
   }
   /**
+   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT32
    * </pre>
-   *
-   * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
    */
   public int getUint32Val(int index) {
     return uint32Val_.get(index);
@@ -951,32 +941,32 @@ private static final long serialVersionUID = 0L;
   public static final int UINT64_VAL_FIELD_NUMBER = 17;
   private java.util.List<java.lang.Long> uint64Val_;
   /**
+   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT64
    * </pre>
-   *
-   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
    */
   public java.util.List<java.lang.Long>
       getUint64ValList() {
     return uint64Val_;
   }
   /**
+   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT64
    * </pre>
-   *
-   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
    */
   public int getUint64ValCount() {
     return uint64Val_.size();
   }
   /**
+   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+   *
    * <pre>
    * DT_UINT64
    * </pre>
-   *
-   * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
    */
   public long getUint64Val(int index) {
     return uint64Val_.get(index);
@@ -1009,22 +999,22 @@ private static final long serialVersionUID = 0L;
       output.writeBytes(4, tensorContent_);
     }
     if (getFloatValList().size() > 0) {
-      output.writeUInt32NoTag(42);
-      output.writeUInt32NoTag(floatValMemoizedSerializedSize);
+      output.writeRawVarint32(42);
+      output.writeRawVarint32(floatValMemoizedSerializedSize);
     }
     for (int i = 0; i < floatVal_.size(); i++) {
       output.writeFloatNoTag(floatVal_.get(i));
     }
     if (getDoubleValList().size() > 0) {
-      output.writeUInt32NoTag(50);
-      output.writeUInt32NoTag(doubleValMemoizedSerializedSize);
+      output.writeRawVarint32(50);
+      output.writeRawVarint32(doubleValMemoizedSerializedSize);
     }
     for (int i = 0; i < doubleVal_.size(); i++) {
       output.writeDoubleNoTag(doubleVal_.get(i));
     }
     if (getIntValList().size() > 0) {
-      output.writeUInt32NoTag(58);
-      output.writeUInt32NoTag(intValMemoizedSerializedSize);
+      output.writeRawVarint32(58);
+      output.writeRawVarint32(intValMemoizedSerializedSize);
     }
     for (int i = 0; i < intVal_.size(); i++) {
       output.writeInt32NoTag(intVal_.get(i));
@@ -1033,36 +1023,36 @@ private static final long serialVersionUID = 0L;
       output.writeBytes(8, stringVal_.get(i));
     }
     if (getScomplexValList().size() > 0) {
-      output.writeUInt32NoTag(74);
-      output.writeUInt32NoTag(scomplexValMemoizedSerializedSize);
+      output.writeRawVarint32(74);
+      output.writeRawVarint32(scomplexValMemoizedSerializedSize);
     }
     for (int i = 0; i < scomplexVal_.size(); i++) {
       output.writeFloatNoTag(scomplexVal_.get(i));
     }
     if (getInt64ValList().size() > 0) {
-      output.writeUInt32NoTag(82);
-      output.writeUInt32NoTag(int64ValMemoizedSerializedSize);
+      output.writeRawVarint32(82);
+      output.writeRawVarint32(int64ValMemoizedSerializedSize);
     }
     for (int i = 0; i < int64Val_.size(); i++) {
       output.writeInt64NoTag(int64Val_.get(i));
     }
     if (getBoolValList().size() > 0) {
-      output.writeUInt32NoTag(90);
-      output.writeUInt32NoTag(boolValMemoizedSerializedSize);
+      output.writeRawVarint32(90);
+      output.writeRawVarint32(boolValMemoizedSerializedSize);
     }
     for (int i = 0; i < boolVal_.size(); i++) {
       output.writeBoolNoTag(boolVal_.get(i));
     }
     if (getDcomplexValList().size() > 0) {
-      output.writeUInt32NoTag(98);
-      output.writeUInt32NoTag(dcomplexValMemoizedSerializedSize);
+      output.writeRawVarint32(98);
+      output.writeRawVarint32(dcomplexValMemoizedSerializedSize);
     }
     for (int i = 0; i < dcomplexVal_.size(); i++) {
       output.writeDoubleNoTag(dcomplexVal_.get(i));
     }
     if (getHalfValList().size() > 0) {
-      output.writeUInt32NoTag(106);
-      output.writeUInt32NoTag(halfValMemoizedSerializedSize);
+      output.writeRawVarint32(106);
+      output.writeRawVarint32(halfValMemoizedSerializedSize);
     }
     for (int i = 0; i < halfVal_.size(); i++) {
       output.writeInt32NoTag(halfVal_.get(i));
@@ -1074,20 +1064,19 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(15, variantVal_.get(i));
     }
     if (getUint32ValList().size() > 0) {
-      output.writeUInt32NoTag(130);
-      output.writeUInt32NoTag(uint32ValMemoizedSerializedSize);
+      output.writeRawVarint32(130);
+      output.writeRawVarint32(uint32ValMemoizedSerializedSize);
     }
     for (int i = 0; i < uint32Val_.size(); i++) {
       output.writeUInt32NoTag(uint32Val_.get(i));
     }
     if (getUint64ValList().size() > 0) {
-      output.writeUInt32NoTag(138);
-      output.writeUInt32NoTag(uint64ValMemoizedSerializedSize);
+      output.writeRawVarint32(138);
+      output.writeRawVarint32(uint64ValMemoizedSerializedSize);
     }
     for (int i = 0; i < uint64Val_.size(); i++) {
       output.writeUInt64NoTag(uint64Val_.get(i));
     }
-    unknownFields.writeTo(output);
   }
 
   public int getSerializedSize() {
@@ -1253,147 +1242,11 @@ private static final long serialVersionUID = 0L;
       }
       uint64ValMemoizedSerializedSize = dataSize;
     }
-    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof org.tensorflow.framework.TensorProto)) {
-      return super.equals(obj);
-    }
-    org.tensorflow.framework.TensorProto other = (org.tensorflow.framework.TensorProto) obj;
-
-    boolean result = true;
-    result = result && dtype_ == other.dtype_;
-    result = result && (hasTensorShape() == other.hasTensorShape());
-    if (hasTensorShape()) {
-      result = result && getTensorShape()
-          .equals(other.getTensorShape());
-    }
-    result = result && (getVersionNumber()
-        == other.getVersionNumber());
-    result = result && getTensorContent()
-        .equals(other.getTensorContent());
-    result = result && getHalfValList()
-        .equals(other.getHalfValList());
-    result = result && getFloatValList()
-        .equals(other.getFloatValList());
-    result = result && getDoubleValList()
-        .equals(other.getDoubleValList());
-    result = result && getIntValList()
-        .equals(other.getIntValList());
-    result = result && getStringValList()
-        .equals(other.getStringValList());
-    result = result && getScomplexValList()
-        .equals(other.getScomplexValList());
-    result = result && getInt64ValList()
-        .equals(other.getInt64ValList());
-    result = result && getBoolValList()
-        .equals(other.getBoolValList());
-    result = result && getDcomplexValList()
-        .equals(other.getDcomplexValList());
-    result = result && getResourceHandleValList()
-        .equals(other.getResourceHandleValList());
-    result = result && getVariantValList()
-        .equals(other.getVariantValList());
-    result = result && getUint32ValList()
-        .equals(other.getUint32ValList());
-    result = result && getUint64ValList()
-        .equals(other.getUint64ValList());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + DTYPE_FIELD_NUMBER;
-    hash = (53 * hash) + dtype_;
-    if (hasTensorShape()) {
-      hash = (37 * hash) + TENSOR_SHAPE_FIELD_NUMBER;
-      hash = (53 * hash) + getTensorShape().hashCode();
-    }
-    hash = (37 * hash) + VERSION_NUMBER_FIELD_NUMBER;
-    hash = (53 * hash) + getVersionNumber();
-    hash = (37 * hash) + TENSOR_CONTENT_FIELD_NUMBER;
-    hash = (53 * hash) + getTensorContent().hashCode();
-    if (getHalfValCount() > 0) {
-      hash = (37 * hash) + HALF_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getHalfValList().hashCode();
-    }
-    if (getFloatValCount() > 0) {
-      hash = (37 * hash) + FLOAT_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getFloatValList().hashCode();
-    }
-    if (getDoubleValCount() > 0) {
-      hash = (37 * hash) + DOUBLE_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getDoubleValList().hashCode();
-    }
-    if (getIntValCount() > 0) {
-      hash = (37 * hash) + INT_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getIntValList().hashCode();
-    }
-    if (getStringValCount() > 0) {
-      hash = (37 * hash) + STRING_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getStringValList().hashCode();
-    }
-    if (getScomplexValCount() > 0) {
-      hash = (37 * hash) + SCOMPLEX_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getScomplexValList().hashCode();
-    }
-    if (getInt64ValCount() > 0) {
-      hash = (37 * hash) + INT64_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getInt64ValList().hashCode();
-    }
-    if (getBoolValCount() > 0) {
-      hash = (37 * hash) + BOOL_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getBoolValList().hashCode();
-    }
-    if (getDcomplexValCount() > 0) {
-      hash = (37 * hash) + DCOMPLEX_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getDcomplexValList().hashCode();
-    }
-    if (getResourceHandleValCount() > 0) {
-      hash = (37 * hash) + RESOURCE_HANDLE_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getResourceHandleValList().hashCode();
-    }
-    if (getVariantValCount() > 0) {
-      hash = (37 * hash) + VARIANT_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getVariantValList().hashCode();
-    }
-    if (getUint32ValCount() > 0) {
-      hash = (37 * hash) + UINT32_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getUint32ValList().hashCode();
-    }
-    if (getUint64ValCount() > 0) {
-      hash = (37 * hash) + UINT64_VAL_FIELD_NUMBER;
-      hash = (53 * hash) + getUint64ValList().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static org.tensorflow.framework.TensorProto parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static org.tensorflow.framework.TensorProto parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
+  private static final long serialVersionUID = 0L;
   public static org.tensorflow.framework.TensorProto parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1417,40 +1270,34 @@ private static final long serialVersionUID = 0L;
   }
   public static org.tensorflow.framework.TensorProto parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.TensorProto parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.TensorProto parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return PARSER.parseDelimitedFrom(input);
   }
   public static org.tensorflow.framework.TensorProto parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseDelimitedFrom(input, extensionRegistry);
   }
   public static org.tensorflow.framework.TensorProto parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return PARSER.parseFrom(input);
   }
   public static org.tensorflow.framework.TensorProto parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return PARSER.parseFrom(input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -1467,19 +1314,19 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   * Protobuf type {@code tensorflow.TensorProto}
+   *
    * <pre>
    * Protocol buffer representing a tensor.
    * </pre>
-   *
-   * Protobuf type {@code tensorflow.TensorProto}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:tensorflow.TensorProto)
       org.tensorflow.framework.TensorProtoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1487,7 +1334,7 @@ private static final long serialVersionUID = 0L;
       return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_TensorProto_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.tensorflow.framework.TensorProtos.internal_static_tensorflow_TensorProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1500,13 +1347,12 @@ private static final long serialVersionUID = 0L;
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         getResourceHandleValFieldBuilder();
         getVariantValFieldBuilder();
       }
@@ -1669,32 +1515,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    public Builder clone() {
-      return (Builder) super.clone();
-    }
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.setField(field, value);
-    }
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
-    }
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
-    }
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
-    }
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
-    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.tensorflow.framework.TensorProto) {
         return mergeFrom((org.tensorflow.framework.TensorProto)other);
@@ -1827,7 +1647,7 @@ private static final long serialVersionUID = 0L;
             resourceHandleVal_ = other.resourceHandleVal_;
             bitField0_ = (bitField0_ & ~0x00002000);
             resourceHandleValBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getResourceHandleValFieldBuilder() : null;
           } else {
             resourceHandleValBuilder_.addAllMessages(other.resourceHandleVal_);
@@ -1853,7 +1673,7 @@ private static final long serialVersionUID = 0L;
             variantVal_ = other.variantVal_;
             bitField0_ = (bitField0_ & ~0x00004000);
             variantValBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  getVariantValFieldBuilder() : null;
           } else {
             variantValBuilder_.addAllMessages(other.variantVal_);
@@ -1880,7 +1700,6 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -1898,7 +1717,7 @@ private static final long serialVersionUID = 0L;
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (org.tensorflow.framework.TensorProto) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
+        throw e;
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -1910,13 +1729,13 @@ private static final long serialVersionUID = 0L;
 
     private int dtype_ = 0;
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public int getDtypeValue() {
       return dtype_;
     }
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public Builder setDtypeValue(int value) {
       dtype_ = value;
@@ -1924,14 +1743,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public org.tensorflow.framework.DataType getDtype() {
       org.tensorflow.framework.DataType result = org.tensorflow.framework.DataType.valueOf(dtype_);
       return result == null ? org.tensorflow.framework.DataType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public Builder setDtype(org.tensorflow.framework.DataType value) {
       if (value == null) {
@@ -1943,7 +1762,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.tensorflow.DataType dtype = 1;</code>
+     * <code>optional .tensorflow.DataType dtype = 1;</code>
      */
     public Builder clearDtype() {
       
@@ -1953,24 +1772,24 @@ private static final long serialVersionUID = 0L;
     }
 
     private org.tensorflow.framework.TensorShapeProto tensorShape_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> tensorShapeBuilder_;
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public boolean hasTensorShape() {
       return tensorShapeBuilder_ != null || tensorShape_ != null;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public org.tensorflow.framework.TensorShapeProto getTensorShape() {
       if (tensorShapeBuilder_ == null) {
@@ -1980,11 +1799,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public Builder setTensorShape(org.tensorflow.framework.TensorShapeProto value) {
       if (tensorShapeBuilder_ == null) {
@@ -2000,11 +1819,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public Builder setTensorShape(
         org.tensorflow.framework.TensorShapeProto.Builder builderForValue) {
@@ -2018,11 +1837,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public Builder mergeTensorShape(org.tensorflow.framework.TensorShapeProto value) {
       if (tensorShapeBuilder_ == null) {
@@ -2040,11 +1859,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public Builder clearTensorShape() {
       if (tensorShapeBuilder_ == null) {
@@ -2058,11 +1877,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public org.tensorflow.framework.TensorShapeProto.Builder getTensorShapeBuilder() {
       
@@ -2070,11 +1889,11 @@ private static final long serialVersionUID = 0L;
       return getTensorShapeFieldBuilder().getBuilder();
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
     public org.tensorflow.framework.TensorShapeProtoOrBuilder getTensorShapeOrBuilder() {
       if (tensorShapeBuilder_ != null) {
@@ -2085,17 +1904,17 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>optional .tensorflow.TensorShapeProto tensor_shape = 2;</code>
+     *
      * <pre>
      * Shape of the tensor.  TODO(touts): sort out the 0-rank issues.
      * </pre>
-     *
-     * <code>.tensorflow.TensorShapeProto tensor_shape = 2;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    private com.google.protobuf.SingleFieldBuilder<
         org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder> 
         getTensorShapeFieldBuilder() {
       if (tensorShapeBuilder_ == null) {
-        tensorShapeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        tensorShapeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             org.tensorflow.framework.TensorShapeProto, org.tensorflow.framework.TensorShapeProto.Builder, org.tensorflow.framework.TensorShapeProtoOrBuilder>(
                 getTensorShape(),
                 getParentForChildren(),
@@ -2107,27 +1926,27 @@ private static final long serialVersionUID = 0L;
 
     private int versionNumber_ ;
     /**
+     * <code>optional int32 version_number = 3;</code>
+     *
      * <pre>
      * Version number.
      * In version 0, if the "repeated xxx" representations contain only one
      * element, that element is repeated to fill the shape.  This makes it easy
      * to represent a constant Tensor with a single value.
      * </pre>
-     *
-     * <code>int32 version_number = 3;</code>
      */
     public int getVersionNumber() {
       return versionNumber_;
     }
     /**
+     * <code>optional int32 version_number = 3;</code>
+     *
      * <pre>
      * Version number.
      * In version 0, if the "repeated xxx" representations contain only one
      * element, that element is repeated to fill the shape.  This makes it easy
      * to represent a constant Tensor with a single value.
      * </pre>
-     *
-     * <code>int32 version_number = 3;</code>
      */
     public Builder setVersionNumber(int value) {
       
@@ -2136,14 +1955,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional int32 version_number = 3;</code>
+     *
      * <pre>
      * Version number.
      * In version 0, if the "repeated xxx" representations contain only one
      * element, that element is repeated to fill the shape.  This makes it easy
      * to represent a constant Tensor with a single value.
      * </pre>
-     *
-     * <code>int32 version_number = 3;</code>
      */
     public Builder clearVersionNumber() {
       
@@ -2154,6 +1973,8 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.ByteString tensorContent_ = com.google.protobuf.ByteString.EMPTY;
     /**
+     * <code>optional bytes tensor_content = 4;</code>
+     *
      * <pre>
      * Serialized raw tensor content from either Tensor::AsProtoTensorContent or
      * memcpy in tensorflow::grpc::EncodeTensorToByteBuffer. This representation
@@ -2161,13 +1982,13 @@ private static final long serialVersionUID = 0L;
      * reduce serialization overhead during RPC call by avoiding serialization of
      * many repeated small items.
      * </pre>
-     *
-     * <code>bytes tensor_content = 4;</code>
      */
     public com.google.protobuf.ByteString getTensorContent() {
       return tensorContent_;
     }
     /**
+     * <code>optional bytes tensor_content = 4;</code>
+     *
      * <pre>
      * Serialized raw tensor content from either Tensor::AsProtoTensorContent or
      * memcpy in tensorflow::grpc::EncodeTensorToByteBuffer. This representation
@@ -2175,8 +1996,6 @@ private static final long serialVersionUID = 0L;
      * reduce serialization overhead during RPC call by avoiding serialization of
      * many repeated small items.
      * </pre>
-     *
-     * <code>bytes tensor_content = 4;</code>
      */
     public Builder setTensorContent(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2188,6 +2007,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>optional bytes tensor_content = 4;</code>
+     *
      * <pre>
      * Serialized raw tensor content from either Tensor::AsProtoTensorContent or
      * memcpy in tensorflow::grpc::EncodeTensorToByteBuffer. This representation
@@ -2195,8 +2016,6 @@ private static final long serialVersionUID = 0L;
      * reduce serialization overhead during RPC call by avoiding serialization of
      * many repeated small items.
      * </pre>
-     *
-     * <code>bytes tensor_content = 4;</code>
      */
     public Builder clearTensorContent() {
       
@@ -2213,46 +2032,46 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public java.util.List<java.lang.Integer>
         getHalfValList() {
       return java.util.Collections.unmodifiableList(halfVal_);
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public int getHalfValCount() {
       return halfVal_.size();
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public int getHalfVal(int index) {
       return halfVal_.get(index);
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public Builder setHalfVal(
         int index, int value) {
@@ -2262,12 +2081,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public Builder addHalfVal(int value) {
       ensureHalfValIsMutable();
@@ -2276,12 +2095,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public Builder addAllHalfVal(
         java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -2292,12 +2111,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int32 half_val = 13 [packed = true];</code>
+     *
      * <pre>
      * DT_HALF, DT_BFLOAT16. Note that since protobuf has no int16 type, we'll
      * have some pointless zero padding for each value here.
      * </pre>
-     *
-     * <code>repeated int32 half_val = 13 [packed = true];</code>
      */
     public Builder clearHalfVal() {
       halfVal_ = java.util.Collections.emptyList();
@@ -2314,42 +2133,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public java.util.List<java.lang.Float>
         getFloatValList() {
       return java.util.Collections.unmodifiableList(floatVal_);
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public int getFloatValCount() {
       return floatVal_.size();
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public float getFloatVal(int index) {
       return floatVal_.get(index);
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public Builder setFloatVal(
         int index, float value) {
@@ -2359,11 +2178,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public Builder addFloatVal(float value) {
       ensureFloatValIsMutable();
@@ -2372,11 +2191,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public Builder addAllFloatVal(
         java.lang.Iterable<? extends java.lang.Float> values) {
@@ -2387,11 +2206,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated float float_val = 5 [packed = true];</code>
+     *
      * <pre>
      * DT_FLOAT.
      * </pre>
-     *
-     * <code>repeated float float_val = 5 [packed = true];</code>
      */
     public Builder clearFloatVal() {
       floatVal_ = java.util.Collections.emptyList();
@@ -2408,42 +2227,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public java.util.List<java.lang.Double>
         getDoubleValList() {
       return java.util.Collections.unmodifiableList(doubleVal_);
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public int getDoubleValCount() {
       return doubleVal_.size();
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public double getDoubleVal(int index) {
       return doubleVal_.get(index);
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public Builder setDoubleVal(
         int index, double value) {
@@ -2453,11 +2272,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public Builder addDoubleVal(double value) {
       ensureDoubleValIsMutable();
@@ -2466,11 +2285,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public Builder addAllDoubleVal(
         java.lang.Iterable<? extends java.lang.Double> values) {
@@ -2481,11 +2300,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double double_val = 6 [packed = true];</code>
+     *
      * <pre>
      * DT_DOUBLE.
      * </pre>
-     *
-     * <code>repeated double double_val = 6 [packed = true];</code>
      */
     public Builder clearDoubleVal() {
       doubleVal_ = java.util.Collections.emptyList();
@@ -2502,42 +2321,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public java.util.List<java.lang.Integer>
         getIntValList() {
       return java.util.Collections.unmodifiableList(intVal_);
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public int getIntValCount() {
       return intVal_.size();
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public int getIntVal(int index) {
       return intVal_.get(index);
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public Builder setIntVal(
         int index, int value) {
@@ -2547,11 +2366,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public Builder addIntVal(int value) {
       ensureIntValIsMutable();
@@ -2560,11 +2379,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public Builder addAllIntVal(
         java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -2575,11 +2394,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int32 int_val = 7 [packed = true];</code>
+     *
      * <pre>
      * DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
      * </pre>
-     *
-     * <code>repeated int32 int_val = 7 [packed = true];</code>
      */
     public Builder clearIntVal() {
       intVal_ = java.util.Collections.emptyList();
@@ -2596,42 +2415,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public java.util.List<com.google.protobuf.ByteString>
         getStringValList() {
       return java.util.Collections.unmodifiableList(stringVal_);
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public int getStringValCount() {
       return stringVal_.size();
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public com.google.protobuf.ByteString getStringVal(int index) {
       return stringVal_.get(index);
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public Builder setStringVal(
         int index, com.google.protobuf.ByteString value) {
@@ -2644,11 +2463,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public Builder addStringVal(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2660,11 +2479,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public Builder addAllStringVal(
         java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -2675,11 +2494,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated bytes string_val = 8;</code>
+     *
      * <pre>
      * DT_STRING
      * </pre>
-     *
-     * <code>repeated bytes string_val = 8;</code>
      */
     public Builder clearStringVal() {
       stringVal_ = java.util.Collections.emptyList();
@@ -2696,46 +2515,46 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public java.util.List<java.lang.Float>
         getScomplexValList() {
       return java.util.Collections.unmodifiableList(scomplexVal_);
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public int getScomplexValCount() {
       return scomplexVal_.size();
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public float getScomplexVal(int index) {
       return scomplexVal_.get(index);
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public Builder setScomplexVal(
         int index, float value) {
@@ -2745,12 +2564,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public Builder addScomplexVal(float value) {
       ensureScomplexValIsMutable();
@@ -2759,12 +2578,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public Builder addAllScomplexVal(
         java.lang.Iterable<? extends java.lang.Float> values) {
@@ -2775,12 +2594,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated float scomplex_val = 9 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX64. scomplex_val(2*i) and scomplex_val(2*i+1) are real
      * and imaginary parts of i-th single precision complex.
      * </pre>
-     *
-     * <code>repeated float scomplex_val = 9 [packed = true];</code>
      */
     public Builder clearScomplexVal() {
       scomplexVal_ = java.util.Collections.emptyList();
@@ -2797,42 +2616,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public java.util.List<java.lang.Long>
         getInt64ValList() {
       return java.util.Collections.unmodifiableList(int64Val_);
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public int getInt64ValCount() {
       return int64Val_.size();
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public long getInt64Val(int index) {
       return int64Val_.get(index);
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public Builder setInt64Val(
         int index, long value) {
@@ -2842,11 +2661,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public Builder addInt64Val(long value) {
       ensureInt64ValIsMutable();
@@ -2855,11 +2674,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public Builder addAllInt64Val(
         java.lang.Iterable<? extends java.lang.Long> values) {
@@ -2870,11 +2689,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated int64 int64_val = 10 [packed = true];</code>
+     *
      * <pre>
      * DT_INT64
      * </pre>
-     *
-     * <code>repeated int64 int64_val = 10 [packed = true];</code>
      */
     public Builder clearInt64Val() {
       int64Val_ = java.util.Collections.emptyList();
@@ -2891,42 +2710,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public java.util.List<java.lang.Boolean>
         getBoolValList() {
       return java.util.Collections.unmodifiableList(boolVal_);
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public int getBoolValCount() {
       return boolVal_.size();
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public boolean getBoolVal(int index) {
       return boolVal_.get(index);
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public Builder setBoolVal(
         int index, boolean value) {
@@ -2936,11 +2755,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public Builder addBoolVal(boolean value) {
       ensureBoolValIsMutable();
@@ -2949,11 +2768,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public Builder addAllBoolVal(
         java.lang.Iterable<? extends java.lang.Boolean> values) {
@@ -2964,11 +2783,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated bool bool_val = 11 [packed = true];</code>
+     *
      * <pre>
      * DT_BOOL
      * </pre>
-     *
-     * <code>repeated bool bool_val = 11 [packed = true];</code>
      */
     public Builder clearBoolVal() {
       boolVal_ = java.util.Collections.emptyList();
@@ -2985,46 +2804,46 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public java.util.List<java.lang.Double>
         getDcomplexValList() {
       return java.util.Collections.unmodifiableList(dcomplexVal_);
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public int getDcomplexValCount() {
       return dcomplexVal_.size();
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public double getDcomplexVal(int index) {
       return dcomplexVal_.get(index);
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public Builder setDcomplexVal(
         int index, double value) {
@@ -3034,12 +2853,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public Builder addDcomplexVal(double value) {
       ensureDcomplexValIsMutable();
@@ -3048,12 +2867,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public Builder addAllDcomplexVal(
         java.lang.Iterable<? extends java.lang.Double> values) {
@@ -3064,12 +2883,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
+     *
      * <pre>
      * DT_COMPLEX128. dcomplex_val(2*i) and dcomplex_val(2*i+1) are real
      * and imaginary parts of i-th double precision complex.
      * </pre>
-     *
-     * <code>repeated double dcomplex_val = 12 [packed = true];</code>
      */
     public Builder clearDcomplexVal() {
       dcomplexVal_ = java.util.Collections.emptyList();
@@ -3087,15 +2906,15 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ResourceHandleProto, org.tensorflow.framework.ResourceHandleProto.Builder, org.tensorflow.framework.ResourceHandleProtoOrBuilder> resourceHandleValBuilder_;
 
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public java.util.List<org.tensorflow.framework.ResourceHandleProto> getResourceHandleValList() {
       if (resourceHandleValBuilder_ == null) {
@@ -3105,11 +2924,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public int getResourceHandleValCount() {
       if (resourceHandleValBuilder_ == null) {
@@ -3119,11 +2938,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public org.tensorflow.framework.ResourceHandleProto getResourceHandleVal(int index) {
       if (resourceHandleValBuilder_ == null) {
@@ -3133,11 +2952,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder setResourceHandleVal(
         int index, org.tensorflow.framework.ResourceHandleProto value) {
@@ -3154,11 +2973,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder setResourceHandleVal(
         int index, org.tensorflow.framework.ResourceHandleProto.Builder builderForValue) {
@@ -3172,11 +2991,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder addResourceHandleVal(org.tensorflow.framework.ResourceHandleProto value) {
       if (resourceHandleValBuilder_ == null) {
@@ -3192,11 +3011,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder addResourceHandleVal(
         int index, org.tensorflow.framework.ResourceHandleProto value) {
@@ -3213,11 +3032,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder addResourceHandleVal(
         org.tensorflow.framework.ResourceHandleProto.Builder builderForValue) {
@@ -3231,11 +3050,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder addResourceHandleVal(
         int index, org.tensorflow.framework.ResourceHandleProto.Builder builderForValue) {
@@ -3249,11 +3068,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder addAllResourceHandleVal(
         java.lang.Iterable<? extends org.tensorflow.framework.ResourceHandleProto> values) {
@@ -3268,11 +3087,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder clearResourceHandleVal() {
       if (resourceHandleValBuilder_ == null) {
@@ -3285,11 +3104,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public Builder removeResourceHandleVal(int index) {
       if (resourceHandleValBuilder_ == null) {
@@ -3302,22 +3121,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public org.tensorflow.framework.ResourceHandleProto.Builder getResourceHandleValBuilder(
         int index) {
       return getResourceHandleValFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public org.tensorflow.framework.ResourceHandleProtoOrBuilder getResourceHandleValOrBuilder(
         int index) {
@@ -3327,11 +3146,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.ResourceHandleProtoOrBuilder> 
          getResourceHandleValOrBuilderList() {
@@ -3342,22 +3161,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public org.tensorflow.framework.ResourceHandleProto.Builder addResourceHandleValBuilder() {
       return getResourceHandleValFieldBuilder().addBuilder(
           org.tensorflow.framework.ResourceHandleProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public org.tensorflow.framework.ResourceHandleProto.Builder addResourceHandleValBuilder(
         int index) {
@@ -3365,21 +3184,21 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.ResourceHandleProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
+     *
      * <pre>
      * DT_RESOURCE
      * </pre>
-     *
-     * <code>repeated .tensorflow.ResourceHandleProto resource_handle_val = 14;</code>
      */
     public java.util.List<org.tensorflow.framework.ResourceHandleProto.Builder> 
          getResourceHandleValBuilderList() {
       return getResourceHandleValFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.ResourceHandleProto, org.tensorflow.framework.ResourceHandleProto.Builder, org.tensorflow.framework.ResourceHandleProtoOrBuilder> 
         getResourceHandleValFieldBuilder() {
       if (resourceHandleValBuilder_ == null) {
-        resourceHandleValBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        resourceHandleValBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.ResourceHandleProto, org.tensorflow.framework.ResourceHandleProto.Builder, org.tensorflow.framework.ResourceHandleProtoOrBuilder>(
                 resourceHandleVal_,
                 ((bitField0_ & 0x00002000) == 0x00002000),
@@ -3399,15 +3218,15 @@ private static final long serialVersionUID = 0L;
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.VariantTensorDataProto, org.tensorflow.framework.VariantTensorDataProto.Builder, org.tensorflow.framework.VariantTensorDataProtoOrBuilder> variantValBuilder_;
 
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public java.util.List<org.tensorflow.framework.VariantTensorDataProto> getVariantValList() {
       if (variantValBuilder_ == null) {
@@ -3417,11 +3236,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public int getVariantValCount() {
       if (variantValBuilder_ == null) {
@@ -3431,11 +3250,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public org.tensorflow.framework.VariantTensorDataProto getVariantVal(int index) {
       if (variantValBuilder_ == null) {
@@ -3445,11 +3264,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder setVariantVal(
         int index, org.tensorflow.framework.VariantTensorDataProto value) {
@@ -3466,11 +3285,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder setVariantVal(
         int index, org.tensorflow.framework.VariantTensorDataProto.Builder builderForValue) {
@@ -3484,11 +3303,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder addVariantVal(org.tensorflow.framework.VariantTensorDataProto value) {
       if (variantValBuilder_ == null) {
@@ -3504,11 +3323,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder addVariantVal(
         int index, org.tensorflow.framework.VariantTensorDataProto value) {
@@ -3525,11 +3344,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder addVariantVal(
         org.tensorflow.framework.VariantTensorDataProto.Builder builderForValue) {
@@ -3543,11 +3362,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder addVariantVal(
         int index, org.tensorflow.framework.VariantTensorDataProto.Builder builderForValue) {
@@ -3561,11 +3380,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder addAllVariantVal(
         java.lang.Iterable<? extends org.tensorflow.framework.VariantTensorDataProto> values) {
@@ -3580,11 +3399,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder clearVariantVal() {
       if (variantValBuilder_ == null) {
@@ -3597,11 +3416,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public Builder removeVariantVal(int index) {
       if (variantValBuilder_ == null) {
@@ -3614,22 +3433,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public org.tensorflow.framework.VariantTensorDataProto.Builder getVariantValBuilder(
         int index) {
       return getVariantValFieldBuilder().getBuilder(index);
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public org.tensorflow.framework.VariantTensorDataProtoOrBuilder getVariantValOrBuilder(
         int index) {
@@ -3639,11 +3458,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public java.util.List<? extends org.tensorflow.framework.VariantTensorDataProtoOrBuilder> 
          getVariantValOrBuilderList() {
@@ -3654,22 +3473,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public org.tensorflow.framework.VariantTensorDataProto.Builder addVariantValBuilder() {
       return getVariantValFieldBuilder().addBuilder(
           org.tensorflow.framework.VariantTensorDataProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public org.tensorflow.framework.VariantTensorDataProto.Builder addVariantValBuilder(
         int index) {
@@ -3677,21 +3496,21 @@ private static final long serialVersionUID = 0L;
           index, org.tensorflow.framework.VariantTensorDataProto.getDefaultInstance());
     }
     /**
+     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
+     *
      * <pre>
      * DT_VARIANT
      * </pre>
-     *
-     * <code>repeated .tensorflow.VariantTensorDataProto variant_val = 15;</code>
      */
     public java.util.List<org.tensorflow.framework.VariantTensorDataProto.Builder> 
          getVariantValBuilderList() {
       return getVariantValFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
+    private com.google.protobuf.RepeatedFieldBuilder<
         org.tensorflow.framework.VariantTensorDataProto, org.tensorflow.framework.VariantTensorDataProto.Builder, org.tensorflow.framework.VariantTensorDataProtoOrBuilder> 
         getVariantValFieldBuilder() {
       if (variantValBuilder_ == null) {
-        variantValBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        variantValBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             org.tensorflow.framework.VariantTensorDataProto, org.tensorflow.framework.VariantTensorDataProto.Builder, org.tensorflow.framework.VariantTensorDataProtoOrBuilder>(
                 variantVal_,
                 ((bitField0_ & 0x00004000) == 0x00004000),
@@ -3710,42 +3529,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public java.util.List<java.lang.Integer>
         getUint32ValList() {
       return java.util.Collections.unmodifiableList(uint32Val_);
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public int getUint32ValCount() {
       return uint32Val_.size();
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public int getUint32Val(int index) {
       return uint32Val_.get(index);
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public Builder setUint32Val(
         int index, int value) {
@@ -3755,11 +3574,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public Builder addUint32Val(int value) {
       ensureUint32ValIsMutable();
@@ -3768,11 +3587,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public Builder addAllUint32Val(
         java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -3783,11 +3602,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT32
      * </pre>
-     *
-     * <code>repeated uint32 uint32_val = 16 [packed = true];</code>
      */
     public Builder clearUint32Val() {
       uint32Val_ = java.util.Collections.emptyList();
@@ -3804,42 +3623,42 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public java.util.List<java.lang.Long>
         getUint64ValList() {
       return java.util.Collections.unmodifiableList(uint64Val_);
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public int getUint64ValCount() {
       return uint64Val_.size();
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public long getUint64Val(int index) {
       return uint64Val_.get(index);
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public Builder setUint64Val(
         int index, long value) {
@@ -3849,11 +3668,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public Builder addUint64Val(long value) {
       ensureUint64ValIsMutable();
@@ -3862,11 +3681,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public Builder addAllUint64Val(
         java.lang.Iterable<? extends java.lang.Long> values) {
@@ -3877,11 +3696,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
+     *
      * <pre>
      * DT_UINT64
      * </pre>
-     *
-     * <code>repeated uint64 uint64_val = 17 [packed = true];</code>
      */
     public Builder clearUint64Val() {
       uint64Val_ = java.util.Collections.emptyList();
@@ -3891,12 +3710,12 @@ private static final long serialVersionUID = 0L;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return this;
     }
 
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
+      return this;
     }
 
 
@@ -3919,7 +3738,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new TensorProto(input, extensionRegistry);
+      try {
+        return new TensorProto(input, extensionRegistry);
+      } catch (RuntimeException e) {
+        if (e.getCause() instanceof
+            com.google.protobuf.InvalidProtocolBufferException) {
+          throw (com.google.protobuf.InvalidProtocolBufferException)
+              e.getCause();
+        }
+        throw e;
+      }
     }
   };
 
