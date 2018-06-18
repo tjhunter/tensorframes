@@ -9,9 +9,7 @@ object Shading extends Build {
 
   import Dependencies._
 
-
   lazy val commonSettings = Seq(
-    version := "0.3.0",
     name := "tensorframes",
     scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
     organization := "databricks",
