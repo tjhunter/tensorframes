@@ -5,7 +5,7 @@
 Experimental [TensorFlow](https://www.tensorflow.org/) binding for Scala and 
 [Apache Spark](http://spark.apache.org/).
 
-TensorFrames (TensorFlow on Spark Dataframes) lets you manipulate Apache Spark's DataFrames with 
+TensorFrames (TensorFlow on Spark DataFrames) lets you manipulate Apache Spark's DataFrames with 
 TensorFlow programs.
 
 > This package is experimental and is provided as a technical preview only. While the 
@@ -18,7 +18,7 @@ Supported platforms:
 
 See the file `project/Dependencies.scala` for adding your own platform.
 
-Officially supported Spark versions: 2.1.x and Scala version 2.10 / 2.11.
+Officially supported Spark versions 2.3+ and Scala version 2.11.
 
 See the [user guide](https://github.com/databricks/tensorframes/wiki/TensorFrames-user-guide) for
  extensive information about the API.
@@ -30,19 +30,17 @@ TensorFrames is available as a
 
 ## Requirements
 
- - A working version of Apache Spark (2.0 or greater)
+ - A working version of Apache Spark (2.3 or greater)
 
- - java version >= 7
+ - java version 8+
  
- - (Optional) python >= 2.7, or python >= 3.4 if you want to use the python interface.
+ - (Optional) python 2.7+/3.4+ if you want to use the python interface.
  
  - (Optional) the python TensorFlow package if you want to use the python interface. See the 
- [official instructions](https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#download-and-setup)
+ [official instructions](https://www.tensorflow.org/install/)
   on how to get the latest release of TensorFlow.
 
  - (Optional) pandas >= 0.19.1 if you want to use the python interface
-
- - (Optional) the [Nix package manager](http://nixos.org/nix/) if you want to guarantee a fully reproducible build environment. This is the environment that will be used for reproducing bugs.
 
 Additionally, if you want to run unit tests for python, you need the following dependencies:
 
@@ -54,10 +52,10 @@ Additionally, if you want to run unit tests for python, you need the following d
 Assuming that `SPARK_HOME` is set, you can use PySpark like any other Spark package.
 
 ```bash
-$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.2.9-s_2.11
+$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.4.0-s_2.11
 ```
 
-Here is a small program that uses Tensorflow to add 3 to an existing column.
+Here is a small program that uses TensorFlow to add 3 to an existing column.
 
 ```python
 import tensorflow as tf
@@ -152,7 +150,7 @@ The scala support is a bit more limited than python. In scala, operations can be
 You simply use the published package:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.2.9
+$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.4.0-s_2.11
 ```
 
 Here is the same program as before:
@@ -205,19 +203,20 @@ build/sbt distribution/spDist
 Assuming that SPARK_HOME is set and that you are in the root directory of the project:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.9.jar
+$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.4.1-SNAPSHOT.jar
 ```
 
 If you want to run the python version:
  
 ```bash
-PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.9.jar \
-$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.2.9.jar
+PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.4.1-SNAPSHOT.jar \
+$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.4.1-SNAPSHOT.jar
 ```
 
 ## Acknowledgements
 
-This project builds on the great [javacpp](https://github.com/bytedeco/javacpp) project, that
- implements the low-level bindings between TensorFlow and the Java virtual machine.
+Before TensorFlow released its Java API, this project was built on the great
+[javacpp](https://github.com/bytedeco/javacpp) project, that implements the low-level bindings
+between TensorFlow and the Java virtual machine.
 
 Many thanks to Google for the release of TensorFlow.
