@@ -18,7 +18,7 @@ Supported platforms:
 
 See the file `project/Dependencies.scala` for adding your own platform.
 
-Officially supported Spark versions 2.3+ and Scala version 2.11.
+Officially TensorFrames supports Spark 2.3+ and Scala 2.11.
 
 See the [user guide](https://github.com/databricks/tensorframes/wiki/TensorFrames-user-guide) for
  extensive information about the API.
@@ -32,7 +32,7 @@ TensorFrames is available as a
 
  - A working version of Apache Spark (2.3 or greater)
 
- - java version 8+
+ - Java 8+
  
  - (Optional) python 2.7+/3.4+ if you want to use the python interface.
  
