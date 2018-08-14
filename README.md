@@ -105,9 +105,8 @@ df2 = tfs.analyze(df)
 
 # The information gathered by TF can be printed to check the content:
 tfs.print_schema(df2)
-# TF has inferred that y contains vectors of size 2
 # root
-#  |-- y: array (nullable = false) DoubleType[?,2]
+#  |-- y: array (nullable = false) double[?,2]
 
 # Let's use the analyzed dataframe to compute the sum and the elementwise minimum 
 # of all the vectors:
@@ -123,10 +122,10 @@ with tf.Graph().as_default() as g:
     (data_sum, data_min) = tfs.reduce_blocks([y, z], df3)
 
 # The final results are numpy arrays:
-print data_sum
-# [45.0, -45.0]
-print data_min
-# [0.0, -9.0]
+print(data_sum)
+# [45., -45.]
+print(data_min)
+# [0., -9.]
 ```
 
 *Notes*
@@ -174,7 +173,7 @@ val df2 = tf.withGraph {
 
 // The transform is all lazy at this point, let's execute it with collect:
 df2.collect()
-// res0: Array[org.apache.spark.sql.Row] = Array([1.0,1.1,2.1], [2.0,2.2,4.2])   
+// res0: Array[org.apache.spark.sql.Row] = Array([1.0,4.0], [2.0,5.0])   
 ```
 
 ## How to compile and install for developers
