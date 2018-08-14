@@ -1,4 +1,6 @@
 # This file should list any python package dependencies.
 nose>=1.3.3
 pandas>=0.19.1
+# The proto files under src/main/protobuf must be in sync with the TF version here.
+# You can use update-tf-proto.sh under dev/ to update the files.
 tensorflow==1.10.0
