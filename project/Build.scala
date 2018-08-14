@@ -26,7 +26,7 @@ object Shading extends Build {
     unmanagedResourceDirectories in Compile += {
       baseDirectory.value / "src/main/python/"
     },
-    version in protobufGenerate := "3.6.1",
+    version in protobufGenerate := "3.5.1",
     // Spark packages does not like this part
     test in assembly := {},
     // We only use sbt-release to update version numbers for now.
@@ -72,7 +72,8 @@ object Shading extends Build {
   )
 
   lazy val shadedDependencies = Seq(
-    // "com.google.protobuf" % "protobuf-java" % "3.6.1"
+    // protobuf-java is included by sbt-protobuf automatically
+    // "com.google.protobuf" % "protobuf-java" % "3.5.1"
   )
 
   lazy val shaded = Project("shaded", file(".")).settings(
