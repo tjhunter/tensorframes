@@ -42,7 +42,9 @@ TensorFrames is available as a
 
  - (Optional) pandas >= 0.19.1 if you want to use the python interface
 
-Additionally, if you want to run unit tests for python, you need the following dependencies:
+Additionally, for developement, you need the following dependencies:
+
+ - protoc 3.x
 
  - nose >= 1.3 
 
