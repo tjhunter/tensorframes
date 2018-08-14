@@ -50,7 +50,7 @@ before_install:
 install:
   # install needed ubuntu packages
   - docker exec -t ubuntu-test bash -c "apt-get update && apt-get upgrade -y"
-  - docker exec -t ubuntu-test bash -c "apt-get install -y curl bzip2 openjdk-8-jdk"
+  - docker exec -t ubuntu-test bash -c "apt-get install -y curl bzip2 openjdk-8-jdk unzip"
   # download and set up protoc
   - docker exec -t ubuntu-test bash -c "
       curl -OL https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip;

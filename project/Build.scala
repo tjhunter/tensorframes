@@ -71,16 +71,10 @@ object Shading extends Build {
     "org.scalatest" %% "scalatest" % "3.0.0" % "test"
   )
 
-  lazy val shadedDependencies = Seq(
-    // protobuf-java is included by sbt-protobuf automatically
-    // "com.google.protobuf" % "protobuf-java" % "3.5.1"
-  )
-
   lazy val shaded = Project("shaded", file(".")).settings(
     target := target.value / "shaded",
     libraryDependencies ++= nonShadedDependencies.map(_ % "provided"),
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
-    libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
     libraryDependencies ++= allPlatformDependencies,
     assemblyShadeRules in assembly := Seq(
@@ -128,7 +122,6 @@ object Shading extends Build {
     target := target.value / "testing",
     libraryDependencies ++= sparkDependencies.map(_ % "provided"),
     libraryDependencies ++= nonShadedDependencies,
-    libraryDependencies ++= shadedDependencies,
     libraryDependencies ++= testDependencies,
     libraryDependencies ++= allPlatformDependencies,
     // Do not attempt to run tests when building the assembly.
