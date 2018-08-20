@@ -58,7 +58,6 @@ object Shading extends Build {
   lazy val nonShadedDependencies = Seq(
     // Normal dependencies
     ModuleID("org.apache.commons", "commons-proxy", "1.0"),
-    "org.scalactic" %% "scalactic" % "3.0.0",
     "org.apache.commons" % "commons-lang3" % "3.4",
     "com.typesafe.scala-logging" %% "scala-logging-api" % "2.1.2",
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
@@ -68,7 +67,8 @@ object Shading extends Build {
 
   lazy val testDependencies = Seq(
     // Test dependencies
-    "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+    "org.scalatest" %% "scalatest" % "3.0.0" % "test",
+    "org.scalactic" %% "scalactic" % "3.0.0" % "test"
   )
 
   lazy val shaded = Project("shaded", file(".")).settings(
