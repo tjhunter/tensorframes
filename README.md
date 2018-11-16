@@ -18,7 +18,7 @@ Supported platforms:
 
 See the file `project/Dependencies.scala` for adding your own platform.
 
-Officially TensorFrames supports Spark 2.3+ and Scala 2.11.
+Officially TensorFrames supports Spark 2.4+ and Scala 2.11.
 
 See the [user guide](https://github.com/databricks/tensorframes/wiki/TensorFrames-user-guide) for
  extensive information about the API.
@@ -30,11 +30,11 @@ TensorFrames is available as a
 
 ## Requirements
 
- - A working version of Apache Spark (2.3 or greater)
+ - A working version of Apache Spark (2.4 or greater)
 
  - Java 8+
  
- - (Optional) python 2.7+/3.4+ if you want to use the python interface.
+ - (Optional) python 2.7+/3.6+ if you want to use the python interface.
  
  - (Optional) the python TensorFlow package if you want to use the python interface. See the 
  [official instructions](https://www.tensorflow.org/install/)
@@ -54,7 +54,7 @@ Additionally, for developement, you need the following dependencies:
 Assuming that `SPARK_HOME` is set, you can use PySpark like any other Spark package.
 
 ```bash
-$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.5.0-s_2.11
+$SPARK_HOME/bin/pyspark --packages databricks:tensorframes:0.6.0-s_2.11
 ```
 
 Here is a small program that uses TensorFlow to add 3 to an existing column.
@@ -151,7 +151,7 @@ The scala support is a bit more limited than python. In scala, operations can be
 You simply use the published package:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.5.0-s_2.11
+$SPARK_HOME/bin/spark-shell --packages databricks:tensorframes:0.6.0-s_2.11
 ```
 
 Here is the same program as before:
@@ -204,14 +204,14 @@ build/sbt distribution/spDist
 Assuming that SPARK_HOME is set and that you are in the root directory of the project:
 
 ```bash
-$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.5.1-SNAPSHOT.jar
+$SPARK_HOME/bin/spark-shell --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.6.1-SNAPSHOT.jar
 ```
 
 If you want to run the python version:
  
 ```bash
-PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.5.1-SNAPSHOT.jar \
-$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.5.1-SNAPSHOT.jar
+PYTHONPATH=$PWD/target/testing/scala-2.11/tensorframes-assembly-0.6.1-SNAPSHOT.jar \
+$SPARK_HOME/bin/pyspark --jars $PWD/target/testing/scala-2.11/tensorframes-assembly-0.6.1-SNAPSHOT.jar
 ```
 
 ## Acknowledgements

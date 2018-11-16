@@ -18,11 +18,11 @@ cache:
 
 env:
   matrix:
-  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.3.1 SPARK_BUILD="spark-2.3.1-bin-hadoop2.7"
-      SPARK_BUILD_URL="https://dist.apache.org/repos/dist/release/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz"
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.4.0 SPARK_BUILD="spark-2.4.0-bin-hadoop2.7"
+      SPARK_BUILD_URL="https://dist.apache.org/repos/dist/release/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz"
       PYTHON_VERSION=2.7.13
-  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.3.1 SPARK_BUILD="spark-2.3.1-bin-hadoop2.7"
-      SPARK_BUILD_URL="https://dist.apache.org/repos/dist/release/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz"
+  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.4.0 SPARK_BUILD="spark-2.4.0-bin-hadoop2.7"
+      SPARK_BUILD_URL="https://dist.apache.org/repos/dist/release/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz"
       PYTHON_VERSION=3.6.2
 
 before_install:
