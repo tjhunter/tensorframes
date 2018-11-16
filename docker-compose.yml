@@ -1,0 +1,11 @@
+version: '3'
+services:
+  master:
+    build: .
+    hostname: master
+    entrypoint: tail -f /dev/null
+    ports:
+    - "4040:4040" # driver UI
+    volumes:
+    - .:/mnt/tensorframes
+    - ~/.ivy2:/root/.ivy2

@@ -1,10 +1,8 @@
+sudo: required
+
 dist: trusty
 
-language: java
-
-jdk: oraclejdk8
-
-sudo: required
+language: minimal
 
 services:
   - docker
@@ -12,86 +10,26 @@ services:
 cache:
   directories:
   - $HOME/.ivy2/
-  - $HOME/.sbt/launchers/
-  - $HOME/.cache/spark-versions/
-  - $HOME/.sbt/boot/scala-2.11.8/
 
 env:
+  global:
+    - DOCKER_COMPOSE_VERSION=1.22.0
   matrix:
-  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.4.0 SPARK_BUILD="spark-2.4.0-bin-hadoop2.7"
-      SPARK_BUILD_URL="https://dist.apache.org/repos/dist/release/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz"
-      PYTHON_VERSION=2.7.13
-  - SCALA_BINARY_VERSION=2.11.8 SPARK_VERSION=2.4.0 SPARK_BUILD="spark-2.4.0-bin-hadoop2.7"
-      SPARK_BUILD_URL="https://dist.apache.org/repos/dist/release/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz"
-      PYTHON_VERSION=3.6.2
+    - PYTHON_VERSION=3.6
+    - PYTHON_VERSION=2.7
 
 before_install:
-  - ./bin/download_travis_dependencies.sh
-  - if [[ "$PYTHON_VERSION" == 2.* ]]; then
-        export CONDA_URL="repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh"
-        export PYSPARK_PYTHON=python2;
-      else
-        export CONDA_URL="repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh";
-        export PYSPARK_PYTHON=python3;
-      fi
-  - docker run -e "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
-               -e SPARK_VERSION
-               -e SPARK_BUILD
-               -e SCALA_BINARY_VERSION
-               -e PYTHON_VERSION
-               -e PYSPARK_PYTHON
-               -e CONDA_URL
-               -d --name ubuntu-test -v $HOME ubuntu:16.04 tail -f /dev/null
-  - docker cp `pwd` ubuntu-test:$HOME/
-  - docker cp $HOME/.cache ubuntu-test:$HOME/
-  - docker ps
+  # update docker compose to the specified version, https://docs.travis-ci.com/user/docker/#using-docker-compose
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
-# See this page: http://conda.pydata.org/docs/travis.html
-install:
-  # install needed ubuntu packages
-  - docker exec -t ubuntu-test bash -c "apt-get update && apt-get upgrade -y"
-  - docker exec -t ubuntu-test bash -c "apt-get install -y curl bzip2 openjdk-8-jdk unzip"
-  # download and set up protoc
-  - docker exec -t ubuntu-test bash -c "
-      curl -OL https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip;
-      unzip protoc-3.6.1-linux-x86_64.zip -d /usr/local;"
-  # download and set up miniconda
-  - docker exec -t ubuntu-test bash -c "
-      curl https://$CONDA_URL >> $HOME/miniconda.sh;
-      bash $HOME/miniconda.sh -b -p $HOME/miniconda;
-      bash $HOME/miniconda.sh -b -p $HOME/miniconda;
-      $HOME/miniconda/bin/conda config --set always_yes yes --set changeps1 no;
-      $HOME/miniconda/bin/conda update -q conda;
-      $HOME/miniconda/bin/conda info -a;
-      $HOME/miniconda/bin/conda create -q -n test-environment python=$PYTHON_VERSION"
-
-  # Activate conda environment ad install required packages
-  - docker exec -t ubuntu-test bash -c "
-      source $HOME/miniconda/bin/activate test-environment;
-      python --version;
-      pip --version;
-      pip install --user -r $HOME/tensorframes/python/requirements.txt;"
+install :
+  - docker-compose build --build-arg PYTHON_VERSION=$PYTHON_VERSION
+  - docker-compose up -d
+  - docker-compose exec master bash -i -c "build/sbt tfs_testing/assembly"
 
 script:
- # Run the scala unit tests first
- - docker exec -t ubuntu-test bash -c "
-     source $HOME/miniconda/bin/activate test-environment;
-     cd $HOME/tensorframes;
-     ./build/sbt -Dspark.version=$SPARK_VERSION
-                 -Dpython.version=$PYSPARK_PYTHON
-                 -Dscala.version=$SCALA_BINARY_VERSION
-                 tfs_testing/test"
-
- # Build the assembly
- - docker exec -t ubuntu-test bash -c "
-     source $HOME/miniconda/bin/activate test-environment;
-     cd $HOME/tensorframes;
-     ./build/sbt -Dspark.version=$SPARK_VERSION
-                 -Dscala.version=$SCALA_BINARY_VERSION
-                 tfs_testing/assembly"
-
- # Run python tests
- - docker exec -t ubuntu-test bash -c "
-     source $HOME/miniconda/bin/activate test-environment;
-     cd $HOME/tensorframes;
-     SPARK_HOME=$HOME/.cache/spark-versions/$SPARK_BUILD ./python/run-tests.sh"
+  - docker-compose exec master bash -i -c "build/sbt tfs_testing/test"
+  - docker-compose exec master bash -i -c "python/run-tests.sh"
