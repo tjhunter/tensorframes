@@ -52,6 +52,9 @@ def main(release_version, next_version, publish_to, no_prompt, git_remote):
         sys.exit(1)
 
     current_branch = check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).strip()
+    if current_branch == "HEAD":
+        prominentPrint("Cannot build from detached head state. Please make a branch.")
+        sys.exit(1)
     if current_branch != b"master":
         if not verify("You're not on the master branch do you want to continue?",
                       interactive):
