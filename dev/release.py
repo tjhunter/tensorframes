@@ -67,7 +67,7 @@ def main(release_version, next_version, publish_to, no_prompt, git_remote):
         prominentPrint(uncommitted_changes)
         sys.exit(1)
 
-    if call(["protoc"], stdout=PIPE, stderr=PIPE) != 0:
+    if call(["which", "protoc"], stdout=PIPE, stderr=PIPE) != 0:
         prominentPrint("Cannot find protoc, protoc is required to build tensorfames. See README.md.")
         sys.exit(1)
 
