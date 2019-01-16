@@ -113,7 +113,7 @@ object Shading extends Build {
     spHomepage := "https://github.com/databricks/tensorframes",
     spShade := true,
     assembly in spPackage := (assembly in shaded).value,
-    credentials += Credentials(Path.userHome / ".spark-packages-credential")
+    credentials += Credentials(Path.userHome / ".ssh" / "credentials_tensorframes.sbt.txt")
   ).settings(commonSettings: _*)
   .enablePlugins(ProtobufPlugin)
 
