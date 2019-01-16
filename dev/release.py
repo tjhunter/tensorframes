@@ -8,7 +8,7 @@ DATABRICKS_REMOTE = "git@github.com:databricks/tensorframes.git"
 PUBLISH_MODES = {
     "local": "tfs_testing/publishLocal",
     "m2": "tfs_testing/publishM2",
-    "spark-package-publish": "distribution/spPublish",
+    "spark-package-publish": "distribution/spDist",
 }
 
 WORKING_BRANCH = "WORKING_BRANCH_RELEASE_%s_@%s"
