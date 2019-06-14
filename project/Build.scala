@@ -26,7 +26,7 @@ object Shading extends Build {
     unmanagedResourceDirectories in Compile += {
       baseDirectory.value / "src/main/python/"
     },
-    version in protobufGenerate := "3.5.1",
+    version in protobufGenerate := "3.6.1",
     // Spark packages does not like this part
     test in assembly := {},
     // We only use sbt-release to update version numbers for now.

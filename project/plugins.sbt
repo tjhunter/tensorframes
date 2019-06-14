@@ -5,7 +5,7 @@ addSbtPlugin("org.spark-packages" %% "sbt-spark-package" % "0.2.6")
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.6.0")
 
 // You need protoc3 for this to work
-addSbtPlugin("com.github.gseitz" % "sbt-protobuf" % "0.6.3")
+addSbtPlugin("com.github.gseitz" % "sbt-protobuf" % "0.6.4")
 
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
 

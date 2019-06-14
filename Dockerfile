@@ -12,11 +12,6 @@ RUN apt-get update && \
     apt-get install -y wget bzip2 openjdk-8-jdk unzip && \
     apt-get clean
 
-# Install protoc.
-RUN wget --quiet https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip -O /tmp/protoc.zip && \
-    unzip /tmp/protoc.zip -d /usr/local && \
-    rm /tmp/protoc.zip
-
 # Install Miniconda.
 # Reference: https://hub.docker.com/r/continuumio/miniconda/~/dockerfile/
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh -O ~/miniconda.sh && \
@@ -34,9 +29,9 @@ RUN /opt/conda/bin/conda create -n tensorframes python=$PYTHON_VERSION && \
 
 # Install Spark and update env variables.
 ENV SCALA_BINARY_VERSION 2.11.8
-ENV SPARK_VERSION 2.4.0
+ENV SPARK_VERSION 2.4.3
 ENV SPARK_BUILD "spark-${SPARK_VERSION}-bin-hadoop2.7"
-ENV SPARK_BUILD_URL "https://dist.apache.org/repos/dist/release/spark/spark-2.4.0/${SPARK_BUILD}.tgz"
+ENV SPARK_BUILD_URL "http://www.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_BUILD}.tgz"
 RUN wget --quiet $SPARK_BUILD_URL -O /tmp/spark.tgz && \
     tar -C /opt -xf /tmp/spark.tgz && \
     mv /opt/$SPARK_BUILD /opt/spark && \
