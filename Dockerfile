@@ -12,11 +12,6 @@ RUN apt-get update && \
     apt-get install -y wget bzip2 openjdk-8-jdk unzip && \
     apt-get clean
 
-# Install protoc.
-RUN wget --quiet https://github.com/google/protobuf/releases/download/v3.6.0/protoc-3.6.0-linux-x86_64.zip -O /tmp/protoc.zip && \
-    unzip /tmp/protoc.zip -d /usr/local && \
-    rm /tmp/protoc.zip
-
 # Install Miniconda.
 # Reference: https://hub.docker.com/r/continuumio/miniconda/~/dockerfile/
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh -O ~/miniconda.sh && \
