@@ -185,7 +185,7 @@ the root of project:
 conda create -q -n tensorframes-environment python=$PYTHON_VERSION
 ```
 
-This will create an environment for your project. We recommend using Python version 3.6.2 or 2.7.13.
+This will create an environment for your project. We recommend using Python version 3.7 or 2.7.13.
 After the environemnt is created, you can activate it and install all dependencies as follows:
 
 ```bash

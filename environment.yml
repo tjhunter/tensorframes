@@ -1,5 +1,5 @@
 # To choose a Python version, first create the env with:
-# conda create -n tensorframes python=3.6
+# conda create -n tensorframes python=3.7
 # and then update it
 name: tensorframes
 channels:
