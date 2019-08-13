@@ -5,7 +5,7 @@ name: tensorframes
 channels:
 - https://repo.anaconda.com/pkgs/main/linux-64/
 dependencies:
-- pandas=0.23.4
+- pandas=0.24.2
 - nomkl
 - protobuf=3.6.1
 - tensorflow=1.13.1
