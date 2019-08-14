@@ -1,11 +1,11 @@
 # To choose a Python version, first create the env with:
-# conda create -n tensorframes python=3.6
+# conda create -n tensorframes python=3.7
 # and then update it
 name: tensorframes
 channels:
 - https://repo.anaconda.com/pkgs/main/linux-64/
 dependencies:
-- pandas=0.23.4
+- pandas=0.24.2
 - nomkl
 - protobuf=3.6.1
 - tensorflow=1.13.1

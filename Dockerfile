@@ -6,7 +6,7 @@
 
 FROM ubuntu:16.04
 
-ARG PYTHON_VERSION=3.6
+ARG PYTHON_VERSION=3.7
 
 RUN apt-get update && \
     apt-get install -y wget bzip2 openjdk-8-jdk unzip && \

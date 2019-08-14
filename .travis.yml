@@ -15,7 +15,7 @@ env:
   global:
     - DOCKER_COMPOSE_VERSION=1.22.0
   matrix:
-    - PYTHON_VERSION=3.6
+    - PYTHON_VERSION=3.7
     - PYTHON_VERSION=2.7
 
 before_install:
