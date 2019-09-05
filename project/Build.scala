@@ -81,7 +81,7 @@ object Shading extends Build {
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll,
       ShadeRule.rename("google.protobuf.**" -> "org.tensorframes.google.protobuf3shade.@1").inAll
     ),
-    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
+    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
     assemblyMergeStrategy in assembly := {
         case PathList("tensorflow", xs @ _*) => MergeStrategy.last
         case x =>
