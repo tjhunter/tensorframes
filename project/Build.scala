@@ -83,7 +83,7 @@ object Shading extends Build {
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
     assemblyMergeStrategy in assembly := {
-        case PathList("tensorflow", xs @ _*) => MergeStrategy.last
+        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.last
         case x =>
             val oldStrategy = (assemblyMergeStrategy in assembly).value
             oldStrategy(x)
@@ -137,7 +137,13 @@ object Shading extends Build {
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
-    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
+    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
+    assemblyMergeStrategy in assembly := {
+        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.last
+        case x =>
+            val oldStrategy = (assemblyMergeStrategy in assembly).value
+            oldStrategy(x)
+    }
   ).settings(commonSettings: _*)
   .enablePlugins(ProtobufPlugin)
 }
