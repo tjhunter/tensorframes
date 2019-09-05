@@ -79,10 +79,15 @@ object Shading extends Build {
     libraryDependencies ++= allPlatformDependencies,
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll,
-      ShadeRule.rename("google.protobuf.**" -> "org.tensorframes.google.protobuf3shade.@1").inAll,
-      ShadeRule.rename("org.tensorflow.NativeLibrary**" -> "org.tensorflowShade.NativeLibrary@1").inAll
+      ShadeRule.rename("google.protobuf.**" -> "org.tensorframes.google.protobuf3shade.@1").inAll
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
+    assemblyMergeStrategy in assembly := {
+        case PathList("tensorflow", xs @ _*) => MergeStrategy.last
+        case x =>
+            val oldStrategy = (assemblyMergeStrategy in assembly).value
+            oldStrategy(x)
+    }
   ).settings(commonSettings: _*)
   .enablePlugins(ProtobufPlugin)
 
