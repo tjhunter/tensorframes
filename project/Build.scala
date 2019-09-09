@@ -83,7 +83,7 @@ object Shading extends Build {
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
     assemblyMergeStrategy in assembly := {
-        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.last
+        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.first
         case x =>
             val oldStrategy = (assemblyMergeStrategy in assembly).value
             oldStrategy(x)
@@ -139,7 +139,7 @@ object Shading extends Build {
     ),
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
     assemblyMergeStrategy in assembly := {
-        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.last
+        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.first
         case x =>
             val oldStrategy = (assemblyMergeStrategy in assembly).value
             oldStrategy(x)
