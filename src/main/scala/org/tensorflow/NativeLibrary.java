@@ -1,3 +1,9 @@
+/* [ML-7986] There is a bug in Tensorflow Java API. This is a workaround from
+https://github.com/tensorflow/tensorflow/issues/30635#issuecomment-523005602
+
+Remove this after Tensorflow fix the issue.
+*/
+
 /* Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
