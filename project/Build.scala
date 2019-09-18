@@ -81,15 +81,7 @@ object Shading extends Build {
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll,
       ShadeRule.rename("google.protobuf.**" -> "org.tensorframes.google.protobuf3shade.@1").inAll
     ),
-    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
-    // TODO: `MergeStrategy.first` happens to overwrite the original files in the dependency. But it
-    // is not guaranteed by contract. We can explicitly remove the class from the dependency jar.
-    assemblyMergeStrategy in assembly := {
-        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.first
-        case x =>
-            val oldStrategy = (assemblyMergeStrategy in assembly).value
-            oldStrategy(x)
-    }
+    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
   ).settings(commonSettings: _*)
   .enablePlugins(ProtobufPlugin)
 
@@ -139,15 +131,7 @@ object Shading extends Build {
     assemblyShadeRules in assembly := Seq(
       ShadeRule.rename("com.google.protobuf.**" -> "org.tensorframes.protobuf3shade.@1").inAll
     ),
-    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
-    // TODO: `MergeStrategy.first` happens to overwrite the original files in the dependency. But it
-    // is not guaranteed by contract. We can explicitly remove the class from the dependency jar.
-    assemblyMergeStrategy in assembly := {
-        case PathList("org", "tensorflow", xs @ _*) => MergeStrategy.first
-        case x =>
-            val oldStrategy = (assemblyMergeStrategy in assembly).value
-            oldStrategy(x)
-    }
+    assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
   ).settings(commonSettings: _*)
   .enablePlugins(ProtobufPlugin)
 }
