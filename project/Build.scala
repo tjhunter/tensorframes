@@ -13,6 +13,8 @@ object Shading extends Build {
 
   import Dependencies._
 
+  resolvers += Resolver.mavenLocal
+
   lazy val commonSettings = Seq(
     name := "tensorframes",
     scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
