@@ -41,6 +41,11 @@ ENV PATH $SPARK_HOME/bin:$PATH
 ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.7-src.zip:/opt/spark/python/lib/pyspark.zip:$PYTHONPATH
 ENV PYSPARK_PYTHON python
 
+# Workaround for https://github.com/tensorflow/tensorflow/issues/30635.
+RUN wget -q https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow_jni-cpu-linux-x86_64-1.15.0-rc3.tar.gz && \
+    tar xf libtensorflow_jni-cpu-linux-x86_64-1.15.0-rc3.tar.gz && \
+    cp libtensorflow_framework.so.1 /usr/lib
+
 # The tensorframes dir will be mounted here.
 VOLUME /mnt/tensorframes
 WORKDIR /mnt/tensorframes
