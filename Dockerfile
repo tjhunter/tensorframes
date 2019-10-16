@@ -41,9 +41,6 @@ ENV PATH $SPARK_HOME/bin:$PATH
 ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.7-src.zip:/opt/spark/python/lib/pyspark.zip:$PYTHONPATH
 ENV PYSPARK_PYTHON python
 
-COPY ./libtensorflow_jni.so /usr/lib/
-COPY ./libtensorflow_framework.so.1.15.0 /usr/lib/libtensorflow_framework.so.1
-
 # The tensorframes dir will be mounted here.
 VOLUME /mnt/tensorframes
 WORKDIR /mnt/tensorframes

@@ -13,7 +13,8 @@ object Shading extends Build {
 
   import Dependencies._
 
-  resolvers += Resolver.mavenLocal
+  resolvers += Resolver.bintrayRepo("meng", "spark-3.0-snapshots")
+  // resolvers += Resolver.mavenLocal
 
   lazy val commonSettings = Seq(
     name := "tensorframes",
