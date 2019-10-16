@@ -13,9 +13,6 @@ object Shading extends Build {
 
   import Dependencies._
 
-  resolvers += Resolver.bintrayRepo("meng", "spark-3.0-snapshots")
-  // resolvers += Resolver.mavenLocal
-
   lazy val commonSettings = Seq(
     name := "tensorframes",
     scalaVersion := sys.props.getOrElse("scala.version", "2.11.8"),
@@ -40,7 +37,8 @@ object Shading extends Build {
       tagRelease,
       setNextVersion,
       commitNextVersion
-    )
+    ),
+    resolvers += Resolver.bintrayRepo("meng", "spark-3.0-snapshots")
   )
 
   lazy val sparkDependencies = Seq(
