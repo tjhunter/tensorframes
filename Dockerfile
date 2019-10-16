@@ -48,6 +48,4 @@ COPY ./libtensorflow_framework.so.1.15.0 /usr/lib/libtensorflow_framework.so.1
 VOLUME /mnt/tensorframes
 WORKDIR /mnt/tensorframes
 
-
-
 CMD /bin/bash
