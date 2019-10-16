@@ -63,7 +63,8 @@ object Shading extends Build {
     "com.typesafe.scala-logging" %% "scala-logging-api" % "2.1.2",
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
     // TensorFlow dependencies
-    "org.tensorflow" % "libtensorflow" % targetTensorFlowVersion
+    "org.tensorflow" % "libtensorflow" % targetTensorFlowVersion,
+    "org.tensorflow" % "libtensorflow_jni" % targetTensorFlowVersion
   )
 
   lazy val testDependencies = Seq(
