@@ -37,7 +37,8 @@ object Shading extends Build {
       tagRelease,
       setNextVersion,
       commitNextVersion
-    )
+    ),
+    resolvers += Resolver.bintrayRepo("meng", "spark-3.0-snapshots")
   )
 
   lazy val sparkDependencies = Seq(

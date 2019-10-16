@@ -42,10 +42,9 @@ ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.7-src.zip:/opt/spark/python/lib/p
 ENV PYSPARK_PYTHON python
 
 # Workaround for https://github.com/tensorflow/tensorflow/issues/30635.
-RUN wget https://repo1.maven.org/maven2/org/tensorflow/libtensorflow_jni/1.14.0/libtensorflow_jni-1.14.0.jar && \
-    jar xf libtensorflow_jni-1.14.0.jar org/tensorflow/native/linux-x86_64/libtensorflow_framework.so.1 && \
-    mv org/tensorflow/native/linux-x86_64/libtensorflow_framework.so.1 /usr/lib && \
-    rm libtensorflow_jni-1.14.0.jar
+RUN wget -q https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow_jni-cpu-linux-x86_64-1.15.0-rc3.tar.gz && \
+    tar xf libtensorflow_jni-cpu-linux-x86_64-1.15.0-rc3.tar.gz && \
+    cp libtensorflow_framework.so.1 /usr/lib
 
 # The tensorframes dir will be mounted here.
 VOLUME /mnt/tensorframes
