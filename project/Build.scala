@@ -37,7 +37,7 @@ object Shading extends Build {
       tagRelease,
       setNextVersion,
       commitNextVersion
-    ),
+    )
   )
 
   lazy val sparkDependencies = Seq(
