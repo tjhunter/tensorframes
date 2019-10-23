@@ -9,3 +9,4 @@ services:
     volumes:
     - .:/mnt/tensorframes
     - ~/.ivy2:/root/.ivy2
+    - ~/.m2:/root/.m2
