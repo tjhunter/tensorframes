@@ -11,4 +11,4 @@ dependencies:
 # test
 - nose=1.3.7
 - pip:
-    - tensorflow==1.15.0-rc3
+    - tensorflow==1.15.0
