@@ -2,8 +2,7 @@
 
 # TensorFrames (Deprecated)
 
-!!! note
-  TensorFrames is deprecated. You can use [`pandas UDF`](https://spark.apache.org/docs/latest/sql-pyspark-pandas-with-arrow.html#pandas-udfs-aka-vectorized-udfs) instead.
+> **Note**:  TensorFrames is deprecated. You can use [`pandas UDF`](https://spark.apache.org/docs/latest/sql-pyspark-pandas-with-arrow.html#pandas-udfs-aka-vectorized-udfs) instead.
 
 Experimental [TensorFlow](https://www.tensorflow.org/) binding for Scala and 
 [Apache Spark](http://spark.apache.org/).
